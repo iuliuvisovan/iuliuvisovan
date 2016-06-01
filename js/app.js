@@ -22,14 +22,17 @@ function calculateDistance(elem, mouseX, mouseY) {
 
 $(document).ready(function () {
     var coolColors = ['#1abc9c', '#3498db', '#34495e', '#e74c3c', '#2c3e50', '#27ae60', '#16a085', '#e67e22', '#2e8ece'];
-    $('body').css("background-color", coolColors[new Date().getTime() % 9]);
+    $('body').addClass('random-color');
+    setTimeout(function() {
+        $('.random-color').css("background-color", coolColors[new Date().getTime() % 9]);
+        $(".menu-item").hover(function () {
+                $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
+            },
+            function () {
+                $(".filling-rectangle").css("-webkit-filter", "none");
+            });
 
-    $(".menu-item").hover(function () {
-            $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
-        },
-        function () {
-            $(".filling-rectangle").css("-webkit-filter", "none");
-        });
+    }, 1000);
 
     setTimeout(function () {
         $('.dot').addClass('small');
