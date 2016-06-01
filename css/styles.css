@@ -3,10 +3,10 @@ body {
     width: 110%;
     overflow: hidden;
     background-color: darkcyan;
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
 
@@ -133,12 +133,7 @@ body {
 }
 
 .scalars.active {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.scalars:hover {
-    background-color: white;
-    opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .coolness-description {
@@ -167,4 +162,49 @@ body {
 
 #three:hover ~ #threeDesc {
     display: block;
+}
+
+.scalars:hover {
+    background-color: white;
+    -webkit-filter: opacity(80%);
+}
+
+.scalars:hover ~ .scalars {
+    background-color: white;
+    -webkit-filter: opacity(80%);
+}
+
+
+.color-picker {
+    margin: 10px;
+    position: fixed;
+    display: inline-flex;
+    left: 5px;
+    top: 5px;
+    z-index: 35;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.color {
+    display: inline-block;
+    background-color: blue;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    -webkit-filter: opacity(50%);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.color:hover {
+    -webkit-filter: opacity(100%);
+    width: 50px;
+
+}
+
+.color.active {
+    -webkit-filter: opacity(100%);
+    width: 50px;
 }
