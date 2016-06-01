@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="iuliudotnetModule">
+<head>
+    <title>Iuliudotnet</title>
+    <meta charset="UTF-8">
+
+    <!--Bootstrap-->
+    <link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
+
+    <!--Custom fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+
+    <!--Favicon-->
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+</head>
+<body ng-controller="IndexController">
+<div id="coolnessScale">
+    <div class="scalars" id="three"></div>
+    <div class="scalars active" id="two"></div>
+    <div class="scalars active" id="one"></div>
+    <div id="oneDesc" class="coolness-description">Website coolness: bad pc</div>
+    <div id="twoDesc" class="coolness-description">Website coolness: decent</div>
+    <div id="threeDesc" class="coolness-description">Website coolness: fancy</div>
+</div>
+<div class="squares">
+    <div class="square" style="width: {{squareStyle.width }}px; height: {{squareStyle.height}}px"
+         ng-repeat="square in squares track by $index">
+    </div>
+</div>
+<div id="binaryText" class="binary-text">
+    01010100 01101000 01101001 01110011 00100000 01110100 01100101 01111000 01110100 00100000 01101001 01110011 00100000 01110011 01101111 00100000 01101110 01101111 01110100 00100000 01100111 01101111 01101001 01101110 01100111 00100000 01110100 01101111 00100000 01100010 01100101 00100000 01110010 01100101 01100001 01100100 00100000 01100010 01111001 00100000 01100001 01101110 01111001 01101111 01101110 01100101 00100000 01110100 01101000 01100001 01110100 00100000 01001001 00100111 01101101 00100000 01101110 01101111 01110100 00100000 01100101 01110110 01100101 01101110 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01100010 01101111 01110100 01101000 01100101 01110010 00100000 01110111 01110010 01101001 01110100 01101001 01101110 01100111 00100000 01100001 01101110 01111001 01110100 01101000 01101001 01101110 01100111 00100000 01101001 01101101 01110000 01101111 01110010 01110100 01100001 01101110 01110100 00100000 01101111 01110010 00100000 01110010 01100101 01101100 01100101 01110110 01100001 01101110 01110100 00101110 00100000 01000100 01110101 01100011 01101011 01110011 00101110
+    01010100 01101000 01101001 01110011 00100000 01110100 01100101 01111000 01110100 00100000 01101001 01110011 00100000 01110011 01101111 00100000 01101110 01101111 01110100 00100000 01100111 01101111 01101001 01101110 01100111 00100000 01110100 01101111 00100000 01100010 01100101 00100000 01110010 01100101 01100001 01100100 00100000 01100010 01111001 00100000 01100001 01101110 01111001 01101111 01101110 01100101 00100000 01110100 01101000 01100001 01110100 00100000 01001001 00100111 01101101 00100000 01101110 01101111 01110100 00100000 01100101 01110110 01100101 01101110 00100000 01100111 01101111 01101110 01101110 01100001 00100000 01100010 01101111 01110100 01101000 01100101 01110010 00100000 01110111 01110010 01101001 01110100 01101001 01101110 01100111 00100000 01100001 01101110 01111001 01110100 01101000 01101001 01101110 01100111 00100000 01101001 01101101 01110000 01101111 01110010 01110100 01100001 01101110 01110100 00100000 01101111 01110010 00100000 01110010 01100101 01101100 01100101 01110110 01100001 01101110 01110100 00101110 00100000 01000100 01110101 01100011 01101011 01110011 00101110
+</div>
+<div class="menu">
+    <div class="col-xs-12 menu-item" style="padding: 0;">
+        <div class="big-title" onclick="shakeLogo()">
+            <div class="filling-rectangle animated fadeInLeft"
+                 style="width: 263px; height: 20px; -webkit-animation-delay: 0s;"></div>
+            <div id="logo">
+                <div class="animated fadeInDownBig" style="-webkit-animation-delay: 1s;">iuliu</div>
+                <div class="animated bounceInDown dot" style="-webkit-animation-delay: 1s"></div>
+                <div class="animated fadeInUpBig" style="-webkit-animation-duration: 1s;">net</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12 menu-item about">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">About</span>
+        <div class="filling-rectangle animated fadeInRightBig" style="width: 200px"></div>
+    </div>
+    <div class="col-xs-12 menu-item work">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">Work</span>
+        <div class="filling-rectangle animated fadeInRightBig" style="width: 220px"></div>
+    </div>
+    <div class="col-xs-12 menu-item contact">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">Contact</span>
+        <div class="filling-rectangle animated leftO" style="width: 118px"></div>
+    </div>
+</div>
+</body>
+<!--Angular-->
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+
+<!--jQuery-->
+<script src="js/jquery.min.js"></script>
+
+<!--Bootstrap-->
+<script src="js/bootstrap.min.js"></script>
+
+<!--App-->
+<script src="js/app.js"></script>
+</html>

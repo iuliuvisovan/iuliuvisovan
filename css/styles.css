@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    width: 110%;
+    overflow: hidden;
+    background-color: darkcyan;
+    cursor: pointer;
+}
+
+.squares {
+    position: absolute;
+}
+
+.square {
+    display: inline-block;
+    border-radius: 65px;
+    margin-bottom: -4px;
+    background-color: rgba(255, 255, 255, 0);
+    margin: -2px;
+}
+
+.square:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.big-title {
+    text-align: center;
+    color: white;
+    margin-bottom: -15px;
+}
+
+.big-title div {
+    display: inline-block;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.big-title .dot {
+    border-radius: 65px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+.dot.small {
+    transition: all 1s;
+    -webkit-transition: all 1s; /* Safari */
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.big-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+.menu {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    margin: auto;
+    font-size: 60px;
+    width: 530px;
+    padding: 0;
+}
+
+.menu-item span {
+    font-weight: 900;
+    display: inline-block;
+}
+
+.filling-rectangle {
+    display: inline-block;
+    height: 42px;
+    width: 35px;
+    background-color: white;
+}
+
+.menu-item:hover .rectangle-back {
+    opacity: 0.3;
+}
+
+.rectangle-back {
+    position: absolute;
+    z-index: -1;
+    background-color: white;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.binary-text {
+    font-size: 30px;
+    color: white;
+    font-family: "Courier New";
+    width: 120%;
+    font-weight: 900;
+    opacity: 0.05;
+    position: absolute;
+    z-index: -1;
+}
+
+#coolnessScale {
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 5;
+}
+
+.scalars {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.scalars.active {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.scalars:hover {
+    background-color: white;
+    opacity: 0.5;
+}
+
+.coolness-description {
+    position: fixed;
+    right: 5px;
+    top: 75px;
+    z-index: 5;
+    padding: 15px;
+    padding-bottom: 13px;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: auto!important;
+    color: white;
+    width: auto!important;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    display: none;
+}
+
+#one:hover ~ #oneDesc {
+    display: block;
+}
+
+#two:hover ~ #twoDesc {
+    display: block;
+}
+
+#three:hover ~ #threeDesc {
+    display: block;
+}
