@@ -2,12 +2,30 @@ body {
     margin: 0;
     width: 110%;
     overflow: hidden;
-    background-color: darkcyan;
+    /*background-color: darkcyan;*/
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
+    background-image: url("../img/bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+pre {
+    background-color: transparent;
+}
+
+code {
+    font-family: Consolas;
+    font-size: 30px!important;
+    background: transparent!important;
+    color: white!important;
+}
+
+.hljs-string {
+    color: gray;
 }
 
 .random-color {
@@ -32,7 +50,8 @@ body {
 .big-title {
     text-align: center;
     color: white;
-    margin-bottom: -15px;
+    margin-bottom: 130px;
+    visibility: hidden;
 }
 
 .big-title div {
@@ -71,11 +90,16 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 100px;
+    top: 200px;
     margin: auto;
     font-size: 60px;
     width: 530px;
     padding: 0;
+
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .menu-item span {
@@ -182,7 +206,12 @@ body {
     left: 5px;
     top: 5px;
     z-index: 35;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, .4);
+    /*border: 1px solid rgba(255, 255, 255, 0.7);*/
+}
+
+.color-picker:hover .color {
+    -webkit-filter: opacity(100%);
 }
 
 .color {
@@ -207,4 +236,10 @@ body {
 .color.active {
     -webkit-filter: opacity(100%);
     width: 50px;
+}
+
+@media(max-width: 768px) {
+    body {
+        background-size: auto;
+    }
 }

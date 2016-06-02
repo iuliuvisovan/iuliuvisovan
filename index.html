@@ -16,62 +16,31 @@
 
     <!--Favicon-->
     <link id="favicon" rel="icon" href="img/logo.png" type="image/png" sizes="16x16">
+
+    <!--Highligher-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
 </head>
 <body ng-controller="IndexController">
-<div class="color-picker">
-    <div ng-class="{color: true, active: color === currentColor}"
-         style="background-color: {{color}}" ng-repeat="color in colors"></div>
-</div>
+<!--<div class="color-picker">-->
+    <!--<div ng-class="{color: true, active: color.hex === currentColor}"-->
+         <!--style="background-color: {{color.hex}}" ng-repeat="color in colors"></div>-->
+<!--</div>-->
 
-<div id="coolnessScale">
-    <div ng-click="coolness = 3" class="scalars {{coolness >= 3 ? 'active' : ''}}" id="three"></div>
-    <div ng-click="coolness = 2" class="scalars {{coolness >= 2 ? 'active' : ''}}" id="two"></div>
-    <div ng-click="coolness = 1" class="scalars {{coolness >= 1 ? 'active' : ''}}" id="one"></div>
-    <div id="oneDesc" class="coolness-description">Website coolness: bad pc</div>
-    <div id="twoDesc" class="coolness-description">Website coolness: decent</div>
-    <div id="threeDesc" class="coolness-description">Website coolness: fancy</div>
-</div>
-<div class="squares" ng-show="coolness >= 2">
-    <div class="square" style="width: {{squareStyle.width }}px; height: {{squareStyle.height}}px"
-         ng-repeat="square in squares track by $index">
-    </div>
-</div>
-<div id="binaryText" class="binary-text">
-    01010100 01101000 01101001 01110011 00100000 01110100 01100101 01111000 01110100 00100000 01101001 01110011 00100000
-    01110011 01101111 00100000 01101110 01101111 01110100 00100000 01100111 01101111 01101001 01101110 01100111 00100000
-    01110100 01101111 00100000 01100010 01100101 00100000 01110010 01100101 01100001 01100100 00100000 01100010 01111001
-    00100000 01100001 01101110 01111001 01101111 01101110 01100101 00100000 01110100 01101000 01100001 01110100 00100000
-    01001001 00100111 01101101 00100000 01101110 01101111 01110100 00100000 01100101 01110110 01100101 01101110 00100000
-    01100111 01101111 01101110 01101110 01100001 00100000 01100010 01101111 01110100 01101000 01100101 01110010 00100000
-    01110111 01110010 01101001 01110100 01101001 01101110 01100111 00100000 01100001 01101110 01111001 01110100 01101000
-    01101001 01101110 01100111 00100000 01101001 01101101 01110000 01101111 01110010 01110100 01100001 01101110 01110100
-    00100000 01101111 01110010 00100000 01110010 01100101 01101100 01100101 01110110 01100001 01101110 01110100 00101110
-    00100000 01000100 01110101 01100011 01101011 01110011 00101110
-    01010100 01101000 01101001 01110011 00100000 01110100 01100101 01111000 01110100 00100000 01101001 01110011 00100000
-    01110011 01101111 00100000 01101110 01101111 01110100 00100000 01100111 01101111 01101001 01101110 01100111 00100000
-    01110100 01101111 00100000 01100010 01100101 00100000 01110010 01100101 01100001 01100100 00100000 01100010 01111001
-    00100000 01100001 01101110 01111001 01101111 01101110 01100101 00100000 01110100 01101000 01100001 01110100 00100000
-    01001001 00100111 01101101 00100000 01101110 01101111 01110100 00100000 01100101 01110110 01100101 01101110 00100000
-    01100111 01101111 01101110 01101110 01100001 00100000 01100010 01101111 01110100 01101000 01100101 01110010 00100000
-    01110111 01110010 01101001 01110100 01101001 01101110 01100111 00100000 01100001 01101110 01111001 01110100 01101000
-    01101001 01101110 01100111 00100000 01101001 01101101 01110000 01101111 01110010 01110100 01100001 01101110 01110100
-    00100000 01101111 01110010 00100000 01110010 01100101 01101100 01100101 01110110 01100001 01101110 01110100 00101110
-    00100000 01000100 01110101 01100011 01101011 01110011 00101110
-</div>
+<!--<div id="coolnessScale">-->
+    <!--<div ng-click="coolness = 3" class="scalars {{coolness >= 3 ? 'active' : ''}}" id="three"></div>-->
+    <!--<div ng-click="coolness = 2" class="scalars {{coolness >= 2 ? 'active' : ''}}" id="two"></div>-->
+    <!--<div ng-click="coolness = 1" class="scalars {{coolness >= 1 ? 'active' : ''}}" id="one"></div>-->
+    <!--<div id="oneDesc" class="coolness-description">Website coolness: bad pc</div>-->
+    <!--<div id="twoDesc" class="coolness-description">Website coolness: decent</div>-->
+    <!--<div id="threeDesc" class="coolness-description">Website coolness: fancy</div>-->
+<!--</div>-->
+<!--<div class="squares" ng-show="coolness >= 2">-->
+    <!--<div class="square" style="width: {{squareStyle.width }}px; height: {{squareStyle.height}}px"-->
+         <!--ng-repeat="square in squares track by $index">-->
+    <!--</div>-->
+<!--</div>-->
 <div class="menu">
-    <div class="col-xs-12 menu-item" style="padding: 0;">
-        <div class="big-title" onclick="shakeLogo()">
-            <div class="filling-rectangle animated fadeInLeft"
-                 style="width: 263px; height: 20px; -webkit-animation-delay: 0s;">
-            </div>
-            <div id="logo">
-                <div class="animated fadeInDownBig" style="-webkit-animation-delay: 1s;">iuliu</div>
-                <div class="animated bounceInDown dot" style="-webkit-animation-delay: 0s"></div>
-                <div class="animated fadeInUpBig" style="-webkit-animation-duration: 1s;">net</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 menu-item about">
+    <div class="col-xs-12 menu-item about" onclick="selectAbout()">
         <div class="rectangle-back"></div>
         <span class="animated fadeInLeftBig">About</span>
         <div class="filling-rectangle animated fadeInRightBig" style="width: 200px"></div>
@@ -85,6 +54,76 @@
         <div class="rectangle-back"></div>
         <span class="animated fadeInLeftBig">Contact</span>
         <div class="filling-rectangle animated fadeInRightBig" style="width: 118px"></div>
+    </div>
+</div>
+<div id="about">
+    <div class="col-xs-12">
+        <pre>
+            <code class="json">
+    {
+	"age": "22",
+	"firstName": "Iuliu",
+	"middleName": "Andrei",
+	"lastName": "Vișovan",
+	"dateOfBirth": "15.02.1994",
+	"placeOfBirth": "Sighetu Marmației, Maramureș, Romania",
+	"studies": [{
+		"name": "Elementary & High School",
+		"institution": "'Regele Ferdinand' High-School",
+		"city": "Sighetu Marmației, Maramureș, Romania",
+		"field": "Mathematics & Computer Science",
+		"yearFrom": "2000",
+		"yearTo": "2012"
+	}, {
+		"name": "1st year of college",
+		"institution": "'West University of Timișoara'",
+		"city": "Timișoara, Timiș, Romania",
+		"field": "Computer Science in English",
+		"yearFrom": "2012",
+		"yearTo": "2013"
+	}, {
+		"name": "college: the sequel",
+		"institution": "'Babeș-Bolyai University'",
+		"field": "Computer Science in English",
+		"city": "Cluj-Napoca, Cluj, Romania",
+		"yearFrom": "2013",
+		"yearTo": "2015"
+	}, {
+		"name": "college: the sequel",
+		"institution": "'Babeș-Bolyai University'",
+		"field": "Computational Linguistics & Artificial Intelligence",
+		"city": "Cluj-Napoca, Cluj, Romania",
+		"yearFrom": "2015",
+		"yearTo": "now"
+	}],
+	"languagesSpoken": [{
+		"name": "Romanian",
+		"level": "100%"
+	}, {
+		"name": "English",
+		"level": "95%"
+	}, {
+		"name": "French",
+		"level": "75%"
+	}, {
+		"name": "Dutch",
+		"level": "40%"
+	}, {
+		"name": "Spanish",
+		"level": "25%"
+	}, {
+		"name": "German",
+		"level": "25%"
+	}],
+	"techSkills": {
+		"languages": ["C#", "Javascript", "HTML", "CSS", "SQL"],
+		"frameworks": [".NET", "Unity (Mono)", "Azure", "Node.js", "Express", "AngularJS", "knockout.js", "Bootstrap 3"],
+		"misc": ["Agile SCRUM", "SEO", "MS Office", "Photoshop", "NOTEPAD!"]
+	},
+	"likes": ["programming", "dota 2", "football", "trap", "cats"]
+}
+            </code>
+        </pre>
     </div>
 </div>
 </body>
@@ -101,3 +140,7 @@
 <!--App-->
 <script src="js/app.js"></script>
 </html>
+
+<!--Highlighter-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>

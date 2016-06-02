@@ -3,6 +3,7 @@
 var iuliudotnetModule = angular.module('iuliudotnetModule', []);
 var coolColors = ['#1abc9c', '#3498db', '#34495e', '#e74c3c', '#2c3e50', '#27ae60', '#16a085', '#e67e22', '#2e8ece'];
 var currentThemeColor = '#1abc9c';
+var inMenu = true;
 
 iuliudotnetModule.controller('IndexController', function ($scope) {
     var width = $(window).width() / 15;
@@ -17,7 +18,7 @@ iuliudotnetModule.controller('IndexController', function ($scope) {
         $scope.squareStyle.height = $(window).width() / 30;
         $scope.$apply();
     });
-    $scope.colors = coolColors;
+    $scope.colors = sortHexArray(coolColors);
     $scope.currentColor = currentThemeColor;
     $scope.coolness = 2;
     $scope.$watch('coolness', function (newValue) {
@@ -31,11 +32,15 @@ iuliudotnetModule.controller('IndexController', function ($scope) {
         }
     });
     $scope.currentColor = coolColors[new Date().getTime() % 9];
-    changeColorTheme($scope.currentColor);
+    changeColorTheme("#34495e");
+    setTimeout(function () {
+        $('body').css("background-image", "url('./img/bg2.png')");
+    }, 1500);
     setTimeout(function () {
         $scope.coolness = 3;
         $scope.$apply();
     }, 500);
+
 
 });
 
@@ -68,20 +73,21 @@ function changeColorTheme(color) {
 $(document).ready(function () {
     setTimeout(function () {
         $(".menu-item").hover(function () {
+                if (!inMenu)
+                    return;
                 $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
             },
             function () {
                 $(".filling-rectangle").css("-webkit-filter", "none");
             });
-
-    }, 1000);
+    }, 500);
 
     setTimeout(function () {
         $('.dot').addClass('small');
     }, 500);
 
     $(".square").each(function () {
-        var randSize = Math.floor(Math.random() * 15) + 10;
+        var randSize = Math.floor(Math.random() * 25) + 10;
         $(this).css("width", randSize % 3 == 0 ? "10" : randSize);
         $(this).css("height", randSize % 3 == 0 ? "10" : randSize);
     });
@@ -156,4 +162,88 @@ function shakeLogo() {
     var logo = $("#logo");
     logo.removeClass();
     logo.addClass('animated ' + effect);
+}
+
+var Color = function Color(hexVal) { //define a Color class for the color objects
+    this.hex = hexVal;
+};
+
+function constructColor(colorObj) {
+    var hex = colorObj.hex.substring(1);
+    /* Get the RGB values to calculate the Hue. */
+    var r = parseInt(hex.substring(0, 2), 16) / 255;
+    var g = parseInt(hex.substring(2, 4), 16) / 255;
+    var b = parseInt(hex.substring(4, 6), 16) / 255;
+
+    /* Getting the Max and Min values for Chroma. */
+    var max = Math.max.apply(Math, [r, g, b]);
+    var min = Math.min.apply(Math, [r, g, b]);
+
+
+    /* Variables for HSV value of hex color. */
+    var chr = max - min;
+    var hue = 0;
+    var val = max;
+    var sat = 0;
+
+
+    if (val > 0) {
+        /* Calculate Saturation only if Value isn't 0. */
+        sat = chr / val;
+        if (sat > 0) {
+            if (r == max) {
+                hue = 60 * (((g - min) - (b - min)) / chr);
+                if (hue < 0) {
+                    hue += 360;
+                }
+            } else if (g == max) {
+                hue = 120 + 60 * (((b - min) - (r - min)) / chr);
+            } else if (b == max) {
+                hue = 240 + 60 * (((r - min) - (g - min)) / chr);
+            }
+        }
+    }
+    colorObj.chroma = chr;
+    colorObj.hue = hue;
+    colorObj.sat = sat;
+    colorObj.val = val;
+    colorObj.luma = 0.3 * r + 0.59 * g + 0.11 * b;
+    colorObj.red = parseInt(hex.substring(0, 2), 16);
+    colorObj.green = parseInt(hex.substring(2, 4), 16);
+    colorObj.blue = parseInt(hex.substring(4, 6), 16);
+    return colorObj;
+};
+
+function sortColorsByHue(colors) {
+    return colors.sort(function (a, b) {
+        return b.hue - a.hue;
+    });
+};
+
+function sortHexArray(hexArray, domClass) {
+    var colors = [];
+    $.each(hexArray, function (i, v) {
+        var color = new Color(v);
+        constructColor(color);
+        colors.push(color);
+    });
+
+    sortColorsByHue(colors);
+    return colors;
+}
+
+function selectAbout() {
+    inMenu = false;
+    $(".about .filling-rectangle").css('width', 0);
+    $(".contact .filling-rectangle").css('width', 0);
+    $(".work span, .contact span, .rectangle-back").fadeOut();
+    $(".menu").css("top", "10px");
+    setTimeout(function() {
+        $(".work .filling-rectangle").css("width", "2000px")
+            .css("background-color", "white")
+            .css("margin-left", "-1000px")
+            .css("height", "10px")
+            .css("-webkit-filter", "opacity(100%)!important");
+        $('.work').css("margin-top", "-40px");
+    }, 500);
 }
