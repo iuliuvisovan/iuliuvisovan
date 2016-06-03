@@ -13,19 +13,35 @@ body {
     background-size: cover;
 }
 
+/*scroller*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+
 pre {
     background-color: transparent;
+    border: none;
+    background: none!important;
 }
 
 code {
     font-family: Consolas;
-    font-size: 30px!important;
-    background: transparent!important;
-    color: white!important;
+    font-size: 18px!important;
+    background: none!important;
+    color: rgba(200, 200, 200, 1)!important;
+    border: none;
 }
 
 .hljs-string {
-    color: gray;
+    color: white!important;
 }
 
 .random-color {
@@ -242,4 +258,27 @@ code {
     body {
         background-size: auto;
     }
+}
+
+#about {
+    display: none;
+    margin-top: 118px;
+    height: 0;
+    background: rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-left: 10px solid white;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.back {
+    position: fixed;
+    font-size: 50px;
+    color: white;
+    top: 30px;
+    left: 15px;
+    display: none;
 }

@@ -245,5 +245,31 @@ function selectAbout() {
             .css("height", "10px")
             .css("-webkit-filter", "opacity(100%)!important");
         $('.work').css("margin-top", "-40px");
+        $("#about").show();
+        setTimeout(function() {
+            $("#about").css("height", "85vh");
+        }, 500);
+        $(".back").show('slow');
     }, 500);
+}
+
+function goBack() {
+    $("#about").css("height", "0");
+    $(".back").hide('slow');
+    $(".work .filling-rectangle").css("width", "220px")
+        .css("background-color", "white")
+        .css("margin-left", "0")
+        .css("height", "42px");
+    setTimeout(function() {
+        $('.work').css("margin-top", "0px");
+        $("#about").hide();
+        $(".menu").css("top", "200px");
+        $(".work span, .contact span, .rectangle-back").fadeIn();
+        $(".contact .filling-rectangle").css('width', '118px');
+        $(".about .filling-rectangle").css('width', '200px');
+        inMenu = true;
+    }, 500);
+    setTimeout(function() {
+    }, 500);
+
 }
