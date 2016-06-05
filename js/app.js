@@ -40,7 +40,7 @@ iuliudotnetModule.controller('IndexController', function ($scope) {
         $scope.coolness = 3;
         $scope.$apply();
     }, 500);
-    // Test
+    // Tes
 });
 
 function removeTransition(item) {
