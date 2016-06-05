@@ -34,7 +34,7 @@ iuliudotnetModule.controller('IndexController', function ($scope) {
     $scope.currentColor = coolColors[new Date().getTime() % 9];
     changeColorTheme("#34495e");
     setTimeout(function () {
-        $('body').css("background-image", "url('./img/bg2.png')");
+        $('.background').css("background-image", "url('./img/bg2.png')");
     }, 1500);
     setTimeout(function () {
         $scope.coolness = 3;
