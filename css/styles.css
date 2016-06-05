@@ -1,16 +1,11 @@
 body {
     margin: 0;
-    width: 110%;
     overflow: hidden;
-    /*background-color: darkcyan;*/
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    background-image: url("../img/bg2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: crimson;
 }
 
 /*scroller*/
@@ -25,42 +20,26 @@ body {
     background: white;
 }
 
-
 pre {
     background-color: transparent;
     border: none;
-    background: none!important;
+    background: none !important;
 }
 
 code {
     font-family: Consolas;
-    font-size: 18px!important;
-    background: none!important;
-    color: rgba(200, 200, 200, 1)!important;
+    font-size: 18px !important;
+    background: none !important;
+    color: rgba(200, 200, 200, 1) !important;
     border: none;
 }
 
 .hljs-string {
-    color: white!important;
+    color: white !important;
 }
 
 .random-color {
 
-}
-
-.squares {
-    position: absolute;
-}
-
-.square {
-    display: inline-block;
-    border-radius: 65px;
-    background-color: rgba(255, 255, 255, 0);
-    margin: -2px;
-}
-
-.square:hover {
-    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .big-title {
@@ -109,13 +88,17 @@ code {
     top: 200px;
     margin: auto;
     font-size: 60px;
-    width: 530px;
+    /*width: 530px;*/
     padding: 0;
-
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
 }
 
 .menu-item span {
@@ -123,24 +106,32 @@ code {
     display: inline-block;
 }
 
+.menu > div {
+    padding: 0;
+}
+
 .filling-rectangle {
     display: inline-block;
     height: 42px;
     width: 35px;
     background-color: white;
-}
-
-.menu-item:hover .rectangle-back {
-    opacity: 0.3;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .rectangle-back {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     background-color: white;
     opacity: 0;
     width: 100%;
     height: 100%;
+}
+
+.menu-item:hover .rectangle-back {
+    opacity: 0.3;
 }
 
 .binary-text {
@@ -184,9 +175,9 @@ code {
     padding: 15px;
     padding-bottom: 13px;
     background-color: rgba(255, 255, 255, 0.2);
-    height: auto!important;
+    height: auto !important;
     color: white;
-    width: auto!important;
+    width: auto !important;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     display: none;
@@ -213,7 +204,6 @@ code {
     background-color: white;
     -webkit-filter: opacity(80%);
 }
-
 
 .color-picker {
     margin: 10px;
@@ -254,7 +244,7 @@ code {
     width: 50px;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     body {
         background-size: auto;
     }
@@ -274,6 +264,18 @@ code {
     transition: all 0.5s ease-in-out;
 }
 
+#about, #about pre {
+    padding: 0;
+}
+
+#about code {
+    padding: 25px;
+}
+
+.container {
+    padding: 0;
+}
+
 .back {
     position: fixed;
     font-size: 50px;
@@ -281,4 +283,66 @@ code {
     top: 30px;
     left: 15px;
     display: none;
+    z-index: 50;
+    cursor: pointer;
 }
+
+.background {
+    width: 100%;
+    position: fixed;
+    z-index: -10;
+}
+
+@media (max-width: 600px) {
+    .background {
+        margin-top: 0;
+        width: auto;
+        height: 100%;
+    }
+
+    .menu {
+        left: 0;
+        top: 100px;
+    }
+
+    .menu-item span {
+        /*float: left;*/
+    }
+
+    .filling-rectangle {
+        /*float: left;*/
+        height: 22px;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    #about code {
+        font-size: 14px!important;
+        paddiing: 0;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1367px) {
+    .background {
+        margin-top: -70px;
+    }
+}
+
+@media (max-width: 300px) {
+    .menu {
+        font-size: 35px;
+    }
+}
+
+@media (min-width: 300px) {
+    .menu {
+        font-size: 45px;
+    }
+}
+
+@media (min-width: 400px) {
+    .menu {
+        font-size: 60px;
+    }
+}
+

@@ -17,30 +17,12 @@ iuliudotnetModule.controller('IndexController', function ($scope) {
         $scope.squareStyle.width = $(window).width() / 30;
         $scope.squareStyle.height = $(window).width() / 30;
         $scope.$apply();
+        recalculateRectangles();
     });
-    $scope.colors = sortHexArray(coolColors);
-    $scope.currentColor = currentThemeColor;
-    $scope.coolness = 2;
-    $scope.$watch('coolness', function (newValue) {
-        if (newValue < 3) {
-            removeTransition($(".square"));
-            removeTransition($(".filling-rectangle"));
-        }
-        else {
-            addTransition($(".square"));
-            addTransition($(".filling-rectangle"));
-        }
-    });
-    $scope.currentColor = coolColors[new Date().getTime() % 9];
-    changeColorTheme("#34495e");
+    $("#favicon").attr('href', 'img/logo_34495e.png');
     setTimeout(function () {
-        $('.background').css("background-image", "url('./img/bg2.png')");
+        $("#after").fadeIn();
     }, 1500);
-    setTimeout(function () {
-        $scope.coolness = 3;
-        $scope.$apply();
-    }, 500);
-    // Tes
 });
 
 function removeTransition(item) {
@@ -60,14 +42,6 @@ function calculateDistance(elem, mouseX, mouseY) {
     return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left + (elem.width() / 2)), 2) + Math.pow(mouseY - (elem.offset().top + (elem.height() / 2)), 2)));
 }
 
-function changeColorTheme(color) {
-    $('body').removeClass('random-color');
-    $('body').addClass('random-color');
-    $("#favicon").attr('href', 'img/logo_' + color.substr(1) + '.png');
-    setTimeout(function () {
-        $('.random-color').css("background-color", color);
-    }, 1000);
-}
 
 $(document).ready(function () {
     setTimeout(function () {
@@ -81,8 +55,9 @@ $(document).ready(function () {
             });
     }, 500);
 
+
     setTimeout(function () {
-        $('.dot').addClass('small');
+        recalculateRectangles();
     }, 500);
 
     $(".square").each(function () {
@@ -237,15 +212,15 @@ function selectAbout() {
     $(".contact .filling-rectangle").css('width', 0);
     $(".work span, .contact span, .rectangle-back").fadeOut();
     $(".menu").css("top", "10px");
-    setTimeout(function() {
+    setTimeout(function () {
         $(".work .filling-rectangle").css("width", "2000px")
             .css("background-color", "white")
-            .css("margin-left", "-1000px")
+            .css("margin-left", "-500px")
             .css("height", "10px")
             .css("-webkit-filter", "opacity(100%)!important");
         $('.work').css("margin-top", "-40px");
         $("#about").show();
-        setTimeout(function() {
+        setTimeout(function () {
             $("#about").css("height", "85vh");
         }, 500);
         $(".back").show('slow');
@@ -259,16 +234,54 @@ function goBack() {
         .css("background-color", "white")
         .css("margin-left", "0")
         .css("height", "42px");
-    setTimeout(function() {
+    setTimeout(function () {
         $('.work').css("margin-top", "0px");
         $("#about").hide();
         $(".menu").css("top", "200px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
         $(".contact .filling-rectangle").css('width', '118px');
         $(".about .filling-rectangle").css('width', '200px');
+        $(".background").css("margin-top", "0");
         inMenu = true;
     }, 500);
-    setTimeout(function() {
+    setTimeout(function () {
     }, 500);
 
 }
+
+function recalculateRectangles() {
+    $(".filling-rectangle").each(function () {
+        $(this).css('height', Math.floor($(this).prev().height()) / 2 + "px");
+        $(this).css('margin-top', Math.floor($(this).prev().height() / 4) + "px");
+    });
+    if ($(window).width() < 300) {
+        $(".filling-rectangle").each(function () {
+            $(this).css('width', 230 - $(this).prev().width() + "px");
+        });
+    }
+    if ($(window).width() >= 300) {
+        $(".filling-rectangle").each(function () {
+            $(this).css('width', 300 - $(this).prev().width() + "px");
+
+        });
+    }
+    if ($(window).width() >= 400) {
+        $(".filling-rectangle").each(function () {
+            $(this).css('width', 400 - $(this).prev().width() + "px");
+
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

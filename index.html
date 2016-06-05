@@ -21,110 +21,94 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
 </head>
 <body ng-controller="IndexController">
-<div class="background">
-    <!--<div class="color-picker">-->
-    <!--<div ng-class="{color: true, active: color.hex === currentColor}"-->
-    <!--style="background-color: {{color.hex}}" ng-repeat="color in colors"></div>-->
-    <!--</div>-->
-
-    <!--<div id="coolnessScale">-->
-    <!--<div ng-click="coolness = 3" class="scalars {{coolness >= 3 ? 'active' : ''}}" id="three"></div>-->
-    <!--<div ng-click="coolness = 2" class="scalars {{coolness >= 2 ? 'active' : ''}}" id="two"></div>-->
-    <!--<div ng-click="coolness = 1" class="scalars {{coolness >= 1 ? 'active' : ''}}" id="one"></div>-->
-    <!--<div id="oneDesc" class="coolness-description">Website coolness: bad pc</div>-->
-    <!--<div id="twoDesc" class="coolness-description">Website coolness: decent</div>-->
-    <!--<div id="threeDesc" class="coolness-description">Website coolness: fancy</div>-->
-    <!--</div>-->
-    <!--<div class="squares" ng-show="coolness >= 2">-->
-    <!--<div class="square" style="width: {{squareStyle.width }}px; height: {{squareStyle.height}}px"-->
-    <!--ng-repeat="square in squares track by $index">-->
-    <!--</div>-->
-    <!--</div>-->
-    <i class="back glyphicon glyphicon-triangle-left" onclick="goBack()"></i>
-    <div class="menu">
-        <div class="col-xs-12 menu-item about" onclick="selectAbout()">
-            <div class="rectangle-back"></div>
-            <span class="animated fadeInLeftBig">About</span>
-            <div class="filling-rectangle animated fadeInRightBig" style="width: 200px"></div>
-        </div>
-        <div class="col-xs-12 menu-item work">
-            <div class="rectangle-back"></div>
-            <span class="animated fadeInLeftBig">Work</span>
-            <div class="filling-rectangle animated fadeInRightBig" style="width: 220px"></div>
-        </div>
-        <div class="col-xs-12 menu-item contact">
-            <div class="rectangle-back"></div>
-            <span class="animated fadeInLeftBig">Contact</span>
-            <div class="filling-rectangle animated fadeInRightBig" style="width: 118px"></div>
-        </div>
+<img id="before" class="background" src="./img/bg_before.jpg"/>
+<img id="after" class="background" src="./img/bg_after.jpg" style="display: none"/>
+<i class="back glyphicon glyphicon-triangle-left" onclick="goBack()"></i>
+<div class="menu">
+    <div class="menu-item about" onclick="selectAbout()">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">About</span>
+        <div class="filling-rectangle animated fadeInRightBig" style="width: 200px"></div>
     </div>
-    <div id="about" class="col-md-offset-2 col-md-7">
-        <pre>
-            <code class="json">{
-	"age": "22",
-	"firstName": "Iuliu",
-	"middleName": "Andrei",
-	"lastName": "Vișovan",
-	"dateOfBirth": "15.02.1994",
-	"placeOfBirth": "Sighetu Marmației, Maramureș, Romania",
-	"studies": [{
-		"name": "Elementary & High School",
-		"institution": "'Regele Ferdinand' High-School",
-		"city": "Sighetu Marmației, Maramureș, Romania",
-		"field": "Mathematics & Computer Science",
-		"yearFrom": "2000",
-		"yearTo": "2012"
-	}, {
-		"name": "1st year of college",
-		"institution": "'West University of Timișoara'",
-		"city": "Timișoara, Timiș, Romania",
-		"field": "Computer Science in English",
-		"yearFrom": "2012",
-		"yearTo": "2013"
-	}, {
-		"name": "college: years 2 & 3",
-		"institution": "'Babeș-Bolyai University'",
-		"field": "Computer Science in English",
-		"city": "Cluj-Napoca, Cluj, Romania",
-		"yearFrom": "2013",
-		"yearTo": "2015"
-	}, {
-		"name": "master's degree",
-		"institution": "'Alexandru Ioan Cuza University'",
-		"field": "Computational Linguistics & Artificial Intelligence",
-		"city": "Iași, Iași, Romania",
-		"yearFrom": "2015",
-		"yearTo": "now"
-	}],
-	"languagesSpoken": [{
-		"name": "Romanian",
-		"level": "100%"
-	}, {
-		"name": "English",
-		"level": "95%"
-	}, {
-		"name": "French",
-		"level": "75%"
-	}, {
-		"name": "Dutch",
-		"level": "40%"
-	}, {
-		"name": "Spanish",
-		"level": "25%"
-	}, {
-		"name": "German",
-		"level": "25%"
-	}],
-	"techSkills": {
-		"languages": ["C#", "Javascript", "HTML", "CSS", "SQL"],
-		"frameworks": [".NET", "Unity (Mono)", "Node.js", "Express", "AngularJS", "knockout.js", "Bootstrap 3"],
-		"misc": ["Azure", "Google Cloud Platform", "Agile SCRUM", "SEO", "MS Office", "Photoshop", "NOTEPAD!"]
-	},
-	"likes": ["programming", "dota 2", "football", "trap", "cats"]
+    <div class="menu-item work">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">Work</span>
+        <div class="filling-rectangle animated fadeInRightBig" style="width: 220px"></div>
+    </div>
+    <div class="menu-item contact">
+        <div class="rectangle-back"></div>
+        <span class="animated fadeInLeftBig">Contact</span>
+        <div class="filling-rectangle animated fadeInRightBig" style="width: 118px"></div>
+    </div>
+</div>
+<div class="container">
+
+<div id="about" class="col-md-offset-2 col-md-8">
+        <pre><code class="json">{
+  "age": "22",
+  "firstName": "Iuliu",
+  "middleName": "Andrei",
+  "lastName": "Vișovan",
+  "dateOfBirth": "15.02.1994",
+  "placeOfBirth": "Sighetu Marmației, Maramureș, Romania",
+  "studies": [{
+    "name": "Elementary & High School",
+    "institution": "'Regele Ferdinand' High-School",
+    "city": "Sighetu Marmației, Maramureș, Romania",
+    "field": "Mathematics & Computer Science",
+    "yearFrom": "2000",
+    "yearTo": "2012"
+  }, {
+    "name": "1st year of college",
+    "institution": "'West University of Timișoara'",
+    "city": "Timișoara, Timiș, Romania",
+    "field": "Computer Science in English",
+    "yearFrom": "2012",
+    "yearTo": "2013"
+  }, {
+    "name": "college: years 2 & 3",
+    "institution": "'Babeș-Bolyai University'",
+    "field": "Computer Science in English",
+    "city": "Cluj-Napoca, Cluj, Romania",
+    "yearFrom": "2013",
+    "yearTo": "2015"
+  }, {
+    "name": "master's degree",
+    "institution": "'Alexandru Ioan Cuza University'",
+    "field": "Computational Linguistics & AI",
+    "city": "Iași, Iași, Romania",
+    "yearFrom": "2015",
+    "yearTo": "now"
+  }],
+  "languagesSpoken": [{
+  "name": "Romanian",
+  "level": "100%"
+  }, {
+    "name": "English",
+    "level": "95%"
+  }, {
+    "name": "French",
+    "level": "75%"
+  }, {
+    "name": "Dutch",
+    "level": "40%"
+  }, {
+    "name": "Spanish",
+    "level": "25%"
+  }, {
+    "name": "German",
+    "level": "25%"
+  }],
+  "techSkills": {
+    "languages": ["C#", "Javascript", "HTML", "CSS", "SQL"],
+    "frameworks": [".NET", "Unity (Mono)", "Node.js", "Express", "AngularJS", "knockout.js", "Bootstrap 3"],
+    "misc": ["Azure", "Google Cloud Platform", "Agile SCRUM", "SEO", "MS Office", "Photoshop", "NOTEPAD!"]
+  },
+  "likes": ["programming", "dota 2", "football", "trap", "cats"]
 }
             </code>
         </pre>
-    </div>
+</div>
 </div>
 </body>
 <!--Angular-->
