@@ -312,13 +312,12 @@ code {
     .filling-rectangle {
         /*float: left;*/
         height: 22px;
-        margin-top: 10px;
         margin-left: 5px;
     }
 
     #about code {
-        font-size: 14px!important;
-        paddiing: 0;
+        font-size: 14px !important;
+        padding: 0;
     }
 }
 
@@ -332,7 +331,11 @@ code {
     .menu {
         font-size: 35px;
     }
-}
+
+    #about {
+        margin-top: 57px;
+        height: 95vh!important;
+    }
 
 @media (min-width: 300px) {
     .menu {
