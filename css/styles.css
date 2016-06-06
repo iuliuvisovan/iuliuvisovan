@@ -99,6 +99,7 @@ code {
 .menu-item {
     position: relative;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .menu-item span {
@@ -112,8 +113,8 @@ code {
 
 .filling-rectangle {
     display: inline-block;
+    width: 20px;
     height: 42px;
-    width: 35px;
     background-color: white;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -252,7 +253,7 @@ code {
 
 #about {
     display: none;
-    margin-top: 118px;
+    margin-top: 17.5vh;
     height: 0;
     background: rgba(0, 0, 0, 0.3);
     overflow-y: scroll;
@@ -262,6 +263,12 @@ code {
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
+}
+
+@media(max-width: 768px) {
+    #about {
+        margin-top: 18.5vh;
+    }
 }
 
 #about, #about pre {
@@ -309,12 +316,6 @@ code {
 }
 
 @media (max-width: 600px) {
-    /*.background {*/
-        /*margin-top: 0;*/
-        /*width: auto;*/
-        /*height: 100%;*/
-    /*}*/
-
     .menu {
         left: 0;
         top: 150px;
@@ -324,22 +325,10 @@ code {
         /*float: left;*/
     }
 
-    .filling-rectangle {
-        /*float: left;*/
-        height: 22px;
-        margin-left: 5px;
-    }
-
     #about code {
         font-size: 14px !important;
         padding: 0;
     }
-}
-
-@media (min-width: 800px) and (max-width: 1367px) {
-    .background {
-        /*margin-top: -70px;*/
-    /*}*/
 }
 
 @media (max-width: 300px) {
@@ -349,8 +338,9 @@ code {
 
     #about {
         margin-top: 57px;
-        height: 95vh!important;
+        height: 95vh !important;
     }
+}
 
 @media (min-width: 300px) {
     .menu {
@@ -364,3 +354,9 @@ code {
     }
 }
 
+
+@media (max-width: 760px) {
+    .menu {
+        padding-left: 10px;
+    }
+}

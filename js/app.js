@@ -211,18 +211,22 @@ function selectAbout() {
     $(".about .filling-rectangle").css('width', 0);
     $(".contact .filling-rectangle").css('width', 0);
     $(".work span, .contact span, .rectangle-back").fadeOut();
-    $(".menu").css("top", "10px");
+    $(".menu").css("top", "20px");
     setTimeout(function () {
         $(".work .filling-rectangle").css("width", "3000px")
             .css("background-color", "white")
             .css("margin-left", "-500px")
             .css("height", "10px")
             .css("-webkit-filter", "opacity(100%)!important");
-        $('.work').css("margin-top", "-40px");
+        $('.work').css("position", "fixed").css("top", "10vh");
+        var barHeight = $(".work .filling-rectangle")[0].getBoundingClientRect().bottom + $(window)['scrollTop']();
+        $("#about").css("margin-top", barHeight + "px");
         $("#about").show();
         setTimeout(function () {
-            $("#about").css("height", "85vh");
+            $("#about").css("height", "93vh");
         }, 500);
+        var backHeight = Math.floor(($(".work .filling-rectangle")[0].getBoundingClientRect().bottom + $(window)['scrollTop']()) / 4);
+        $(".back").css("top", backHeight);
         $(".back").show('slow');
     }, 500);
 }
@@ -234,8 +238,8 @@ function goBack() {
         .css("background-color", "white")
         .css("margin-left", "0")
         .css("height", "42px");
+    $('.work').css("position", "relative").css("top", 0);
     setTimeout(function () {
-        $('.work').css("margin-top", "0px");
         $("#about").hide();
         $(".menu").css("top", "150px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
@@ -250,26 +254,28 @@ function goBack() {
 }
 
 function recalculateRectangles() {
-    $(".filling-rectangle").each(function () {
-        $(this).css('height', Math.floor($(this).prev().height()) / 2 + "px");
-        $(this).css('margin-top', Math.floor($(this).prev().height() / 4) + "px");
-    });
-    if ($(window).width() < 300) {
-        $(".filling-rectangle").each(function () {
-            $(this).css('width', 230 - $(this).prev().width() + "px");
-        });
-    }
-    if ($(window).width() >= 300) {
-        $(".filling-rectangle").each(function () {
-            $(this).css('width', 300 - $(this).prev().width() + "px");
+    if ($(window).width() <= 760) {
+        $(".filling-rectangle").prev().css('font-size', Math.floor($(window).width() / 7));
+        setTimeout(function() {
+            $(".filling-rectangle").each(function () {
+                var textWidth = $(this).prev().width();
+                var rectWidth = Math.floor(($(window).width() - textWidth) - 50);
 
-        });
+                $(this).css('width', rectWidth);
+                $(this).css('height', Math.floor($(this).prev().height()) / 2 + "px");
+            });
+        }, 500);
     }
-    if ($(window).width() >= 400) {
-        $(".filling-rectangle").each(function () {
-            $(this).css('width', 400 - $(this).prev().width() + "px");
+    else {
+        setTimeout(function() {
+            $(".filling-rectangle").each(function () {
+                var textWidth = $(this).prev().width();
+                var rectWidth = Math.floor((400 - textWidth));
 
-        });
+                $(this).css('width', rectWidth);
+                $(this).css('height', Math.floor($(this).prev().height()) / 2 + "px");
+            });
+        }, 500);
     }
 }
 
