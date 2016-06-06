@@ -131,7 +131,7 @@ code {
 }
 
 .menu-item:hover .rectangle-back {
-    opacity: 0.3;
+    opacity: 0.1;
 }
 
 .binary-text {

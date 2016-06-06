@@ -213,7 +213,7 @@ function selectAbout() {
     $(".work span, .contact span, .rectangle-back").fadeOut();
     $(".menu").css("top", "10px");
     setTimeout(function () {
-        $(".work .filling-rectangle").css("width", "2000px")
+        $(".work .filling-rectangle").css("width", "3000px")
             .css("background-color", "white")
             .css("margin-left", "-500px")
             .css("height", "10px")
@@ -237,11 +237,12 @@ function goBack() {
     setTimeout(function () {
         $('.work').css("margin-top", "0px");
         $("#about").hide();
-        $(".menu").css("top", "200px");
+        $(".menu").css("top", "100px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
         $(".contact .filling-rectangle").css('width', '118px');
         $(".about .filling-rectangle").css('width', '200px');
         $(".background").css("margin-top", "0");
+        recalculateRectangles();
         inMenu = true;
     }, 500);
     setTimeout(function () {
