@@ -237,11 +237,10 @@ function goBack() {
     setTimeout(function () {
         $('.work').css("margin-top", "0px");
         $("#about").hide();
-        $(".menu").css("top", "100px");
+        $(".menu").css("top", "150px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
         $(".contact .filling-rectangle").css('width', '118px');
         $(".about .filling-rectangle").css('width', '200px');
-        $(".background").css("margin-top", "0");
         recalculateRectangles();
         inMenu = true;
     }, 500);

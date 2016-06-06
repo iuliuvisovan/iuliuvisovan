@@ -21,8 +21,14 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
 </head>
 <body ng-controller="IndexController">
-<img id="before" class="background" src="./img/bg_before.jpg"/>
-<img id="after" class="background" src="./img/bg_after.jpg" style="display: none"/>
+<div id="before" class="background">
+    <img src="./img/bg_before.jpg"/>
+    <img src="./img/bg_before.jpg"/>
+</div>
+<div id="after" class="background" style="display: none">
+    <img src="./img/bg_after.jpg"/>
+</div>
+
 <i class="back glyphicon glyphicon-triangle-left" onclick="goBack()"></i>
 <div class="menu">
     <div class="menu-item about" onclick="selectAbout()">
