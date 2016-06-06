@@ -238,8 +238,8 @@ function goBack() {
         .css("background-color", "white")
         .css("margin-left", "0")
         .css("height", "42px");
-    $('.work').css("position", "relative").css("top", 0);
     setTimeout(function () {
+        $('.work').css("position", "relative").css("top", 0);
         $("#about").hide();
         $(".menu").css("top", "150px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
