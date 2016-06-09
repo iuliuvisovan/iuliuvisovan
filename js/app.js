@@ -3,7 +3,6 @@
 var inMenu = true;
 
 $(document).ready(function () {
-    $("#favicon").attr('href', 'img/logo_34495e.png');
     setTimeout(function () {
         $("#after").fadeIn();
     }, 1500);
@@ -22,7 +21,6 @@ $(document).ready(function () {
 });
 
 $(window).resize(function () {
-    $scope.$apply();
     recalculateRectangles();
 });
 
@@ -50,7 +48,7 @@ function selectAbout() {
         var backHeight = Math.floor(($(".work .filling-rectangle")[0].getBoundingClientRect().bottom + $(window)['scrollTop']()) / 4);
         $(".back").css("top", backHeight);
         $(".back").show('slow');
-    }, 400);
+    }, 500);
 }
 
 function goBack() {
@@ -79,9 +77,8 @@ function recalculateRectangles() {
     if (!inMenu)
         return;
     if ($(window).width() <= 760) {
+        $(".filling-rectangle").prev().css('font-size', Math.floor($(window).width() / 7));
         setTimeout(function () {
-
-            $(".filling-rectangle").prev().css('font-size', Math.floor($(window).width() / 7));
             $(".filling-rectangle").each(function () {
                 var textWidth = $(this).prev().width();
                 var rectWidth = Math.floor(($(window).width() - textWidth) - 50);

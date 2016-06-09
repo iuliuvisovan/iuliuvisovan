@@ -27,8 +27,9 @@ pre {
 }
 
 code {
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Open Sans', sans-serif;
     font-size: 18px !important;
+    font-weight: 100;
     background: none !important;
     color: rgba(200, 200, 200, 1) !important;
     border: none;
@@ -36,6 +37,7 @@ code {
 
 .hljs-string {
     color: white !important;
+    word-break: break-word;
 }
 
 .menu {
@@ -66,6 +68,10 @@ code {
 .menu-item span {
     font-weight: 900;
     display: inline-block;
+    -webkit-transition: font 0.5s ease-in-out;
+    -moz-transition: font 0.5s ease-in-out;
+    -o-transition: font 0.5s ease-in-out;
+    transition: font 0.5s ease-in-out;
 }
 
 .menu > div {
@@ -110,10 +116,20 @@ code {
     transition: all 0.5s ease-in-out;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     #about {
         margin-top: 18.5vh;
+        border-left: 0;
     }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        display: none;
+    }
+
 }
 
 #about, #about pre {
@@ -171,8 +187,8 @@ code {
     }
 
     #about code {
-        font-size: 14px !important;
-        padding: 0;
+        font-size: 15px !important;
+        padding: 10px;
     }
 }
 
@@ -198,7 +214,6 @@ code {
         font-size: 60px;
     }
 }
-
 
 @media (max-width: 760px) {
     .menu {
