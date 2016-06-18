@@ -46,11 +46,8 @@ function showAbout() {
             .css("background-color", "white")
             .css("margin-left", "-500px");
         $('.work').css("position", "fixed").css("top", "32px").css('z-index', '-10');
-        var barHeight = $(".work .filling-rectangle")[0].getBoundingClientRect().bottom + $(window)['scrollTop']();
-        if ($(window).width() < 400)
-            $("#about").css("margin-top", "70px");
-        else
-            $("#about").css("margin-top", "96px");
+        var barHeight = $(".work .filling-rectangle")[0].getBoundingClientRect().bottom;
+        $("#about").css("margin-top", barHeight + "px");
         $("#about").show();
         setTimeout(function () {
             $("#about").css("height", "93vh");
