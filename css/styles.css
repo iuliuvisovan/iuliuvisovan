@@ -341,9 +341,6 @@ code {
     margin-top: -10px;
 }
 
-.carousel-control.left span {
-    margin-left: -10px;
-}
 
 .carousel {
     margin-top: 10px;
@@ -410,4 +407,9 @@ code {
         padding: 7px;
         padding-left: 10px;
     }
+}
+
+.carousel-control .glyphicon {
+    left: 0;
+    right: 0;
 }
