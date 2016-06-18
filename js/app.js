@@ -47,7 +47,10 @@ function showAbout() {
             .css("margin-left", "-500px");
         $('.work').css("position", "fixed").css("top", "32px").css('z-index', '-10');
         var barHeight = $(".work .filling-rectangle")[0].getBoundingClientRect().bottom + $(window)['scrollTop']();
-        $("#about").css("margin-top", "96px");
+        if ($(window).width() < 400)
+            $("#about").css("margin-top", "70px");
+        else
+            $("#about").css("margin-top", "96px");
         $("#about").show();
         setTimeout(function () {
             $("#about").css("height", "93vh");
