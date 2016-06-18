@@ -26,6 +26,8 @@ $(window).resize(function () {
     recalculateRectangles();
 });
 
+var initialTopWork;
+
 //About
 function showAbout() {
     currentSection = 1;
@@ -45,9 +47,13 @@ function showAbout() {
         $(".work .filling-rectangle").css("width", "3000px")
             .css("background-color", "white")
             .css("margin-left", "-500px");
+        initialTopWork = $('.work').css("top");
         $('.work').css("position", "fixed").css("top", "32px").css('z-index', '-10');
         var barHeight = $(".work .filling-rectangle")[0].getBoundingClientRect().bottom;
         $("#about").css("margin-top", barHeight + "px");
+        setTimeout(function () {
+            $("#about").css('margin-top', $(".work .filling-rectangle")[0].getBoundingClientRect().bottom)
+        }, 700);
         $("#about").show();
         setTimeout(function () {
             $("#about").css("height", "93vh");
@@ -62,13 +68,16 @@ function hideAbout() {
         .css("background-color", "white")
         .css("margin-left", "0");
     setTimeout(function () {
-        $('.work').css("position", "relative").css("top", "initial").css('z-index', '1');
+        $('.work').css("position", "relative").css("top", initialTopWork).css('z-index', '1');
         $("#about").hide();
         $(".menu").css("top", "150px");
         $(".work span, .contact span, .rectangle-back").fadeIn();
         $(".contact .filling-rectangle").css('width', '118px');
         $(".about .filling-rectangle").css('width', '200px');
         $("#after").css('-webkit-filter', 'blur(0)');
+        $("#after").css('-moz-filter', 'blur(0)');
+        $("#after").css('-o-filter', 'blur(0)');
+        $("#after").css('-ms-filter', 'blur(0)');
         $("#after").css('filter', 'blur(0)');
         $(".work .filling-rectangle").css("height", "42px");
         recalculateRectangles();
@@ -90,6 +99,9 @@ function showWork() {
     inMenu = false;
 
     $("#after").css('-webkit-filter', 'blur(20px)');
+    $("#after").css('-moz-filter', 'blur(20px)');
+    $("#after").css('-o-filter', 'blur(20px)');
+    $("#after").css('-ms-filter', 'blur(20px)');
     $("#after").css('filter', 'blur(20px)');
 
     $('.about').addClass('animated fadeOutLeftBig');
@@ -97,7 +109,7 @@ function showWork() {
     $('.about, .contact').hide();
     $(".menu").css("top", "0");
     $("#work").show();
-    $("#work").css('width', initialWorkWidth);
+    $("#work").css('width', initialWorkWidth).css("left", "0");
     setTimeout(function () {
         $("#work").css("height", "90vh");
     }, 500);
@@ -155,7 +167,7 @@ function hideWork() {
         $(".work span, .contact span, .rectangle-back").fadeIn();
         $('.about, .contact').show();
         initialWorkWidth = $("#work").width();
-        $("#work").css('width', '0');
+        $("#work").css('width', '0').css("left", "-25px");
         $("#after").css('-webkit-filter', 'blur(0)');
         $("#after").css('filter', 'blur(0)');
         recalculateRectangles();
