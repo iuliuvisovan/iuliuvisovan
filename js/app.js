@@ -19,6 +19,14 @@ $(document).ready(function () {
                 $(".filling-rectangle").css("-webkit-filter", "none");
             });
     }, 500);
+
+    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
+    window.addEventListener('popstate', function() {
+        if(currentSection == 1)
+            hideAbout();
+        if(currentSection == 2)
+            hideWork();
+    });
     recalculateRectangles();
 });
 
@@ -30,6 +38,7 @@ var initialTopWork;
 
 //About
 function showAbout() {
+    history.pushState('about', 'iuliu.net - A developer\'s website | About', '#about');
     currentSection = 1;
     if (!inMenu) {
         hideAbout();
@@ -62,6 +71,8 @@ function showAbout() {
 
 }
 function hideAbout() {
+    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
+    currentSection = 0;
     inMenu = true;
     $("#about").css("height", "0");
     $(".work .filling-rectangle").css("width", "0px")
@@ -84,13 +95,13 @@ function hideAbout() {
     }, 500);
     setTimeout(function () {
     }, 500);
-    currentSection = 0;
 }
 
 var initialWorkWidth;
 
 //Work
 function showWork() {
+    history.pushState('work', 'iuliu.net - A developer\'s website | About', '#work');
     currentSection = 2;
     if (!inMenu) {
         hideWork();
@@ -155,6 +166,7 @@ function showFrameworksForProject(project) {
 }
 
 function hideWork() {
+    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
     inMenu = true;
     $("#work").css("height", "0");
