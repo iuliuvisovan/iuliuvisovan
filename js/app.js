@@ -49,8 +49,8 @@ function showAbout() {
     $(".contact .filling-rectangle").css('width', 0);
     $(".work span, .contact span, .work .rectangle-back, .contact .rectangle-back").fadeOut();
     $(".menu").css("top", "0");
-    $("#after").css('-webkit-filter', 'blur(20px)');
-    $("#after").css('filter', 'blur(20px)');
+    $("#after").css('-webkit-filter', 'blur(15px)');
+    $("#after").css('filter', 'blur(15px)');
     $(".work .filling-rectangle").css("height", "10px");
     setTimeout(function () {
         $(".work .filling-rectangle").css("width", "3000px")
@@ -109,11 +109,8 @@ function showWork() {
     }
     inMenu = false;
 
-    $("#after").css('-webkit-filter', 'blur(20px)');
-    $("#after").css('-moz-filter', 'blur(20px)');
-    $("#after").css('-o-filter', 'blur(20px)');
-    $("#after").css('-ms-filter', 'blur(20px)');
-    $("#after").css('filter', 'blur(20px)');
+    $("#after").css('-webkit-filter', 'blur(15px)');
+    $("#after").css('filter', 'blur(15px)');
 
     $('.about').addClass('animated fadeOutLeftBig');
     $('.contact').addClass('animated fadeOutRightBig');
