@@ -36,7 +36,6 @@
     <img alt="First image with logo" src="./img/bg_after.jpg"/>
     <img alt="Second background image with logo" src="./img/bg_after.jpg"/>
 </div>
-<i class="back glyphicon glyphicon-triangle-left" onclick="goBack()"></i>
 <div class="menu">
     <div class="menu-item about" onclick="showAbout()">
         <div class="rectangle-back"></div>
@@ -48,7 +47,7 @@
         <span class="animated fadeInLeftBig">Work</span>
         <div class="filling-rectangle animated fadeInRightBig"></div>
     </div>
-    <div class="menu-item contact">
+    <div class="menu-item contact" onclick="showContact()">
         <div class="rectangle-back"></div>
         <span class="animated fadeInLeftBig">Contact</span>
         <div class="filling-rectangle animated fadeInRightBig"></div>
@@ -192,7 +191,8 @@
             </div>
             <a target="_blank" class="project-link" href="https://1drv.ms/u/s!AgsJyxbYMFkvi-Y3im4P5_OaZ6Y1Pw"
                title="Download 'The Adventures Of Ball' for Windows">
-                <span class="icon-description">7/8/8.1/10</span> <img src="img/logos/windows.png" alt="Windows logo"/> Get
+                <span class="icon-description">7/8/8.1/10</span> <img src="img/logos/windows.png" alt="Windows logo"/>
+                Get
             </a>
         </div>
         <div class="project">
@@ -464,6 +464,58 @@
             <a target="_blank" class="project-link" href="http://iuliu.net/cs">
                 <img src="img/logos/chrome.png" alt="Google Chrome logo" style="margin-right: 5px">
                 Check it out
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div id="contact" class="col-md-offset-2 col-md-8">
+        <div class="contact-title">
+            <div class="contact-title-name">
+                <span>Iuliu-Andrei</span><br/>
+                <span>Visovan</span>
+            </div>
+        </div>
+        <div class="circle">
+            <a href="#" id="projects">
+                <div class="top-left">
+                    <div class="contact-square">
+                        <img class="contact-logo" src="img/contactLogos/mail.png"/>
+                    </div>
+                    <div class="logo-link">
+                        <span class="me">iuliuvisovan</span>@gmail.com
+                    </div>
+                </div>
+            </a>
+            <a href="#" id="aboutme">
+                <div class="top-right">
+                    <div class="contact-square">
+                        <img class="contact-logo" src="img/contactLogos/facebook.png"/>
+                    </div>
+                    <div class="logo-link">
+                        faceboo.com/<span class="me">google.ro</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" id="contacts">
+                <div class="bottom-left">
+                    <div class="contact-square">
+                        <img class="contact-logo" src="img/contactLogos/linkedin.png"/>
+                    </div>
+                    <div class="logo-link">
+                        linkedin.com/in/<span class="me">iuliu-visovan-4051a0121</span>
+                    </div>
+                </div>
+            </a>
+            <a href="#" id="blog">
+                <div class="bottom-right">
+                    <div class="contact-square">
+                        <img class="contact-logo" src="img/contactLogos/whatsapp.png"/>
+                    </div>
+                    <div class="logo-link">
+                        +40 <span class="me">754263001</span>
+                    </div>
+                </div>
             </a>
         </div>
     </div>

@@ -8,14 +8,6 @@ body {
     background-color: #c2c6c3;
 }
 
-img[src$=".gif"], img[src$=".png"] {
-    image-rendering: -moz-crisp-edges; /* Firefox */
-    image-rendering: -o-crisp-edges; /* Opera */
-    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
-    image-rendering: crisp-edges;
-    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
-}
-
 a:focus {
     color: rgba(200, 200, 200, 1);
     text-decoration: none;
@@ -416,4 +408,197 @@ code {
 .carousel-control .glyphicon {
     left: 0;
     right: 0;
+}
+
+#contact {
+    text-align: center;
+    position: relative;
+}
+
+
+.contact-text-me {
+    /*font-weight: 800;*/
+    color: rgba(255, 255, 255, 1);
+}
+
+.contact-title {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.contact-title-name {
+    text-transform: uppercase;
+    color: white;
+    font-size: 15px;
+    padding-top: 15px;
+    font-family: Montserrat;
+}
+
+.contact-title-name span:nth-of-type(2) {
+    font-size: 30px;
+    margin-top: -10px;
+    display: inline-block;
+}
+
+.contact-item {
+    margin: 35px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+#contact a:hover {
+    text-decoration: none;
+}
+
+.contact-logo {
+    height: 100%;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-logo:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.contact-item:nth-of-type(2n+1) .contact-logo {
+    /*left: auto;*/
+    /*right: 0;*/
+}
+
+.contact-item:nth-of-type(2n+1) {
+    /*background-color: rgba(255, 255, 255, 0.15);*/
+
+}
+
+/*-------------------*/
+body {
+}
+
+
+.circle {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 55px;
+    left: 130px;
+    transform-origin:center center;
+    -ms-transform-origin:center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Safari and Chrome */
+    -moz-transform-origin:center center; /* Firefox */
+    -o-transform-origin:center center; /* Opera */
+}
+
+.circle .top-left {
+    float: left;
+    position: relative;
+    width: 175px;
+    height: 175px;
+}
+
+.circle .top-right {
+    float: right;
+    width: 175px;
+    height: 175px;
+    position: relative;
+}
+
+.circle .bottom-left {
+    float: left;
+    position: relative;
+    width: 175px;
+    height: 175px;
+    margin-top: 3px;
+}
+
+.circle .bottom-right {
+    float: right;
+    position: relative;
+    width: 175px;
+    height: 175px;
+    margin-top: 3px;
+}
+
+.circle a div {
+    margin: 30px 10px!important;
+    display: block;
+}
+
+.top-left .contact-square {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Philosopher', sans-serif;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.top-right .contact-square {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Philosopher', sans-serif;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.bottom-right .contact-square {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Philosopher', sans-serif;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+
+.bottom-left .contact-square {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-family: 'Philosopher', sans-serif;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+.logo-link {
+    display: none!important;
+    position: fixed;
+    top: 200px;
+    -webkit-transform: none!important;
+    -moz-transform: none!important;
+    -ms-transform: none!important;
+    -o-transform: none!important;
+    transform: none!important;
+}
+
+.circle a div:hover .logo-link {
+    display: block!important;
 }

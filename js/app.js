@@ -3,31 +3,62 @@
 var inMenu = true;
 var currentSection;
 
+$(function () {
+    var $bigCircle = $(".circle");
+    var $square = $(".contact-square");
+    rotate(0);
+
+    function rotate(degree) {
+        $bigCircle.css({
+            WebkitTransform: 'rotate(' + degree + 'deg)'
+        }).css({
+            '-moz-transform': 'rotate(' + degree + 'deg)'
+        });
+        $square.css({
+            WebkitTransform: 'rotate(' + (180 + (180 - degree)) + 'deg)'
+        }).css({
+            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
+        });
+
+        setTimeout(function () {
+            rotate(degree = degree + 0.1);
+        }, 10);
+    }
+});
+
 $(document).ready(function () {
-    // showWork();
-    setTimeout(function () {
-        $("#after").fadeIn();
-    }, 1500);
-
-    setTimeout(function () {
-        $(".menu-item").hover(function () {
-                if (!inMenu)
-                    return;
-                $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
-            },
-            function () {
-                $(".filling-rectangle").css("-webkit-filter", "none");
-            });
-    }, 500);
-
-    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
-    window.addEventListener('popstate', function() {
-        if(currentSection == 1)
-            hideAbout();
-        if(currentSection == 2)
-            hideWork();
-    });
-    recalculateRectangles();
+    showContact();
+    // setTimeout(function () {
+    //     $("#after").fadeIn();
+    // }, 1500);
+    //
+    // setTimeout(function () {
+    //     $(".menu-item").hover(function () {
+    //             if (!inMenu)
+    //                 return;
+    //             $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
+    //         },
+    //         function () {
+    //             $(".filling-rectangle").css("-webkit-filter", "none");
+    //         });
+    // }, 500);
+    //
+    // history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
+    // window.addEventListener('popstate', function () {
+    //     if (currentSection == 1) {
+    //         hideAbout();
+    //         return;
+    //     }
+    //     if (currentSection == 2) {
+    //         hideWork();
+    //         return;
+    //     }
+    //     if (currentSection == 3) {
+    //         hideContact();
+    //         return;
+    //     }
+    // });
+    // recalculateRectangles();
 });
 
 $(window).resize(function () {
@@ -49,8 +80,8 @@ function showAbout() {
     $(".contact .filling-rectangle").css('width', 0);
     $(".work span, .contact span, .work .rectangle-back, .contact .rectangle-back").fadeOut();
     $(".menu").css("top", "0");
-    $("#after").css('-webkit-filter', 'blur(15px)');
-    $("#after").css('filter', 'blur(15px)');
+    $("#after").css('-webkit-filter', 'blur(10px)');
+    $("#after").css('filter', 'blur(10px)');
     $(".work .filling-rectangle").css("height", "10px");
     setTimeout(function () {
         $(".work .filling-rectangle").css("width", "3000px")
@@ -101,7 +132,7 @@ var initialWorkWidth;
 
 //Work
 function showWork() {
-    history.pushState('work', 'iuliu.net - A developer\'s website | About', '#work');
+    history.pushState('work', 'iuliu.net - A developer\'s website | Work', '#work');
     currentSection = 2;
     if (!inMenu) {
         hideWork();
@@ -183,6 +214,31 @@ function hideWork() {
     }, 500);
 }
 
+//Contact
+function showContact() {
+    history.pushState('contact', 'iuliu.net - A developer\'s website | Contact', '#work');
+    currentSection = 3;
+    if (!inMenu) {
+        hideWork();
+        return;
+    }
+    inMenu = false;
+
+    //Hide menu
+    $('.about').addClass('animated fadeOutLeftBig');
+    $('.work').addClass('animated fadeOutRightBig');
+    $(".contact span").addClass('animated hinge');
+    $(".contact .filling-rectangle").addClass('animated fadeOutUp');
+    setTimeout(function() {
+        $(".menu").hide();
+    }, 2000);
+    //Setup contact
+    $("#contact").fadeIn();
+}
+
+function hideContact() {
+
+}
 
 function recalculateRectangles() {
     if (!inMenu)
