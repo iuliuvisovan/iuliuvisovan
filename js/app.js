@@ -234,6 +234,9 @@ function showContact() {
     }, 2000);
     //Setup contact
     $("#contact").fadeIn();
+    $(".circle a").hover(function() {
+        $(".contact-link").html($(this).find(".logo-link").html());
+    });
 }
 
 function hideContact() {

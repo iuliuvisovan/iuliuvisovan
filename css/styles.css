@@ -415,7 +415,6 @@ code {
     position: relative;
 }
 
-
 .contact-text-me {
     /*font-weight: 800;*/
     color: rgba(255, 255, 255, 1);
@@ -465,7 +464,6 @@ code {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .contact-item:nth-of-type(2n+1) .contact-logo {
     /*left: auto;*/
     /*right: 0;*/
@@ -480,18 +478,17 @@ code {
 body {
 }
 
-
 .circle {
     width: 500px;
     height: 500px;
     position: absolute;
     top: 55px;
     left: 130px;
-    transform-origin:center center;
-    -ms-transform-origin:center center; /* IE 9 */
+    transform-origin: center center;
+    -ms-transform-origin: center center; /* IE 9 */
     -webkit-transform-origin: center center; /* Safari and Chrome */
-    -moz-transform-origin:center center; /* Firefox */
-    -o-transform-origin:center center; /* Opera */
+    -moz-transform-origin: center center; /* Firefox */
+    -o-transform-origin: center center; /* Opera */
 }
 
 .circle .top-left {
@@ -525,7 +522,7 @@ body {
 }
 
 .circle a div {
-    margin: 30px 10px!important;
+    margin: 30px 10px !important;
     display: block;
 }
 
@@ -589,16 +586,21 @@ body {
 }
 
 .logo-link {
-    display: none!important;
+    display: none !important;
     position: fixed;
     top: 200px;
-    -webkit-transform: none!important;
-    -moz-transform: none!important;
-    -ms-transform: none!important;
-    -o-transform: none!important;
-    transform: none!important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    transform: none !important;
 }
 
-.circle a div:hover .logo-link {
-    display: block!important;
+.contact-link {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-link .me {
+    color: white;
 }
