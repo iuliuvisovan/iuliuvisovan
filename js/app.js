@@ -6,8 +6,8 @@ var currentSection;
 $(function () {
     var $bigCircle = $(".circle");
     var $square = $(".contact-square");
+    var $title = $(".contact-title");
     rotate(0);
-
     function rotate(degree) {
         $bigCircle.css({
             WebkitTransform: 'rotate(' + degree + 'deg)'
@@ -20,6 +20,13 @@ $(function () {
             '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
         });
 
+        $title.css({
+            WebkitTransform: 'rotate(' + (180 + (180 - degree)) + 'deg)'
+        }).css({
+            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
+        });
+
+
         setTimeout(function () {
             rotate(degree = degree + 0.1);
         }, 10);
@@ -27,41 +34,41 @@ $(function () {
 });
 
 $(document).ready(function () {
-    showContact();
-    // setTimeout(function () {
-    //     $("#after").fadeIn();
-    // }, 1500);
-    //
-    // setTimeout(function () {
-    //     $(".menu-item").hover(function () {
-    //             if (!inMenu)
-    //                 return;
-    //             $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
-    //         },
-    //         function () {
-    //             $(".filling-rectangle").css("-webkit-filter", "none");
-    //         });
-    // }, 500);
-    //
-    // history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
-    // window.addEventListener('popstate', function () {
-    //     if (currentSection == 1) {
-    //         hideAbout();
-    //         return;
-    //     }
-    //     if (currentSection == 2) {
-    //         hideWork();
-    //         return;
-    //     }
-    //     if (currentSection == 3) {
-    //         hideContact();
-    //         return;
-    //     }
-    // });
-    // recalculateRectangles();
+    setTimeout(function () {
+        $("#after").fadeIn();
+    }, 1500);
+
+    setTimeout(function () {
+        $(".menu-item").hover(function () {
+                if (!inMenu)
+                    return;
+                $(this).siblings(".menu-item").find(".filling-rectangle").css("-webkit-filter", "opacity(60%)");
+            },
+            function () {
+                $(".filling-rectangle").css("-webkit-filter", "none");
+            });
+    }, 500);
+
+    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
+    window.addEventListener('popstate', function () {
+        if (currentSection == 1) {
+            hideAbout();
+            return;
+        }
+        if (currentSection == 2) {
+            hideWork();
+            return;
+        }
+        if (currentSection == 3) {
+            hideContact();
+            return;
+        }
+    });
+    recalculateRectangles();
 });
 
 $(window).resize(function () {
+    recalculateCircleSize();
     recalculateRectangles();
 });
 
@@ -210,13 +217,16 @@ function hideWork() {
         $("#work").css('width', '0').css("left", "-25px");
         $("#after").css('-webkit-filter', 'blur(0)');
         $("#after").css('filter', 'blur(0)');
+        setTimeout(function () {
+            $("#work").hide();
+        }, 500);
         recalculateRectangles();
     }, 500);
 }
 
 //Contact
 function showContact() {
-    history.pushState('contact', 'iuliu.net - A developer\'s website | Contact', '#work');
+    history.pushState('contact', 'iuliu.net - A developer\'s website | Contact', '#contact');
     currentSection = 3;
     if (!inMenu) {
         hideWork();
@@ -224,23 +234,52 @@ function showContact() {
     }
     inMenu = false;
 
+    recalculateCircleSize();
+
     //Hide menu
     $('.about').addClass('animated fadeOutLeftBig');
     $('.work').addClass('animated fadeOutRightBig');
-    $(".contact span").addClass('animated hinge');
-    $(".contact .filling-rectangle").addClass('animated fadeOutUp');
-    setTimeout(function() {
+    $(".contact").addClass('animated fadeOutDown');
+
+    setTimeout(function () {
         $(".menu").hide();
-    }, 2000);
+        $("#contact").fadeIn();
+    }, 1000);
+
     //Setup contact
-    $("#contact").fadeIn();
-    $(".circle a").hover(function() {
+    $(".circle a").hover(function () {
         $(".contact-link").html($(this).find(".logo-link").html());
     });
 }
 
 function hideContact() {
+    history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
+    currentSection = 0;
+    inMenu = true;
 
+    $(".menu").show();
+    $("#contact").fadeOut();
+    //Hide menu
+
+    $('.about').removeClass('animated fadeOutLeftBig');
+    $('.work').removeClass('animated fadeOutRightBig');
+    $(".contact").removeClass('animated fadeOutDown');
+
+
+    $('.about').addClass('animated fadeInLeftBig');
+    $('.work').addClass('animated fadeInRightBig');
+    $(".contact").removeClass('animated fadeInDown');
+
+    recalculateRectangles();
+}
+
+function recalculateCircleSize() {
+    var coefficient = $(window).width() / 500;
+    if(coefficient > 1)
+        coefficient = 1;
+    $(".circle").css("-moz-transform", "scale(" + coefficient + ", " + coefficient + ");")
+        .css("zoom", "0.5")
+        .css("zoom", coefficient * 100 + "%");
 }
 
 function recalculateRectangles() {
