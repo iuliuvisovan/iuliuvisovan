@@ -428,9 +428,10 @@ code {
     left: 0;
     right: 0;
     margin: auto;
-    display: inline-table;
+    display: block;
     padding-bottom: 35px;
     width: 100%;
+    height: 140px;
 }
 
 .contact-title-name {
@@ -614,4 +615,9 @@ code {
        zoom: 0.5; /* Other non-webkit browsers */
        zoom: 50%; /* Webkit browsers */
    }
+}
+
+.contact-title-name:hover span {
+    color: #ddd;
+    cursor: pointer;
 }

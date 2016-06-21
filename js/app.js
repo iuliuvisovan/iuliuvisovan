@@ -10,22 +10,24 @@ $(function () {
     rotate(0);
     function rotate(degree) {
         $bigCircle.css({
-            WebkitTransform: 'rotate(' + degree + 'deg)'
-        }).css({
-            '-moz-transform': 'rotate(' + degree + 'deg)'
+            '-webkit-transform': 'rotate(' + degree + 'deg)',
+            '-moz-transform': 'rotate(' + degree + 'deg)',
+            '-ms-transform': 'rotate(' + degree + 'deg)',
+            'transform': 'rotate(' + degree + 'deg)'
         });
         $square.css({
-            WebkitTransform: 'rotate(' + (180 + (180 - degree)) + 'deg)'
-        }).css({
-            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
+            '-webkit-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-ms-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
         });
 
         $title.css({
-            WebkitTransform: 'rotate(' + (180 + (180 - degree)) + 'deg)'
-        }).css({
-            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
+            '-webkit-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-moz-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-ms-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)',
+            '-transform': 'rotate(' + (180 + (180 - degree)) + 'deg)'
         });
-
 
         setTimeout(function () {
             rotate(degree = degree + 0.1);
