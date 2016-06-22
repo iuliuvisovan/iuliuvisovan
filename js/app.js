@@ -113,7 +113,6 @@ function showAbout() {
 function hideAbout() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
-    inMenu = true;
     $("#about").css("height", "0");
     $(".work .filling-rectangle").css("width", "0px")
         .css("background-color", "white")
@@ -132,8 +131,9 @@ function hideAbout() {
         $("#after").css('filter', 'blur(0)');
         $(".work .filling-rectangle").css("height", "42px");
         recalculateRectangles();
-    }, 500);
-    setTimeout(function () {
+        setTimeout(function () {
+            inMenu = true;
+        }, 500);
     }, 500);
 }
 
@@ -205,7 +205,6 @@ function showFrameworksForProject(project) {
 function hideWork() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
-    inMenu = true;
     $("#work").css("height", "0");
     setTimeout(function () {
         $(".menu").css("top", "150px");
@@ -221,6 +220,7 @@ function hideWork() {
         $("#after").css('filter', 'blur(0)');
         setTimeout(function () {
             $("#work").hide();
+            inMenu = true;
         }, 500);
         recalculateRectangles();
     }, 500);
@@ -231,7 +231,7 @@ function showContact() {
     history.pushState('contact', 'iuliu.net - A developer\'s website | Contact', '#contact');
     currentSection = 3;
     if (!inMenu) {
-        hideWork();
+        hideContact();
         return;
     }
     inMenu = false;
@@ -257,7 +257,6 @@ function showContact() {
 function hideContact() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
-    inMenu = true;
 
     $(".menu").show();
     $("#contact").fadeOut();
@@ -271,6 +270,9 @@ function hideContact() {
     $('.about').addClass('animated fadeInLeftBig');
     $('.work').addClass('animated fadeInRightBig');
     $(".contact").removeClass('animated fadeInDown');
+    setTimeout(function() {
+        inMenu = true;
+    }, 1000);
 
     recalculateRectangles();
 }
