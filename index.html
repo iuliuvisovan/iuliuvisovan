@@ -190,7 +190,7 @@
                 as possible by toppling over objects or by making use of power-ups. Complete the challenges
                 to advance through levels and their different environments.
             </div>
-            <a target="_blank" class="project-link" href="https://1drv.ms/u/s!AgsJyxbYMFkvi-Y3im4P5_OaZ6Y1Pw"
+            <a onclick="ga('send', 'event', 'WorkProjects', 'click', 'TheAdventuresOfBall');" target="_blank" class="project-link" href="https://1drv.ms/u/s!AgsJyxbYMFkvi-Y3im4P5_OaZ6Y1Pw"
                title="Download 'The Adventures Of Ball' for Windows">
                 <span class="icon-description">7/8/8.1/10</span> <img src="img/logos/windows.png" alt="Windows logo"/>
                 Get
@@ -261,7 +261,7 @@
                 Presentation website of world-renowned pianist, fortepianist, harpsichordist, and sister
                 Aurelia Visovan.
             </div>
-            <a target="_blank" class="project-link" href="http://aureliavisovan.com">
+            <a onclick="ga('send', 'event', 'WorkProjects', 'click', 'aureliavisovan.com');" target="_blank" class="project-link" href="http://aureliavisovan.com">
                 <img src="img/logos/chrome.png" style="margin-right: 5px" alt="Google Chrome logo">Visit</a>
         </div>
         <div class="project">
@@ -330,7 +330,7 @@
                 Content Management System created to ease management of my sister's website's content such as new media,
                 concert schedule or repertoire. Demo password: 'demo'
             </div>
-            <a class="project-link" target="_blank" href="http://aureliavisovan.com/m">
+            <a onclick="ga('send', 'event', 'WorkProjects', 'click', 'aureliavisovan.com/m');" class="project-link" target="_blank" href="http://aureliavisovan.com/m">
                 <span class="icon-description">pw: demo</span>
                 <img src="img/logos/chrome.png" style="margin-right: 5px" alt="Google Chrome Logo">
                 Try
@@ -402,7 +402,7 @@
                 Growzer is an online management platform that connects hospitality businesses, wholesalers
                 and manufacturers to simplify their day-to-day product exchange processes.
             </div>
-            <a target="_blank" class="project-link" href="http://growzer.be">
+            <a onclick="ga('send', 'event', 'WorkProjects', 'click', 'Growzer');" target="_blank" class="project-link" href="http://growzer.be">
                 <img src="img/logos/chrome.png" style="margin-right: 5px" alt="Google Chrome logo">
                 More
             </a>
@@ -461,7 +461,7 @@
                 Science department
                 of Babes Bolyai University in Cluj Napoca.
             </div>
-            <a target="_blank" class="project-link" href="http://iuliu.net/cs">
+            <a onclick="ga('send', 'event', 'WorkProjects', 'click', 'CS');" target="_blank" class="project-link" href="http://iuliu.net/cs">
                 <img src="img/logos/chrome.png" alt="Google Chrome logo" style="margin-right: 5px">
                 Check it out
             </a>
@@ -479,7 +479,7 @@
                 </div>
                 <div class="contact-link"><span class="me">iuliuvisovan</span>@gmail.com</div>
             </div>
-            <a onclick="return false;" href="#">
+            <a onclick="ga('send', 'event', 'ContactItems', 'click', 'Mail'); return false;" href="#">
                 <div class="top-left">
                     <div class="contact-square">
                         <img class="contact-logo" src="img/contactLogos/mail.png" alt="At(@) sign"/>
@@ -487,7 +487,7 @@
                     <div class="logo-link"><span class="me">iuliuvisovan</span>@gmail.com</div>
                 </div>
             </a>
-            <a href="http://facebook.com/google.ro" target="_blank">
+            <a onclick="ga('send', 'event', 'ContactItems', 'click', 'Facebook');" href="http://facebook.com/google.ro" target="_blank">
                 <div class="top-right">
                     <div class="contact-square">
                         <img class="contact-logo" src="img/contactLogos/facebook.png" alt="LinkedIn Logo"/>
@@ -495,7 +495,7 @@
                     <div class="logo-link">facebook.com/<span class="me">google.ro</span></div>
                 </div>
             </a>
-            <a href="http://linkedin.com/in/iuliu-vișovan-4051a0121" target="_blank">
+            <a onclick="ga('send', 'event', 'ContactItems', 'click', 'LinkedIn');" href="http://linkedin.com/in/iuliu-vișovan-4051a0121" target="_blank">
                 <div class="bottom-left">
                     <div class="contact-square">
                         <img class="contact-logo" src="img/contactLogos/linkedin.png" alt="LinkedIn Logo"/>
@@ -503,7 +503,7 @@
                     <div class="logo-link">linkedin.com/in/<span class="me">iuliu-visovan-4051a0121</span></div>
                 </div>
             </a>
-            <a onclick="return false;" href="#">
+            <a onclick="ga('send', 'event', 'ContactItems', 'click', 'WhatsApp');" onclick="return false;" href="#">
                 <div class="bottom-right">
                     <div class="contact-square">
                         <img class="contact-logo" src="img/contactLogos/whatsapp.png" alt="Whatsapp Logo"/>
@@ -525,13 +525,6 @@
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 
-<!--App-->
-<script src="js/app.js"></script>
-
-<!--Highlighter-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
 <!--Google Analytics-->
 <script>
     (function (i, s, o, g, r, a, m) {
@@ -549,6 +542,14 @@
     ga('create', 'UA-63838941-1', 'auto');
     ga('send', 'pageview');
 </script>
+
+<!--App-->
+<script src="js/app.js"></script>
+
+<!--Highlighter-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 
 </body>
 </html>

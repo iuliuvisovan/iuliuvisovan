@@ -84,6 +84,7 @@ function showAbout() {
         hideAbout();
         return;
     }
+    ga('send', 'event', 'Menu', 'show', 'About');
     inMenu = false;
     $(".about .filling-rectangle").css('width', 0);
     $(".contact .filling-rectangle").css('width', 0);
@@ -113,6 +114,7 @@ function showAbout() {
 function hideAbout() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
+    ga('send', 'event', 'Menu', 'hide', 'About');
     $("#about").css("height", "0");
     $(".work .filling-rectangle").css("width", "0px")
         .css("background-color", "white")
@@ -147,6 +149,7 @@ function showWork() {
         hideWork();
         return;
     }
+    ga('send', 'event', 'Menu', 'show', 'Work');
     inMenu = false;
 
     $("#after").css('-webkit-filter', 'blur(15px)');
@@ -205,6 +208,8 @@ function showFrameworksForProject(project) {
 function hideWork() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
+    ga('send', 'event', 'Menu', 'hide', 'Work');
+
     $("#work").css("height", "0");
     setTimeout(function () {
         $(".menu").css("top", "150px");
@@ -235,7 +240,7 @@ function showContact() {
         return;
     }
     inMenu = false;
-
+    ga('send', 'event', 'Menu', 'show', 'Contact');
     recalculateCircleSize();
 
     //Hide menu
@@ -257,6 +262,7 @@ function showContact() {
 function hideContact() {
     history.pushState('home', 'iuliu.net - A developer\'s website | Home', '#');
     currentSection = 0;
+    ga('send', 'event', 'Menu', 'hide', 'Contact');
 
     $(".menu").show();
     $("#contact").fadeOut();
