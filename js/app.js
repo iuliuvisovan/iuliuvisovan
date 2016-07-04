@@ -116,7 +116,8 @@ function hideAbout() {
     currentSection = 0;
     ga('send', 'event', 'Menu', 'hide', 'About');
     $("#about").css("height", "0");
-    $(".work .filling-rectangle").css("width", "0px")
+    $(".work .filling-rectangle")
+        .css("width", "0px")
         .css("background-color", "white")
         .css("margin-left", "0");
     setTimeout(function () {
@@ -132,9 +133,9 @@ function hideAbout() {
         $("#after").css('-ms-filter', 'blur(0)');
         $("#after").css('filter', 'blur(0)');
         $(".work .filling-rectangle").css("height", "42px");
-        recalculateRectangles();
         setTimeout(function () {
             inMenu = true;
+            recalculateRectangles();
         }, 500);
     }, 500);
 }
