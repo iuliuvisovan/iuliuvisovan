@@ -1,14 +1,3 @@
-
-// setInterval(function () {
-//     if (oldX != window.screenX || oldY != window.screenY) {
-//         console.log('moved!');
-//         document.getElementById("trump").style.top = -screenY;
-//         document.getElementById("trump").style.left = -screenX;
-//     }
-//     oldX = window.screenX;
-//     oldY = window.screenY;
-// }, 0);
-
 var afterG = true;
 var afterRestoreDown = true;
 var maxLegalWidth = 400;
@@ -27,15 +16,15 @@ var currentUserData;
             ' | from: ' + (document.referrer || 'N/A') +
             ' | screen: ' + screen.width + '*' + screen.height +
             ' | ip: ' + ip || 'N/A';
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Navigation',
+            eventAction: 'joinPage',
+            eventLabel: '' + currentUserData
+        });
+        console.log(currentUserData);
     }, 1000);
 
-    ' '
-    ga('send', {
-        hitType: 'event',
-        eventCategory: 'Navigation',
-        eventAction: 'joinPage',
-        eventLabel: '' + currentUserData
-    });
     if (screen.width < 700) {
         show('mobile');
         hide('imageMinimize');
@@ -44,7 +33,6 @@ var currentUserData;
     onResize();
     addEventListener('resize', onResize);
 })();
-
 
 function onResize() {
     isFullScreen() && onWindowFullScreened();
@@ -113,7 +101,7 @@ function showMoveBrowser() {
         hitType: 'event',
         eventCategory: 'Navigation',
         eventAction: 'click',
-        eventLabel: 'merem'
+        eventLabel: 'merem' + currentUserData
     });
     show('moveBrowser');
     hide('startGame');
@@ -146,7 +134,7 @@ function startGame() {
         hitType: 'event',
         eventCategory: 'Progress',
         eventAction: 'gameBegin',
-        eventLabel: 'beginGame'
+        eventLabel: 'beginGame ' + currentUserData
     });
     hide('moveBrowser');
     show('catSpace');
@@ -205,7 +193,14 @@ function isCatCloseToEdge() {
 
 function followDirection(pixels) {
     if (!isCatVisible()) {
-        alert('Ți-o fugit mâța. Ai fugărit-o vreo ' + parseInt(((distanceTraveled / (75 / 1.6))) / 10) + ' metri.');
+        var metersParsed = parseInt(((distanceTraveled / (75 / 1.6))) / 10);
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'Progress',
+            eventAction: 'endGame',
+            eventLabel: metersParsed + 'm | ' + currentUserData
+        });
+        alert('Ți-o fugit mâța. Ai fugărit-o vreo ' +  metersParsed + ' metri.');
         stopGame();
     }
     // return;
