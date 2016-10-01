@@ -413,8 +413,8 @@ code {
 #contact {
     text-align: center;
     position: relative;
+    display: none;
 }
-
 
 .contact-text-me {
     /*font-weight: 800;*/
@@ -423,11 +423,15 @@ code {
 
 .contact-title {
     position: absolute;
-    top: 250px;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
+    display: block;
+    padding-bottom: 35px;
+    width: 100%;
+    height: 140px;
 }
 
 .contact-title-name {
@@ -465,7 +469,6 @@ code {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .contact-item:nth-of-type(2n+1) .contact-logo {
     /*left: auto;*/
     /*right: 0;*/
@@ -476,22 +479,20 @@ code {
 
 }
 
-/*-------------------*/
-body {
-}
-
-
 .circle {
     width: 500px;
     height: 500px;
-    position: absolute;
-    top: 55px;
-    left: 130px;
-    transform-origin:center center;
-    -ms-transform-origin:center center; /* IE 9 */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-origin: center center;
+    -ms-transform-origin: center center; /* IE 9 */
     -webkit-transform-origin: center center; /* Safari and Chrome */
-    -moz-transform-origin:center center; /* Firefox */
-    -o-transform-origin:center center; /* Opera */
+    -moz-transform-origin: center center; /* Firefox */
+    -o-transform-origin: center center; /* Opera */
 }
 
 .circle .top-left {
@@ -525,7 +526,7 @@ body {
 }
 
 .circle a div {
-    margin: 30px 10px!important;
+    margin: 30px 10px !important;
     display: block;
 }
 
@@ -589,16 +590,34 @@ body {
 }
 
 .logo-link {
-    display: none!important;
+    display: none !important;
     position: fixed;
     top: 200px;
-    -webkit-transform: none!important;
-    -moz-transform: none!important;
-    -ms-transform: none!important;
-    -o-transform: none!important;
-    transform: none!important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    transform: none !important;
 }
 
-.circle a div:hover .logo-link {
-    display: block!important;
+.contact-link {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-link .me {
+    color: white;
+}
+
+@media(max-width: 300px) {
+   .circle {
+       -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
+       zoom: 0.5; /* Other non-webkit browsers */
+       zoom: 50%; /* Webkit browsers */
+   }
+}
+
+.contact-title-name:hover span {
+    color: #ddd;
+    cursor: pointer;
 }
