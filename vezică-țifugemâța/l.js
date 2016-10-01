@@ -96,7 +96,7 @@ function isFullScreen() {
     return !(screenX || screenY);
 }
 
-function showMoveBrowser() {
+function showMoveBrowser(withTimeout) {
     ga('send', {
         hitType: 'event',
         eventCategory: 'Navigation',
@@ -105,20 +105,22 @@ function showMoveBrowser() {
     });
     show('moveBrowser');
     hide('startGame');
-    oldX = screenX;
-    oldY = screenY;
-    var lookForInitialMove = setInterval(function () {
-        if (oldX != screenX || oldY != screenY) {
-            startGame();
-            clearInterval(lookForInitialMove);
-        }
-    }, 0);
+    setTimeout(function () {
+        oldX = screenX;
+        oldY = screenY;
+        var lookForInitialMove = setInterval(function () {
+            if (oldX != screenX || oldY != screenY) {
+                startGame();
+                clearInterval(lookForInitialMove);
+            }
+        }, 0);
+    }, withTimeout ? withTimeout : 0);
 }
 
 function stopGame() {
-    onResize();
     for (var i = 1; i < 99999; i++)
         clearInterval(i);
+    showMoveBrowser(500);
 }
 
 
@@ -200,7 +202,7 @@ function followDirection(pixels) {
             eventAction: 'endGame',
             eventLabel: metersParsed + 'm | ' + currentUserData
         });
-        alert('Ți-o fugit mâța. Ai fugărit-o vreo ' +  metersParsed + ' metri.');
+        alert('Ți-o fugit mâța. Ai fugărit-o ' + (metersParsed > 5 ? 'vreo ' : '')  + metersParsed + ' metri.');
         stopGame();
     }
     // return;
