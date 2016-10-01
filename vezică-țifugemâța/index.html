@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>g?</title>
+    <link rel="stylesheet" href="s.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="mobile" style="display: none">
+        Cum ai de gând să-ți prinzi mâța cu telefonul? Intră pe PC și încearcă iar.
+    </div>
+    <div class="centered">
+        <img id="imageMinimize" style="width: 300px;" src="minimize.PNG"></img>
+        <span id="smaller" style="display: none"></span>
+        <span id="startGame" onclick="showMoveBrowser()" style="display: none;"></span>
+        <img id="moveBrowser" src="miscabrowseru.gif" style="display: none; width: 100vw; height: auto">
+    </div>
+    <div id="smallerize" style="display: none">
+        <div class="centered">
+            <span style="font-size: 30px">redimensionează fereastra browserului.</span>
+        </div>
+        <img id="arrowBottom" src="sageata.gif" class="arrow arrow-bottom" />
+        <img id="arrowRight" src="sageata.gif" class="arrow arrow-right" />
+        <img id="arrowRightToRight" src="sageata.gif" class="arrow arrow-right to-right" />
+        <img id="arrowBottomToBottom" src="sageata.gif" class="arrow arrow-bottom to-bottom" />
+    </div>
+    <div id="catSpace" style="display: none">
+        <img id="cat" src="mata.gif">
+    </div>
+    <!--Google Analytics-->
+    <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-63838941-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <div id="ip">
+        <script id="getIp" type="text/javascript" src="http://l2.io/ip.js"></script>
+    </div>
+
+    <script type="text/javascript" src="l.js"></script>
+</body>
+
+</html>
