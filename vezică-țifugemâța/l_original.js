@@ -10,8 +10,8 @@ var currentUserData;
 
 (function () {
     setTimeout(function () {
-        ip = byId('getIp').nextSibling.textContent.trim();
-        byId('getIp').nextSibling.remove();
+        ip = byId('bIp').nextSibling.textContent.trim();
+        byId('bIp').nextSibling.remove();
         currentUserData = ' @' + new Date() +
             ' | from: ' + (document.referrer || 'N/A') +
             ' | screen: ' + screen.width + '*' + screen.height +

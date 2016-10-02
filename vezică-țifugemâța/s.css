@@ -60,9 +60,13 @@ body {
 
 .arrow.arrow-bottom.to-bottom {
     transform: rotate(270deg);
+    -webkit-filter: hue-rotate(90deg); /* Chrome, Safari, Opera */
+    filter: hue-rotate(90deg);
 }
 .arrow.arrow-right.to-right {
     transform: rotate(180deg);
+    -webkit-filter: hue-rotate(90deg); /* Chrome, Safari, Opera */
+    filter: hue-rotate(90deg);
 }
 
 
