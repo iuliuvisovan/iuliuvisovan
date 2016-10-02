@@ -52,7 +52,8 @@ body {
 .arrow.arrow-bottom {
     left: 0;
     right: 0;
-    margin: auto;
+    margin: 0 auto;
+    top: auto;
     bottom: 15px;
     transform: rotate(90deg);
 }
@@ -84,8 +85,8 @@ body {
     position: absolute;
     width: auto; 
     height: 70px;
-    -webkit-transition: transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out 0s;
+    transition: transform 0.2s ease-in-out 0s;
 }
 
 .direction-0 {
