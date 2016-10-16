@@ -1,0 +1,3 @@
+[submodule "preddly"]
+	path = preddly
+	url = https://github.com/iuliuvisovan/preddly.git
