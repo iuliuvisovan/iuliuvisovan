@@ -28,6 +28,7 @@ td:not(:first-of-type) {
 
 td {
     cursor: move;
+    width: 200px;
 }
 
 td {
@@ -44,6 +45,7 @@ tr.moving {
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     border: 1px solid white!important;
     opacity: 1!important;
+    pointer-events: none;
 }
 
 table.reordering tr {
@@ -53,8 +55,10 @@ table.reordering tr {
 }
 
 table.reordering tr.hovered {
-    border-bottom: 5px solid #fff;
-    cursor: move;
+    border-bottom: 40px solid #fff;
+}
+table.reordering tr.hovered + tr {
+    border-top: 40px solid #fff;
 }
 
 .added {

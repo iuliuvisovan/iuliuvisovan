@@ -1,59 +1,99 @@
 $(document).ready(function () {
-    InitMouseHook();
-    Reordable($("table"));
+    $("table").orderable();
 });
 
-function Reordable(table) {
-    var rowHandler = $(table).find('tr');
-    var draggedRow;
++function ($) {
+    $.fn.orderable = function () {
+        var self = this;
 
-    $(document).on({
-        mouseenter: function () {
-            $(this).toggleClass('hovered');
-        },
-        mouseleave: function () {
-            $(this).toggleClass('hovered');
-        }
-    }, '.reordering tr:not(.moving)');
+        var draggedRow; //Reference to the currently dragged/pulled table row
+        var mouseY;     //The position on the Y axis of the mouse
 
-    $('.reordering tr:not(.moving)').on('hover',
-        function () {
-            alert('cool');
-            $(this).toggleClass('hovered');
-        },
-        function () {
-            $(this).toggleClass('hovered');
-        }
-    );
+        self.mouseDown = mouseDown;
+        self.mouseUp = mouseUp;
+        self.resetTable = resetTable;
 
-    $(rowHandler).on('mousedown', function (event) {
-        draggedRow = $(this).is('tr') ? this : $(this).parent('tr')[0];
-        $(draggedRow).parents('table').addClass('reordering');
-        $(draggedRow).addClass('moving');
-    });
-    $(document).on('mouseup', function (event) {
-        if (!$('.moving').length)
-            return;
-        droppedRow = $(event.target).is('tr') ? event.target : $(event.target).parent('tr')[0];
-        if (!$(droppedRow).is('tr')) {
+        const EVENT = {
+            MOUSEDOWN: 'mousedown touchstart',
+            MOUSEUP: 'mouseup touchend'
+        };
+        const STATE = {
+            MOVING: 'moving',
+            HOVERED: 'hovered',
+            REORDERING: 'reordering',
+        };
+
+        init();
+
+        $($(this).find('tbody tr')).on(EVENT.MOUSEDOWN, self.mouseDown);  //Listen for drag attempts on all rows of current table
+        $(document).on(EVENT.MOUSEUP, self.mouseUp);                  //Listen for drop attempts on the entire document
+
+        function mouseDown(event) {
+            draggedRow = event.currentTarget;   //Definitely a row (read e.target vs e.currentTarget)
+            $(draggedRow).parents('table').addClass(STATE.REORDERING);  //Set table's style
+            $(draggedRow).css({ //Set its position equal to its current position, so it's ready for 'fixed'
+                top: draggedRow.getBoundingClientRect().top,
+                left: draggedRow.getBoundingClientRect().left
+            });
+            $(draggedRow).addClass(STATE.MOVING);   //Row becomes fixed, 'movable'  and can start moving
+        };
+
+        function mouseUp(event) {
+            if (!$('.' + STATE.MOVING).length)
+                return;
+            var movingRowPosition = $('.' + STATE.MOVING)[0].getBoundingClientRect();
+            var movingRowX = movingRowPosition.left + 20;
+            var movingRowTop = movingRowPosition.top;
+            var rowBefore = document.elementFromPoint(movingRowX, movingRowTop).parentElement;
+
+            if (!$(rowBefore).is('tr')) {
+                resetTable();
+                return;
+            }
+
+            resetTable();
+            $(draggedRow).insertAfter(rowBefore);
+            $(draggedRow).addClass('added');
+            setTimeout(function () {
+                $(draggedRow).removeClass('added');
+            }, 2000);
+        };
+
+        function resetTable() {
             $('.moving').removeClass('moving');
             $('.reordering').removeClass('reordering');
             $('.hovered').removeClass('hovered');
-            return;
         }
-        $('.moving').removeClass('moving');
-        $('.reordering').removeClass('reordering');
-        $('.hovered').removeClass('hovered');
-        $(draggedRow).insertAfter(event.target.parentElement);
-        $(draggedRow).addClass('added');
-    })
-}
 
-function InitMouseHook() {
-    $(document).mousemove(function (event) {
-        $('.moving').css({
-            top: event.pageY - 15,
-            left: event.pageX + 10
-        });
-    });
-}
+        function init() {
+            $(document).on({
+                mouseenter: function () {
+                    $('.hovered').removeClass('hovered');
+                    $(this).addClass('hovered');
+                }
+            }, '.reordering tbody tr');
+
+            $(document).on('touchmove mousemove', function (event) {
+                if (event.changedTouches) {
+                    mouseY = event.changedTouches[event.changedTouches.length - 1].pageY;
+                } else {
+                    mouseY = event.pageY;
+                }
+                if (!$('.moving')[0])
+                    return;
+                var movingRowPosition = $('.moving')[0].getBoundingClientRect();
+                var movingRowX = movingRowPosition.left + 20; //Make sure its not a border or something
+                var movingRowTop = movingRowPosition.top;
+                var rowBefore = document.elementFromPoint(movingRowX, movingRowTop).parentElement;
+                $('.hovered').removeClass('hovered');
+                $(rowBefore).addClass('hovered');
+                $('.moving').css({
+                    top: mouseY - 15,
+                });
+            });
+        }
+
+
+        return this;
+    };
+} (jQuery);
