@@ -15,10 +15,6 @@ $(document).ready(function () {
         console.log("Order finish")
     }, false);
 
-
-    $("table").orderable();
-    // $(document).on('jquery.orderable.load', function() {
-    //     alert('loaded');
-    // });
-
+    // $("#byRows").orderable();
+    $("#byGroups").orderable();
 });
