@@ -6,7 +6,7 @@ body {
 
 table {
     border-collapse: collapse;
-    /*box-shadow: 0 4px 12px rgba(0,0,0,0.4);*/
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     user-select: none;
 }
 
@@ -42,7 +42,7 @@ th {
 tr.moving {
     position: fixed;
     z-index: 2;
-    /*box-shadow: 0 4px 12px rgba(0,0,0,0.4);*/
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     border: 1px solid white!important;
     opacity: 1!important;
     pointer-events: none;
@@ -50,7 +50,7 @@ tr.moving {
 
 table.reordering tr {
     user-select: none;
-    opacity: 0.6;
+    opacity: 0;
     transition: border 0.1s ease-in-out;
 }
 
