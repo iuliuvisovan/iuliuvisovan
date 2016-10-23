@@ -15,6 +15,7 @@ $(document).ready(function () {
         console.log("Order finish")
     }, false);
 
-    // $("#byRows").orderable();
-    $("#byGroups").orderable();
+    $("#byGroups").orderable({
+        tbodyAsUnit: false
+    });
 });
