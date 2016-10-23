@@ -7,14 +7,12 @@ body {
 table {
     border-collapse: collapse;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    user-select: none;
 }
 
 tr {
     background: #00796b;
     color: white;
     margin: 0;
-    cursor: pointer;
     border: 1px solid white;
 }
 
@@ -33,49 +31,9 @@ td {
 
 td {
     padding: 5px 20px;
+    height: 27px;
 }
 
 th {
     padding: 10px 15px;
-}
-
-tr.moving {
-    position: fixed;
-    z-index: 2;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    border: 1px solid white!important;
-    opacity: 1!important;
-    pointer-events: none;
-}
-
-table.reordering tr {
-    user-select: none;
-    opacity: 0;
-    transition: border 0.1s ease-in-out;
-}
-
-table.reordering tr.hovered {
-    border-bottom: 40px solid #fff;
-}
-table.reordering tr.hovered + tr {
-    border-top: 40px solid #fff;
-}
-
-.added {
-    animation-name: added;
-    animation-duration: 2s;
-}
-
-.added td {
-    animation-name: td-added;
-    animation-duration: 0.2s;
-}
-
-@keyframes added {
-    from {opacity: 0.4;}
-    to {opacity: 1;}
-}
-
-@keyframes td-added {
-    from {padding: 0 20px;}
 }
