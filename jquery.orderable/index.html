@@ -1,0 +1,121 @@
+<html>
+
+<head>
+	<title>jQuery Orderable Demo</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/iuliuvisovan/jquery-orderable/master/css/jquery.orderable.min.css"></link>
+</head>
+
+<body>
+	<table id="myOrderableTable">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Company</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>H4J 9H8</td>
+				<td>Port Coquitlam</td>
+				<td>Sit Amet Faucibus PC</td>
+				<td>(959) 238-1374</td>
+			</tr>
+			<tr>
+				<td>H4J 1W8</td>
+				<td>Gressoney-Saint-Jean</td>
+				<td>Ultrices Inc.</td>
+				<td>(496) 384-0307</td>
+			</tr>
+			<tr>
+				<td>H4J 1F3</td>
+				<td>Tourcoing</td>
+				<td>Libero Mauris Aliquam LLP</td>
+				<td>(118) 149-9175</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>A5K 1C2</td>
+				<td>Konya</td>
+				<td>Faucibus LLC</td>
+				<td>(985) 628-9126</td>
+			</tr>
+			<tr>
+				<td>A5K 9S0</td>
+				<td>Sacramento</td>
+				<td>Et Arcu Company</td>
+				<td>(437) 210-9092</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>L5C 8C7</td>
+				<td>Erie</td>
+				<td>Diam Industries</td>
+				<td>(757) 927-2901</td>
+			</tr>
+			<tr>
+				<td>L5C 3U9</td>
+				<td>Anchorage</td>
+				<td>Pede Corporation</td>
+				<td>(851) 712-5513</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>P9E 4N3</td>
+				<td>LaSalle</td>
+				<td>Ac Orci Institute</td>
+				<td>(450) 940-2508</td>
+			</tr>
+			<tr>
+				<td>P9E 7E7</td>
+				<td>Barnstaple</td>
+				<td>Vestibulum Neque Sed LLP</td>
+				<td>(327) 739-6499</td>
+			</tr>
+			<tr>
+				<td>P9E 2F1</td>
+				<td>Concepción</td>
+				<td>Mattis Institute</td>
+				<td>(764) 131-7846</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>W1A 7C7</td>
+				<td>Ville de Maniwaki</td>
+				<td>Non Egestas PC</td>
+				<td>(390) 917-5354</td>
+			</tr>
+			<tr>
+				<td>W1A 0O9</td>
+				<td>Bathurst</td>
+				<td>Mi Inc.</td>
+				<td>(883) 707-9268</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>A1C 8B1</td>
+				<td>Donosti</td>
+				<td>Mauris Nulla Integer Inc.</td>
+				<td>(852) 812-8381</td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+	<script src="https://rawgit.com/iuliuvisovan/jquery-orderable/master/js/jquery.orderable.min.js"></script>
+	<script>
+        $("#myOrderableTable").orderable({
+            useTbodyAsUnit: true
+        });
+    </script>
+</body>
+
+</html>
