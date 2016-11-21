@@ -1,5 +1,5 @@
 body {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -24,6 +24,7 @@ input {
 h1 {
     color: #009688;
 }
+
 h2 {
     color: #607d8b;
 }
@@ -33,6 +34,10 @@ input[type="text"] {
     border-width: 1px;
     border: 1px solid #009688;
     padding: 7px;
+}
+
+input[type="button"] {
+    height: 40px;
 }
 
 span {
