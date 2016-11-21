@@ -1,0 +1,44 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Courier New, Courier, monospace;
+}
+
+.wrapper * {
+    margin: 15px;
+}
+
+input {
+    width: 300px;
+    padding: 5px;
+}
+
+h1 {
+    color: #009688;
+}
+h2 {
+    color: #607d8b;
+}
+
+input[type="text"] {
+    border-radius: 3px;
+    border-width: 1px;
+    border: 1px solid #009688;
+    padding: 7px;
+}
+
+span {
+    padding: 7px;
+}
+
+#encodedC {
+    display: none;
+}
+
+#decodedC {
+    display: none;
+}
