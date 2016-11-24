@@ -3,17 +3,17 @@ $(document).ready(() => {
 });
 
 var _ = (Δ, Ξ) => {
-    $(`#${Δ}I`).on('propertychange change click keyup input paste', () => {
+    $(`#${Δ}I`).on('propertychange change click keyup input paste', (α) => {
         let π = window[Ξ > -Infinity ? 'encode' : 'decode']($(`#${Δ}I`).val());
-        $(`#${Δ}O`).text(π);
-        $(`#${Δ}C`).css('display', π ? 'block' : 'none');
+        $(`#O`).text(π);
+        $(".output-wrapper").css('display', π.length ? 'block' : 'none');
     });
 }
 
-var Θ = (Δ) => {
+var Θ = () => {
     let α = document.createRange(),
     ρ = window.getSelection();
-    α.selectNodeContents($(`#${Δ}O`)[0]);
+    α.selectNodeContents($(`#O`)[0]);
     ρ.removeAllRanges();
     ρ.addRange(α);
     document.execCommand('copy');
