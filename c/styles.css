@@ -60,7 +60,6 @@ h2 {
     border: 1px solid #E64A19;
     background: #FF7043;
     color: white;
-    box-shadow: inset 1px 1px 18px 0px rgba(255, 224, 130, 0.4);
     width: calc(100% - 32px);
 }
 
