@@ -11,13 +11,12 @@ var _ = (Δ, Ξ) => {
 }
 
 var Θ = (Δ) => {
-    let α = document.createRange();
-    let ρ = window.getSelection();
+    let α = document.createRange(),
+    ρ = window.getSelection();
     α.selectNodeContents($(`#${Δ}O`)[0]);
     ρ.removeAllRanges();
     ρ.addRange(α);
     document.execCommand('copy');
 }
-
-var decode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) + 1)).join('');
-var encode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) - 1)).join('');
+var encode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) + 1)).join('');
+var decode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) - 1)).join('');
