@@ -40,7 +40,9 @@ h2 {
 }
 
 .inputs-wrapper input:focus {
-    width: 85%;
+    transition: width 0.2s ease-in-out;
+    width: 100%;
+    outline: 0;
 }
 
 .inputs-wrapper input:first-of-type {
@@ -62,7 +64,7 @@ h2 {
     background: #009688;
     color: white;
     width: calc(100% - 30px);
-    box-shadow: 0 -2px 3px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 -2px 1px 0px rgba(0, 0, 0, 0.3);
     word-break: break-all;
 }
 
@@ -80,7 +82,8 @@ h2 {
 }
 
 #C:hover img {
-    transform: rotate(10deg);
+    transition: transform 0.25s ease-in-out;
+    transform: rotate(15deg);
 }
 
 #C span {
@@ -100,4 +103,3 @@ h2 {
     animation-name: show;
     animation-duration: 2s;
 }
-
