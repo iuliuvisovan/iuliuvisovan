@@ -1,5 +1,6 @@
 $(document).ready(() => {
     _('encoded', +Infinity); _('decoded', -Infinity);
+    setTimeout(() => $(encodedI).focus(), 1000);
 });
 
 var _ = (Δ, Ξ) => {
