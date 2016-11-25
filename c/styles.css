@@ -81,11 +81,6 @@ h2 {
     justify-content: space-between;
 }
 
-#C:hover img {
-    transition: transform 0.25s ease-in-out;
-    transform: rotate(15deg);
-}
-
 #C span {
     opacity: 0;
 }
