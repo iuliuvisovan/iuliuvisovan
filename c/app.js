@@ -16,7 +16,9 @@ var Θ = () => {
     α.selectNodeContents($(`#O`)[0]);
     ρ.removeAllRanges();
     ρ.addRange(α);
-    document.execCommand('copy');
+    document.execCommand('copy') && $(`#C span`).addClass('shown');
 }
 var encode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) + 1)).join('');
 var decode = (λ) => λ.split('').map((_, β) => String.fromCharCode(λ.charCodeAt(β) - 1)).join('');
+
+$(window).on("animationend", () => $('.shown').removeClass('shown'));
