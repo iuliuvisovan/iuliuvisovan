@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    background: #283593;
+    height: 100vh;
+}
+
+span {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+}
+
+.title {
+    font-weight: 700;
+    display: block;
+    font-size: 90px;
+    line-height: 1.1;
+    /*margin-top: 60px;*/
+}
+
+.subtitle {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 20px;
+    margin-top: 15px;
+    color: #333;
+    color: white;
+    letter-spacing: 4px;
+}
+
+.container {
+    color: white;
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.moon {
+    display: block;
+    position: absolute;
+    width: 150px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.daily-name {
+    display: inline;
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 55px;
+    }
+}
