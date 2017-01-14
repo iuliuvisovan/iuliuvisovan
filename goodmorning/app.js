@@ -65,7 +65,7 @@ var names = [{
     description: "you light up my day!"
 }, {
     name: "sweetheart",
-    description: "you're sweet and sincere."
+    description: "you're sweet and have a big heart."
 }, {
     name: "precious",
     description: "you're too valuable to lose."
