@@ -112,7 +112,7 @@ var names = [
     },
     {
         name: "lemon",
-        description: "you add new added something new and exciting to my life."
+        description: "you bring something new and exciting to my life."
     },
     {
         name: "my rose",

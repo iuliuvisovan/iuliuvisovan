@@ -13,12 +13,13 @@ span {
     display: block;
     font-size: 90px;
     line-height: 1.1;
+    margin-top: 60px;
 }
 
 .subtitle {
     text-transform: uppercase;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 15px;
     color: #333;
     color: white;
@@ -32,6 +33,7 @@ span {
     color: white;
     position: relative;
     height: 100vh;
+    z-index: -2;
 }
 
 .sun-heart,
@@ -46,10 +48,9 @@ span {
 }
 
 .sun {
-    font-size: 500px;
     bottom: -41px;
     left: -186px;
-    opacity: 0.3;
+    z-index: -1;
 }
 
 .daily-name {
