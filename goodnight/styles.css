@@ -43,6 +43,7 @@ span {
     width: 150px;
     opacity: 0.2;
     z-index: -1;
+    transform: rotate(200deg);
 }
 
 .daily-name {

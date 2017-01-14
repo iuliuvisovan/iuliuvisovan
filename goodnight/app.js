@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    var randomNumber = new Date().getDate() - 1;
+    var randomNumber = 31 - (new Date().getDate() - 1);
     var todaysName = names[randomNumber].name;
     var todaysDescription = names[randomNumber].description;
 
