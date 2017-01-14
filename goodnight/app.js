@@ -61,11 +61,11 @@ var names = [{
     name: "pretty lady",
     description: "you're gentle and delicate."
 }, {
-    name: "sunshine",
-    description: "you light up my day!"
-}, {
     name: "sweetheart",
     description: "you're sweet and have a big heart."
+}, {
+    name: "sunshine",
+    description: "you light up my day!"
 }, {
     name: "precious",
     description: "you're too valuable to lose."
