@@ -32,7 +32,6 @@ span {
 .container {
     color: white;
     position: relative;
-    z-index: -2;
     padding: 30px;
     text-align: center;
 }
