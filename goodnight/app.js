@@ -1,5 +1,7 @@
 $(document).ready(() => {
-    var randomNumber = 31 - (new Date().getDate() - 1);
+    var currentDate = new Date(new Date().setHours(new Date().getHours() + 7));
+    var randomNumber = 31 - (currentDate.getDate() - 1);
+    
     var todaysName = names[randomNumber].name;
     var todaysDescription = names[randomNumber].description;
 
