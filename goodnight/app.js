@@ -12,6 +12,21 @@ $(document).ready(() => {
 });
 
 var names = [{
+    name: "summer",
+    description: "you bring warmth and brightness to my life."
+}, {
+    name: "honey",
+    description: "you're sweet as honey."
+}, {
+    name: "Cinderella",
+    description: "you're a princess in my eyes."
+}, {
+    name: "pretty lady",
+    description: "you're gentle and delicate."
+}, {
+    name: "sweetheart",
+    description: "you're sweet and have a big heart."
+}, {
     name: "my doll",
     description: "you are as perfect as a doll in my eyes."
 }, {
@@ -42,29 +57,14 @@ var names = [{
     name: "my donut",
     description: "you're sweet and round, just like a donut. :DD"
 }, {
-    name: "cuddles",
-    description: "I love to cuddle with you."
-}, {
-    name: "summer",
-    description: "you bring warmth and brightness to my life."
-}, {
     name: "gorgeous",
     description: "well..it's kind of obvious."
 }, {
+    name: "cuddles",
+    description: "I'd love to cuddle with you."
+}, {
     name: "my spring",
     description: "you add color to my life."
-}, {
-    name: "honey",
-    description: "you're sweet as honey."
-}, {
-    name: "Cinderella",
-    description: "you're a princess in my eyes."
-}, {
-    name: "pretty lady",
-    description: "you're gentle and delicate."
-}, {
-    name: "sweetheart",
-    description: "you're sweet and have a big heart."
 }, {
     name: "sunshine",
     description: "you light up my day!"
