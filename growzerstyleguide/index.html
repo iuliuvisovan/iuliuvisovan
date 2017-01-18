@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Growzer Design Implementation Guide</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="prism.css">
+    <style>
+        body {
+            position: relative;
+        }
+        
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #2196f3;
+        }
+        
+        .navbar li > a {
+            color: #2196f3;
+        }
+        
+        .script {
+            display: block;
+            color: #333;
+        }
+        
+        .section {
+            padding: 60px 30px;
+            color: #fff;
+        }
+        
+        li.active>a {
+            background: #2196F3;
+            color: white;
+        }
+        
+        li.active>a:hover {
+            background: #2196F3;
+            color: white;
+        }
+        
+        #section2 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #673ab7;
+        }
+        
+        #section3 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #ff9800;
+        }
+        
+        #section41 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #00bcd4;
+        }
+        
+        #section42 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #009688;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+                <a class="navbar-brand" href="#">Design Implementation Guide</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#buttons">Buttons</a></li>
+                        <li><a href="#headers">Headers</a></li>
+                        <li><a href="#titles">Headings</a></li>
+                        <li><a href="#selects">Selects</a></li>
+                        <li><a href="#dropdowns">Dropdowns</a></li>
+                        <li><a href="#checkboxes">Checkboxes</a></li>
+                        <li><a href="#tables">Tables</a></li>
+                        <li><a href="#modals">Modals</a></li>
+                        <li><a href="#loadingers">Loadingers</a></li>
+                        <li><a href="#labels">Labels</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="buttons" style="background: #673ab7;" class="section container-fluid">
+        <h1>Buttons</h1>
+        <ul>
+            <li>
+                <h2>Primary</h2>
+                <ul>
+                    <li>
+                        <h3>Preview: </h3>
+                    </li>
+                    <li>
+                        <h3>Structure: </h3>
+                        <pre><code class="language-markup">&lt;a class="btn btn-primary">Submit&lt;/a>
+&lt;a class="btn btn-primary disabled">Submit&lt;/a> &lt;!-- The faded orange one, with no hover/pointer events -->
+&lt;a class="btn btn-primary disabled very">Submit&lt;/a> &lt;!-- The faded gray one, again with no hover/pointer events -->
+                            </code></pre>
+                        <i>Note the need for the 'btn' class as well. Promise to get this to a more uniform state sometime in the near future.</i>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>Secondary</h2>
+                <ul>
+                    <li>
+                        <h3>Preview: </h3>
+                    </li>
+                    <li>
+                        <h3>Structure: </h3>
+                        <pre><code class="language-markup">&lt;a class="btn-secondary-new">Print&lt;/a>
+&lt;a class="btn-secondary-new disabled">Print&lt;/a> &lt;!-- The faded orange one, with no hover/pointer events -->
+&lt;a class="btn btn-secondary">Submit&lt;/a> &lt;!-- THIS IS DEPRECATED! Don't use it. If you find it anywhere, it's only because of 
+visual compatibility with pages that still use less-than-optimal-height text inputs. -->
+                            </code></pre>
+                        <!--<i>Note the need for the 'btn' class as well. Promise to get this to a more uniform state sometime in the near future.</i>-->
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="headers" style="background: #1E88E5" class="section container-fluid">
+        <h1>Headers</h1>
+        <ul>
+            <li>
+                <h2>Primary</h2>
+                <h5>The topmost gray/white bar that's present in (almost) every page.</h5>
+                <ul>
+                    <li>
+                        <h3>Preview: </h3>
+                    </li>
+                    <li>
+                        <h3>Structure: </h3>
+                        <pre><code class="language-markup">&lt;div class="theme-header">
+&lt;!-- Both of these will have their content center-aligned -->
+    &lt;div>&lt;/div> &lt;!-- This will automatically be left-justified -->
+    &lt;div>&lt;/div> &lt;!-- This will automatically be right-justified -->
+&lt;/div></code></pre>
+                        <i>I've opted for this strucure since I noticed the left-content/right-content separation is very commonly used.</i>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>Secondary</h2>
+                <h5>The white bar present in some pages, usually in detail pages, that usually exposes additional actions such
+                    as filters or printing. </h5>
+                <ul>
+                    <li>
+                        <h3>Preview: </h3>
+                    </li>
+                    <li>
+                        <h3>Structure: </h3>
+                        <pre><code class="language-markup">&lt;div class="theme-header white">
+&lt;!-- Both of these will have their content center-aligned -->
+    &lt;div>&lt;/div> &lt;!-- This will automatically be left-justified -->
+    &lt;div>&lt;/div> &lt;!-- This will automatically be right-justified -->
+&lt;/div></code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="section2" class="container-fluid">
+        <h1>Section 2</h1>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+    </div>
+    <div id="section3" class="container-fluid">
+        <h1>Section 3</h1>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+    </div>
+    <div id="section41" class="container-fluid">
+        <h1>Section 4 Submenu 1</h1>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+    </div>
+    <div id="section42" class="container-fluid">
+        <h1>Section 4 Submenu 2</h1>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+        <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at
+            the navigation bar while scrolling!</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="prism.js"></script>
+</body>
+
+</html>
