@@ -4,6 +4,3 @@
 [submodule "orderable/jquery-orderable"]
 	path = orderable/jquery-orderable
 	url = https://github.com/iuliuvisovan/jquery-orderable.git
-[submodule "rush"]
-	path = rush
-	url = https://github.com/iuliuvisovan/rush.git
