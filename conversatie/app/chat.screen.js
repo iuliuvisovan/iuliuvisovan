@@ -68,6 +68,7 @@ export default class Chat extends Component {
 
   onChatMessage = (message) => {
     if (message.length > 1) {
+      message.forEach(x => x.type = x.userId == this.state.userId ? 'sent' : 'received',)
       this.setState({ messages: message });
     } else {
       this.pushMessage(message);
