@@ -1,0 +1,45 @@
+/*eslint linebreak-style: ["error", "windows"]*/
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules":{
+        "linebreak-style": 0,
+        "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+        "no-use-before-define": ["error", { "functions": false, "classes": false, "variables": false }],
+        "comma-dangle": "off",
+        "react/prop-types": [0],
+        "quote-props": "off",
+        "quotes": "off",
+        "semi": "off",
+        "import/first": "off",
+        "eqeqeq": "off",
+        "global-require": "off",
+        "max-len": [2, {"code": 150}],
+        "eol-last": "off",
+        "indent": "off",
+        "arrow-parens": "off",
+        "no-underscore-dangle": "off",
+        "no-confusing-arrow": "off",
+        "no-nested-ternary": "off",
+        "react/jsx-pascal-case": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "no-return-assign": "off",
+        "react/sort-comp": "off",
+        "import/prefer-default-export": "off",
+        "object-curly-newline": "off",
+        "no-param-reassign": "off",
+        "react/no-did-mount-set-state": "off",
+        "curly": "off",
+        "react/react-in-jsx-scope": "off",
+        "spaced-comment": "off",
+        "arrow-body-style": "off",
+        "react/no-unescaped-entities": "off",
+        "no-unused-expressions": "off"
+      }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="11px" viewBox="0 0 19 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Message</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="01_First-Screens-/-Dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00_3-1-Booking-MIXED" transform="translate(-328.000000, -999.000000)" fill-rule="nonzero" fill="#7C878E">
+            <g id="Menu" transform="translate(0.000000, 986.000000)">
+                <g id="Search" transform="translate(325.000000, 13.000000)">
+                    <path d="M20.5102873,0.736092297 C21.0075079,0.736092297 21.4105848,1.13796151 21.4105848,1.63369231 C21.4105848,2.12942311 21.0075079,2.53129233 20.5102873,2.53129233 L4.3140133,2.53129233 C3.81679274,2.53129233 3.41371583,2.12942311 3.41371583,1.63369231 C3.41371583,1.13796151 3.81679274,0.736092297 4.3140133,0.736092297 L20.5102873,0.736092297 Z M20.5102873,8.7360923 C21.0075079,8.7360923 21.4105848,9.13796151 21.4105848,9.63369231 C21.4105848,10.1294231 21.0075079,10.5312923 20.5102873,10.5312923 L4.3140133,10.5312923 C3.81679274,10.5312923 3.41371583,10.1294231 3.41371583,9.63369231 C3.41371583,9.13796151 3.81679274,8.7360923 4.3140133,8.7360923 L20.5102873,8.7360923 Z" id="Message"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
