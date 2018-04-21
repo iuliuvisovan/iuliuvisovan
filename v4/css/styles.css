@@ -1,6 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
+    background: #c1bfb5;
 }
 
 .page-image {
@@ -15,6 +16,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding-right: 30px;
+    }
+    .page-wrapper {
+        margin-top: -25px;
+    }
 }
 
 .page-wrapper {
