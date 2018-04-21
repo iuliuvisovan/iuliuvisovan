@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background: #b4b4b4;
+    background: #c1bfb5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,8 @@ body {
 
 .page-wrapper {
     position: relative;
+    border: 1px solid #ffffff8c;
+    box-shadow: 14px 17px 20px 5px #0000002b;
 }
 
 .btn-wrapper {
@@ -28,19 +30,19 @@ body {
     will-change: opacity;
     animation-name: init;
     animation-duration: 1s;
-    animation-delay: 1s;
+    animation-delay: 3s;
     animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     /* animation-fill-mode: forwards; */
 }
 
 @keyframes init {
-    0%  {
+    0% {
         opacity: 0.01;
     }
-    50%  {
+    50% {
         opacity: 0.7;
     }
-    100%  {
+    100% {
         opacity: 0.01;
     }
 }
@@ -57,17 +59,21 @@ body {
     will-change: transform;
 }
 
-.btn-wrapper:hover {
+.btn-wrapper:not(.half):hover {
     opacity: 1;
 }
 
-.btn-wrapper:hover .btn {
+.btn-wrapper.half:hover {
+    opacity: 0.4;
+}
+
+.btn-wrapper:not(.opacityonly):hover .btn {
     animation-name: show-button;
     animation-duration: 0.7s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.btn-wrapper:hover img {
+.btn-wrapper:not(.opacityonly):hover img {
     animation-name: show-button-child;
     animation-duration: 0.7s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -75,13 +81,13 @@ body {
 
 @keyframes show-button {
     from {
-        transform: translateX(-150px);
+        transform: translateX(-100%);
     }
 }
 
 @keyframes show-button-child {
     from {
-        transform: translateX(150px);
+        transform: translateX(100%);
     }
 }
 
@@ -96,7 +102,7 @@ body {
     top: 40.35%;
     left: 19%;
     width: 22.2%;
-    filter: hue-rotate(490deg) saturate(86%);
+    filter: hue-rotate(490deg) saturate(76%);
 }
 
 .myskills {
@@ -111,4 +117,88 @@ body {
     left: 34.85%;
     width: 26%;
     filter: hue-rotate(-224deg);
+}
+
+.lrferdinand {
+    top: 19.8%;
+    left: 25.7%;
+    width: 60%;
+    filter: hue-rotate(-224deg) saturate(300%);
+}
+
+.timisoara {
+    top: 34.9%;
+    left: 28.7%;
+    width: 66.8%;
+    filter: hue-rotate(74deg) saturate(300%);
+}
+
+.cluj {
+    top: 42%;
+    left: 28.1%;
+    width: 62.3%;
+    filter: hue-rotate(310deg) saturate(400%);
+}
+
+.exn {
+    top: 60.4%;
+    left: 28.8%;
+    width: 32.4%;
+    filter: hue-rotate(30deg) saturate(400%);
+}
+
+.languages {
+    top: 80.4%;
+    left: 15.5%;
+    width: 73.5%;
+}
+
+.csharp {
+    top: 19.5%;
+    left: 30%;
+    width: 29.5%;
+}
+
+.htmlcss {
+    top: 23%;
+    left: 64.2%;
+    width: 21.5%;
+}
+
+.kannada {
+    top: 12.5%;
+    left: 83.8%;
+    width: 9.75%;
+}
+
+.javascript {
+    top: 33.2%;
+    left: 17.7%;
+    width: 35.2%;
+}
+
+.reactnative {
+    top: 44.8%;
+    left: 16.3%;
+    width: 73.1%;
+}
+
+.afewothers {
+    top: 69.3%;
+    left: 24.3%;
+    width: 43%;
+}
+
+.afewothers:hover+.otherlanguages {
+    opacity: 1;
+}
+
+.otherlanguages {
+    top: 76.3%;
+    left: 26.3%;
+    width: 43%;
+    font-family: cursive;
+    text-align: center;
+    color: #44433e;
+    font-weight: 700;
 }
