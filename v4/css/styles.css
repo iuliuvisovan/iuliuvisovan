@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.page-image {
+    margin: auto;
+    width: auto;
+    height: 100vh;
+    margin: auto;
+}
+
+.container {
+    background: #b4b4b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-wrapper {
+    position: relative;
+}
+
+.btn-wrapper {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.01;
+    will-change: opacity;
+    animation-name: init;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* animation-fill-mode: forwards; */
+}
+
+@keyframes init {
+    0%  {
+        opacity: 0.01;
+    }
+    50%  {
+        opacity: 0.7;
+    }
+    100%  {
+        opacity: 0.01;
+    }
+}
+
+.btn {
+    overflow: hidden;
+    will-change: transform;
+}
+
+.btn img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    will-change: transform;
+}
+
+.btn-wrapper:hover {
+    opacity: 1;
+}
+
+.btn-wrapper:hover .btn {
+    animation-name: show-button;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn-wrapper:hover img {
+    animation-name: show-button-child;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes show-button {
+    from {
+        transform: translateX(-150px);
+    }
+}
+
+@keyframes show-button-child {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+.me {
+    top: 36.7%;
+    left: 40.8%;
+    width: 11.5%;
+    filter: hue-rotate(298deg) brightness(112%);
+}
+
+.mywork {
+    top: 40.35%;
+    left: 19%;
+    width: 22.2%;
+    filter: hue-rotate(490deg) saturate(86%);
+}
+
+.myskills {
+    top: 41.5%;
+    left: 49.7%;
+    width: 26%;
+    filter: hue-rotate(-60deg);
+}
+
+.capybara {
+    top: 48.25%;
+    left: 34.85%;
+    width: 26%;
+    filter: hue-rotate(-224deg);
+}
