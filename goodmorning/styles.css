@@ -18,7 +18,7 @@ span {
   color: #fff;
   line-height: 1.1;
   position: fixed;
-  top: -10vw;
+  bottom: -30vh;
   left: 0;
   right: 0;
   margin: auto;
@@ -34,7 +34,7 @@ span {
 
 @keyframes title {
   to {
-    transform: translateY(45vw);
+    transform: translateY(-75vh);
   }
 }
 
