@@ -6,13 +6,13 @@ $(document).ready(function () {
         console.log("Initiated")
     }, false);
     document.addEventListener('jquery.orderable.order.start', function (e) {
-        console.log("Order start")
+        console.log("Ordering started")
     }, false);
     document.addEventListener('jquery.orderable.order.cancel', function (e) {
-        console.log("Order cancel")
+        console.log("Ordering cancelled")
     }, false);
     document.addEventListener('jquery.orderable.order.finish', function (e) {
-        console.log("Order finish")
+        console.log("Ordering finished")
     }, false);
 
     $("#byGroups").orderable({
