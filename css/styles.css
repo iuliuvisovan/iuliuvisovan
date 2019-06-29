@@ -131,10 +131,11 @@ body {
 
 .twentyfive {
   position: absolute;
-  top: 22.1%;
+  top: 22.2%;
   left: 52.2%;
-  width: 200px;
-  height: 200px;
+  width: 25px;
+  height: 20px;
+  background: #b2afa5;
   font-size: 23px;
   color: #6a6657;
   font-weight: 1000;
