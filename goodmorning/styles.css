@@ -18,14 +18,19 @@ span {
   color: #fff;
   line-height: 1.1;
   position: fixed;
-  bottom: -30vh;
+  bottom: -25vh;
   left: 0;
+  text-align: center;
   right: 0;
   margin: auto;
   transition: all 3s ease-in-out;
   animation: title 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation-delay: 1s;
   animation-fill-mode: forwards;
+}
+
+.title span {
+  text-align: center;
 }
 
 .title span {
@@ -112,11 +117,10 @@ span {
 
 .sun {
   width: 1000px;
-  margin-left: -119px;
-  margin-top: 30px;
-  width: 543px;
+  margin-left: -83px;
+  margin-top: 55px;
+  width: 400px;
   animation: rotate 50s linear infinite;
-  animation-delay: 2.5s;
 }
 
 @keyframes rotate {
