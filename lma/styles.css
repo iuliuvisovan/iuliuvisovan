@@ -211,10 +211,15 @@ span {
   left: 0;
   right: 0;
   margin: auto;
-  margin-left: -530px;
   height: 114vh;
   margin-top: -14vh;
   z-index: -1;
+}
+
+@media(max-width: 1023px) {
+  .gab-bg {
+    margin-left: -530px;
+  }
 }
 
 .gradient {
