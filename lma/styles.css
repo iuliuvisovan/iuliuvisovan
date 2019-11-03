@@ -213,8 +213,8 @@ span {
   top: 0;
   left: 0;
   right: 0;
-  margin-left: -80px;
   margin: auto;
+  margin-top: -50px;
   z-index: -1;
 }
 
