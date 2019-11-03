@@ -61,6 +61,14 @@ span {
   overflow: hidden;
 }
 
+.three {
+  bottom: 55vh !important;
+  opacity: 1 !important;
+  animation-duration: 5s !important;
+  z-index: -2!important;
+  zoom: 1.2!important;
+}
+
 .sun-heart,
 .sun {
   display: block;
