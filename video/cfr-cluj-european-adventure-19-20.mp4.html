@@ -44,8 +44,15 @@
       </video>
       <br />
       <br />
-      <!-- <span>Surse alternative: </span> -->
+      <div id="views"></div>
       <br />
+      <br />
+      <script>
+        function cb(response) {
+          document.getElementById('views').innerText = response.value + ' views';
+        }
+      </script>
+      <script async src="https://api.countapi.xyz/hit/europeanadventure/visits?callback=cb"></script>
     </center>
     <div class="powr-comments" id="a135d339_1583441748"></div>
     <script src="https://www.powr.io/powr.js?platform=html"></script>
