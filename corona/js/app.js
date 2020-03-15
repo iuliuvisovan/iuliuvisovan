@@ -98,6 +98,7 @@ function drawTotalsChart() {
       ]
     },
     options: {
+      maintainAspectRatio: false,
       layout: {
         height: 500,
         padding: {
