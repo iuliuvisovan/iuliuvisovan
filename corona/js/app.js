@@ -14,6 +14,8 @@ var otherCountryChart = undefined;
 function drawChart(chartId, countryName) {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
+  console.log('data', data);
+
   const romanianData = data
     .filter(x => x.CountryExp == countryName)
     .slice(0, 18)
