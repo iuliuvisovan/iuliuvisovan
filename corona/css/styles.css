@@ -9,3 +9,8 @@ body {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
+.country-picker {
+  padding: 5px;
+  border-radius: 5px;
+}
