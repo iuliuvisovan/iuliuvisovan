@@ -17,7 +17,7 @@ function draw() {
       labels: labels,
       datasets: [
         {
-          label: 'Cazuri noi de infectare',
+          label: 'Cazuri noi',
           data: values,
           backgroundColor: 'rgba(255, 159, 64, 0.2)',
           borderColor: 'rgba(255, 159, 64, 1)',
