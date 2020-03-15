@@ -31,13 +31,12 @@
 
   <body>
     <h2>Situatia COVID-19 la data de 15.03.2020</h2>
-    <a style="margin-bottom: 10px;" href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">Sursa</a>
-    <h3 style="margin-bottom: 0px;">Cazuri noi zilnice</h4>
-    <h3 style="font-weight: 100; margin: 5px 0;">Romania:</h4>
-    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
-      <canvas id="romaniaChart"></canvas>
-    </div>
 
+    <h3 style="margin-bottom: 0px;">Cazuri noi zilnice</h4>
+      <h3 style="font-weight: 100; margin: 5px 0;">Romania:</h4>
+        <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
+          <canvas id="romaniaChart"></canvas>
+        </div>
     <h3 style="font-weight: 100;">Compara cu:</h3>
     <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry()" id="countryPicker" class="country-picker"></select>
     <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
@@ -53,6 +52,11 @@
     <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px">
     <canvas id="lastWeekTotals"></canvas>
     </div>
+
+    <i style="text-align: center; margin: 30px;">
+      Sursa: <a style="margin-bottom: 10px;" href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide</a></a>
+      <br/>Cazurile din cursul zilei de astazi astazi nu sunt actulizate in timp real. Pentru cele mai recente informatii vizitati <a href="https://www.digi24.ro/">https://www.digi24.ro/</a>.
+    </i>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script src="js/moment-with-locales.js"></script>
