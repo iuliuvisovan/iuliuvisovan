@@ -427,7 +427,7 @@ function drawComparedCountry(picker) {
   otherCountryChart.destroy();
   console.log(' picker.value', picker.value);
 
-  drawDailyCasesChart('otherCountryChart', picker.value);
+  drawDailyCasesChart('otherCountryChart', picker.value, '#CDDC39');
 }
 
 function drawComparedCountryTotalCases(picker) {
