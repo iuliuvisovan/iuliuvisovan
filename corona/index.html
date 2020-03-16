@@ -33,29 +33,56 @@
     <h2>Situatia COVID-19 la data de 15.03.2020</h2>
 
     <h3 style="margin-bottom: 0px;">Cazuri noi zilnice</h4>
-      <h3 style="font-weight: 100; margin: 5px 0;">Romania:</h4>
-        <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
-          <canvas id="romaniaChart"></canvas>
-        </div>
-    <h3 style="font-weight: 100;">Compara cu:</h3>
-    <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry()" id="countryPicker" class="country-picker"></select>
+    <h3 style="font-weight: 100; margin: 5px 0;">Romania:</h4>
     <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
-    <canvas id="otherCountryChart"></canvas>
+      <canvas id="romaniaChart"></canvas>
+    </div>
+
+    <h3 style="font-weight: 100;">Compara cu:</h3>
+    <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)" class="country-picker"></select>
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; max-height: 100vh;">
+      <canvas id="otherCountryChart"></canvas>
     </div>
 
 
-    <h3 style="margin-bottom: 0px;">Totaluri</h4>
+    <h3 style="margin-bottom: 0px;">Cazuri totale</h4>
     <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px">
-    <canvas id="totalsChart"></canvas>
+      <canvas id="totalsChart"></canvas>
     </div>
     
-    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px">
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px; margin-top: 20px;">
+    <canvas id="totalsRomaniaRelative"></canvas>
+    </div>
+
+
+    <h3 style="margin-bottom: 0px;">Cazuri totale - ultimele 7 zile</h4>
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px;">
     <canvas id="lastWeekTotals"></canvas>
+    </div>
+
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px; margin-top: 20px;">
+    <canvas id="lastWeekTotalsRomaniaRelative"></canvas>
+    </div>
+
+    <h3 style="margin-bottom: 0px;">Cazuri globale - evolutie</h4>
+      <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px;">
+      <canvas id="globalTotals"></canvas>
+    </div>
+
+    <h3 style="margin-bottom: 0px;">Cazuri pe teritoriul Romaniei - evolutie</h4>
+      <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px;">
+      <canvas id="romaniaTotals"></canvas>
+    </div>
+    <h3 style="font-weight: 100;">Compara cu:</h3>
+      <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountryTotalCases(this)" class="country-picker" class="country-picker"></select>
+      <div class="chart-container" style="position: relative; width: 1000px; max-width: 95vw; height: 600px;">
+      <canvas id="otherCountryTotals"></canvas>
     </div>
 
     <i style="text-align: center; margin: 30px;">
       Sursa: <a style="margin-bottom: 10px;" href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide</a></a>
-      <br/>Cazurile din cursul zilei de astazi astazi nu sunt actulizate in timp real. Pentru cele mai recente informatii vizitati <a href="https://www.digi24.ro/">https://www.digi24.ro/</a>.
+      <br/><br/>Cazurile din cursul zilei de astazi astazi nu sunt actulizate in timp real. 
+      <br/>Pentru cele mai recente informatii vizitati <a href="https://www.digi24.ro/">https://www.digi24.ro/</a>.
     </i>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
@@ -66,7 +93,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="data/15mar.js"></script>
-    <script src="js/app.js?v=2"></script>
+    <script src="js/app.js?v=3"></script>
     <script>
       (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
