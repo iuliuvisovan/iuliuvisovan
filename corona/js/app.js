@@ -417,10 +417,19 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
 }
 
 function cleanupData() {
-  window.data = window.data.map(x => ({
-    ...x,
-    CountryExp: x.CountryExp.startsWith('Cases on an') ? 'Diamond Princess' : x.CountryExp
-  }));
+  window.data = window.data.map(x => {
+    let actualCountryName = x.CountryExp;
+    if (x.CountryExp.startsWith('Cases on an')) {
+      actualCountryName = 'Diamond Princess';
+    }
+    if (x.CountryExp.toLowerCase() == 'united kingdom') {
+      actualCountryName = 'United Kingdom';
+    }
+    return {
+      ...x,
+      CountryExp: actualCountryName
+    };
+  });
 }
 
 function drawComparedCountry(picker) {
