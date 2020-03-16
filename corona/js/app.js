@@ -3,18 +3,26 @@ moment.locale('ro');
 function draw() {
   cleanupData();
   drawDailyCasesChart('romaniaChart', 'Romania');
-  drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
+  setTimeout(() => {
+    drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
+  }, 0);
   setPickerCountries(window.data);
-  drawTotalsChart();
-  drawTotalsRomaniaRelative();
-  drawLastWeekChart();
-  drawLastWeekTotalsRomaniaRelative();
-  drawGlobalTotals();
-  drawTotalsForCountry('romaniaTotals', 'Romania');
-  drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
   setTimeout(() => {
     setupBarLabels();
   }, 0);
+
+  setTimeout(() => {
+    drawTotalsChart();
+    drawTotalsRomaniaRelative();
+    drawLastWeekChart();
+    drawLastWeekTotalsRomaniaRelative();
+    drawGlobalTotals();
+    drawTotalsForCountry('romaniaTotals', 'Romania');
+    drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
+    setTimeout(() => {
+      setupBarLabels();
+    }, 0);
+  }, 2000);
 }
 
 var otherCountryChart = undefined;
