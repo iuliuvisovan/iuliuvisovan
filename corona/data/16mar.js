@@ -4037,7 +4037,7 @@ window.data = [
 {"DateRep":"01/02/2020","CountryExp":"Qatar","NewConfCases":"0","NewDeaths":"0","GeoId":"QA","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
 {"DateRep":"01/01/2020","CountryExp":"Qatar","NewConfCases":"0","NewDeaths":"0","GeoId":"QA","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
 {"DateRep":"12/31/2019","CountryExp":"Qatar","NewConfCases":"0","NewDeaths":"0","GeoId":"QA","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
-{"DateRep":"03/16/2020","CountryExp":"Romania","NewConfCases":"19","NewDeaths":"0","GeoId":"RO","Gaul1Nuts1":"","EU":"EU"},
+{"DateRep":"03/16/2020","CountryExp":"Romania","NewConfCases":"29","NewDeaths":"0","GeoId":"RO","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/15/2020","CountryExp":"Romania","NewConfCases":"39","NewDeaths":"0","GeoId":"RO","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/14/2020","CountryExp":"Romania","NewConfCases":"31","NewDeaths":"0","GeoId":"RO","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/13/2020","CountryExp":"Romania","NewConfCases":"24","NewDeaths":"0","GeoId":"RO","Gaul1Nuts1":"","EU":"EU"},
