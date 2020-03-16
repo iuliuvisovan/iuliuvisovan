@@ -3,7 +3,7 @@ moment.locale('ro');
 function draw() {
   cleanupData();
   drawDailyCasesChart('romaniaChart', 'Romania');
-  drawDailyCasesChart('otherCountryChart', 'Italy');
+  drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
   setPickerCountries(window.data);
   drawTotalsChart();
   drawTotalsRomaniaRelative();
@@ -20,7 +20,7 @@ function draw() {
 var otherCountryChart = undefined;
 var otherCountryChartTotals = undefined;
 
-function drawDailyCasesChart(chartId, countryName) {
+function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
@@ -43,8 +43,8 @@ function drawDailyCasesChart(chartId, countryName) {
         {
           label: 'Cazuri noi',
           data: values,
-          backgroundColor: '#ff980022',
-          borderColor: '#ff9800',
+          backgroundColor: color + '22',
+          borderColor: color,
           borderWidth: 1
         }
       ]
