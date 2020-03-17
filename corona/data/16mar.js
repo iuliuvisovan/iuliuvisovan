@@ -2559,6 +2559,7 @@ window.data = [
 {"DateRep":"01/02/2020","CountryExp":"Israel","NewConfCases":"0","NewDeaths":"0","GeoId":"IL","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
 {"DateRep":"01/01/2020","CountryExp":"Israel","NewConfCases":"0","NewDeaths":"0","GeoId":"IL","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
 {"DateRep":"12/31/2019","CountryExp":"Israel","NewConfCases":"0","NewDeaths":"0","GeoId":"IL","Gaul1Nuts1":"","EU":"Non-EU/EEA"},
+{"DateRep":"03/17/2020","CountryExp":"Italy","NewConfCases":"3233","NewDeaths":"370","GeoId":"IT","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/16/2020","CountryExp":"Italy","NewConfCases":"4230","NewDeaths":"370","GeoId":"IT","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/15/2020","CountryExp":"Italy","NewConfCases":"2857","NewDeaths":"173","GeoId":"IT","Gaul1Nuts1":"","EU":"EU"},
 {"DateRep":"03/14/2020","CountryExp":"Italy","NewConfCases":"2547","NewDeaths":"252","GeoId":"IT","Gaul1Nuts1":"","EU":"EU"},
