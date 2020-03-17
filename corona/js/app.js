@@ -427,7 +427,7 @@ function cleanupData() {
     }
     if (countryName == 'Romania') {
       if (x.DateRep == '03/17/2020') {
-        x.Cases = '54';
+        x.Cases = '49';
       }
       if (x.DateRep == '03/16/2020') {
         x.Cases = '29';
