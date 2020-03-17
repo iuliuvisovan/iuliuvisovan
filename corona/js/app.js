@@ -425,21 +425,21 @@ function cleanupData() {
     if (countryName.toLowerCase() == 'united kingdom') {
       countryName = 'United Kingdom';
     }
-    if(countryName == 'Romania') {
-      if(x.DateRep == '03/17/2020') {
-        x.Cases = "16";
+    if (countryName == 'Romania') {
+      if (x.DateRep == '03/17/2020') {
+        x.Cases = '54';
       }
-      if(x.DateRep == '03/16/2020') {
-        x.Cases = "29";
+      if (x.DateRep == '03/16/2020') {
+        x.Cases = '29';
       }
-      if(x.DateRep == '03/15/2020') {
-        x.Cases = "39";
+      if (x.DateRep == '03/15/2020') {
+        x.Cases = '39';
       }
-      if(x.DateRep == '03/14/2020') {
-        x.Cases = "31";
+      if (x.DateRep == '03/14/2020') {
+        x.Cases = '31';
       }
-      if(x.DateRep == '03/13/2020') {
-        x.Cases = "24";
+      if (x.DateRep == '03/13/2020') {
+        x.Cases = '24';
       }
     }
     return {
