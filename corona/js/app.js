@@ -22,7 +22,7 @@ function draw() {
     setTimeout(() => {
       setupBarLabels();
     }, 0);
-  }, 2000);
+  }, 3000);
 }
 
 var otherCountryChart = undefined;
