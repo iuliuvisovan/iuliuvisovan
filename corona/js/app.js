@@ -40,8 +40,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
     .slice(0, 18)
     .reverse();
   const labels = countryData.map(x => moment(x.DateRep).format('DD MMMM'));
-  const values = countryData.map(x => x.NewConfCases);
-  console.log('values', values);
+  const values = countryData.map(x => x.Cases);
 
   const maxValue = Math.max(...values);
 
@@ -83,7 +82,7 @@ function drawTotalsChart() {
   data.forEach(x => {
     totals[x.CountryExp] = data
       .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b);
   });
 
@@ -136,7 +135,7 @@ function drawLastWeekChart() {
   validData.forEach(x => {
     totals[x.CountryExp] = validData
       .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b);
   });
 
@@ -189,7 +188,7 @@ function drawLastWeekTotalsRomaniaRelative() {
   validData.forEach(x => {
     totals[x.CountryExp] = validData
       .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b);
   });
 
@@ -257,7 +256,7 @@ function drawTotalsRomaniaRelative() {
   validData.forEach(x => {
     totals[x.CountryExp] = validData
       .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b);
   });
 
@@ -321,11 +320,10 @@ function drawGlobalTotals() {
 
   const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
   const localizedLabels = labels.map(x => moment(x).format('DD MMMM'));
-  console.log('labels', labels);
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b, 0)
   );
 
@@ -376,7 +374,7 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.NewConfCases)
+      .map(x => x.Cases)
       .reduce((a, b) => +a + +b, 0)
   );
 
@@ -420,23 +418,39 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
 
 function cleanupData() {
   window.data = window.data.map(x => {
-    let actualCountryName = x.CountryExp;
-    if (x.CountryExp.startsWith('Cases on an')) {
-      actualCountryName = 'Diamond Princess';
+    let countryName = x['Countries and territories'];
+    if (countryName.startsWith('Cases on an')) {
+      countryName = 'Diamond Princess';
     }
-    if (x.CountryExp.toLowerCase() == 'united kingdom') {
-      actualCountryName = 'United Kingdom';
+    if (countryName.toLowerCase() == 'united kingdom') {
+      countryName = 'United Kingdom';
+    }
+    if(countryName == 'Romania') {
+      if(x.DateRep == '03/17/2020') {
+        x.Cases = "16";
+      }
+      if(x.DateRep == '03/16/2020') {
+        x.Cases = "29";
+      }
+      if(x.DateRep == '03/15/2020') {
+        x.Cases = "39";
+      }
+      if(x.DateRep == '03/14/2020') {
+        x.Cases = "31";
+      }
+      if(x.DateRep == '03/13/2020') {
+        x.Cases = "24";
+      }
     }
     return {
       ...x,
-      CountryExp: actualCountryName
+      CountryExp: countryName
     };
   });
 }
 
 function drawComparedCountry(picker) {
   otherCountryChart.destroy();
-  console.log(' picker.value', picker.value);
 
   drawDailyCasesChart('otherCountryChart', picker.value, '#CDDC39');
 }
