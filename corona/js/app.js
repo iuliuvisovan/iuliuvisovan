@@ -445,6 +445,14 @@ function cleanupData() {
         x.Cases = '24';
       }
     }
+    if (countryName == 'Italy') {
+      if (x.DateRep == '03/16/2020') {
+        x.Cases = '3230';
+      }
+      if (x.DateRep == '03/15/2020') {
+        x.Cases = '3090';
+      }
+    }
     return {
       ...x,
       CountryExp: countryName
