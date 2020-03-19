@@ -419,7 +419,7 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
 function cleanupData() {
   window.data = window.data.map(x => {
     let countryName = x['Countries and territories'];
-    if (countryName.startsWith('Cases on an')) {
+    if (countryName.startsWith('Cases')) {
       countryName = 'Diamond Princess';
     }
     if (countryName.toLowerCase() == 'united kingdom') {
