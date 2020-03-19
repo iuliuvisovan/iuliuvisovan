@@ -42490,6 +42490,16 @@ window.data = [
     GeoId: 'QA'
   },
   {
+    DateRep: '03/19/2020',
+    Day: '19',
+    Month: '3',
+    Year: '2020',
+    Cases: '17',
+    Deaths: '0',
+    'Countries and territories': 'Romania',
+    GeoId: 'RO'
+  },
+  {
     DateRep: '03/18/2020',
     Day: '18',
     Month: '3',
