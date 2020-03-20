@@ -1,6 +1,7 @@
 moment.locale('ro');
 
 function draw() {
+  setCurrentDate();
   cleanupData();
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
@@ -25,6 +26,11 @@ function draw() {
   setTimeout(() => {
     setupBarLabels();
   }, 0);
+}
+
+function setCurrentDate() {
+  const currentDateSpan = document.getElementById('currentDate');
+  currentDateSpan.innerText = moment().format('DD MMMM YYYY');
 }
 
 var otherCountryChart = undefined;
