@@ -4488,6 +4488,7 @@ window.data = [
 {"DateRep":"01/02/2020","Day":"2","Month":"1","Year":"2020","Cases":"0","Deaths":"0","Countries and territories":"Qatar","GeoId":"QA"},
 {"DateRep":"01/01/2020","Day":"1","Month":"1","Year":"2020","Cases":"0","Deaths":"0","Countries and territories":"Qatar","GeoId":"QA"},
 {"DateRep":"12/31/2019","Day":"31","Month":"12","Year":"2019","Cases":"0","Deaths":"0","Countries and territories":"Qatar","GeoId":"QA"},
+{"DateRep":"03/21/2020","Day":"21","Month":"3","Year":"2020","Cases":"17","Deaths":"0","Countries and territories":"Romania","GeoId":"RO"},
 {"DateRep":"03/20/2020","Day":"20","Month":"3","Year":"2020","Cases":"17","Deaths":"0","Countries and territories":"Romania","GeoId":"RO"},
 {"DateRep":"03/19/2020","Day":"19","Month":"3","Year":"2020","Cases":"43","Deaths":"0","Countries and territories":"Romania","GeoId":"RO"},
 {"DateRep":"03/18/2020","Day":"18","Month":"3","Year":"2020","Cases":"33","Deaths":"0","Countries and territories":"Romania","GeoId":"RO"},
