@@ -18,27 +18,43 @@ function draw() {
     drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
   }, 0);
 
+  let timeout = 800;
+  let increment = 100;
+
   setTimeout(() => {
     drawTotalsChart();
-  }, 1000);
+  }, timeout);
+  timeout += increment;
+
   setTimeout(() => {
     drawTotalsRomaniaRelative();
-  }, 1300);
+  }, timeout);
+  timeout += increment;
+
   setTimeout(() => {
     drawLastWeekChart();
-  }, 1600);
+  }, timeout);
+  timeout += increment;
+
   setTimeout(() => {
     drawLastWeekTotalsRomaniaRelative();
-  }, 1900);
+  }, timeout);
+  timeout += increment;
+
   setTimeout(() => {
     drawGlobalTotals();
-  }, 2200);
+  }, timeout);
+  timeout += increment;
+
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
-  }, 2500);
+  }, timeout);
+  timeout += 300;
+
   setTimeout(() => {
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, 2800);
+  }, timeout);
+  timeout += 300;
 }
 
 function setCurrentDate() {
@@ -126,6 +142,9 @@ function drawTotalsChart() {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -178,6 +197,9 @@ function drawLastWeekChart() {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -245,6 +267,9 @@ function drawLastWeekTotalsRomaniaRelative() {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -312,6 +337,9 @@ function drawTotalsRomaniaRelative() {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -370,6 +398,9 @@ function drawGlobalTotals() {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -437,6 +468,9 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
       ]
     },
     options: {
+      animation: {
+        duration: 0
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [
