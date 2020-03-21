@@ -20,25 +20,25 @@ function draw() {
 
   setTimeout(() => {
     drawTotalsChart();
-  }, 300);
+  }, 1000);
   setTimeout(() => {
     drawTotalsRomaniaRelative();
-  }, 600);
+  }, 1300);
   setTimeout(() => {
     drawLastWeekChart();
-  }, 900);
+  }, 1600);
   setTimeout(() => {
     drawLastWeekTotalsRomaniaRelative();
-  }, 1200);
+  }, 1900);
   setTimeout(() => {
     drawGlobalTotals();
-  }, 1500);
+  }, 2200);
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
-  }, 1800);
+  }, 2500);
   setTimeout(() => {
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, 1800);
+  }, 2800);
 }
 
 function setCurrentDate() {
