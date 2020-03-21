@@ -1,7 +1,7 @@
 moment.locale('ro');
 const isMobile = window.innerWidth < 768;
-
-console.log('isMobile', isMobile);
+const defaultDateFormat = isMobile ? 'DD.MM' : 'DD MMMM';
+const formatThousandsAsK = value => (value > 999 ? value / 1000 + 'k' : value);
 
 function init() {
   setCurrentDate();
@@ -20,18 +20,25 @@ function draw() {
 
   setTimeout(() => {
     drawTotalsChart();
+  }, 300);
+  setTimeout(() => {
     drawTotalsRomaniaRelative();
+  }, 600);
+  setTimeout(() => {
     drawLastWeekChart();
-  }, 2000);
+  }, 900);
   setTimeout(() => {
     drawLastWeekTotalsRomaniaRelative();
-    drawGlobalTotals();
-    drawTotalsForCountry('romaniaTotals', 'Romania');
-    drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, 3500);
+  }, 1200);
   setTimeout(() => {
-    setupBarLabels();
-  }, 0);
+    drawGlobalTotals();
+  }, 1500);
+  setTimeout(() => {
+    drawTotalsForCountry('romaniaTotals', 'Romania');
+  }, 1800);
+  setTimeout(() => {
+    drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
+  }, 1800);
 }
 
 function setCurrentDate() {
@@ -48,11 +55,12 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
 
   const countryData = data
     .sort((a, b) => +moment(b.DateRep) - +moment(a.DateRep))
-    .filter(x => x.CountryExp == countryName)
-    .slice(0, 18)
-    .reverse();
-  const labels = countryData.map(x => moment(x.DateRep).format('DD MMMM'));
-  const values = countryData.map(x => x.Cases);
+    .filter(x => x.CountryExp == countryName);
+
+  const justLastTwentyDays = countryData.reverse().slice(countryData.length - (isMobile ? 15 : 25));
+
+  const labels = justLastTwentyDays.map(x => moment(x.DateRep).format(defaultDateFormat));
+  const values = justLastTwentyDays.map(x => x.Cases);
 
   otherCountryChart = new Chart(ctx, {
     type: 'bar',
@@ -73,7 +81,8 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -122,7 +131,8 @@ function drawTotalsChart() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -173,7 +183,8 @@ function drawLastWeekChart() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -239,7 +250,8 @@ function drawLastWeekTotalsRomaniaRelative() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -320,7 +332,7 @@ function drawGlobalTotals() {
   const data = window.data;
 
   const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format('DD MMMM'));
+  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x)
@@ -333,14 +345,14 @@ function drawGlobalTotals() {
     return totalSoFar + x;
   });
 
-  const filterFunction = (x, i) => {
-    if (i < localizedLabels.length - 20) {
-      return i % 4 == 0;
-    }
-    if (i < localizedLabels.length - 10) {
-      return i % 2 == 0;
-    }
-    return true;
+  const filterFunction = (x, i, a) => {
+    const distanceFromPresent = a.length - i;
+
+    const volumeToShow = isMobile ? 6 : 16;
+
+    const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
+
+    return i % rarifyingFactor == 0;
   };
 
   new Chart(ctx, {
@@ -364,7 +376,8 @@ function drawGlobalTotals() {
           {
             ticks: {
               fontColor: '#000',
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -372,7 +385,7 @@ function drawGlobalTotals() {
       layout: {
         padding: {
           left: 0,
-          right: 20,
+          right: 15,
           top: 0,
           bottom: 0
         }
@@ -386,7 +399,7 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
   const data = window.data;
 
   const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format('DD MMMM'));
+  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x && y.CountryExp == countryName)
@@ -430,7 +443,8 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
           {
             ticks: {
               fontColor: '#000',
-              beginAtZero: true
+              beginAtZero: true,
+              callback: formatThousandsAsK
             }
           }
         ]
@@ -540,12 +554,20 @@ function setupBarLabels() {
       ctx.textBaseline = 'bottom';
       ctx.fillStyle = '#000';
 
-      console.log('ctx.font', ctx.font);
-
       chartInstance.data.datasets.forEach(function(dataset) {
         for (var i = 0; i < dataset.data.length; i++) {
           var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-          const formattedValue = dataset.data[i] > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i];
+          const currentValue = dataset.data[i];
+          let formattedValue = currentValue > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i];
+
+          if (isMobile) {
+            const thousands = (currentValue / 1000).toFixed(1);
+            const endsWithZero = thousands.endsWith('.0');
+            const thousandsWithoutZero = (dataset.data[i] / 1000).toFixed(endsWithZero ? 0 : 1);
+
+            formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
+          }
+
           ctx.fillText(formattedValue, model.x, model.y - 2);
         }
       });
