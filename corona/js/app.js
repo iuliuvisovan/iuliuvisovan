@@ -1,15 +1,21 @@
 moment.locale('ro');
+const isMobile = window.innerWidth < 768;
 
-function draw() {
+console.log('isMobile', isMobile);
+
+function init() {
   setCurrentDate();
   cleanupData();
+  setupBarLabels();
+  setPickerCountries(window.data);
+}
+
+function draw() {
+  init();
+
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
     drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
-  }, 0);
-  setPickerCountries(window.data);
-  setTimeout(() => {
-    setupBarLabels();
   }, 0);
 
   setTimeout(() => {
@@ -48,8 +54,6 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const labels = countryData.map(x => moment(x.DateRep).format('DD MMMM'));
   const values = countryData.map(x => x.Cases);
 
-  const maxValue = Math.max(...values);
-
   otherCountryChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -69,8 +73,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 5) * 5
+              beginAtZero: true
             }
           }
         ]
@@ -98,7 +101,6 @@ function drawTotalsChart() {
 
   const labels = [...new Set(sortedByTotalCases.map(x => x.countryName))];
   const values = sortedByTotalCases.map(x => x.total);
-  const maxValue = Math.max(...values);
 
   new Chart(ctx, {
     type: 'bar',
@@ -120,8 +122,7 @@ function drawTotalsChart() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
@@ -151,7 +152,6 @@ function drawLastWeekChart() {
 
   const labels = [...new Set(sortedByTotalCases.map(x => x.countryName))];
   const values = sortedByTotalCases.map(x => x.total);
-  const maxValue = Math.max(...values);
 
   new Chart(ctx, {
     type: 'bar',
@@ -173,8 +173,7 @@ function drawLastWeekChart() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
@@ -207,7 +206,6 @@ function drawLastWeekTotalsRomaniaRelative() {
 
   const labels = [...new Set(slicedRelativeToRomania.map(x => x.countryName))];
   const values = slicedRelativeToRomania.map(x => x.total);
-  const maxValue = Math.max(...values);
 
   new Chart(ctx, {
     type: 'bar',
@@ -241,8 +239,7 @@ function drawLastWeekTotalsRomaniaRelative() {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
@@ -275,7 +272,6 @@ function drawTotalsRomaniaRelative() {
 
   const labels = [...new Set(slicedRelativeToRomania.map(x => x.countryName))];
   const values = slicedRelativeToRomania.map(x => x.total);
-  const maxValue = Math.max(...values);
 
   new Chart(ctx, {
     type: 'bar',
@@ -310,8 +306,7 @@ function drawTotalsRomaniaRelative() {
           {
             ticks: {
               fontColor: '#000',
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
@@ -338,16 +333,24 @@ function drawGlobalTotals() {
     return totalSoFar + x;
   });
 
-  const maxValue = summedDailyValues[summedDailyValues.length - 1];
+  const filterFunction = (x, i) => {
+    if (i < localizedLabels.length - 20) {
+      return i % 4 == 0;
+    }
+    if (i < localizedLabels.length - 10) {
+      return i % 2 == 0;
+    }
+    return true;
+  };
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: localizedLabels.filter((x, i) => i % 3 == 0),
+      labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
           label: 'Cazuri totale',
-          data: summedDailyValues.filter((x, i) => i % 3 == 0),
+          data: summedDailyValues.filter(filterFunction),
           backgroundColor: '#F4433622',
           borderColor: '#F44336',
           borderWidth: 1
@@ -361,11 +364,18 @@ function drawGlobalTotals() {
           {
             ticks: {
               fontColor: '#000',
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 20,
+          top: 0,
+          bottom: 0
+        }
       }
     }
   });
@@ -389,16 +399,24 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
     return totalSoFar + x;
   });
 
-  const maxValue = summedDailyValues[summedDailyValues.length - 1];
+  const filterFunction = (x, i) => {
+    if (i < localizedLabels.length - 20) {
+      return i % 4 == 0;
+    }
+    if (i < localizedLabels.length - 10) {
+      return i % 2 == 0;
+    }
+    return true;
+  };
 
   otherCountryChartTotals = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: localizedLabels.filter((x, i) => i > 40),
+      labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
           label: 'Cazuri - ' + countryName,
-          data: summedDailyValues.filter((x, i) => i > 40),
+          data: summedDailyValues.filter(filterFunction),
           backgroundColor: color + '22',
           borderColor: color,
           borderWidth: 1
@@ -412,11 +430,18 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
           {
             ticks: {
               fontColor: '#000',
-              beginAtZero: true,
-              max: Math.ceil((maxValue + maxValue / 10) / 10) * 10
+              beginAtZero: true
             }
           }
         ]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 20,
+          top: 0,
+          bottom: 0
+        }
       }
     }
   });
@@ -506,7 +531,6 @@ function setupBarLabels() {
     afterDraw: function(chartInstance) {
       var ctx = chartInstance.chart.ctx;
 
-      // render the value of the chart above the bar
       ctx.font = Chart.helpers.fontString(
         Chart.defaults.global.defaultFontSize,
         'normal',
@@ -514,11 +538,15 @@ function setupBarLabels() {
       );
       ctx.textAlign = 'center';
       ctx.textBaseline = 'bottom';
+      ctx.fillStyle = '#000';
+
+      console.log('ctx.font', ctx.font);
 
       chartInstance.data.datasets.forEach(function(dataset) {
         for (var i = 0; i < dataset.data.length; i++) {
           var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-          ctx.fillText(dataset.data[i], model.x, model.y - 2);
+          const formattedValue = dataset.data[i] > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i];
+          ctx.fillText(formattedValue, model.x, model.y - 2);
         }
       });
     }
