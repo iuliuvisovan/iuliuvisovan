@@ -16,13 +16,13 @@ function draw() {
     drawTotalsChart();
     drawTotalsRomaniaRelative();
     drawLastWeekChart();
-  }, 3000);
+  }, 2000);
   setTimeout(() => {
     drawLastWeekTotalsRomaniaRelative();
     drawGlobalTotals();
     drawTotalsForCountry('romaniaTotals', 'Romania');
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, 4500);
+  }, 3500);
   setTimeout(() => {
     setupBarLabels();
   }, 0);
