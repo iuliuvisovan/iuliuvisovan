@@ -28,7 +28,7 @@ function draw() {
     drawGlobalTotals();
     drawTotalsForCountry('romaniaTotals', 'Romania');
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, 1000);
+  }, 800);
 }
 
 function setCurrentDate() {
