@@ -7,7 +7,9 @@ function init() {
   setCurrentDate();
   cleanupData();
   setupBarLabels();
-  setPickerCountries(window.data);
+  setTimeout(() => {
+    setPickerCountries(window.data);
+  }, 1000);
 }
 
 function draw() {
@@ -18,43 +20,15 @@ function draw() {
     drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
   }, 0);
 
-  let timeout = 800;
-  let increment = 100;
-
   setTimeout(() => {
     drawTotalsChart();
-  }, timeout);
-  timeout += increment;
-
-  setTimeout(() => {
     drawTotalsRomaniaRelative();
-  }, timeout);
-  timeout += increment;
-
-  setTimeout(() => {
     drawLastWeekChart();
-  }, timeout);
-  timeout += increment;
-
-  setTimeout(() => {
     drawLastWeekTotalsRomaniaRelative();
-  }, timeout);
-  timeout += increment;
-
-  setTimeout(() => {
     drawGlobalTotals();
-  }, timeout);
-  timeout += increment;
-
-  setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
-  }, timeout);
-  timeout += 300;
-
-  setTimeout(() => {
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
-  }, timeout);
-  timeout += 300;
+  }, 1000);
 }
 
 function setCurrentDate() {
