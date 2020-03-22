@@ -499,112 +499,6 @@ function drawLastWeekChart() {
   });
 }
 
-function drawGlobalTotals() {
-  const ctx = document.getElementById('globalTotals').getContext('2d');
-  const data = window.data;
-
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
-  const values = labels.map(x =>
-    data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Cases)
-      .reduce((a, b) => +a + +b, 0)
-  );
-  const deaths = labels.map(x =>
-    data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Deaths)
-      .reduce((a, b) => +a + +b, 0)
-  );
-  const recoveries = labels.map(x =>
-    data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Recoveries)
-      .reduce((a, b) => +a + +b, 0)
-  );
-
-  const summedDailyValues = values.map((x, i, a) => {
-    const totalSoFar = values.slice(0, i).reduce((a, b) => a + b, 0);
-    return totalSoFar + x;
-  });
-
-  const summedDailyDeaths = deaths.map((x, i, a) => {
-    const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
-    return totalSoFar + x;
-  });
-
-  const summedDailyRecoveries = recoveries.map((x, i, a) => {
-    const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
-    return totalSoFar + x;
-  });
-
-  const filterFunction = (x, i, a) => {
-    const distanceFromPresent = a.length - i;
-
-    const volumeToShow = isMobile ? 6 : 16;
-
-    const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
-
-    return i % rarifyingFactor == 0;
-  };
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: localizedLabels.filter(filterFunction),
-      datasets: [
-        {
-          label: 'Infectari - toata lumea',
-          data: summedDailyValues.filter(filterFunction),
-          backgroundColor: '#F4433622',
-          borderColor: '#F4433688',
-          borderWidth: 1
-        },
-        {
-          label: 'Vindecari - toata lumea',
-          data: summedDailyRecoveries.filter(filterFunction),
-          backgroundColor: '#4CAF5022',
-          borderColor: '#4CAF50',
-          borderWidth: 1
-        },
-        {
-          label: 'Morti - toata lumea',
-          data: summedDailyDeaths.filter(filterFunction),
-          backgroundColor: '#E91E6322',
-          borderColor: '#E91E63',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      animation: {
-        duration: 0
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              fontColor: '#000',
-              beginAtZero: true,
-              callback: formatThousandsAsK
-            }
-          }
-        ]
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 15,
-          top: 0,
-          bottom: 0
-        }
-      }
-    }
-  });
-}
-
 function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
@@ -707,6 +601,112 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
         padding: {
           left: 0,
           right: 20,
+          top: 0,
+          bottom: 0
+        }
+      }
+    }
+  });
+}
+
+function drawGlobalTotals() {
+  const ctx = document.getElementById('globalTotals').getContext('2d');
+  const data = window.data;
+
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+  const values = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x)
+      .map(x => x.Cases)
+      .reduce((a, b) => +a + +b, 0)
+  );
+  const deaths = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x)
+      .map(x => x.Deaths)
+      .reduce((a, b) => +a + +b, 0)
+  );
+  const recoveries = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x)
+      .map(x => x.Recoveries)
+      .reduce((a, b) => +a + +b, 0)
+  );
+
+  const summedDailyValues = values.map((x, i, a) => {
+    const totalSoFar = values.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyDeaths = deaths.map((x, i, a) => {
+    const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyRecoveries = recoveries.map((x, i, a) => {
+    const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const filterFunction = (x, i, a) => {
+    const distanceFromPresent = a.length - i;
+
+    const volumeToShow = isMobile ? 6 : 16;
+
+    const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
+
+    return i % rarifyingFactor == 0;
+  };
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: localizedLabels.filter(filterFunction),
+      datasets: [
+        {
+          label: 'Infectari - toata lumea',
+          data: summedDailyValues.filter(filterFunction),
+          backgroundColor: '#ff980022',
+          borderColor: '#ff9800',
+          borderWidth: 1
+        },
+        {
+          label: 'Vindecari - toata lumea',
+          data: summedDailyRecoveries.filter(filterFunction),
+          backgroundColor: '#4CAF5022',
+          borderColor: '#4CAF50',
+          borderWidth: 1
+        },
+        {
+          label: 'Morti - toata lumea',
+          data: summedDailyDeaths.filter(filterFunction),
+          backgroundColor: '#E91E6322',
+          borderColor: '#E91E63',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      animation: {
+        duration: 0
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#000',
+              beginAtZero: true,
+              callback: formatThousandsAsK
+            }
+          }
+        ]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 15,
           top: 0,
           bottom: 0
         }
