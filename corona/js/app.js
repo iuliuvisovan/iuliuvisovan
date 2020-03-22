@@ -7,9 +7,7 @@ function init() {
   setCurrentDate();
   cleanupData();
   setupBarLabels();
-  setTimeout(() => {
-    setPickerCountries(window.data);
-  }, 1000);
+  setPickerCountries(window.data);
 }
 
 function draw() {
@@ -17,7 +15,7 @@ function draw() {
 
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
-    drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
+    drawTotalsForCountry('romaniaTotals', 'Romania');
   }, 0);
 
   setTimeout(() => {
@@ -26,7 +24,7 @@ function draw() {
     drawLastWeekChart();
     drawLastWeekTotalsRomaniaRelative();
     drawGlobalTotals();
-    drawTotalsForCountry('romaniaTotals', 'Romania');
+    drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
   }, 800);
 }
@@ -51,6 +49,8 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
 
   const labels = justLastTwentyDays.map(x => moment(x.DateRep).format(defaultDateFormat));
   const values = justLastTwentyDays.map(x => x.Cases);
+  const deaths = justLastTwentyDays.map(x => +x.Deaths);
+  const recoveries = justLastTwentyDays.map(x => +x.Recoveries);
 
   otherCountryChart = new Chart(ctx, {
     type: 'bar',
@@ -58,10 +58,24 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
       labels: labels,
       datasets: [
         {
-          label: 'Cazuri noi',
+          label: 'Infectari',
           data: values,
           backgroundColor: color + '22',
           borderColor: color,
+          borderWidth: 1
+        },
+        {
+          label: 'Vindecari',
+          data: recoveries,
+          backgroundColor: '#4CAF5022',
+          borderColor: '#4CAF50',
+          borderWidth: 1
+        },
+        {
+          label: 'Morti',
+          data: deaths,
+          backgroundColor: '#E91E6322',
+          borderColor: '#E91E63',
           borderWidth: 1
         }
       ]
@@ -418,9 +432,13 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
   });
 
   const filterFunction = (x, i, a) => {
+    if (i < a.length - (isMobile ? 30 : 40)) {
+      return false;
+    }
+
     const distanceFromPresent = a.length - i;
 
-    const volumeToShow = isMobile ? 6 : 16;
+    const volumeToShow = isMobile ? 7 : 16;
 
     const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
 
@@ -475,40 +493,26 @@ function cleanupData() {
     if (countryName.startsWith('Cases')) {
       countryName = 'Diamond Princess';
     }
-    if (countryName.toLowerCase() == 'united kingdom') {
-      countryName = 'United Kingdom';
-    }
+    const currentCountryFromCsse = window.recoveredData.find(x => {
+      const sourceCountryName = countryName.replace(/\s/g, '').toLowerCase();
+      const targetCountryName = x['Country/Region'].toLowerCase().replace(/\_/g, '');
+
+      return targetCountryName == sourceCountryName;
+    });
+
+    // debugger;
+
+    const yesterdaysKey = moment(x.DateRep)
+      .subtract(1, 'day')
+      .format('M/DD/YY');
+    const todaysKey = moment(x.DateRep).format('M/DD/YY');
+
+    const todaysTotalRecoveries = currentCountryFromCsse?.[todaysKey] || 0;
+    const yesterdaysTotalRecoveries = currentCountryFromCsse?.[yesterdaysKey] || 0;
+
+    x = { ...x, Recoveries: todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0 };
     if (countryName == 'Romania') {
-      if (x.DateRep == '03/22/2020') {
-        x.Cases = '66';
-      }
-      if (x.DateRep == '03/21/2020') {
-        x.Cases = '59';
-      }
-      if (x.DateRep == '03/20/2020') {
-        x.Cases = '31';
-      }
-      if (x.DateRep == '03/19/2020') {
-        x.Cases = '17';
-      }
-      if (x.DateRep == '03/18/2020') {
-        x.Cases = '43';
-      }
-      if (x.DateRep == '03/17/2020') {
-        x.Cases = '49';
-      }
-      if (x.DateRep == '03/16/2020') {
-        x.Cases = '29';
-      }
-      if (x.DateRep == '03/15/2020') {
-        x.Cases = '39';
-      }
-      if (x.DateRep == '03/14/2020') {
-        x.Cases = '31';
-      }
-      if (x.DateRep == '03/13/2020') {
-        x.Cases = '24';
-      }
+      x = { ...x, ...window.romaniaData[x.DateRep] };
     }
     if (countryName == 'Italy') {
       if (x.DateRep == '03/16/2020') {
@@ -579,7 +583,9 @@ function setupBarLabels() {
             formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
           }
 
-          ctx.fillText(formattedValue, model.x, model.y - 2);
+          if (currentValue > 0) {
+            ctx.fillText(formattedValue, model.x, model.y - 2);
+          }
         }
       });
     }
