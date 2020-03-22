@@ -417,14 +417,14 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
     return totalSoFar + x;
   });
 
-  const filterFunction = (x, i) => {
-    if (i < localizedLabels.length - 20) {
-      return i % 4 == 0;
-    }
-    if (i < localizedLabels.length - 10) {
-      return i % 2 == 0;
-    }
-    return true;
+  const filterFunction = (x, i, a) => {
+    const distanceFromPresent = a.length - i;
+
+    const volumeToShow = isMobile ? 6 : 16;
+
+    const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
+
+    return i % rarifyingFactor == 0;
   };
 
   otherCountryChartTotals = new Chart(ctx, {
