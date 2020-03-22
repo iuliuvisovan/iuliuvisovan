@@ -413,7 +413,7 @@ function drawGlobalTotals() {
   });
 }
 
-function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
+function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
@@ -425,9 +425,31 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
       .map(x => x.Cases)
       .reduce((a, b) => +a + +b, 0)
   );
+  const deaths = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x && y.CountryExp == countryName)
+      .map(x => x.Deaths)
+      .reduce((a, b) => +a + +b, 0)
+  );
+  const recoveries = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x && y.CountryExp == countryName)
+      .map(x => x.Recoveries)
+      .reduce((a, b) => +a + +b, 0)
+  );
 
   const summedDailyValues = values.map((x, i, a) => {
     const totalSoFar = values.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyDeaths = deaths.map((x, i, a) => {
+    const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyRecoveries = recoveries.map((x, i, a) => {
+    const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
 
@@ -451,10 +473,24 @@ function drawTotalsForCountry(chartId, countryName, color = '#2196F3') {
       labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
-          label: 'Cazuri - ' + countryName,
+          label: 'Infectari - ' + countryName,
           data: summedDailyValues.filter(filterFunction),
           backgroundColor: color + '22',
           borderColor: color,
+          borderWidth: 1
+        },
+        {
+          label: 'Vindecari - ' + countryName,
+          data: summedDailyRecoveries.filter(filterFunction),
+          backgroundColor: '#4CAF5022',
+          borderColor: '#4CAF50',
+          borderWidth: 1
+        },
+        {
+          label: 'Morti - ' + countryName,
+          data: summedDailyDeaths.filter(filterFunction),
+          backgroundColor: '#E91E6322',
+          borderColor: '#E91E63',
           borderWidth: 1
         }
       ]
