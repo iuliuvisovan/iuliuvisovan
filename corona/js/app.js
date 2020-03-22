@@ -19,11 +19,12 @@ function draw() {
   }, 0);
 
   setTimeout(() => {
+    drawGlobalActiveCases();
+    drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
+    drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
     drawTotalsChart();
     drawLastWeekChart();
     drawGlobalTotals();
-    drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
-    drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
   }, 800);
 }
 
@@ -146,6 +147,189 @@ function drawTotalsChart() {
   });
 }
 
+const totals = {};
+
+function drawGlobalActiveCases() {
+  const ctx = document.getElementById('globalActiveCases').getContext('2d');
+  const data = window.data;
+
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+
+  data.forEach(x => {
+    totals[x.CountryExp] = data
+      .filter(y => y.CountryExp == x.CountryExp)
+      .map(x => x.Cases)
+      .reduce((a, b) => +a + +b);
+  });
+
+  const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
+  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 5);
+
+  const datasets = [];
+  sortedByTotalCases.forEach(({ countryName }) => {
+    const firstCountryInfections = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Cases)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryInfections = firstCountryInfections.map((x, i, a) => {
+      const totalSoFar = firstCountryInfections.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+    const firstCountryRecoveries = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Recoveries)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryRecoveries = firstCountryRecoveries.map((x, i, a) => {
+      const totalSoFar = firstCountryRecoveries.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+    const firstCountryDeaths = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Deaths)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryDeaths = firstCountryDeaths.map((x, i, a) => {
+      const totalSoFar = firstCountryDeaths.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+
+    const values = summedFirstCountryInfections.map(
+      (x, i) => x - (summedFirstCountryRecoveries[i] + summedFirstCountryDeaths[i])
+    );
+
+    datasets.push(values);
+  });
+
+  const filterFunction = (x, i, a) => {
+    if (i < (isMobile ? 30 : 20)) {
+      return false;
+    }
+
+    return i % (isMobile ? 8 : 4) == 0 || i == a.length - 1;
+  };
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: localizedLabels.filter(filterFunction),
+      datasets: [
+        {
+          label: sortedByTotalCases[0].countryName,
+          data: datasets[0].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#5b9bd5',
+          borderWidth: 2
+        },
+        {
+          label: sortedByTotalCases[1].countryName,
+          data: datasets[1].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#ffc001',
+          borderWidth: 2
+        },
+        {
+          label: sortedByTotalCases[2].countryName,
+          data: datasets[2].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#ed7d31',
+          borderWidth: 2
+        },
+        {
+          label: sortedByTotalCases[3].countryName,
+          data: datasets[3].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#9C27B0',
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      animation: {
+        duration: 0
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#000',
+              beginAtZero: true,
+              callback: formatThousandsAsK
+            }
+          }
+        ]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 15,
+          top: 0,
+          bottom: 0
+        }
+      }
+    }
+  });
+}
+
+function drawTotalsChart() {
+  const ctx = document.getElementById('totalsChart').getContext('2d');
+  const data = window.data;
+
+  const totals = {};
+
+  data.forEach(x => {
+    totals[x.CountryExp] = data
+      .filter(y => y.CountryExp == x.CountryExp)
+      .map(x => x.Cases)
+      .reduce((a, b) => +a + +b);
+  });
+
+  const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
+
+  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 10);
+
+  const labels = [...new Set(sortedByTotalCases.map(x => x.countryName))];
+  const values = sortedByTotalCases.map(x => x.total);
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Cazuri totale',
+          data: values,
+          backgroundColor: '#E91E6322',
+          borderColor: '#E91E63',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      animation: {
+        duration: 0
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              callback: formatThousandsAsK
+            }
+          }
+        ]
+      }
+    }
+  });
+}
+
 function drawLastWeekChart() {
   const ctx = document.getElementById('lastWeekTotals').getContext('2d');
   const data = window.data;
@@ -193,146 +377,6 @@ function drawLastWeekChart() {
             ticks: {
               beginAtZero: true,
               callback: formatThousandsAsK
-            }
-          }
-        ]
-      }
-    }
-  });
-}
-
-function drawLastWeekTotalsRomaniaRelative() {
-  const ctx = document.getElementById('lastWeekTotalsRomaniaRelative').getContext('2d');
-  const data = window.data;
-
-  const validData = data.filter(x => moment().diff(moment(x.DateRep), 'days') <= 7);
-
-  const totals = {};
-
-  validData.forEach(x => {
-    totals[x.CountryExp] = validData
-      .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.Cases)
-      .reduce((a, b) => +a + +b);
-  });
-
-  const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
-
-  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total);
-  const romaniaIndex = sortedByTotalCases.indexOf(sortedByTotalCases.find(x => x.countryName == 'Romania'));
-
-  const slicedRelativeToRomania = sortedByTotalCases.slice(romaniaIndex - 5, romaniaIndex + 5);
-
-  const labels = [...new Set(slicedRelativeToRomania.map(x => x.countryName))];
-  const values = slicedRelativeToRomania.map(x => x.total);
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Cazuri in ultimele 7 zile',
-          data: values,
-          backgroundColor: '#2196F322',
-          backgroundColor: [
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F3',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322'
-          ],
-          borderColor: '#2196F3',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      animation: {
-        duration: 0
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              callback: formatThousandsAsK
-            }
-          }
-        ]
-      }
-    }
-  });
-}
-
-function drawTotalsRomaniaRelative() {
-  const ctx = document.getElementById('totalsRomaniaRelative').getContext('2d');
-  const data = window.data;
-
-  const validData = data;
-
-  const totals = {};
-
-  validData.forEach(x => {
-    totals[x.CountryExp] = validData
-      .filter(y => y.CountryExp == x.CountryExp)
-      .map(x => x.Cases)
-      .reduce((a, b) => +a + +b);
-  });
-
-  const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
-
-  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total);
-  const romaniaIndex = sortedByTotalCases.indexOf(sortedByTotalCases.find(x => x.countryName == 'Romania'));
-
-  const slicedRelativeToRomania = sortedByTotalCases.slice(romaniaIndex - 5, romaniaIndex + 5);
-
-  const labels = [...new Set(slicedRelativeToRomania.map(x => x.countryName))];
-  const values = slicedRelativeToRomania.map(x => x.total);
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Cazuri totale',
-          data: values,
-          backgroundColor: '#2196F322',
-          backgroundColor: [
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F3',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322',
-            '#2196F322'
-          ],
-          borderColor: '#2196F3',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      animation: {
-        duration: 0
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              fontColor: '#000',
-              beginAtZero: true
             }
           }
         ]
@@ -586,9 +630,6 @@ function cleanupData() {
 
     x = { ...x, Recoveries: todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0 };
 
-    if (countryName == 'China') {
-      console.log('x.Recoveries', x.Recoveries, x.DateRep);
-    }
     if (countryName == 'Romania') {
       x = { ...x, ...window.romaniaData[x.DateRep] };
     }
