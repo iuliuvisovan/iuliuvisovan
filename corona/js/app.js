@@ -20,12 +20,10 @@ function draw() {
 
   setTimeout(() => {
     drawTotalsChart();
-    drawTotalsRomaniaRelative();
     drawLastWeekChart();
-    drawLastWeekTotalsRomaniaRelative();
     drawGlobalTotals();
-    drawDailyCasesChart('otherCountryChart', 'Italy', '#CDDC39');
-    drawTotalsForCountry('otherCountryTotals', 'Italy', '#CDDC39');
+    drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
+    drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
   }, 800);
 }
 
@@ -355,9 +353,31 @@ function drawGlobalTotals() {
       .map(x => x.Cases)
       .reduce((a, b) => +a + +b, 0)
   );
+  const deaths = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x)
+      .map(x => x.Deaths)
+      .reduce((a, b) => +a + +b, 0)
+  );
+  const recoveries = labels.map(x =>
+    data
+      .filter(y => y.DateRep == x)
+      .map(x => x.Recoveries)
+      .reduce((a, b) => +a + +b, 0)
+  );
 
   const summedDailyValues = values.map((x, i, a) => {
     const totalSoFar = values.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyDeaths = deaths.map((x, i, a) => {
+    const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
+    return totalSoFar + x;
+  });
+
+  const summedDailyRecoveries = recoveries.map((x, i, a) => {
+    const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
 
@@ -377,10 +397,24 @@ function drawGlobalTotals() {
       labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
-          label: 'Cazuri totale',
+          label: 'Infectari - toata lumea',
           data: summedDailyValues.filter(filterFunction),
           backgroundColor: '#F4433622',
-          borderColor: '#F44336',
+          borderColor: '#F4433688',
+          borderWidth: 1
+        },
+        {
+          label: 'Vindecari - toata lumea',
+          data: summedDailyRecoveries.filter(filterFunction),
+          backgroundColor: '#4CAF5022',
+          borderColor: '#4CAF50',
+          borderWidth: 1
+        },
+        {
+          label: 'Morti - toata lumea',
+          data: summedDailyDeaths.filter(filterFunction),
+          backgroundColor: '#E91E6322',
+          borderColor: '#E91E63',
           borderWidth: 1
         }
       ]
@@ -529,24 +563,32 @@ function cleanupData() {
     if (countryName.startsWith('Cases')) {
       countryName = 'Diamond Princess';
     }
-    const currentCountryFromCsse = window.recoveredData.find(x => {
-      const sourceCountryName = countryName.replace(/\s/g, '').toLowerCase();
-      const targetCountryName = x['Country/Region'].toLowerCase().replace(/\_/g, '');
+    if (countryName.toLowerCase().startsWith('canada')) {
+      countryName = 'Canada';
+    }
+
+    const currentCountryWithTerritories = window.recoveredData.filter(x => {
+      const sourceCountryName = countryName.replace(/[\s\_]/g, '').toLowerCase();
+      const targetCountryName = x['Country/Region'].toLowerCase().replace(/[\s\_]/g, '');
 
       return targetCountryName == sourceCountryName;
     });
 
-    // debugger;
-
     const yesterdaysKey = moment(x.DateRep)
       .subtract(1, 'day')
-      .format('M/DD/YY');
-    const todaysKey = moment(x.DateRep).format('M/DD/YY');
+      .format('M/D/YY');
+    const todaysKey = moment(x.DateRep).format('M/D/YY');
 
-    const todaysTotalRecoveries = currentCountryFromCsse?.[todaysKey] || 0;
-    const yesterdaysTotalRecoveries = currentCountryFromCsse?.[yesterdaysKey] || 0;
+    const todaysTotalRecoveries =
+      currentCountryWithTerritories?.map(x => x[todaysKey]).reduce((a, b) => +a + +b, 0) || 0;
+    const yesterdaysTotalRecoveries =
+      currentCountryWithTerritories?.map(x => x[yesterdaysKey]).reduce((a, b) => +a + +b, 0) || 0;
 
     x = { ...x, Recoveries: todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0 };
+
+    if (countryName == 'China') {
+      console.log('x.Recoveries', x.Recoveries, x.DateRep);
+    }
     if (countryName == 'Romania') {
       x = { ...x, ...window.romaniaData[x.DateRep] };
     }
@@ -568,12 +610,12 @@ function cleanupData() {
 function drawComparedCountry(picker) {
   otherCountryChart.destroy();
 
-  drawDailyCasesChart('otherCountryChart', picker.value, '#CDDC39');
+  drawDailyCasesChart('otherCountryChart', picker.value, '#ffeb3b');
 }
 
 function drawComparedCountryTotalCases(picker) {
   otherCountryChartTotals.destroy();
-  drawTotalsForCountry('otherCountryTotals', picker.value, '#CDDC39');
+  drawTotalsForCountry('otherCountryTotals', picker.value, '#ffeb3b');
 }
 
 function setPickerCountries(data) {

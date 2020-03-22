@@ -1,7 +1,7 @@
 window.romaniaData = {
   '03/22/2020': {
     Cases: 66,
-    Deaths: 2,
+    Deaths: 3,
     Recoveries: 12
   },
   '03/21/2020': {
