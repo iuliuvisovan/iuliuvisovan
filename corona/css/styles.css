@@ -21,3 +21,8 @@ h3,
 h4 {
   text-align: center;
 }
+
+.graph-title {
+  margin-bottom: 0px;
+  margin-top: 55px;
+}

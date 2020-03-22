@@ -19,6 +19,7 @@ function draw() {
   }, 0);
 
   setTimeout(() => {
+    drawRomaniaActiveCases();
     drawGlobalActiveCases();
     drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
@@ -148,6 +149,119 @@ function drawTotalsChart() {
 }
 
 const totals = {};
+
+function drawRomaniaActiveCases() {
+  const ctx = document.getElementById('romaniaActiveCases').getContext('2d');
+  const data = window.data;
+
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+
+  data.forEach(x => {
+    totals[x.CountryExp] = data
+      .filter(y => y.CountryExp == x.CountryExp)
+      .map(x => x.Cases)
+      .reduce((a, b) => +a + +b);
+  });
+
+  const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
+  const aListWithJustRomania = countriesWithTotals.filter(x => x.countryName == 'Romania');
+
+  const datasets = [];
+  aListWithJustRomania.forEach(({ countryName }) => {
+    const firstCountryInfections = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Cases)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryInfections = firstCountryInfections.map((x, i, a) => {
+      const totalSoFar = firstCountryInfections.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+    const firstCountryRecoveries = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Recoveries)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryRecoveries = firstCountryRecoveries.map((x, i, a) => {
+      const totalSoFar = firstCountryRecoveries.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+    const firstCountryDeaths = labels.map(x =>
+      data
+        .filter(y => y.DateRep == x && y.CountryExp == countryName)
+        .map(x => x.Deaths)
+        .reduce((a, b) => +a + +b, 0)
+    );
+    const summedFirstCountryDeaths = firstCountryDeaths.map((x, i, a) => {
+      const totalSoFar = firstCountryDeaths.slice(0, i).reduce((a, b) => a + b, 0);
+      return totalSoFar + x;
+    });
+
+    const values = summedFirstCountryInfections.map(
+      (x, i) => x - (summedFirstCountryRecoveries[i] + summedFirstCountryDeaths[i])
+    );
+
+    datasets.push(values);
+  });
+
+  const filterFunction = (x, i, a) => {
+    if (i < 50) {
+      return false;
+    }
+
+    const distanceFromPresent = a.length - i;
+
+    const volumeToShow = isMobile ? 6 : 16;
+
+    const rarifyingFactor = Math.floor(distanceFromPresent / volumeToShow) + 1;
+
+    return i % rarifyingFactor == 0;
+  };
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: localizedLabels.filter(filterFunction),
+      datasets: [
+        {
+          label: 'Cazuri active - ' + aListWithJustRomania[0].countryName,
+          data: datasets[0].filter(filterFunction),
+          backgroundColor: '#5b9bd522',
+          borderColor: '#5b9bd5',
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      animation: {
+        duration: 0
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontColor: '#000',
+              beginAtZero: true,
+              callback: formatThousandsAsK
+            }
+          }
+        ]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 15,
+          top: 0,
+          bottom: 0
+        }
+      }
+    }
+  });
+}
 
 function drawGlobalActiveCases() {
   const ctx = document.getElementById('globalActiveCases').getContext('2d');
