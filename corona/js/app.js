@@ -715,9 +715,40 @@ function drawGlobalTotals() {
   });
 }
 
+const recoveriesCountriesMap = {
+  'Korea, South': 'South Korea'
+};
+
+function getRecoveriesForToday(countryName, dateRep) {
+  const currentCountryWithTerritories = window.recoveredData.filter(x => {
+    const sourceCountryName = countryName.replace(/[\s\_]/g, '').toLowerCase();
+
+    let targetCountryName = x['Country/Region'];
+
+    if (recoveriesCountriesMap[targetCountryName]) {
+      targetCountryName = recoveriesCountriesMap[targetCountryName];
+    }
+
+    targetCountryName = targetCountryName.toLowerCase().replace(/[\s\_]/g, '');
+
+    return targetCountryName == sourceCountryName;
+  });
+
+  const yesterdaysKey = moment(dateRep)
+    .subtract(1, 'day')
+    .format('M/D/YY');
+  const todaysKey = moment(dateRep).format('M/D/YY');
+
+  const todaysTotalRecoveries = currentCountryWithTerritories?.map(x => x[todaysKey]).reduce((a, b) => +a + +b, 0) || 0;
+  const yesterdaysTotalRecoveries =
+    currentCountryWithTerritories?.map(x => x[yesterdaysKey]).reduce((a, b) => +a + +b, 0) || 0;
+
+  return todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0;
+}
+
 function cleanupData() {
   window.data = window.data.map(x => {
-    let countryName = x['Countries and territories'];
+    let countryName = x['Countries and territories'].replace(/\_/g, ' ');
     if (countryName.startsWith('Cases')) {
       countryName = 'Diamond Princess';
     }
@@ -725,24 +756,9 @@ function cleanupData() {
       countryName = 'Canada';
     }
 
-    const currentCountryWithTerritories = window.recoveredData.filter(x => {
-      const sourceCountryName = countryName.replace(/[\s\_]/g, '').toLowerCase();
-      const targetCountryName = x['Country/Region'].toLowerCase().replace(/[\s\_]/g, '');
+    const Recoveries = getRecoveriesForToday(countryName, x.DateRep);
 
-      return targetCountryName == sourceCountryName;
-    });
-
-    const yesterdaysKey = moment(x.DateRep)
-      .subtract(1, 'day')
-      .format('M/D/YY');
-    const todaysKey = moment(x.DateRep).format('M/D/YY');
-
-    const todaysTotalRecoveries =
-      currentCountryWithTerritories?.map(x => x[todaysKey]).reduce((a, b) => +a + +b, 0) || 0;
-    const yesterdaysTotalRecoveries =
-      currentCountryWithTerritories?.map(x => x[yesterdaysKey]).reduce((a, b) => +a + +b, 0) || 0;
-
-    x = { ...x, Recoveries: todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0 };
+    x = { ...x, Recoveries };
 
     if (countryName == 'Romania') {
       x = { ...x, ...window.romaniaData[x.DateRep] };
