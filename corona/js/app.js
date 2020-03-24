@@ -13,8 +13,8 @@ function init() {
 function draw() {
   init();
 
-  drawDailyCasesChart('romaniaChart', 'Romania');
-  drawTotalsForCountry('romaniaTotals', 'Romania');
+  // drawDailyCasesChart('romaniaChart', 'Romania');
+  // drawTotalsForCountry('romaniaTotals', 'Romania');
 
   setTimeout(() => {
     drawGlobalActiveCases();
@@ -330,11 +330,15 @@ function drawGlobalActiveCases() {
   });
 
   const filterFunction = (x, i, a) => {
-    if (i < (isMobile ? 30 : 20)) {
+    if (i < (isMobile ? 30 : 30)) {
       return false;
     }
 
-    return i % (isMobile ? 8 : 4) == 0 || i == a.length - 1;
+    if (i > a.length - 5) {
+      return true;
+    }
+
+    return i % (isMobile ? 8 : 2) == 0 || i == a.length - 1;
   };
 
   new Chart(ctx, {
