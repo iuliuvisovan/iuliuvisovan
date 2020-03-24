@@ -13,8 +13,8 @@ function init() {
 function draw() {
   init();
 
-  // drawDailyCasesChart('romaniaChart', 'Romania');
-  // drawTotalsForCountry('romaniaTotals', 'Romania');
+  drawDailyCasesChart('romaniaChart', 'Romania');
+  drawTotalsForCountry('romaniaTotals', 'Romania');
 
   setTimeout(() => {
     drawGlobalActiveCases();
