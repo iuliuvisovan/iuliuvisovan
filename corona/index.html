@@ -36,20 +36,19 @@
     <canvas id="romaniaTotals"></canvas>
   </div>
 
-  <h3 class="graph-title">Cazuri active - Romania (cazuri active = cazuri totale - (vindecari + morti))</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="romaniaActiveCases"></canvas>
-  </div>
-
-
-  <h3 class="graph-title">Cazuri active la nivel global</h3>
+  <h3 class="graph-title">Cazuri active la nivel global (cazuri active = cazuri totale - (vindecari + morti))</h3>
   <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
     <canvas id="globalActiveCases"></canvas>
   </div>
 
+  <h3 class="graph-title">Cazuri active pe o anumita tara</h3>
+  <select id="activeCasesCountryPicker" style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedActiveCases(this)" class="country-picker" value='Romania'></select>
+  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
+    <canvas id="countryActiveCases"></canvas>
+  </div>
+
   <h3 class="graph-title">Cazuri zilnice pe o anumita tara</h3>
-  <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)"
-    class="country-picker"></select>
+  <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)" class="country-picker"></select>
   <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; max-height: 100vh;">
     <canvas id="otherCountryChart"></canvas>
   </div>

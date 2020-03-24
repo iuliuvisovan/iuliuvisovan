@@ -1,4 +1,4 @@
-moment.locale('ro');
+moment.locale('en');
 const isMobile = window.innerWidth < 768;
 const defaultDateFormat = isMobile ? 'DD.MM' : 'DD MMMM';
 const formatThousandsAsK = value => (value > 999 ? value / 1000 + 'k' : value);
@@ -16,11 +16,11 @@ function draw() {
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
+    drawGlobalActiveCases();
   }, 0);
 
   setTimeout(() => {
-    drawRomaniaActiveCases();
-    drawGlobalActiveCases();
+    drawCountryActiveCases('Romania');
     drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
     drawTotalsChart();
@@ -36,6 +36,7 @@ function setCurrentDate() {
 
 var otherCountryChart = undefined;
 var otherCountryChartTotals = undefined;
+var countryActiveCases = undefined;
 
 function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
@@ -150,8 +151,8 @@ function drawTotalsChart() {
 
 const totals = {};
 
-function drawRomaniaActiveCases() {
-  const ctx = document.getElementById('romaniaActiveCases').getContext('2d');
+function drawCountryActiveCases(countryName) {
+  const ctx = document.getElementById('countryActiveCases').getContext('2d');
   const data = window.data;
 
   const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
@@ -165,10 +166,10 @@ function drawRomaniaActiveCases() {
   });
 
   const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
-  const aListWithJustRomania = countriesWithTotals.filter(x => x.countryName == 'Romania');
+  const justThisCountry = countriesWithTotals.filter(x => x.countryName == countryName);
 
   const datasets = [];
-  aListWithJustRomania.forEach(({ countryName }) => {
+  justThisCountry.forEach(({ countryName }) => {
     const firstCountryInfections = labels.map(x =>
       data
         .filter(y => y.DateRep == x && y.CountryExp == countryName)
@@ -208,7 +209,7 @@ function drawRomaniaActiveCases() {
   });
 
   const filterFunction = (x, i, a) => {
-    if (i < 50) {
+    if (i < (countryName == 'China' ? 30 : 50)) {
       return false;
     }
 
@@ -221,13 +222,13 @@ function drawRomaniaActiveCases() {
     return i % rarifyingFactor == 0;
   };
 
-  new Chart(ctx, {
+  countryActiveCases = new Chart(ctx, {
     type: 'line',
     data: {
       labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
-          label: 'Cazuri active - ' + aListWithJustRomania[0].countryName,
+          label: 'Cazuri active - ' + justThisCountry[0].countryName,
           data: datasets[0].filter(filterFunction),
           backgroundColor: '#5b9bd522',
           borderColor: '#5b9bd5',
@@ -802,6 +803,11 @@ function drawComparedCountryTotalCases(picker) {
   drawTotalsForCountry('otherCountryTotals', picker.value, '#ffeb3b');
 }
 
+function drawComparedActiveCases(picker) {
+  countryActiveCases.destroy();
+  drawCountryActiveCases(picker.value);
+}
+
 function setPickerCountries(data) {
   const pickers = document.querySelectorAll('.country-picker');
 
@@ -813,7 +819,7 @@ function setPickerCountries(data) {
       option.innerText = countryName;
       picker.appendChild(option);
     });
-    picker.value = 'Italy';
+    picker.value = picker.id == 'activeCasesCountryPicker' ? 'Romania' : 'Italy';
   });
 }
 
