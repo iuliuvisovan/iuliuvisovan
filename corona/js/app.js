@@ -487,7 +487,7 @@ function drawLastWeekChart() {
       labels: labels,
       datasets: [
         {
-          label: 'Cazuri in ultimele 7 zile',
+          label: 'Confirmed cases in the last 7 days',
           data: values,
           backgroundColor: '#9c27b022',
           borderColor: '#9c27b0',
