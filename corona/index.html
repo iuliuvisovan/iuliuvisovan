@@ -25,60 +25,86 @@
 </head>
 
 <body>
-  <h2>Situatia COVID-19 la data de <span id="currentDate"></span></h2>
+  <h2 style="margin-bottom: -20px;">Situatia COVID-19 la data de <span id="currentDate"></span></h2>
   <h3 class="graph-title">Cazuri zilnice - Romania</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; max-height: 100vh;">
+  <div class="chart-container" >
     <canvas id="romaniaChart"></canvas>
   </div>
 
   <h3 class="graph-title">Cazuri totale / evolutie - Romania</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
+  <div class="chart-container">
     <canvas id="romaniaTotals"></canvas>
   </div>
 
-  <h3 class="graph-title">Cazuri active la nivel global (cazuri active = cazuri totale - (vindecari + morti))</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="globalActiveCases"></canvas>
+  <h4>Alege grafic:</h4>
+  <div style="margin: -15px 0 -35px 0; position: relative; z-index: 5;">
+    <button onclick="show('globalActiveCasesWrapper', this)">Cazuri active - global</button>
+    <button onclick="show('countryActiveCasesWrapper', this)">Cazuri active - pe o anumita tara</button>
+    <button onclick="show('otherCountryChartWrapper', this)">Cazuri zilnice - pe o anumita tara</button>
+    <button onclick="show('totalsChartWrapper', this)">Cazuri confirmate top 10 - global - top timpul</button>
+    <button onclick="show('lastWeekTotalsWrapper', this)">Cazuri confirmate top 10 - global - ultimele 7 zile</button>
+    <button onclick="show('globalTotalsWrapper', this)">Cazuri confirmate / evolutie - global</button>
   </div>
 
-  <h3 class="graph-title">Cazuri active pe o anumita tara</h3>
-  <select id="activeCasesCountryPicker" style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedActiveCases(this)" class="country-picker" value='Romania'></select>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="countryActiveCases"></canvas>
+  <div class="graph-wrapper" id="globalActiveCasesWrapper">
+    <h3 class="graph-title">Cazuri active la nivel global (cazuri active = cazuri totale - (vindecari + morti))</h3>
+    <div class="chart-container">
+      <canvas id="globalActiveCases"></canvas>
+    </div>
   </div>
 
-  <h3 class="graph-title">Cazuri zilnice pe o anumita tara</h3>
-  <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)" class="country-picker"></select>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; max-height: 100vh;">
-    <canvas id="otherCountryChart"></canvas>
+  <div class="graph-wrapper" id="countryActiveCasesWrapper">
+    <h3 class="graph-title">Cazuri active pe o anumita tara</h3>
+    <select id="activeCasesCountryPicker" style="margin-bottom: 30px; margin: 5px;"
+      onchange="drawComparedActiveCases(this)" class="country-picker" value='Romania'></select>
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; max-height: 100vh;">
+      <canvas id="countryActiveCases"></canvas>
+    </div>
   </div>
 
-  <h3 class="graph-title">Cazuri totale / evolutie pe o anumita tara</h3>
-  <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountryTotalCases(this)"
-    class="country-picker" class="country-picker"></select>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="otherCountryTotals"></canvas>
+  <div class="graph-wrapper" id="otherCountryChartWrapper">
+    <h3 class="graph-title">Cazuri zilnice pe o anumita tara</h3>
+    <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)"
+      class="country-picker"></select>
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; max-height: 100vh;">
+      <canvas id="otherCountryChart"></canvas>
+    </div>
   </div>
 
-
-  <h3 class="graph-title">Cazuri globale / cele mai multe cazuri</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px">
-    <canvas id="totalsChart"></canvas>
+  <div class="graph-wrapper" id="otherCountryTotalsWrapper">
+    <h3 class="graph-title">Cazuri totale / evolutie pe o anumita tara</h3>
+    <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountryTotalCases(this)"
+      class="country-picker" class="country-picker"></select>
+    <div class="chart-container">
+      <canvas id="otherCountryTotals"></canvas>
+    </div>
   </div>
 
-  <h3 class="graph-title">Cele mai multe cazuri in ultimele 7 zile</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="lastWeekTotals"></canvas>
+  <div class="graph-wrapper" id="totalsChartWrapper">
+    <h3 class="graph-title">Cazuri globale / cele mai multe cazuri</h3>
+    <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px">
+      <canvas id="totalsChart"></canvas>
+    </div>
   </div>
 
-  <h3 class="graph-title">Cazuri globale - evolutie</h3>
-  <div class="chart-container" style="position: relative; width: 1000px; max-width: 100vw; height: 600px;">
-    <canvas id="globalTotals"></canvas>
+  <div class="graph-wrapper" id="lastWeekTotalsWrapper">
+    <h3 class="graph-title">Cele mai multe cazuri in ultimele 7 zile</h3>
+    <div class="chart-container">
+      <canvas id="lastWeekTotals"></canvas>
+    </div>
   </div>
+
+  <div class="graph-wrapper" id="globalTotalsWrapper">
+    <h3 class="graph-title">Cazuri globale - evolutie</h3>
+    <div class="chart-container">
+      <canvas id="globalTotals"></canvas>
+    </div>
+  </div>
+
 
   <i style="text-align: center; margin: 30px;">
     Sursa: <a style="margin-bottom: 10px;"
-      href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide</a></a>
+      href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">https://www.ecdc.europa.eu/en/publ...ldwide</a></a>
     <br /><br />Pagină + grafice create de Iuliu Vişovan. Contact: iuliuvisovan@gmail.com
   </i>
 
@@ -92,9 +118,7 @@
   <script src="data/recovered/23mar.js?v=38"></script>
   <script src="data/active/23mar.js?v=38"></script>
 
-
   <script src="js/app.js?v=38"></script>
-  <span>v26</span>
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;

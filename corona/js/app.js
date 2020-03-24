@@ -14,10 +14,12 @@ function draw() {
   init();
 
   drawDailyCasesChart('romaniaChart', 'Romania');
+  drawTotalsForCountry('romaniaTotals', 'Romania');
+
   setTimeout(() => {
-    drawTotalsForCountry('romaniaTotals', 'Romania');
     drawGlobalActiveCases();
-  }, 0);
+    show('globalActiveCasesWrapper', document.querySelector('button'));
+  }, 1000);
 
   setTimeout(() => {
     drawCountryActiveCases('Romania');
@@ -26,7 +28,7 @@ function draw() {
     drawTotalsChart();
     drawLastWeekChart();
     drawGlobalTotals();
-  }, 800);
+  }, 2000);
 }
 
 function setCurrentDate() {
@@ -82,6 +84,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
       ]
     },
     options: {
+      maintainAspectRatio: false,
       scales: {
         yAxes: [
           {
@@ -91,6 +94,11 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
             }
           }
         ]
+      },
+      layout: {
+        padding: {
+          right: 10
+        }
       }
     }
   });
@@ -600,10 +608,7 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
       },
       layout: {
         padding: {
-          left: 0,
-          right: 20,
-          top: 0,
-          bottom: 0
+          right: 10
         }
       }
     }
@@ -858,6 +863,24 @@ function setupBarLabels() {
       });
     }
   });
+}
+
+function show(graphId, button) {
+  document.querySelectorAll('button').forEach(x => {
+    x.removeAttribute('selected');
+  });
+  document.querySelectorAll('.graph-wrapper').forEach(x => {
+    x.removeAttribute('visible');
+  });
+
+  button.toggleAttribute('selected');
+
+  const wrapper = document.getElementById(graphId);
+  wrapper.toggleAttribute('visible');
+
+  // setTimeout(() => {
+  //   window.scrollTo(0, document.body.scrollHeight - 1055);
+  // }, 0);
 }
 
 draw();
