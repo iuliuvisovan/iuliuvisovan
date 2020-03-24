@@ -14,7 +14,9 @@ function draw() {
   init();
 
   drawDailyCasesChart('romaniaChart', 'Romania');
-  drawTotalsForCountry('romaniaTotals', 'Romania');
+  setTimeout(() => {
+    drawTotalsForCountry('romaniaTotals', 'Romania');
+  }, 0);
 
   setTimeout(() => {
     drawGlobalActiveCases();
@@ -881,10 +883,6 @@ function show(graphId, button) {
 
   const wrapper = document.getElementById(graphId);
   wrapper.toggleAttribute('visible');
-
-  // setTimeout(() => {
-  //   window.scrollTo(0, document.body.scrollHeight - 1055);
-  // }, 0);
 }
 
 draw();
