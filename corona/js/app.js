@@ -746,7 +746,20 @@ function getRecoveriesForToday(countryName, dateRep) {
   return todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0;
 }
 
+function maybeAddEntryForRomaniaToday() {
+  const romaniaEntries = window.data.filter(x => x['Countries and territories'] == 'Romania');
+  const todayString = moment().format('MM/DD/YYYY');
+  if (!romaniaEntries.find(x => x.DateRep == todayString)) {
+    window.data = [
+      ...window.data,
+      { 'Countries and territories': 'Romania', DateRep: todayString, Deaths: 0, Recoveries: 0, Cases: 0 }
+    ];
+  }
+}
+
 function cleanupData() {
+  maybeAddEntryForRomaniaToday();
+
   window.data = window.data.map(x => {
     let countryName = x['Countries and territories'].replace(/\_/g, ' ');
     if (countryName.startsWith('Cases')) {
