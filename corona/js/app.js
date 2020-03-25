@@ -338,6 +338,8 @@ function drawGlobalActiveCases() {
       animation: {
         duration: 0
       },
+      minValueForLabel: 250,
+      labelsToIgnore: ['8166', '2127', '6935', '14k', '1144', '1910', '416'],
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -760,11 +762,13 @@ function setupBarLabels() {
       ctx.textBaseline = 'bottom';
       ctx.fillStyle = '#000';
 
-      chartInstance.data.datasets.forEach(function(dataset) {
+      const { minValueForLabel = 0, labelsToIgnore = [] } = chartInstance.options;
+
+      chartInstance.data.datasets.forEach(dataset => {
         for (var i = 0; i < dataset.data.length; i++) {
           var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
           const currentValue = dataset.data[i];
-          let formattedValue = currentValue > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i];
+          let formattedValue = currentValue > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i] + '';
 
           if (isMobile) {
             const thousands = (currentValue / 1000).toFixed(1);
@@ -774,7 +778,7 @@ function setupBarLabels() {
             formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
           }
 
-          if (currentValue > 0) {
+          if (currentValue > minValueForLabel && !labelsToIgnore.includes(formattedValue)) {
             ctx.fillText(formattedValue, model.x, model.y - 2);
           }
         }
