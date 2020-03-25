@@ -646,7 +646,8 @@ function maybeAddEntryForRomaniaToday() {
 }
 
 const recoveriesCountriesMap = {
-  'Korea, South': 'South Korea'
+  'Korea, South': 'southkorea',
+  US: 'USA'
 };
 
 const recoveries = {};
@@ -657,11 +658,16 @@ function populateRecoveriesObject() {
 
   allDates.forEach((date, i) => {
     const casesForAllCountriesForCurrentDate = {};
-    allCountries.forEach(countryName => {
-      casesForAllCountriesForCurrentDate[countryName.replace(/[\s\_]/g, '').toLowerCase()] = window.recoveredData
-        .filter(x => x['Country/Region'] == countryName)
+    allCountries.forEach(recoveredCountryName => {
+      if (recoveredCountryName == 'Korea, South') {
+        debugger;
+      }
+      casesForAllCountriesForCurrentDate[
+        recoveriesCountriesMap[recoveredCountryName] || recoveredCountryName.replace(/[\s\_]/g, '').toLowerCase()
+      ] = window.recoveredData
+        .filter(x => x['Country/Region'] == recoveredCountryName)
         .map(x => x[date])
-        .reduce((a, b) => a + b);
+        .reduce((a, b) => a + b, 0);
     });
 
     recoveries[date] = casesForAllCountriesForCurrentDate;
