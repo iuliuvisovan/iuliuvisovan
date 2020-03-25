@@ -11,6 +11,10 @@ function init() {
 }
 
 function draw() {
+  var startTime;
+  var endTime;
+
+  startTime = performance.now();
   init();
 
   drawDailyCasesChart('romaniaChart', 'Romania');
@@ -31,6 +35,9 @@ function draw() {
     drawLastWeekChart();
     drawGlobalTotals();
   }, 2000);
+  endTime = performance.now();
+
+  console.log('DURATION: ', endTime - startTime);
 }
 
 function setCurrentDate() {
@@ -47,12 +54,12 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const data = window.data;
 
   const countryData = data
-    .sort((a, b) => +moment(b.DateRep) - +moment(a.DateRep))
+    .sort((a, b) => +moment(b.DateRep, 'MM/DD/YYYY') - +moment(a.DateRep, 'MM/DD/YYYY'))
     .filter(x => x.CountryExp == countryName);
 
   const justLastTwentyDays = countryData.reverse().slice(countryData.length - (isMobile ? 15 : 25));
 
-  const labels = justLastTwentyDays.map(x => moment(x.DateRep).format(defaultDateFormat));
+  const labels = justLastTwentyDays.map(x => moment(x.DateRep, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = justLastTwentyDays.map(x => x.Cases);
   const deaths = justLastTwentyDays.map(x => +x.Deaths);
   const recoveries = justLastTwentyDays.map(x => +x.Recoveries);
@@ -165,8 +172,8 @@ function drawCountryActiveCases(countryName) {
   const ctx = document.getElementById('countryActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
 
   data.forEach(x => {
     totals[x.CountryExp] = data
@@ -278,8 +285,8 @@ function drawGlobalActiveCases() {
   const ctx = document.getElementById('globalActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
 
   data.forEach(x => {
     totals[x.CountryExp] = data
@@ -463,7 +470,7 @@ function drawLastWeekChart() {
   const ctx = document.getElementById('lastWeekTotals').getContext('2d');
   const data = window.data;
 
-  const validData = data.filter(x => moment().diff(moment(x.DateRep), 'days') <= 7);
+  const validData = data.filter(x => moment().diff(moment(x.DateRep, 'MM/DD/YYYY'), 'days') <= 7);
 
   const totals = {};
 
@@ -518,8 +525,8 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep, 'MM/DD/YYYY'))];
+  const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x && y.CountryExp == countryName)
@@ -625,8 +632,8 @@ function drawGlobalTotals() {
   const ctx = document.getElementById('globalTotals').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep) - moment(b.DateRep)).map(x => x.DateRep))];
-  const localizedLabels = labels.map(x => moment(x).format(defaultDateFormat));
+  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
       .filter(y => y.DateRep == x)
@@ -746,10 +753,10 @@ function getRecoveriesForToday(countryName, dateRep) {
     return targetCountryName == sourceCountryName;
   });
 
-  const yesterdaysKey = moment(dateRep)
+  const yesterdaysKey = moment(dateRep, 'MM/DD/YYYY')
     .subtract(1, 'day')
     .format('M/D/YY');
-  const todaysKey = moment(dateRep).format('M/D/YY');
+  const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
 
   const todaysTotalRecoveries = currentCountryWithTerritories?.map(x => x[todaysKey]).reduce((a, b) => +a + +b, 0) || 0;
   const yesterdaysTotalRecoveries =
