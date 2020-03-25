@@ -1,4 +1,4 @@
-moment.locale('en');
+moment.locale('ro');
 const isMobile = window.innerWidth < 768;
 const defaultDateFormat = isMobile ? 'DD.MM' : 'DD MMMM';
 const formatThousandsAsK = value => (value > 999 ? value / 1000 + 'k' : value);
