@@ -40,6 +40,11 @@ h4 {
   margin-top: 73px;
 }
 
+.top-title {
+  margin-top: 25px;
+  margin-bottom: 0;
+}
+
 button {
   border: 1px solid #ff9800;
   background: #fff;
