@@ -834,9 +834,9 @@ function cleanupData() {
 
     x.Recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.DateRep);
 
-    // if (countryName == 'Romania') {
-    //   x = { ...x, ...window.romaniaData[x.DateRep] };
-    // }
+    if (countryName == 'Romania') {
+      x = { ...x, ...window.romaniaData[x.DateRep] };
+    }
     if (countryName == 'Italy') {
       if (x.DateRep == '03/16/2020') {
         x.Cases = '3230';
