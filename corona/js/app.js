@@ -762,10 +762,13 @@ function maybeAddEntryForRomaniaToday() {
   const romaniaEntries = window.data.filter(x => x['Countries and territories'] == 'Romania');
   const todayString = moment().format('MM/DD/YYYY');
   if (!romaniaEntries.find(x => x.DateRep == todayString)) {
-    window.data = [
-      ...window.data,
-      { 'Countries and territories': 'Romania', DateRep: todayString, Deaths: 0, Recoveries: 0, Cases: 0 }
-    ];
+    const currentHour = moment().format('HH');
+    if (currentHour > 12) {
+      window.data = [
+        ...window.data,
+        { 'Countries and territories': 'Romania', DateRep: todayString, Deaths: 0, Recoveries: 0, Cases: 0 }
+      ];
+    }
   }
 }
 
@@ -774,6 +777,9 @@ function cleanupData() {
 
   window.data = window.data.map(x => {
     let countryName = x['Countries and territories'].replace(/\_/g, ' ');
+    if (countryName.toLowerCase().startsWith('united states')) {
+      countryName = 'USA';
+    }
     if (countryName.startsWith('Cases')) {
       countryName = 'Diamond Princess';
     }
