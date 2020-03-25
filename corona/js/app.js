@@ -13,39 +13,40 @@ function draw() {
   var startTime;
   var endTime;
 
-  startTime = performance.now();
   init();
 
-  endTime = performance.now();
-  console.log('After init: ', endTime - startTime);
+  // endTime = performance.now();
+  // console.log('After init: ', endTime - startTime);
+  // startTime = performance.now();
+
+  // drawDailyCasesChart('romaniaChart', 'Romania');
+  // setTimeout(() => {
   startTime = performance.now();
 
-  drawDailyCasesChart('romaniaChart', 'Romania');
-  setTimeout(() => {
-    drawTotalsForCountry('romaniaTotals', 'Romania');
-  }, 0);
+  drawTotalsForCountry('romaniaTotals', 'Romania');
+  // drawGlobalActiveCases();
+  // show('globalActiveCasesWrapper', document.querySelector('button'));
+  endTime = performance.now();
+
+  console.log('Time for 2nd graph: ', endTime - startTime);
+  // }, 800);
 
   // endTime = performance.now();
-  // console.log('After drawing first two: ', endTime - startTime);
+  // console.log('After drawing first graph: ', endTime - startTime);
   // startTime = performance.now();
 
-  setTimeout(() => {
-    drawGlobalActiveCases();
-    show('globalActiveCasesWrapper', document.querySelector('button'));
-  }, 1000);
+  // // endTime = performance.now();
+  // // console.log('After drawing third and showing: ', endTime - startTime);
+  // // startTime = performance.now();
 
-  // endTime = performance.now();
-  // console.log('After drawing third and showing: ', endTime - startTime);
-  // startTime = performance.now();
-
-  setTimeout(() => {
-    drawCountryActiveCases('Romania');
-    drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
-    drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
-    drawTotalsChart();
-    drawLastWeekChart();
-    drawGlobalTotals();
-  }, 2000);
+  // setTimeout(() => {
+  //   drawCountryActiveCases('Romania');
+  //   drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b');
+  //   drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b');
+  //   drawTotalsChart();
+  //   drawLastWeekChart();
+  //   drawGlobalTotals();
+  // }, 2000);
 
   // endTime = performance.now();
   // console.log('DURATION: ', endTime - startTime);
@@ -66,8 +67,8 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const data = window.data;
 
   const countryData = data
-    .sort((a, b) => +moment(b.DateRep, 'MM/DD/YYYY') - +moment(a.DateRep, 'MM/DD/YYYY'))
-    .filter(x => x.CountryExp == countryName);
+    .filter(x => x.CountryExp == countryName)
+    .sort((a, b) => +moment(b.DateRep, 'MM/DD/YYYY') - +moment(a.DateRep, 'MM/DD/YYYY'));
 
   const justLastTwentyDays = countryData.reverse().slice(countryData.length - (isMobile ? 15 : 25));
 
@@ -545,13 +546,14 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
-  const labels = [
-    ...new Set(
-      data
-        .sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY'))
-        .map(x => x.DateRep, 'MM/DD/YYYY')
-    )
-  ];
+  const labels = [];
+  let dateIterator = moment('01/01/2020');
+  const today = moment();
+  while (+dateIterator <= +today) {
+    labels.push(dateIterator.format('MM/DD/YYYY'));
+    dateIterator = dateIterator.add(1, 'days');
+  }
+
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
