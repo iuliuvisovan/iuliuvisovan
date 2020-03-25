@@ -4,7 +4,6 @@ const defaultDateFormat = isMobile ? 'DD.MM' : 'DD MMMM';
 const formatThousandsAsK = value => (value > 999 ? value / 1000 + 'k' : value);
 
 function init() {
-  setCurrentDate();
   cleanupData();
   setupBarLabels();
   setPickerCountries(window.data);
@@ -17,15 +16,27 @@ function draw() {
   startTime = performance.now();
   init();
 
+  endTime = performance.now();
+  console.log('After init: ', endTime - startTime);
+  startTime = performance.now();
+
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
   }, 0);
 
+  // endTime = performance.now();
+  // console.log('After drawing first two: ', endTime - startTime);
+  // startTime = performance.now();
+
   setTimeout(() => {
     drawGlobalActiveCases();
     show('globalActiveCasesWrapper', document.querySelector('button'));
   }, 1000);
+
+  // endTime = performance.now();
+  // console.log('After drawing third and showing: ', endTime - startTime);
+  // startTime = performance.now();
 
   setTimeout(() => {
     drawCountryActiveCases('Romania');
@@ -35,9 +46,10 @@ function draw() {
     drawLastWeekChart();
     drawGlobalTotals();
   }, 2000);
-  endTime = performance.now();
 
-  console.log('DURATION: ', endTime - startTime);
+  // endTime = performance.now();
+  // console.log('DURATION: ', endTime - startTime);
+  // startTime = performance.now();
 }
 
 function setCurrentDate() {
@@ -172,7 +184,11 @@ function drawCountryActiveCases(countryName) {
   const ctx = document.getElementById('countryActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const labels = [
+    ...new Set(
+      data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep)
+    )
+  ];
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
 
   data.forEach(x => {
@@ -285,7 +301,11 @@ function drawGlobalActiveCases() {
   const ctx = document.getElementById('globalActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const labels = [
+    ...new Set(
+      data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep)
+    )
+  ];
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
 
   data.forEach(x => {
@@ -525,7 +545,13 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep, 'MM/DD/YYYY'))];
+  const labels = [
+    ...new Set(
+      data
+        .sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY'))
+        .map(x => x.DateRep, 'MM/DD/YYYY')
+    )
+  ];
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
@@ -632,7 +658,11 @@ function drawGlobalTotals() {
   const ctx = document.getElementById('globalTotals').getContext('2d');
   const data = window.data;
 
-  const labels = [...new Set(data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep))];
+  const labels = [
+    ...new Set(
+      data.sort((a, b) => moment(a.DateRep, 'MM/DD/YYYY') - moment(b.DateRep, 'MM/DD/YYYY')).map(x => x.DateRep)
+    )
+  ];
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
@@ -734,37 +764,6 @@ function drawGlobalTotals() {
   });
 }
 
-const recoveriesCountriesMap = {
-  'Korea, South': 'South Korea'
-};
-
-function getRecoveriesForToday(countryName, dateRep) {
-  const currentCountryWithTerritories = window.recoveredData.filter(x => {
-    const sourceCountryName = countryName.replace(/[\s\_]/g, '').toLowerCase();
-
-    let targetCountryName = x['Country/Region'];
-
-    if (recoveriesCountriesMap[targetCountryName]) {
-      targetCountryName = recoveriesCountriesMap[targetCountryName];
-    }
-
-    targetCountryName = targetCountryName.toLowerCase().replace(/[\s\_]/g, '');
-
-    return targetCountryName == sourceCountryName;
-  });
-
-  const yesterdaysKey = moment(dateRep, 'MM/DD/YYYY')
-    .subtract(1, 'day')
-    .format('M/D/YY');
-  const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
-
-  const todaysTotalRecoveries = currentCountryWithTerritories?.map(x => x[todaysKey]).reduce((a, b) => +a + +b, 0) || 0;
-  const yesterdaysTotalRecoveries =
-    currentCountryWithTerritories?.map(x => x[yesterdaysKey]).reduce((a, b) => +a + +b, 0) || 0;
-
-  return todaysTotalRecoveries ? todaysTotalRecoveries - yesterdaysTotalRecoveries : 0;
-}
-
 function maybeAddEntryForRomaniaToday() {
   const romaniaEntries = window.data.filter(x => x['Countries and territories'] == 'Romania');
   const todayString = moment().format('MM/DD/YYYY');
@@ -779,8 +778,47 @@ function maybeAddEntryForRomaniaToday() {
   }
 }
 
+const recoveriesCountriesMap = {
+  'Korea, South': 'South Korea'
+};
+
+const recoveries = {};
+
+function populateRecoveriesObject() {
+  const allCountries = [...new Set(window.recoveredData.map(x => x['Country/Region']))];
+  const allDates = Object.keys(window.recoveredData[0]).filter(x => x.includes('/20'));
+  console.log('allDates', allDates);
+
+  allDates.forEach((date, i) => {
+    const casesForAllCountriesForCurrentDate = {};
+    allCountries.forEach(countryName => {
+      casesForAllCountriesForCurrentDate[countryName.replace(/[\s\_]/g, '').toLowerCase()] = window.recoveredData
+        .filter(x => x['Country/Region'] == countryName)
+        .map(x => x[date])
+        .reduce((a, b) => a + b);
+    });
+
+    recoveries[date] = casesForAllCountriesForCurrentDate;
+  });
+}
+
+function getRecoveriesForToday(countryName, dateRep) {
+  debugger;
+  const yesterdaysKey = moment(dateRep, 'MM/DD/YYYY')
+    .subtract(1, 'day')
+    .format('M/D/YY');
+  const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
+
+  const todaysRecoveries = recoveries[todaysKey]?.[countryName] || 0;
+  const yesterdaysRecoveries = recoveries[yesterdaysKey]?.[countryName] || 0;
+
+  return todaysRecoveries ? todaysRecoveries - yesterdaysRecoveries : 0;
+}
+
 function cleanupData() {
   maybeAddEntryForRomaniaToday();
+
+  populateRecoveriesObject();
 
   window.data = window.data.map(x => {
     let countryName = x['Countries and territories'].replace(/\_/g, ' ');
@@ -794,13 +832,11 @@ function cleanupData() {
       countryName = 'Canada';
     }
 
-    const Recoveries = getRecoveriesForToday(countryName, x.DateRep);
+    x.Recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.DateRep);
 
-    x = { ...x, Recoveries };
-
-    if (countryName == 'Romania') {
-      x = { ...x, ...window.romaniaData[x.DateRep] };
-    }
+    // if (countryName == 'Romania') {
+    //   x = { ...x, ...window.romaniaData[x.DateRep] };
+    // }
     if (countryName == 'Italy') {
       if (x.DateRep == '03/16/2020') {
         x.Cases = '3230';
@@ -898,4 +934,7 @@ function show(graphId, button) {
   wrapper.toggleAttribute('visible');
 }
 
-draw();
+setCurrentDate();
+setTimeout(() => {
+  draw();
+}, 0);
