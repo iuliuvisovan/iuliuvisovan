@@ -274,7 +274,7 @@ function drawGlobalActiveCases() {
     const thisCountryData = data.filter(y => y.CountryExp == countryName);
 
     const activeCases = labels.map(x => {
-      const { Cases, Recoveries, Deaths } = thisCountryData.find(y => y.DateRep == x);
+      const { Cases = 0, Recoveries = 0, Deaths = 0 } = thisCountryData.find(y => y.DateRep == x) || {};
 
       return +Cases - (+Recoveries + +Deaths);
     });
