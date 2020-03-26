@@ -53,15 +53,75 @@ window.romaniaData = {
     Deaths: 0
   },
   '03/15/2020': {
-    Cases: 39,
+    Cases: 16,
     Deaths: 0
   },
   '03/14/2020': {
-    Cases: 31,
+    Cases: 28,
     Deaths: 0
   },
   '03/13/2020': {
-    Cases: 24,
+    Cases: 36,
     Deaths: 0
-  }
+  },
+  '03/12/2020': {
+    Cases: 12,
+    Deaths: 0
+  },
+  '03/11/2020': {
+    Cases: 18,
+    Deaths: 0
+  },
+  '03/10/2020': {
+    Cases: 12,
+    Deaths: 0
+  },
+  '03/9/2020': {
+    Cases: 2,
+    Deaths: 0
+  },
+  '03/8/2020': {
+    Cases: 2,
+    Deaths: 0
+  },
+  '03/7/2020': {
+    Cases: 4,
+    Deaths: 0
+  },
+  '03/6/2020': {
+    Cases: 3,
+    Deaths: 0
+  },
+  '03/5/2020': {
+    Cases: 0,
+    Deaths: 0
+  },
+  '03/4/2020': {
+    Cases: 2,
+    Deaths: 0
+  },
+  '03/3/2020': {
+    Cases: 1,
+    Deaths: 0
+  },
+  '03/2/2020': {
+    Cases: 0,
+    Deaths: 0
+  },
+  '03/1/2020': {
+    Cases: 0,
+    Deaths: 0
+  },
+  '02/28/2020': {
+    Cases: 2,
+    Deaths: 0
+  },
+  '02/27/2020': {
+    Cases: 0,
+    Deaths: 0
+  },
+  '02/26/2020': {
+    Cases: 1,
+    Deaths: 0
+  },
 };
