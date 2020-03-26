@@ -518,7 +518,7 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
       },
       layout: {
         padding: {
-          right: 10
+          right: 13
         }
       }
     }
@@ -636,7 +636,7 @@ function maybeAddEntryForRomaniaToday() {
   const todayString = moment().format('MM/DD/YYYY');
   if (!romaniaEntries.find(x => x.DateRep == todayString)) {
     const currentHour = moment().format('HH');
-    if (currentHour > 12) {
+    if (+currentHour > 12) {
       window.data = [
         ...window.data,
         { 'Countries and territories': 'Romania', DateRep: todayString, Deaths: 0, Recoveries: 0, Cases: 0 }
@@ -659,9 +659,6 @@ function populateRecoveriesObject() {
   allDates.forEach((date, i) => {
     const casesForAllCountriesForCurrentDate = {};
     allCountries.forEach(recoveredCountryName => {
-      if (recoveredCountryName == 'Korea, South') {
-        debugger;
-      }
       casesForAllCountriesForCurrentDate[
         recoveriesCountriesMap[recoveredCountryName] || recoveredCountryName.replace(/[\s\_]/g, '').toLowerCase()
       ] = window.recoveredData
@@ -811,7 +808,11 @@ let dayStringsSinceStartOfYear = [];
 
 function populateLabelsSinceStartOfYear() {
   dayStringsSinceStartOfYear = [
-    ...new Set(window.data.filter(x => x['Countries and territories'] == 'China').map(x => x.DateRep))
+    ...new Set(
+      window.data
+        .filter(x => x['Countries and territories'] == 'China' || x['Countries and territories'] == 'Romania')
+        .map(x => x.DateRep)
+    )
   ].sort((a, b) => moment(a, 'MM/DD/YYYY') - moment(b, 'MM/DD/YYYY'));
 }
 
