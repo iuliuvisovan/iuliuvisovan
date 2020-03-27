@@ -677,8 +677,8 @@ function getRecoveriesForToday(countryName, dateRep) {
     .format('M/D/YY');
   const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
 
-  const todaysRecoveries = recoveries[todaysKey][countryName] || 0;
-  const yesterdaysRecoveries = recoveries[yesterdaysKey][countryName] || 0;
+  const todaysRecoveries = (recoveries[todaysKey] || {})[countryName] || 0;
+  const yesterdaysRecoveries = (recoveries[yesterdaysKey] || {})[countryName] || 0;
 
   return todaysRecoveries ? todaysRecoveries - yesterdaysRecoveries : 0;
 }
@@ -703,7 +703,7 @@ function cleanupData() {
     x.Recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.DateRep);
 
     if (countryName == 'Romania') {
-      const { Cases, Recoveries, Deaths } = window.romaniaData[x.DateRep];
+      const { Cases, Recoveries, Deaths } = window.romaniaData[x.DateRep] || {};
       x.Cases = Cases;
       x.Recoveries = Recoveries;
       x.Deaths = Deaths;
