@@ -22,11 +22,11 @@ function draw() {
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
 
-    drawGlobalActiveCases();
+    drawGlobalActivecases();
     show('globalActiveCasesWrapper', document.querySelector('button'));
 
     drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b'); //8
-    drawCountryActiveCases('Romania'); // 29
+    drawcountryActiveCases('Romania'); // 29
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b'); //30
     drawLastWeekTotalsBars(); //122
     drawAllTimeTotalsBars(); //22
@@ -49,14 +49,14 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
 
   const countryData = data
     .filter(x => x.CountryExp == countryName)
-    .sort((a, b) => +moment(b.DateRep, 'MM/DD/YYYY') - +moment(a.DateRep, 'MM/DD/YYYY'))
+    .sort((a, b) => +moment(b.dateRep, 'MM/DD/YYYY') - +moment(a.dateRep, 'MM/DD/YYYY'))
     .slice(0, isMobile ? 15 : 25)
     .reverse();
 
-  const labels = countryData.map(x => moment(x.DateRep, 'MM/DD/YYYY').format(defaultDateFormat));
-  const values = countryData.map(x => x.Cases);
-  const deaths = countryData.map(x => +x.Deaths);
-  const recoveries = countryData.map(x => +x.Recoveries);
+  const labels = countryData.map(x => moment(x.dateRep, 'MM/DD/YYYY').format(defaultDateFormat));
+  const values = countryData.map(x => x.cases);
+  const deaths = countryData.map(x => +x.deaths);
+  const recoveries = countryData.map(x => +x.recoveries);
 
   otherCountryChart = new Chart(ctx, {
     type: 'bar',
@@ -118,16 +118,16 @@ function drawAllTimeTotalsBars() {
   allCountries.forEach(countryName => {
     totals[countryName] = data
       .filter(y => y.CountryExp == countryName)
-      .map(x => x.Cases)
+      .map(x => x.cases)
       .reduce((a, b) => +a + +b);
   });
 
   const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
 
-  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 10);
+  const sortedByTotalcases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 10);
 
-  const labels = [...new Set(sortedByTotalCases.map(x => x.countryName))];
-  const values = sortedByTotalCases.map(x => x.total);
+  const labels = [...new Set(sortedByTotalcases.map(x => x.countryName))];
+  const values = sortedByTotalcases.map(x => x.total);
 
   new Chart(ctx, {
     type: 'bar',
@@ -162,7 +162,7 @@ function drawAllTimeTotalsBars() {
   });
 }
 
-function drawCountryActiveCases(countryName) {
+function drawcountryActiveCases(countryName) {
   const ctx = document.getElementById('countryActiveCases').getContext('2d');
   const data = window.data;
 
@@ -171,37 +171,37 @@ function drawCountryActiveCases(countryName) {
 
   const firstCountryInfections = labels.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Cases)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.cases)
       .reduce((a, b) => +a + +b, 0)
   );
   const summedFirstCountryInfections = firstCountryInfections.map((x, i, a) => {
     const totalSoFar = firstCountryInfections.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
-  const firstCountryRecoveries = labels.map(x =>
+  const firstCountryrecoveries = labels.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Recoveries)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.recoveries)
       .reduce((a, b) => +a + +b, 0)
   );
-  const summedFirstCountryRecoveries = firstCountryRecoveries.map((x, i, a) => {
-    const totalSoFar = firstCountryRecoveries.slice(0, i).reduce((a, b) => a + b, 0);
+  const summedFirstCountryrecoveries = firstCountryrecoveries.map((x, i, a) => {
+    const totalSoFar = firstCountryrecoveries.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
-  const firstCountryDeaths = labels.map(x =>
+  const firstCountrydeaths = labels.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Deaths)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.deaths)
       .reduce((a, b) => +a + +b, 0)
   );
-  const summedFirstCountryDeaths = firstCountryDeaths.map((x, i, a) => {
-    const totalSoFar = firstCountryDeaths.slice(0, i).reduce((a, b) => a + b, 0);
+  const summedFirstCountrydeaths = firstCountrydeaths.map((x, i, a) => {
+    const totalSoFar = firstCountrydeaths.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
 
   const values = summedFirstCountryInfections.map(
-    (x, i) => x - (summedFirstCountryRecoveries[i] + summedFirstCountryDeaths[i])
+    (x, i) => x - (summedFirstCountryrecoveries[i] + summedFirstCountrydeaths[i])
   );
 
   const filterFunction = (x, i, a) => {
@@ -260,7 +260,7 @@ function drawCountryActiveCases(countryName) {
   });
 }
 
-function drawGlobalActiveCases() {
+function drawGlobalActivecases() {
   const ctx = document.getElementById('globalActiveCases').getContext('2d');
   const data = window.data;
 
@@ -273,18 +273,18 @@ function drawGlobalActiveCases() {
   topCountries.forEach(countryName => {
     const thisCountryData = data.filter(y => y.CountryExp == countryName);
 
-    const activeCases = labels.map(x => {
-      const { Cases = 0, Recoveries = 0, Deaths = 0 } = thisCountryData.find(y => y.DateRep == x) || {};
+    const activecases = labels.map(x => {
+      const { cases = 0, recoveries = 0, deaths = 0 } = thisCountryData.find(y => y.dateRep == x) || {};
 
-      return +Cases - (+Recoveries + +Deaths);
+      return +cases - (+recoveries + +deaths);
     });
 
-    const summedActiveCases = activeCases.map((x, i, a) => {
+    const summedActivecases = activecases.map((x, i, a) => {
       const totalSoFar = a.slice(0, i).reduce((a, b) => a + b, 0);
       return totalSoFar + x;
     });
 
-    datasets.push(summedActiveCases);
+    datasets.push(summedActivecases);
   });
 
   const filterFunction = (_, i, a) => {
@@ -366,7 +366,7 @@ function drawGlobalActiveCases() {
 
 function drawLastWeekTotalsBars() {
   const ctx = document.getElementById('lastWeekTotals').getContext('2d');
-  const data = window.data.filter(x => +new Date() - +new Date(x.DateRep) < 7 * 24 * 60 * 60 * 1000);
+  const data = window.data.filter(x => +new Date() - +new Date(x.dateRep) < 7 * 24 * 60 * 60 * 1000);
 
   const totals = {};
 
@@ -375,16 +375,16 @@ function drawLastWeekTotalsBars() {
   allCountries.forEach(countryName => {
     totals[countryName] = data
       .filter(y => y.CountryExp == countryName)
-      .map(x => x.Cases)
+      .map(x => x.cases)
       .reduce((a, b) => +a + +b);
   });
 
   const countriesWithTotals = Object.keys(totals).map(key => ({ countryName: key, total: totals[key] }));
 
-  const sortedByTotalCases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 10);
+  const sortedByTotalcases = countriesWithTotals.sort((a, b) => b.total - a.total).slice(0, 10);
 
-  const labels = [...new Set(sortedByTotalCases.map(x => x.countryName))];
-  const values = sortedByTotalCases.map(x => x.total);
+  const labels = [...new Set(sortedByTotalcases.map(x => x.countryName))];
+  const values = sortedByTotalcases.map(x => x.total);
 
   new Chart(ctx, {
     type: 'bar',
@@ -426,20 +426,25 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const localizedLabels = dayStringsSinceStartOfYear.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = dayStringsSinceStartOfYear.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Cases)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.cases)
       .reduce((a, b) => +a + +b, 0)
   );
+  console.log(
+    'values',
+    data.filter(y => y.CountryExp == 'Romania')
+  );
+
   const deaths = dayStringsSinceStartOfYear.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Deaths)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.deaths)
       .reduce((a, b) => +a + +b, 0)
   );
   const recoveries = dayStringsSinceStartOfYear.map(x =>
     data
-      .filter(y => y.DateRep == x && y.CountryExp == countryName)
-      .map(x => x.Recoveries)
+      .filter(y => y.dateRep == x && y.CountryExp == countryName)
+      .map(x => x.recoveries)
       .reduce((a, b) => +a + +b, 0)
   );
 
@@ -448,12 +453,12 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
     return totalSoFar + x;
   });
 
-  const summedDailyDeaths = deaths.map((x, i, a) => {
+  const summedDailydeaths = deaths.map((x, i, a) => {
     const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
 
-  const summedDailyRecoveries = recoveries.map((x, i, a) => {
+  const summedDailyrecoveries = recoveries.map((x, i, a) => {
     const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
@@ -486,14 +491,14 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
         },
         {
           label: 'Vindecari - ' + countryName,
-          data: summedDailyRecoveries.filter(filterFunction),
+          data: summedDailyrecoveries.filter(filterFunction),
           backgroundColor: '#4CAF5022',
           borderColor: '#4CAF50',
           borderWidth: 1
         },
         {
           label: 'Morti - ' + countryName,
-          data: summedDailyDeaths.filter(filterFunction),
+          data: summedDailydeaths.filter(filterFunction),
           backgroundColor: '#E91E6322',
           borderColor: '#E91E63',
           borderWidth: 1
@@ -533,20 +538,20 @@ function drawGlobalTotals() {
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Cases)
+      .filter(y => y.dateRep == x)
+      .map(x => x.cases)
       .reduce((a, b) => +a + +b, 0)
   );
   const deaths = labels.map(x =>
     data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Deaths)
+      .filter(y => y.dateRep == x)
+      .map(x => x.deaths)
       .reduce((a, b) => +a + +b, 0)
   );
   const recoveries = labels.map(x =>
     data
-      .filter(y => y.DateRep == x)
-      .map(x => x.Recoveries)
+      .filter(y => y.dateRep == x)
+      .map(x => x.recoveries)
       .reduce((a, b) => +a + +b, 0)
   );
 
@@ -555,12 +560,12 @@ function drawGlobalTotals() {
     return totalSoFar + x;
   });
 
-  const summedDailyDeaths = deaths.map((x, i, a) => {
+  const summedDailydeaths = deaths.map((x, i, a) => {
     const totalSoFar = deaths.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
 
-  const summedDailyRecoveries = recoveries.map((x, i, a) => {
+  const summedDailyrecoveries = recoveries.map((x, i, a) => {
     const totalSoFar = recoveries.slice(0, i).reduce((a, b) => a + b, 0);
     return totalSoFar + x;
   });
@@ -589,14 +594,14 @@ function drawGlobalTotals() {
         },
         {
           label: 'Vindecari - toata lumea',
-          data: summedDailyRecoveries.filter(filterFunction),
+          data: summedDailyrecoveries.filter(filterFunction),
           backgroundColor: '#4CAF5022',
           borderColor: '#4CAF50',
           borderWidth: 1
         },
         {
           label: 'Morti - toata lumea',
-          data: summedDailyDeaths.filter(filterFunction),
+          data: summedDailydeaths.filter(filterFunction),
           backgroundColor: '#E91E6322',
           borderColor: '#E91E63',
           borderWidth: 1
@@ -632,14 +637,14 @@ function drawGlobalTotals() {
 }
 
 function maybeAddEntryForRomaniaToday() {
-  const romaniaEntries = window.data.filter(x => x['Countries and territories'] == 'Romania');
+  const romaniaEntries = window.data.filter(x => x['countriesAndTerritories'] == 'Romania');
   const todayString = moment().format('MM/DD/YYYY');
-  if (!romaniaEntries.find(x => x.DateRep == todayString)) {
+  if (!romaniaEntries.find(x => x.dateRep == todayString)) {
     const currentHour = moment().format('HH');
     if (+currentHour > 12) {
       window.data = [
         ...window.data,
-        { 'Countries and territories': 'Romania', DateRep: todayString, Deaths: 0, Recoveries: 0, Cases: 0 }
+        { countriesAndTerritories: 'Romania', dateRep: todayString, deaths: 0, recoveries: 0, cases: 0 }
       ];
     }
   }
@@ -652,7 +657,7 @@ const recoveriesCountriesMap = {
 
 const recoveries = {};
 
-function populateRecoveriesObject() {
+function populaterecoveriesObject() {
   const allCountries = [...new Set(window.recoveredData.map(x => x['Country/Region']))];
   const allDates = Object.keys(window.recoveredData[0]).filter(x => x.includes('/20'));
 
@@ -671,49 +676,49 @@ function populateRecoveriesObject() {
   });
 }
 
-function getRecoveriesForToday(countryName, dateRep) {
+function getrecoveriesForToday(countryName, dateRep) {
   const yesterdaysKey = moment(dateRep, 'MM/DD/YYYY')
     .subtract(1, 'day')
     .format('M/D/YY');
   const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
 
-  const todaysRecoveries = (recoveries[todaysKey] || {})[countryName] || 0;
-  const yesterdaysRecoveries = (recoveries[yesterdaysKey] || {})[countryName] || 0;
+  const todaysrecoveries = (recoveries[todaysKey] || {})[countryName] || 0;
+  const yesterdaysrecoveries = (recoveries[yesterdaysKey] || {})[countryName] || 0;
 
-  return todaysRecoveries ? todaysRecoveries - yesterdaysRecoveries : 0;
+  return todaysrecoveries ? todaysrecoveries - yesterdaysrecoveries : 0;
 }
 
 function cleanupData() {
   maybeAddEntryForRomaniaToday();
 
-  populateRecoveriesObject();
+  populaterecoveriesObject();
 
   window.data = window.data.map(x => {
-    let countryName = x['Countries and territories'].replace(/\_/g, ' ');
+    let countryName = x['countriesAndTerritories'].replace(/\_/g, ' ');
     if (countryName.toLowerCase().startsWith('united states of amer')) {
       countryName = 'USA';
     }
-    if (countryName.startsWith('Cases')) {
+    if (countryName.startsWith('cases')) {
       countryName = 'Diamond Princess';
     }
     if (countryName.toLowerCase().startsWith('canada')) {
       countryName = 'Canada';
     }
 
-    x.Recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.DateRep);
+    x.recoveries = getrecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.dateRep);
 
     if (countryName == 'Romania') {
-      const { Cases = 0, Recoveries = 0, Deaths = 0 } = window.romaniaData[x.DateRep] || {};
-      x.Cases = Cases;
-      x.Recoveries = Recoveries;
-      x.Deaths = Deaths;
+      const { cases = 0, recoveries = 0, deaths = 0 } = window.romaniaData[x.dateRep] || {};
+      x.cases = cases;
+      x.recoveries = recoveries;
+      x.deaths = deaths;
     }
     if (countryName == 'Italy') {
-      if (x.DateRep == '03/16/2020') {
-        x.Cases = '3230';
+      if (x.dateRep == '03/16/2020') {
+        x.cases = '3230';
       }
-      if (x.DateRep == '03/15/2020') {
-        x.Cases = '3090';
+      if (x.dateRep == '03/15/2020') {
+        x.cases = '3090';
       }
     }
     return {
@@ -729,14 +734,14 @@ function drawComparedCountry(picker) {
   drawDailyCasesChart('otherCountryChart', picker.value, '#ffeb3b');
 }
 
-function drawComparedCountryTotalCases(picker) {
+function drawComparedCountryTotalcases(picker) {
   otherCountryChartTotals.destroy();
   drawTotalsForCountry('otherCountryTotals', picker.value, '#ffeb3b');
 }
 
 function drawComparedActiveCases(picker) {
   countryActiveCases.destroy();
-  drawCountryActiveCases(picker.value);
+  drawcountryActiveCases(picker.value);
 }
 
 function setPickerCountries(data) {
@@ -750,7 +755,7 @@ function setPickerCountries(data) {
       option.innerText = countryName;
       picker.appendChild(option);
     });
-    picker.value = picker.id == 'activeCasesCountryPicker' ? 'Romania' : 'Italy';
+    picker.value = picker.id == 'activecasesCountryPicker' ? 'Romania' : 'Italy';
   });
 }
 
@@ -813,8 +818,8 @@ function populateLabelsSinceStartOfYear() {
   dayStringsSinceStartOfYear = [
     ...new Set(
       window.data
-        .filter(x => x['Countries and territories'] == 'China' || x['Countries and territories'] == 'Romania')
-        .map(x => x.DateRep)
+        .filter(x => x['countriesAndTerritories'] == 'China' || x['countriesAndTerritories'] == 'Romania')
+        .map(x => x.dateRep)
     )
   ].sort((a, b) => moment(a, 'MM/DD/YYYY') - moment(b, 'MM/DD/YYYY'));
 }

@@ -1,132 +1,135 @@
 window.romaniaData = {
   '03/27/2020': {
-    Cases: 263,
-    Deaths: 2,
-    Recoveries: 21
+    cases: 263,
+    deaths: 4,
+    recoveries: 21
   },
   '03/26/2020': {
-    Cases: 123,
-    Deaths: 9,
-    Recoveries: 8
+    cases: 123,
+    deaths: 9,
+    recoveries: 8
   },
   '03/25/2020': {
-    Cases: 144,
-    Deaths: 2,
-    Recoveries: 7
+    cases: 144,
+    deaths: 2,
+    recoveries: 7
   },
   '03/24/2020': {
-    Cases: 186,
-    Deaths: 4,
-    Recoveries: 8
+    cases: 186,
+    deaths: 4,
+    recoveries: 8
   },
   '03/23/2020': {
-    Cases: 143,
-    Deaths: 4,
-    Recoveries: 7
+    cases: 143,
+    deaths: 4,
+    recoveries: 7
   },
   '03/22/2020': {
-    Cases: 66,
-    Deaths: 3,
-    Recoveries: 12
+    cases: 66,
+    deaths: 3,
+    recoveries: 12
   },
   '03/21/2020': {
-    Cases: 59,
-    Deaths: 0,
-    Recoveries: 21
+    cases: 59,
+    deaths: 0,
+    recoveries: 21
   },
   '03/20/2020': {
-    Cases: 31,
-    Deaths: 0,
-    Recoveries: 6
+    cases: 31,
+    deaths: 0,
+    recoveries: 6
   },
   '03/19/2020': {
-    Cases: 17,
-    Deaths: 0,
-    Recoveries: 6
+    cases: 17,
+    deaths: 0,
+    recoveries: 6
   },
   '03/18/2020': {
-    Cases: 43,
-    Deaths: 0,
-    Recoveries: 3
+    cases: 43,
+    deaths: 0,
+    recoveries: 3
   },
   '03/17/2020': {
-    Cases: 49,
-    Deaths: 0
+    cases: 49,
+    deaths: 0,
+    recoveries: 10
   },
   '03/16/2020': {
-    Cases: 29,
-    Deaths: 0
+    cases: 29,
+    deaths: 0
   },
   '03/15/2020': {
-    Cases: 16,
-    Deaths: 0
+    cases: 16,
+    deaths: 0
   },
   '03/14/2020': {
-    Cases: 28,
-    Deaths: 0
+    cases: 28,
+    deaths: 0
   },
   '03/13/2020': {
-    Cases: 36,
-    Deaths: 0
+    cases: 36,
+    deaths: 0,
+    recoveries: 1
   },
   '03/12/2020': {
-    Cases: 12,
-    Deaths: 0
+    cases: 12,
+    deaths: 0
   },
   '03/11/2020': {
-    Cases: 18,
-    Deaths: 0
+    cases: 18,
+    deaths: 0
   },
   '03/10/2020': {
-    Cases: 12,
-    Deaths: 0
+    cases: 12,
+    deaths: 0,
+    recoveries: 5
   },
-  '03/9/2020': {
-    Cases: 2,
-    Deaths: 0
+  '03/09/2020': {
+    cases: 2,
+    deaths: 0
+  },  
+  '03/08/2020': {
+    cases: 2,
+    deaths: 0
   },
-  '03/8/2020': {
-    Cases: 2,
-    Deaths: 0
+  '03/07/2020': {
+    cases: 4,
+    deaths: 0
   },
-  '03/7/2020': {
-    Cases: 4,
-    Deaths: 0
+  '03/06/2020': {
+    cases: 3,
+    deaths: 0
   },
-  '03/6/2020': {
-    Cases: 3,
-    Deaths: 0
+  '03/05/2020': {
+    cases: 0,
+    deaths: 0
   },
-  '03/5/2020': {
-    Cases: 0,
-    Deaths: 0
+  '03/04/2020': {
+    cases: 2,
+    deaths: 0
   },
-  '03/4/2020': {
-    Cases: 2,
-    Deaths: 0
+  '03/03/2020': {
+    cases: 1,
+    deaths: 0
   },
-  '03/3/2020': {
-    Cases: 1,
-    Deaths: 0
+  '03/02/2020': {
+    cases: 0,
+    deaths: 0
   },
-  '03/2/2020': {
-    Cases: 0,
-    Deaths: 0
-  },
-  '03/1/2020': {
-    Cases: 0,
-    Deaths: 0
+  '03/01/2020': {
+    cases: 0,
+    deaths: 0
   },
   '02/28/2020': {
-    Cases: 2,
-    Deaths: 0
+    cases: 2,
+    deaths: 0
   },
   '02/27/2020': {
-    Cases: 0,
-    Deaths: 0
+    cases: 0,
+    deaths: 0
   },
   '02/26/2020': {
-    Cases: 1,
-    Deaths: 0
+    cases: 1,
+    deaths: 0
   }
 };
