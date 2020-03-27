@@ -703,7 +703,7 @@ function cleanupData() {
     x.Recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.DateRep);
 
     if (countryName == 'Romania') {
-      const { Cases, Recoveries, Deaths } = window.romaniaData[x.DateRep] || {};
+      const { Cases = 0, Recoveries = 0, Deaths = 0 } = window.romaniaData[x.DateRep] || {};
       x.Cases = Cases;
       x.Recoveries = Recoveries;
       x.Deaths = Deaths;
