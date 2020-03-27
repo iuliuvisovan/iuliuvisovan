@@ -674,8 +674,8 @@ function populateRecoveriesObject() {
 function getRecoveriesForToday(countryName, dateRep) {
   const yesterdaysKey = moment(dateRep, 'MM/DD/YYYY')
     .subtract(1, 'day')
-    .format('M/D/YYYY');
-  const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YYYY');
+    .format('M/D/YY');
+  const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
 
   const todaysRecoveries = recoveries[todaysKey]?.[countryName] || 0;
   const yesterdaysRecoveries = recoveries[yesterdaysKey]?.[countryName] || 0;
