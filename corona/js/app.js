@@ -260,11 +260,11 @@ function drawCountryActiveCases(countryName) {
   });
 }
 
-// setTimeout(() => {
-//   animate();
-// }, 2000);
+setTimeout(() => {
+  animate();
+}, 2000);
 
-const numberOfInterpolations = 10;
+const numberOfInterpolations = 15;
 const startingDay = 40;
 
 function animate() {
@@ -275,7 +275,7 @@ function animate() {
     setTimeout(() => {
       globalActiveCasesChart.destroy();
       drawGlobalActiveCases(currentEndDay);
-    }, currentFrame * (800 / numberOfInterpolations));
+    }, currentFrame * (2000 / numberOfInterpolations));
   }
 }
 
