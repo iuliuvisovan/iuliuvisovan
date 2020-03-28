@@ -639,15 +639,19 @@ function drawGlobalTotals() {
 function maybeAddEntryForRomaniaToday() {
   const romaniaEntries = window.data.filter(x => x['countriesAndTerritories'] == 'Romania');
   const todayString = moment().format('MM/DD/YYYY');
-  if (!romaniaEntries.find(x => x.dateRep == todayString)) {
-    const currentHour = moment().format('HH');
-    if (+currentHour > 12) {
-      window.data = [
-        ...window.data,
-        { countriesAndTerritories: 'Romania', dateRep: todayString, deaths: 0, recoveries: 0, cases: 0 }
-      ];
+  const maybeMissingDays = [todayString, '03/03/2020', '03/05/2020'];
+
+  maybeMissingDays.forEach(maybeMissingDay => {
+    if (!romaniaEntries.find(x => x.dateRep == maybeMissingDay)) {
+      const currentHour = moment().format('HH');
+      if (+currentHour > 12 || maybeMissingDay !== todayString) {
+        window.data = [
+          ...window.data,
+          { countriesAndTerritories: 'Romania', dateRep: maybeMissingDay, deaths: 0, recoveries: 0, cases: 0 }
+        ];
+      }
     }
-  }
+  });
 }
 
 const recoveriesCountriesMap = {
