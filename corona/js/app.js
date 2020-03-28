@@ -1,4 +1,4 @@
-moment.locale('ro');
+moment.locale('en');
 const isMobile = window.innerWidth < 768;
 const defaultDateFormat = isMobile ? 'DD.MM' : 'DD MMMM';
 const formatThousandsAsK = value => (value > 999 ? value / 1000 + 'k' : value);
@@ -166,7 +166,7 @@ function drawCountryActiveCases(countryName) {
   const ctx = document.getElementById('countryActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = dayStringsSinceStartOfYear;
+  const labels = allDaysInDataset;
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
 
   const firstCountryInfections = labels.map(x =>
@@ -260,14 +260,53 @@ function drawCountryActiveCases(countryName) {
   });
 }
 
-function drawGlobalActiveCases() {
+setTimeout(() => {
+  animate();
+}, 2000);
+
+const numberOfInterpolations = 10;
+const startingDay = 40;
+
+function animate() {
+  let currentFrame = 0;
+  for (var i = allDaysInDataset.length * numberOfInterpolations; i >= 0; i--) {
+    currentFrame++;
+    const currentEndDay = i;
+    setTimeout(() => {
+      globalActiveCasesChart.destroy();
+      drawGlobalActiveCases(currentEndDay);
+    }, currentFrame * (800 / numberOfInterpolations));
+  }
+}
+
+function clamp(number, min, max) {
+  return Math.min(Math.max(number, min), max);
+}
+
+function drawGlobalActiveCases(positionsFromEnd = 0) {
   const ctx = document.getElementById('globalActiveCases').getContext('2d');
   const data = window.data;
 
-  const labels = dayStringsSinceStartOfYear;
-  const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
+  let labels = allDaysInDataset;
 
-  const topCountries = ['China', 'USA', 'Italy', 'Spain'];
+  const doubledLabels = [];
+
+  labels.forEach(x => {
+    for (var i = 0; i < numberOfInterpolations; i++) {
+      doubledLabels.push(x);
+    }
+  });
+
+  labels = doubledLabels.slice(0, doubledLabels.length - positionsFromEnd);
+
+  // const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
+  let localizedLabels = labels.map(x => '');
+
+  document.getElementById('currentGraphDate').innerText = moment(labels[labels.length - 1], 'MM/DD/YYYY').format(
+    'DD MMM'
+  );
+
+  const topCountries = ['China', 'USA', 'Italy', 'Spain', 'France', 'United Kingdom'];
 
   const datasets = [];
   topCountries.forEach(countryName => {
@@ -284,10 +323,17 @@ function drawGlobalActiveCases() {
       return totalSoFar + x;
     });
 
-    datasets.push(summedActiveCases);
+    datasets.push(summedActiveCases.map(x => x / numberOfInterpolations));
   });
 
+  // localizedLabels = localizedLabels.slice(20);
+
   const filterFunction = (_, i, a) => {
+    if (a.length > 10) {
+      return i > a.length - 60 * numberOfInterpolations;
+    }
+    return true;
+
     if (i < (isMobile ? 30 : 30)) {
       return false;
     }
@@ -299,7 +345,9 @@ function drawGlobalActiveCases() {
     return i % (isMobile ? 8 : 2) == 0 || i == a.length - 1;
   };
 
-  new Chart(ctx, {
+  const maxValue = Math.max(...[...datasets[0], ...datasets[1], ...datasets[2], ...datasets[3]]);
+
+  globalActiveCasesChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: localizedLabels.filter(filterFunction),
@@ -331,6 +379,20 @@ function drawGlobalActiveCases() {
           backgroundColor: '#F4433600',
           borderColor: '#9C27B0',
           borderWidth: 2
+        },
+        {
+          label: topCountries[4],
+          data: datasets[4].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#4caf50',
+          borderWidth: 2
+        },
+        {
+          label: topCountries[5],
+          data: datasets[5].filter(filterFunction),
+          backgroundColor: '#F4433600',
+          borderColor: '#00bcd4',
+          borderWidth: 2
         }
       ]
     },
@@ -338,8 +400,14 @@ function drawGlobalActiveCases() {
       animation: {
         duration: 0
       },
-      minValueForLabel: 250,
-      labelsToIgnore: ['8166', '2127', '6935', '14k', '1144', '1910', '416'],
+      elements: {
+        point: {
+          radius: 0
+        }
+      },
+      // minValueForLabel: 250,
+      // labelsToIgnore: ['8166', '2127', '6935', '14k', '1144', '1910', '416'],
+      onlyShowLatestValueLabel: true,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -347,7 +415,19 @@ function drawGlobalActiveCases() {
             ticks: {
               fontColor: '#000',
               beginAtZero: true,
-              callback: formatThousandsAsK
+              callback: formatThousandsAsK,
+              max: maxValue > 60000 ? undefined : 60000
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              maxTicksLimit: 5,
+              maxRotation: 0
+            },
+            gridLines: {
+              color: 'rgba(0, 0, 0, 0)'
             }
           }
         ]
@@ -355,8 +435,8 @@ function drawGlobalActiveCases() {
       layout: {
         padding: {
           left: 0,
-          right: 15,
-          top: 0,
+          right: 50,
+          top: 50,
           bottom: 0
         }
       }
@@ -423,25 +503,21 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
-  const localizedLabels = dayStringsSinceStartOfYear.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
-  const values = dayStringsSinceStartOfYear.map(x =>
+  const localizedLabels = allDaysInDataset.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
+  const values = allDaysInDataset.map(x =>
     data
       .filter(y => y.dateRep == x && y.CountryExp == countryName)
       .map(x => x.cases)
       .reduce((a, b) => +a + +b, 0)
   );
-  console.log(
-    'values',
-    data.filter(y => y.CountryExp == 'Romania')
-  );
 
-  const deaths = dayStringsSinceStartOfYear.map(x =>
+  const deaths = allDaysInDataset.map(x =>
     data
       .filter(y => y.dateRep == x && y.CountryExp == countryName)
       .map(x => x.deaths)
       .reduce((a, b) => +a + +b, 0)
   );
-  const recoveries = dayStringsSinceStartOfYear.map(x =>
+  const recoveries = allDaysInDataset.map(x =>
     data
       .filter(y => y.dateRep == x && y.CountryExp == countryName)
       .map(x => x.recoveries)
@@ -534,7 +610,7 @@ function drawGlobalTotals() {
   const ctx = document.getElementById('globalTotals').getContext('2d');
   const data = window.data;
 
-  const labels = dayStringsSinceStartOfYear;
+  const labels = allDaysInDataset;
   const localizedLabels = labels.map(x => moment(x, 'MM/DD/YYYY').format(defaultDateFormat));
   const values = labels.map(x =>
     data
@@ -639,15 +715,19 @@ function drawGlobalTotals() {
 function maybeAddEntryForRomaniaToday() {
   const romaniaEntries = window.data.filter(x => x['countriesAndTerritories'] == 'Romania');
   const todayString = moment().format('MM/DD/YYYY');
-  if (!romaniaEntries.find(x => x.dateRep == todayString)) {
-    const currentHour = moment().format('HH');
-    if (+currentHour > 12) {
-      window.data = [
-        ...window.data,
-        { countriesAndTerritories: 'Romania', dateRep: todayString, deaths: 0, recoveries: 0, cases: 0 }
-      ];
+  const maybeMissingDays = [todayString, '03/03/2020', '03/05/2020'];
+
+  maybeMissingDays.forEach(maybeMissingDay => {
+    if (!romaniaEntries.find(x => x.dateRep == maybeMissingDay)) {
+      const currentHour = moment().format('HH');
+      if (+currentHour > 12 || maybeMissingDay !== todayString) {
+        window.data = [
+          ...window.data,
+          { countriesAndTerritories: 'Romania', dateRep: maybeMissingDay, deaths: 0, recoveries: 0, cases: 0 }
+        ];
+      }
     }
-  }
+  });
 }
 
 const recoveriesCountriesMap = {
@@ -764,22 +844,18 @@ function setupBarLabels() {
     afterDraw: function(chartInstance) {
       var ctx = chartInstance.chart.ctx;
 
-      ctx.font = Chart.helpers.fontString(
-        Chart.defaults.global.defaultFontSize,
-        'normal',
-        Chart.defaults.global.defaultFontFamily
-      );
+      ctx.font = Chart.helpers.fontString('20', 'bold', Chart.defaults.global.defaultFontFamily);
       ctx.textAlign = 'center';
       ctx.textBaseline = 'bottom';
       ctx.fillStyle = '#000';
 
-      const { minValueForLabel = 0, labelsToIgnore = [] } = chartInstance.options;
+      const { minValueForLabel = 0, labelsToIgnore = [], onlyShowLatestValueLabel } = chartInstance.options;
 
       chartInstance.data.datasets.forEach(dataset => {
         for (var i = 0; i < dataset.data.length; i++) {
           var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-          const currentValue = dataset.data[i];
-          let formattedValue = currentValue > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : dataset.data[i] + '';
+          const currentValue = parseInt(dataset.data[i]);
+          let formattedValue = currentValue > 9999 ? Math.floor(dataset.data[i] / 1000) + 'k' : currentValue + '';
 
           if (isMobile) {
             const thousands = (currentValue / 1000).toFixed(1);
@@ -789,8 +865,25 @@ function setupBarLabels() {
             formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
           }
 
-          if (currentValue > minValueForLabel && !labelsToIgnore.includes(formattedValue)) {
+          if (
+            currentValue > minValueForLabel &&
+            !labelsToIgnore.includes(formattedValue) &&
+            (!onlyShowLatestValueLabel || i == dataset.data.length - 1)
+          ) {
+            if (
+              currentValue < 300 &&
+              dataset.label.toLowerCase() != 'china' &&
+              dataset.label.toLowerCase() != 'italy'
+            ) {
+              return;
+            }
+
             ctx.fillText(formattedValue, model.x, model.y - 2);
+
+            if (onlyShowLatestValueLabel) {
+              var img = document.getElementById(dataset.label.toLowerCase().replace(' ', ''));
+              ctx.drawImage(img, model.x - (currentValue > 100 ? 65 : 60), model.y - 27, 580 / 15, 387 / 15);
+            }
           }
         }
       });
@@ -812,10 +905,10 @@ function show(graphId, button) {
   wrapper.toggleAttribute('visible');
 }
 
-let dayStringsSinceStartOfYear = [];
+let allDaysInDataset = [];
 
 function populateLabelsSinceStartOfYear() {
-  dayStringsSinceStartOfYear = [
+  allDaysInDataset = [
     ...new Set(
       window.data
         .filter(x => x['countriesAndTerritories'] == 'China' || x['countriesAndTerritories'] == 'Romania')
@@ -825,4 +918,6 @@ function populateLabelsSinceStartOfYear() {
 }
 
 setCurrentDate();
-draw();
+window.onload = function() {
+  draw();
+};
