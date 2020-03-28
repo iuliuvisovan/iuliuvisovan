@@ -105,3 +105,28 @@ button[selected] {
   border-radius: 5px;
   overflow: hidden;
 }
+
+.legend {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.legend-icon {
+  width: 21px;
+  margin-right: 5px;
+  border-radius: 61px;
+  height: 4px;
+}
+
+.legend-item {
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

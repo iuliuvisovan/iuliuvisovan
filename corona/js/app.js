@@ -260,9 +260,9 @@ function drawCountryActiveCases(countryName) {
   });
 }
 
-setTimeout(() => {
-  animate();
-}, 2000);
+// setTimeout(() => {
+//   animate();
+// }, 2000);
 
 const numberOfInterpolations = 10;
 const startingDay = 40;
@@ -402,11 +402,13 @@ function drawGlobalActiveCases(positionsFromEnd = 0) {
       },
       elements: {
         point: {
-          radius: 0
+          radius: 0,
+          pointStyle: 'line'
         }
       },
-      // minValueForLabel: 250,
-      // labelsToIgnore: ['8166', '2127', '6935', '14k', '1144', '1910', '416'],
+      legend: {
+        display: false
+      },
       onlyShowLatestValueLabel: true,
       maintainAspectRatio: false,
       scales: {
