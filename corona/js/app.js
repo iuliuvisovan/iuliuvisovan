@@ -682,10 +682,6 @@ function getRecoveriesForToday(countryName, dateRep) {
     .format('M/D/YY');
   const todaysKey = moment(dateRep, 'MM/DD/YYYY').format('M/D/YY');
 
-  if (countryName == 'usa') {
-    debugger;
-  }
-
   const todaysRecoveries = (recoveries[todaysKey] || {})[countryName] || 0;
   const yesterdaysRecoveries = (recoveries[yesterdaysKey] || {})[countryName] || 0;
 
@@ -707,10 +703,6 @@ function cleanupData() {
     }
     if (countryName.toLowerCase().startsWith('canada')) {
       countryName = 'Canada';
-    }
-
-    if (countryName == 'USA') {
-      debugger;
     }
 
     x.recoveries = getRecoveriesForToday(countryName.replace(/[\s\_]/g, '').toLowerCase(), x.dateRep);
