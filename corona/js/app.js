@@ -33,7 +33,7 @@ function draw() {
     drawLastWeekTotalsBars(); //122
     drawAllTimeTotalsBars(); //22
     drawGlobalTotals(); //22
-  }, 0);
+  }, 1000);
 }
 
 function setCurrentDate() {
@@ -199,7 +199,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const countryData = data
     .filter(x => x.CountryExp == countryName)
     .sort((a, b) => +moment(b.dateRep, 'MM/DD/YYYY') - +moment(a.dateRep, 'MM/DD/YYYY'))
-    .slice(0, isMobile ? 15 : 25)
+    .slice(0, isMobile ? 10 : 20)
     .reverse();
 
   const labels = countryData.map(x => moment(x.dateRep, 'MM/DD/YYYY').format(defaultDateFormat));
@@ -578,10 +578,6 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
       .filter(y => y.dateRep == x && y.CountryExp == countryName)
       .map(x => x.cases)
       .reduce((a, b) => +a + +b, 0)
-  );
-  console.log(
-    'values',
-    data.filter(y => y.CountryExp == 'Romania')
   );
 
   const deaths = dayStringsSinceStartOfYear.map(x =>
