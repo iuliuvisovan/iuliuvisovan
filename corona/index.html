@@ -26,6 +26,30 @@
 
 <body>
   <h2 style="height: 25px; margin-top: 5px;" id="pageTitle"></h2>
+  <div class="top-pies-wrapper">
+    <div>
+      <h3 class="graph-title top-title">Morti pe judet - Romania</h3>
+      <div class="chart-container" style="width: 430px; height: 320px">
+        <canvas id="romaniaCountyDeaths"></canvas>
+      </div>
+      <div class="pie-total">
+        <span style="font-size: 12px"> Total:</span>
+        <span class="total-deaths"></span> </span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="graph-title top-title">Morti pe grupa de varsta - Romania</h3>
+      <div class="chart-container" style="width: 440px; height: 320px">
+        <canvas id="romaniaAgeDeaths"></canvas>
+      </div>
+      <div class="pie-total" style="margin-top: -294px;">
+        <span style="font-size: 12px"> Total:</span> 
+        <span class="total-deaths"></span> </span>
+      </div>
+    </div>
+  </div>
+
   <h3 class="graph-title top-title">Cazuri zilnice - Romania</h3>
   <div class="chart-container">
     <canvas id="romaniaChart"></canvas>
@@ -38,13 +62,21 @@
 
   <h4>Alege grafic:</h4>
   <div class="buttons-wrapper">
-    <button onclick="show('globalActiveCasesWrapper', this)"><img src="./img/globalactive-min.png" />Cazuri active - <br/>global</button>
-    <button onclick="show('otherCountryChartWrapper', this)"><img src="./img/dailycountry-min.png" />Cazuri zilnice - <br/>pe o anumita tara</button>
-    <button onclick="show('otherCountryTotalsWrapper', this)"><img src="./img/totalscountry-min.png" />Cazuri totale / evolutie - <br/>pe o anumita tara</button>
-    <button onclick="show('countryActiveCasesWrapper', this)"><img src="./img/countryactive-min.png" />Cazuri active - <br/>pe o anumita tara</button>
-    <button onclick="show('totalsChartWrapper', this)"><img src="./img/globaltotalscountry-min.png" />Cazuri confirmate top 10 - <br/>global - top timpul</button>
-    <button onclick="show('lastWeekTotalsWrapper', this)"><img src="./img/globaltotalscountryseven-min.png" />Cazuri confirmate top 10 - <br/>global - ultimele 7 zile</button>
-    <button onclick="show('globalTotalsWrapper', this)"><img src="./img/globalevolution-min.png" />Cazuri confirmate / evolutie - <br/>global</button>
+    <button onclick="show('globalActiveCasesWrapper', this)"><img src="./img/globalactive-min.png" />Cazuri active -
+      <br />global</button>
+    <button onclick="show('otherCountryChartWrapper', this)"><img src="./img/dailycountry-min.png" />Cazuri zilnice -
+      <br />pe o anumita tara</button>
+    <button onclick="show('otherCountryTotalsWrapper', this)"><img src="./img/totalscountry-min.png" />Cazuri totale /
+      evolutie - <br />pe o anumita tara</button>
+    <button onclick="show('countryActiveCasesWrapper', this)"><img src="./img/countryactive-min.png" />Cazuri active -
+      <br />pe o anumita tara</button>
+    <button onclick="show('totalsChartWrapper', this)"><img src="./img/globaltotalscountry-min.png" />Cazuri
+      confirmate
+      top 10 - <br />global - top timpul</button>
+    <button onclick="show('lastWeekTotalsWrapper', this)"><img src="./img/globaltotalscountryseven-min.png" />Cazuri
+      confirmate top 10 - <br />global - ultimele 7 zile</button>
+    <button onclick="show('globalTotalsWrapper', this)"><img src="./img/globalevolution-min.png" />Cazuri confirmate /
+      evolutie - <br />global</button>
   </div>
 
   <div class="graph-wrapper" id="globalActiveCasesWrapper">
@@ -111,10 +143,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
   <script src="js/moment-with-locales.js"></script>
+  <script src="js/chartjs-plugin-labels.js"></script>
 
   <script src="data/active/30mar.js"></script>
   <script src="data/recovered/29mar.js"></script>
   <script src="data/romania.js?v=54"></script>
+  <script src="data/romania-deaths.js?v=54"></script>
 
   <script src="js/app.js?v=77"></script>
   <script>

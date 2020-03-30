@@ -99,3 +99,29 @@ button[selected] {
   align-items: center;
   justify-content: center;
 }
+
+.top-pies-wrapper {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .top-pies-wrapper {
+    flex-direction: column;
+  }
+}
+
+.pie-total {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 320px;
+  margin-top: -319px;
+  margin-left: 9px;
+}

@@ -18,6 +18,8 @@ var endTime;
 function draw() {
   init();
 
+  drawRomaniaCountyCasesPie();
+  drawRomaniaAgeCasesPie();
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
@@ -42,6 +44,153 @@ function setCurrentDate() {
 var otherCountryChart = undefined;
 var otherCountryChartTotals = undefined;
 var countryActiveCases = undefined;
+
+function drawRomaniaCountyCasesPie() {
+  const ctx = document.getElementById('romaniaCountyDeaths').getContext('2d');
+  const data = window.romaniaDeaths;
+
+  let labels = [...new Set(data.map(x => x.county))]
+    .sort((a, b) => data.filter(y => y.county == b).length - data.filter(y => y.county == a).length)
+    .slice(0, 7);
+
+  const othersValue = data.filter(x => !labels.includes(x.county)).length;
+  const values = [...labels.map(x => data.filter(y => y.county == x).length), othersValue];
+
+  document.querySelectorAll('.total-deaths').forEach(x => (x.innerText = data.length));
+
+  otherCountryChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [...labels, 'Restul - in total'].map(
+        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + '\n' + values[i]
+      ),
+      datasets: [
+        {
+          label: 'Morti pe judet',
+          data: values,
+          backgroundColor: ['#ff5722', '#ff9800', '#ffc107', '#ffeb3b', '#cddc39', '#8bc34a', '#4caf50', '#009688']
+        }
+      ]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          right: 50,
+          left: 60
+        }
+      },
+      plugins: {
+        labels: {
+          render: 'label',
+          precision: 0,
+          showZero: true,
+          fontSize: 12,
+          fontColor: '#444',
+          fontStyle: 'normal',
+          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+          textShadow: true,
+          shadowBlur: 10,
+          shadowOffsetX: -5,
+          shadowOffsetY: 5,
+          shadowColor: '#0000',
+          arc: false,
+          position: 'outside',
+          overlap: true,
+          showActualPercentages: true,
+          images: [
+            {
+              src: 'image.png',
+              width: 16,
+              height: 16
+            }
+          ],
+          outsidePadding: 4,
+          textMargin: 4
+        }
+      }
+    }
+  });
+}
+
+function drawRomaniaAgeCasesPie() {
+  const ctx = document.getElementById('romaniaAgeDeaths').getContext('2d');
+  const data = window.romaniaDeaths;
+
+  const maxAge = Math.max(...data.map(x => x.age));
+  const minAge = Math.min(...data.map(x => x.age));
+  const intervalLength = Math.ceil((maxAge - minAge) / 4);
+
+  const intervals = [
+    {
+      min: 0,
+      max: 40,
+      label: '<40 ani'
+    },
+    {
+      min: 20,
+      max: 40,
+      label: '20-40 ani'
+    },
+    {
+      min: 40,
+      max: 60,
+      label: '40-60 ani'
+    },
+    {
+      min: 60,
+      max: 100,
+      label: '60+ ani'
+    }
+  ];
+
+  let labels = intervals.map(x => x.label || x.min + ' - ' + x.max);
+  const values = intervals.map(x => data.filter(y => y.age > x.min && y.age <= x.max).length);
+
+  otherCountryChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels.map((x, i) => x + ' (' + (values[i] * (data.length / 100)).toFixed(1) + '%)'),
+      datasets: [
+        {
+          label: 'Morti pe grupe de varsta',
+          data: values,
+          backgroundColor: ['#009688bb', '#4caf50bb', '#ff9800', '#ff5722']
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      plugins: {
+        labels: {
+          render: ({ value, percentage }) => {
+            return value;
+          },
+          precision: 0,
+          showZero: true,
+          fontSize: 14,
+          fontColor: '#fff',
+          fontStyle: 'normal',
+          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+          textShadow: true,
+          shadowBlur: 10,
+          shadowOffsetX: -5,
+          shadowOffsetY: 5,
+          shadowColor: '#0000',
+          arc: false,
+          // position: 'outside',
+          overlap: true,
+          showActualPercentages: true,
+          outsidePadding: 4,
+          textMargin: 15
+        }
+      }
+    }
+  });
+}
 
 function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
@@ -767,6 +916,10 @@ function setupBarLabels() {
   Chart.pluginService.register({
     afterDraw: function(chartInstance) {
       var ctx = chartInstance.chart.ctx;
+
+      if (!['line', 'bar'].includes(chartInstance.config.type)) {
+        return;
+      }
 
       ctx.font = Chart.helpers.fontString(
         Chart.defaults.global.defaultFontSize,
