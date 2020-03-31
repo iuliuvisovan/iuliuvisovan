@@ -153,7 +153,7 @@ function drawRomaniaAgeCasesPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: labels.map((x, i) => x + ' (' + (values[i] * (data.length / 100)).toFixed(1) + '%)'),
+      labels: labels.map((x, i) => x + ' (' + ((values[i] / data.length) * 100).toFixed(1) + '%)'),
       datasets: [
         {
           label: 'Morti pe grupe de varsta',
