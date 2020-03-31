@@ -1,5 +1,85 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 78,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 64,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
+    deathIndex: 77,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 82,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
+    deathIndex: 76,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 57,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
+    deathIndex: 75,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 68,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
+    deathIndex: 74,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 69,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
+    deathIndex: 73,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 62,
+    county: 'suceava',
+    preexistingCondition: undefined
+  },
+  {
+    deathIndex: 72,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 65,
+    county: 'hunedoara',
+    preexistingCondition: ['hipertensiune arteriala']
+  },
+  {
+    deathIndex: 71,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 53,
+    county: 'hunedoara',
+    preexistingCondition: ['cancer']
+  },
+  {
+    deathIndex: 70,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 60,
+    county: 'ialomita',
+    preexistingCondition: ['insuficienta renala', 'diabet', 'hipertensiune arteriala', 'hepatita']
+  },
+  {
+    deathIndex: 69,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 56,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni psihiatrice']
+  },
+  {
     deathIndex: 68,
     dateConfirmed: '03/31/2020',
     gender: 1,
