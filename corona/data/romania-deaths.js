@@ -1,5 +1,29 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 68,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 81,
+    county: 'mehedinti',
+    preexistingCondition: ['hipertensiune arteriala', 'obezitate']
+  },
+  {
+    deathIndex: 67,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 69,
+    county: 'iasi',
+    preexistingCondition: ['hipertensiune arteriala']
+  },
+  {
+    deathIndex: 66,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 73,
+    county: 'suceava',
+    preexistingCondition: undefined
+  },
+  {
     deathIndex: 65,
     dateConfirmed: '03/30/2020',
     gender: 0,
