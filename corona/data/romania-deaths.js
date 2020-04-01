@@ -1,10 +1,57 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 90,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 88,
+    county: 'covasna',
+    preexistingCondition: ['mielita cervicala', 'tetraplegie']
+  },
+  {
+    deathIndex: 89,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 66,
+    county: 'bucurești',
+    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala', 'schizofrenie']
+  },
+  {
+    deathIndex: 88,
+    dateConfirmed: '04/01/2020',
+    gender: 0,
+    age: 72,
+    county: 'suceava',
+    preexistingCondition: ['afectiuni cardiace', 'bpoc']
+  },
+  {
+    deathIndex: 87,
+    dateConfirmed: '04/01/2020',
+    gender: 0,
+    age: 77,
+    county: 'bistrita nasaud',
+    preexistingCondition: [
+      'bpoc',
+      'cardiomiopatie',
+      'cardiopatie',
+      'fibrilatie atriala',
+      'hipertrofie de prostata',
+      'insuficienta renala'
+    ]
+  },
+  {
+    deathIndex: 86,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 45,
+    county: 'neamț',
+    preexistingCondition: ['hemiplegie']
+  },
+  {
     deathIndex: 85,
     dateConfirmed: '04/01/2020',
     gender: 1,
     age: 63,
-    county: 'bucuresti',
+    county: 'bucurești',
     preexistingCondition: ['CIC', 'hipertensiune arteriala', 'boala renala cronica', 'hipotiroidism']
   },
   {
@@ -12,15 +59,21 @@ window.romaniaDeaths = [
     dateConfirmed: '04/01/2020',
     gender: 0,
     age: 85,
-    county: 'timis',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'fibrilatie atriala', 'insuficienta renala cronica', 'alzheimer']
+    county: 'timiș',
+    preexistingCondition: [
+      'diabet',
+      'hipertensiune arteriala',
+      'fibrilatie atriala',
+      'insuficienta renala cronica',
+      'alzheimer'
+    ]
   },
   {
     deathIndex: 83,
     dateConfirmed: '04/01/2020',
     gender: 1,
     age: 54,
-    county: 'bucuresti',
+    county: 'bucurești',
     preexistingCondition: ['cancer']
   },
   {
@@ -52,7 +105,7 @@ window.romaniaDeaths = [
     dateConfirmed: '03/31/2020',
     gender: 1,
     age: 84,
-    county: 'bucuresti',
+    county: 'bucurești',
     preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficienta cardiaca']
   },
   {
@@ -124,7 +177,7 @@ window.romaniaDeaths = [
     dateConfirmed: '03/31/2020',
     gender: 1,
     age: 60,
-    county: 'ialomita',
+    county: 'ialomița',
     preexistingCondition: ['insuficienta renala cronica', 'diabet', 'hipertensiune arteriala', 'hepatita']
   },
   {
@@ -148,7 +201,7 @@ window.romaniaDeaths = [
     dateConfirmed: '03/31/2020',
     gender: 0,
     age: 69,
-    county: 'iasi',
+    county: 'iași',
     preexistingCondition: ['hipertensiune arteriala']
   },
   {
@@ -268,7 +321,7 @@ window.romaniaDeaths = [
     dateConfirmed: '03/30/2020',
     gender: 0,
     age: 52,
-    county: 'ialomita',
+    county: 'ialomița',
     preexistingCondition: undefined
   },
   {
@@ -316,14 +369,14 @@ window.romaniaDeaths = [
     dateConfirmed: '03/30/2020',
     gender: 0,
     age: 70,
-    county: 'timis',
+    county: 'timiș',
     preexistingCondition: ['cardiopatie', 'diabet']
   },
   {
     deathIndex: 45,
     gender: 0,
     age: 57,
-    county: 'timis',
+    county: 'timiș',
     dateConfirmed: '03/30/2020',
     preexistingCondition: ['cardiopatie', 'diabet']
   },
@@ -379,7 +432,7 @@ window.romaniaDeaths = [
     deathIndex: 38,
     gender: 0,
     age: 66,
-    county: 'timis',
+    county: 'timiș',
     dateConfirmed: '03/29/2020',
     preexistingCondition: ['diabet', 'hipertensiune arteriala']
   },
@@ -387,14 +440,14 @@ window.romaniaDeaths = [
     deathIndex: 37,
     gender: 0,
     age: 77,
-    county: 'ialomita',
+    county: 'ialomița',
     dateConfirmed: '03/28/2020'
   },
   {
     deathIndex: 36,
     gender: 0,
     age: 60,
-    county: 'ialomita',
+    county: 'ialomița',
     dateConfirmed: '03/28/2020',
     preexistingCondition: ['obezitate']
   },
@@ -402,7 +455,7 @@ window.romaniaDeaths = [
     deathIndex: 35,
     gender: 0,
     age: 39,
-    county: 'ialomita',
+    county: 'ialomița',
     dateConfirmed: '03/28/2020',
     preexistingCondition: []
   },
@@ -474,7 +527,7 @@ window.romaniaDeaths = [
     deathIndex: 26,
     gender: 0,
     age: 65,
-    county: 'timis',
+    county: 'timiș',
     dateConfirmed: '03/27/2020',
     preexistingCondition: ['boli cardiovasculare']
   },
@@ -482,7 +535,7 @@ window.romaniaDeaths = [
     deathIndex: 25,
     gender: 0,
     age: 81,
-    county: 'bucuresti',
+    county: 'bucurești',
     dateConfirmed: '03/27/2020',
     preexistingCondition: undefined
   },
@@ -498,7 +551,7 @@ window.romaniaDeaths = [
     deathIndex: 23,
     gender: 0,
     age: 75,
-    county: 'iasi',
+    county: 'iași',
     dateConfirmed: '03/26/2020',
     preexistingCondition: ['diabet']
   },
@@ -514,7 +567,7 @@ window.romaniaDeaths = [
     deathIndex: 21,
     gender: 1,
     age: 70,
-    county: 'neamt',
+    county: 'neamț',
     dateConfirmed: '03/26/2020',
     preexistingCondition: ['hemodializa']
   },
@@ -522,7 +575,7 @@ window.romaniaDeaths = [
     deathIndex: 20,
     gender: 0,
     age: 49,
-    county: 'timis',
+    county: 'timiș',
     dateConfirmed: '03/26/2020',
     preexistingCondition: ['poliartrita reumatoida', 'hipertensiune arteriala']
   },
@@ -562,7 +615,7 @@ window.romaniaDeaths = [
     deathIndex: 15,
     gender: 1,
     age: 63,
-    county: 'neamt',
+    county: 'neamț',
     dateConfirmed: '03/25/2020',
     preexistingCondition: undefined
   },
@@ -626,7 +679,7 @@ window.romaniaDeaths = [
     deathIndex: 7,
     gender: 0,
     age: 65,
-    county: 'bucuresti',
+    county: 'bucurești',
     dateConfirmed: '03/23/2020',
     preexistingCondition: ['diabet']
   },
@@ -658,7 +711,7 @@ window.romaniaDeaths = [
     deathIndex: 3,
     gender: 0,
     age: 70,
-    county: 'neamt',
+    county: 'neamț',
     dateConfirmed: '03/22/2020',
     preexistingCondition: ['diabet']
   },
@@ -666,7 +719,7 @@ window.romaniaDeaths = [
     deathIndex: 2,
     gender: 0,
     age: 74,
-    county: 'bucuresti',
+    county: 'bucurești',
     dateConfirmed: '03/22/2020',
     preexistingCondition: ['diabet']
   },

@@ -53,7 +53,7 @@ function drawRomaniaCountyCasesPie() {
 
   let labels = [...new Set(data.map(x => x.county))]
     .sort((a, b) => data.filter(y => y.county == b).length - data.filter(y => y.county == a).length)
-    .slice(0, 7);
+    .slice(0, 9);
 
   const othersValue = data.filter(x => !labels.includes(x.county)).length;
   const values = [...labels.map(x => data.filter(y => y.county == x).length), othersValue];
@@ -63,14 +63,23 @@ function drawRomaniaCountyCasesPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: [...labels, 'Restul judetelor'].map(
-        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + '\n ' + values[i]
-      ),
+      labels: [...labels, 'Restul județelor'].map(x => x[0].toUpperCase() + x.substr(1)),
       datasets: [
         {
           label: 'Morti pe judet',
           data: values,
-          backgroundColor: ['#ff5722', '#ff9800', '#ffc107', '#ffeb3b', '#cddc39', '#8bc34a', '#4caf50', '#009688']
+          backgroundColor: [
+            '#ff5722',
+            '#ff9800',
+            '#ffc107',
+            '#ffeb3b',
+            '#cddc39',
+            '#8bc34a',
+            '#4caf50',
+            '#009688',
+            '#00BCD4',
+            '#03A9F4'
+          ]
         }
       ]
     },
@@ -81,13 +90,15 @@ function drawRomaniaCountyCasesPie() {
       maintainAspectRatio: false,
       layout: {
         padding: {
-          right: 50,
-          left: 60
+          right: 70,
+          left: 70
         }
       },
       plugins: {
         labels: {
-          render: 'label',
+          render: ({ label, value }) => {
+            return `${label}: ${value}`;
+          },
           precision: 0,
           showZero: true,
           fontSize: 12,
@@ -111,7 +122,7 @@ function drawRomaniaCountyCasesPie() {
             }
           ],
           outsidePadding: 4,
-          textMargin: 4
+          textMargin: 6
         }
       }
     }
@@ -209,9 +220,7 @@ function drawRomaniaConditionPie() {
   const allConditionsDuplicated = data
     .map(x => x.preexistingCondition)
     .flat()
-    .map(x => (x?.length > 19 ? x.split(' ').join('\n') : x));
-
-  console.log('allConditionsDuplicated', allConditionsDuplicated);
+    .map(x => (x?.length > 12 ? x.split(' ').join('\n') : x));
 
   let labels = [...new Set(allConditionsDuplicated)]
     .sort((a, b) => (a.startsWith('Boli') ? 1 : -1))
@@ -223,12 +232,21 @@ function drawRomaniaConditionPie() {
 
   console.log('labels', labels);
 
-  const othersValue = allConditionsDuplicated.filter(x => !labels.includes(x)).length;
-  const unknownValue = allConditionsDuplicated.filter(x => x).length;
+  const othersValue = data.filter(x => {
+    let hasOneOfTopDiseases = false;
+    (x.preexistingCondition || []).forEach(disease => {
+      if (labels.includes(disease)) {
+        hasOneOfTopDiseases = true;
+      }
+    });
+    return hasOneOfTopDiseases;
+  }).length;
+
+  const unknownValue = data.filter(x => !x.preexistingCondition).length;
   const noConditionValue = data.filter(x => x.preexistingCondition && x.preexistingCondition.length == 0).length;
   const values = [
-    ...labels.map(x => allConditionsDuplicated.filter(y => y == x).length),
     unknownValue,
+    ...labels.map(x => allConditionsDuplicated.filter(y => y == x).length),
     othersValue,
     noConditionValue
   ];
@@ -236,20 +254,20 @@ function drawRomaniaConditionPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: [...labels, 'Necunoscut', 'Alte afectiuni', 'Fara afectiuni \npreexistente'].map(
-        (x, i) => x[0].toUpperCase() + x.substr(1) + '\n ' + values[i]
+      labels: ['Necunoscut', ...labels, 'Alte afectiuni', 'Fara afectiuni \npreexistente'].map(
+        (x, i) => x[0].toUpperCase() + x.substr(1) + ':\n ' + values[i]
       ),
       datasets: [
         {
           label: 'Morti pe baza afectiunilor preexistente',
-          data: values.map((x, i, a) => (i == a.length - 3 || i == a.length - 2 ? x / 2 : x)),
+          data: values,
           backgroundColor: [
+            undefined,
             '#E91E63',
             '#F44336',
             '#ff5722',
             '#ff9800',
             '#ffc107',
-            undefined,
             '#ffeb3b',
             '#cddc39',
             '#4caf50'
@@ -273,32 +291,29 @@ function drawRomaniaConditionPie() {
       },
       plugins: {
         labels: {
-          render: ({ label, value }) => {
-            if (label.startsWith('Obez')) {
-              return '\n\n' + label;
-            }
-            if (label.startsWith('Necuno')) {
-              return '\n\n' + label;
-            }
+          render: ({ label, value, percentage }) => {
             if (label.startsWith('Fara')) {
               return 'Fara boli \npreexistente: ' + value + '\n\n';
             }
-            if (label.startsWith('Diab')) {
+            if (label.startsWith('Hiper') || label.startsWith('Boli card')) {
+              return '\n\n' + label;
+            }
+            if (label.startsWith('Fibril')) {
               return label;
             }
 
-            return label.length > 12 ? label : '\n' + label;
+            return `\n ${label}`;
           },
           precision: 0,
           showZero: true,
           fontSize: 12,
-          fontColor: '#444',
+          fontColor: '#333',
           fontStyle: 'normal',
           fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
           textShadow: true,
-          shadowBlur: 1,
-          shadowOffsetX: 1,
-          shadowOffsetY: 1,
+          shadowBlur: 5,
+          shadowOffsetX: -2,
+          shadowOffsetY: -2,
           shadowColor: '#fff',
           arc: false,
           position: 'outside',
