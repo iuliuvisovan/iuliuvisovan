@@ -20,6 +20,7 @@ function draw() {
 
   drawRomaniaCountyCasesPie();
   drawRomaniaAgeCasesPie();
+  // drawRomaniaSexCasesPie();
   drawDailyCasesChart('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
@@ -62,7 +63,7 @@ function drawRomaniaCountyCasesPie() {
     type: 'doughnut',
     data: {
       labels: [...labels, 'Restul - in total'].map(
-        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1)
+        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + ': ' + values[i]
       ),
       datasets: [
         {
@@ -109,7 +110,7 @@ function drawRomaniaCountyCasesPie() {
             }
           ],
           outsidePadding: 4,
-          textMargin: 4
+          textMargin: 7
         }
       }
     }
@@ -119,10 +120,6 @@ function drawRomaniaCountyCasesPie() {
 function drawRomaniaAgeCasesPie() {
   const ctx = document.getElementById('romaniaAgeDeaths').getContext('2d');
   const data = window.romaniaDeaths;
-
-  const maxAge = Math.max(...data.map(x => x.age));
-  const minAge = Math.min(...data.map(x => x.age));
-  const intervalLength = Math.ceil((maxAge - minAge) / 4);
 
   const intervals = [
     {
@@ -166,8 +163,60 @@ function drawRomaniaAgeCasesPie() {
       maintainAspectRatio: false,
       plugins: {
         labels: {
-          render: ({ value, percentage }) => {
+          render: ({ value }) => {
             return value;
+          },
+          precision: 0,
+          showZero: true,
+          fontSize: 14,
+          fontColor: '#fff',
+          fontStyle: 'normal',
+          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+          textShadow: true,
+          shadowBlur: 10,
+          shadowOffsetX: -5,
+          shadowOffsetY: 5,
+          shadowColor: '#0000',
+          arc: false,
+          // position: 'outside',
+          overlap: true,
+          showActualPercentages: true,
+          outsidePadding: 4,
+          textMargin: 15
+        }
+      }
+    }
+  });
+}
+
+function drawRomaniaSexCasesPie() {
+  const ctx = document.getElementById('romaniaSexDeaths').getContext('2d');
+  const data = window.romaniaDeaths;
+
+  let labels = ['Barbati', 'Femei'];
+  const values = [data.filter(x => !x.gender).length, data.filter(x => x.gender).length];
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Morti pe sex',
+          data: values,
+          backgroundColor: ['#2196f3', '#F06292']
+        }
+      ]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      maintainAspectRatio: false,
+      plugins: {
+        labels: {
+          render: ({ value, percentage, label }) => {
+            return `${label}: ${value} (${percentage}%)`;
           },
           precision: 0,
           showZero: true,
@@ -207,7 +256,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const deaths = countryData.map(x => +x.deaths);
   const recoveries = countryData.map(x => +x.recoveries);
 
-  otherCountryChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
       labels: labels,
