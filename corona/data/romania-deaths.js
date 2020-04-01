@@ -1,11 +1,67 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 85,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 63,
+    county: 'bucuresti',
+    preexistingCondition: ['CIC', 'hipertensiune arteriala', 'boala renala cronica', 'hipotiroidism']
+  },
+  {
+    deathIndex: 84,
+    dateConfirmed: '04/01/2020',
+    gender: 0,
+    age: 85,
+    county: 'timis',
+    preexistingCondition: ['diabet zaharat', 'hipertensiune arteriala', 'fibrilatie atriala paroxistica', 'insuficienta renala cronica', 'alzheimer']
+  },
+  {
+    deathIndex: 83,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 54,
+    county: 'bucuresti',
+    preexistingCondition: ['cancer']
+  },
+  {
+    deathIndex: 82,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 70,
+    county: 'mures',
+    preexistingCondition: undefined
+  },
+  {
+    deathIndex: 81,
+    dateConfirmed: '03/31/2020',
+    gender: 0,
+    age: 70,
+    county: 'sibiu',
+    preexistingCondition: ['insuficienta renala cronica']
+  },
+  {
+    deathIndex: 80,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 61,
+    county: 'bihor',
+    preexistingCondition: ['insuficienta renala cronica', 'afectiune oncologica']
+  },
+  {
+    deathIndex: 79,
+    dateConfirmed: '03/31/2020',
+    gender: 1,
+    age: 84,
+    county: 'bucuresti',
+    preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficient cardiaca']
+  },
+  {
     deathIndex: 78,
     dateConfirmed: '03/31/2020',
     gender: 1,
     age: 64,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: undefined
   },
   {
     deathIndex: 77,
@@ -13,7 +69,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 82,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: undefined
   },
   {
     deathIndex: 76,
@@ -21,7 +77,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 57,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: undefined
   },
   {
     deathIndex: 75,
@@ -29,7 +85,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 68,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: undefined
   },
   {
     deathIndex: 74,

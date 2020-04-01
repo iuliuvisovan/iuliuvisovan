@@ -62,7 +62,7 @@ function drawRomaniaCountyCasesPie() {
     type: 'doughnut',
     data: {
       labels: [...labels, 'Restul - in total'].map(
-        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + '\n' + values[i]
+        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1)
       ),
       datasets: [
         {
