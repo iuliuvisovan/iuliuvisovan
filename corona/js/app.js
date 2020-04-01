@@ -21,14 +21,14 @@ function draw() {
   drawRomaniaCountyCasesPie();
   drawRomaniaAgeCasesPie();
   // drawRomaniaSexCasesPie();
-  drawDailyCasesChart('romaniaChart', 'Romania');
+  drawCountryDailyBars('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
 
     drawGlobalActiveCases();
     show('globalActiveCasesWrapper', document.querySelector('button'));
 
-    drawDailyCasesChart('otherCountryChart', 'Italy', '#ffeb3b'); //8
+    drawCountryDailyBars('otherCountryChart', 'Italy', '#ffeb3b'); //8
     drawCountryActiveCases('Romania'); // 29
     drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b'); //30
     drawLastWeekTotalsBars(); //122
@@ -241,7 +241,7 @@ function drawRomaniaSexCasesPie() {
   });
 }
 
-function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
+function drawCountryDailyBars(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
@@ -256,7 +256,7 @@ function drawDailyCasesChart(chartId, countryName, color = '#ff9800') {
   const deaths = countryData.map(x => +x.deaths);
   const recoveries = countryData.map(x => +x.recoveries);
 
-  new Chart(ctx, {
+  otherCountryChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: labels,
@@ -855,7 +855,7 @@ const recoveriesCountriesMap = {
 
 const recoveries = {};
 
-function populaterecoveriesObject() {
+function populateRecoveriesObject() {
   const allCountries = [...new Set(window.recoveredData.map(x => x['Country/Region']))];
   const allDates = Object.keys(window.recoveredData[0]).filter(x => x.includes('/20'));
 
@@ -889,7 +889,7 @@ function getRecoveriesForToday(countryName, dateRep) {
 function cleanupData() {
   maybeAddEntryForRomaniaToday();
 
-  populaterecoveriesObject();
+  populateRecoveriesObject();
 
   window.data = window.data.map(x => {
     let countryName = x['countriesAndTerritories'].replace(/\_/g, ' ');
@@ -929,7 +929,7 @@ function cleanupData() {
 function drawComparedCountry(picker) {
   otherCountryChart.destroy();
 
-  drawDailyCasesChart('otherCountryChart', picker.value, '#ffeb3b');
+  drawCountryDailyBars('otherCountryChart', picker.value, '#ffeb3b');
 }
 
 function drawComparedCountryTotalCases(picker) {
