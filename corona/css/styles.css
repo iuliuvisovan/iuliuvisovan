@@ -132,6 +132,7 @@ button[selected] {
 
 @media (max-width: 768px) {
   #conditionsPie {
-    height: 350px!important;
+    height: 350px !important;
+    margin-left: -6px;
   }
 }
