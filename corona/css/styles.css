@@ -122,8 +122,8 @@ button[selected] {
   align-items: center;
   flex-direction: column;
   height: 320px;
-  margin-top: -319px;
-  margin-left: 9px;
+  margin-top: -318px;
+  margin-left: 2px;
 }
 
 #conditionsPie {

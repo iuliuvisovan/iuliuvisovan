@@ -1,5 +1,21 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 92,
+    dateConfirmed: '04/01/2020',
+    gender: 1,
+    age: 78,
+    county: 'bucurești',
+    preexistingCondition: ['boli cardiovasculare', 'diabet', 'boala neuro musculara', 'boala pulmonara cronica']
+  },
+  {
+    deathIndex: 91,
+    dateConfirmed: '04/01/2020',
+    gender: 0,
+    age: 70,
+    county: 'bucurești',
+    preexistingCondition: ['dializa']
+  },
+  {
     deathIndex: 90,
     dateConfirmed: '04/01/2020',
     gender: 1,
