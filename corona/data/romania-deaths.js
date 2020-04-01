@@ -441,7 +441,8 @@ window.romaniaDeaths = [
     gender: 0,
     age: 77,
     county: 'ialomița',
-    dateConfirmed: '03/28/2020'
+    dateConfirmed: '03/28/2020',
+    preexistingCondition: undefined
   },
   {
     deathIndex: 36,
