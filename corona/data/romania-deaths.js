@@ -13,7 +13,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 85,
     county: 'timis',
-    preexistingCondition: ['diabet zaharat', 'hipertensiune arteriala', 'fibrilatie atriala paroxistica', 'insuficienta renala cronica', 'alzheimer']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'fibrilatie atriala', 'insuficienta renala cronica', 'alzheimer']
   },
   {
     deathIndex: 83,
@@ -53,7 +53,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 84,
     county: 'bucuresti',
-    preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficient cardiaca']
+    preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficienta cardiaca']
   },
   {
     deathIndex: 78,
@@ -125,7 +125,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 60,
     county: 'ialomita',
-    preexistingCondition: ['insuficienta renala', 'diabet', 'hipertensiune arteriala', 'hepatita']
+    preexistingCondition: ['insuficienta renala cronica', 'diabet', 'hipertensiune arteriala', 'hepatita']
   },
   {
     deathIndex: 69,
@@ -540,7 +540,7 @@ window.romaniaDeaths = [
     age: 76,
     county: 'cluj',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['hipertensiune arteriala', 'diabet zaharat']
+    preexistingCondition: ['hipertensiune arteriala', 'diabet']
   },
   {
     deathIndex: 17,

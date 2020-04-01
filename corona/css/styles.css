@@ -125,3 +125,14 @@ button[selected] {
   margin-top: -319px;
   margin-left: 9px;
 }
+
+#conditionsPie {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #conditionsPie {
+    flex-direction: column;
+  }
+}
+

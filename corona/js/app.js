@@ -19,8 +19,9 @@ function draw() {
   init();
 
   drawRomaniaCountyCasesPie();
+  drawRomaniaSexCasesPie();
+  drawRomaniaConditionPie();
   drawRomaniaAgeCasesPie();
-  // drawRomaniaSexCasesPie();
   drawCountryDailyBars('romaniaChart', 'Romania');
   setTimeout(() => {
     drawTotalsForCountry('romaniaTotals', 'Romania');
@@ -62,8 +63,8 @@ function drawRomaniaCountyCasesPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: [...labels, 'Restul - in total'].map(
-        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + ': ' + values[i]
+      labels: [...labels, 'Restul judetelor'].map(
+        (x, i) => '\n' + x[0].toUpperCase() + x.substr(1) + '\n ' + values[i]
       ),
       datasets: [
         {
@@ -110,7 +111,7 @@ function drawRomaniaCountyCasesPie() {
             }
           ],
           outsidePadding: 4,
-          textMargin: 7
+          textMargin: 4
         }
       }
     }
@@ -164,7 +165,7 @@ function drawRomaniaAgeCasesPie() {
       plugins: {
         labels: {
           render: ({ value }) => {
-            return value;
+            return ' ' + value + '\n\n';
           },
           precision: 0,
           showZero: true,
@@ -183,6 +184,120 @@ function drawRomaniaAgeCasesPie() {
           showActualPercentages: true,
           outsidePadding: 4,
           textMargin: 15
+        }
+      }
+    }
+  });
+}
+
+function drawRomaniaConditionPie() {
+  const ctx = document.getElementById('romaniaConditionDeaths').getContext('2d');
+  const data = window.romaniaDeaths;
+
+  const allConditionsDuplicated = data
+    .map(x => x.preexistingCondition)
+    .flat()
+    .map(x => (x?.length > 19 ? x.split(' ').join('\n') : x));
+
+  console.log('allConditionsDuplicated', allConditionsDuplicated);
+
+  let labels = [...new Set(allConditionsDuplicated)]
+    .sort((a, b) => (a.startsWith('Boli') ? 1 : -1))
+    .sort(
+      (a, b) => allConditionsDuplicated.filter(y => y == b).length - allConditionsDuplicated.filter(y => y == a).length
+    )
+    .slice(0, 5)
+    .sort((a, b) => a - b);
+
+  console.log('labels', labels);
+
+  const othersValue = allConditionsDuplicated.filter(x => !labels.includes(x)).length;
+  const unknownValue = allConditionsDuplicated.filter(x => x).length;
+  const noConditionValue = data.filter(x => x.preexistingCondition && x.preexistingCondition.length == 0).length;
+  const values = [
+    ...labels.map(x => allConditionsDuplicated.filter(y => y == x).length),
+    unknownValue,
+    othersValue,
+    noConditionValue
+  ];
+
+  otherCountryChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: [...labels, 'Necunoscut', 'Alte afectiuni', 'Fara afectiuni \npreexistente'].map(
+        (x, i) => x[0].toUpperCase() + x.substr(1) + '\n ' + values[i]
+      ),
+      datasets: [
+        {
+          label: 'Morti pe baza afectiunilor preexistente',
+          data: values.map((x, i, a) => (i == a.length - 3 || i == a.length - 2 ? x / 2 : x)),
+          backgroundColor: [
+            '#E91E63',
+            '#F44336',
+            '#ff5722',
+            '#ff9800',
+            '#ffc107',
+            undefined,
+            '#ffeb3b',
+            '#cddc39',
+            '#4caf50'
+          ]
+        }
+      ]
+    },
+    options: {
+      tooltips: {
+        enabled: false
+      },
+      legend: {
+        display: false
+      },
+      maintainAspectRatio: false,
+      layout: {
+        padding: {
+          right: 50,
+          left: 60
+        }
+      },
+      plugins: {
+        labels: {
+          render: ({ label, value }) => {
+            if (label.startsWith('Obez')) {
+              return '\n\n' + label;
+            }
+            if (label.startsWith('Necuno')) {
+              return '\n\n' + label;
+            }
+            if (label.startsWith('Fara')) {
+              return 'Fara boli \npreexistente: ' + value + '\n\n';
+            }
+
+            return label.length > 12 ? label : '\n' + label;
+          },
+          precision: 0,
+          showZero: true,
+          fontSize: 12,
+          fontColor: '#444',
+          fontStyle: 'normal',
+          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+          textShadow: true,
+          shadowBlur: 1,
+          shadowOffsetX: 1,
+          shadowOffsetY: 1,
+          shadowColor: '#fff',
+          arc: false,
+          position: 'outside',
+          overlap: true,
+          showActualPercentages: true,
+          images: [
+            {
+              src: 'image.png',
+              width: 16,
+              height: 16
+            }
+          ],
+          outsidePadding: 60,
+          textMargin: 2
         }
       }
     }
@@ -233,8 +348,8 @@ function drawRomaniaSexCasesPie() {
           // position: 'outside',
           overlap: true,
           showActualPercentages: true,
-          outsidePadding: 4,
-          textMargin: 15
+          outsidePadding: 50,
+          textMargin: 25
         }
       }
     }
