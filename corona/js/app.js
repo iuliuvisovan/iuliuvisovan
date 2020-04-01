@@ -124,24 +124,24 @@ function drawRomaniaAgeCasesPie() {
 
   const intervals = [
     {
+      min: 60,
+      max: 100,
+      label: '60+ ani'
+    },
+    {
       min: 0,
       max: 40,
-      label: '<40 ani'
+      label: '<40'
     },
     {
       min: 20,
       max: 40,
-      label: '20-40 ani'
+      label: '20-40'
     },
     {
       min: 40,
       max: 60,
       label: '40-60 ani'
-    },
-    {
-      min: 60,
-      max: 100,
-      label: '60+ ani'
     }
   ];
 
@@ -151,21 +151,33 @@ function drawRomaniaAgeCasesPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: labels.map((x, i) => x + ' (' + ((values[i] / data.length) * 100).toFixed(1) + '%)'),
+      labels: labels.map((x, i) => x + '\n' + ((values[i] / data.length) * 100).toFixed(0) + '%'),
       datasets: [
         {
           label: 'Morti pe grupe de varsta',
-          data: values,
-          backgroundColor: ['#009688bb', '#4caf50bb', '#ff9800', '#ff5722']
+          data: values.map((x, i) => (i == 1 || i == 2 ? x * 2 : x)),
+          backgroundColor: ['#ff5722', '#009688bb', '#4caf50bb', '#ff9800']
         }
       ]
     },
     options: {
       maintainAspectRatio: false,
+      tooltips: {
+        enabled: false
+      },
+      legend: {
+        display: false
+      },
       plugins: {
         labels: {
-          render: ({ value }) => {
-            return ' ' + value + '\n\n';
+          render: ({ label }) => {
+            if (label.startsWith('<')) {
+              return '\n' + label + '  ';
+            }
+            if (label.startsWith('20')) {
+              return label + '\n';
+            }
+            return label;
           },
           precision: 0,
           showZero: true,
@@ -174,10 +186,10 @@ function drawRomaniaAgeCasesPie() {
           fontStyle: 'normal',
           fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
           textShadow: true,
-          shadowBlur: 10,
-          shadowOffsetX: -5,
-          shadowOffsetY: 5,
-          shadowColor: '#0000',
+          shadowBlur: 1,
+          shadowOffsetX: 1,
+          shadowOffsetY: 1,
+          shadowColor: '#000',
           arc: false,
           // position: 'outside',
           overlap: true,
@@ -270,6 +282,9 @@ function drawRomaniaConditionPie() {
             }
             if (label.startsWith('Fara')) {
               return 'Fara boli \npreexistente: ' + value + '\n\n';
+            }
+            if (label.startsWith('Diab')) {
+              return label;
             }
 
             return label.length > 12 ? label : '\n' + label;

@@ -127,12 +127,11 @@ button[selected] {
 }
 
 #conditionsPie {
-  margin-top: 20px;
+  margin-top: -25px;
 }
 
 @media (max-width: 768px) {
   #conditionsPie {
-    flex-direction: column;
+    height: 350px!important;
   }
 }
-
