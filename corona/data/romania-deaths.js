@@ -1,5 +1,21 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 94,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 84,
+    county: 'bacău',
+    preexistingCondition: undefined
+  },
+  {
+    deathIndex: 93,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 75,
+    county: 'neamț',
+    preexistingCondition: ['diabet']
+  },
+  {
     deathIndex: 92,
     dateConfirmed: '04/01/2020',
     gender: 1,
@@ -369,7 +385,7 @@ window.romaniaDeaths = [
     dateConfirmed: '03/30/2020',
     gender: 0,
     age: 59,
-    county: 'bacau',
+    county: 'bacău',
     preexistingCondition: ['hipertensiune arteriala', 'diabet']
   },
   {
@@ -560,7 +576,7 @@ window.romaniaDeaths = [
     deathIndex: 24,
     gender: 1,
     age: 80,
-    county: 'bacau',
+    county: 'bacău',
     dateConfirmed: '03/26/2020',
     preexistingCondition: ['insuficienta cardiaca', 'fibrilatie atriala']
   },
