@@ -1,5 +1,181 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 116,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 70,
+    county: 'mureș',
+    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala']
+  },
+  {
+    deathIndex: 115,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 53,
+    county: 'caraș severin',
+    preexistingCondition: []
+  },
+  {
+    deathIndex: 114,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 71,
+    county: 'suceava',
+    preexistingCondition: ['insuficienta renala']
+  },
+  {
+    deathIndex: 113,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 34,
+    county: 'suceava',
+    preexistingCondition: ['insuficienta renala']
+  },
+  {
+    deathIndex: 112,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 81,
+    county: 'suceava',
+    preexistingCondition: undefined
+  },
+  {
+    deathIndex: 111,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 77,
+    county: 'sibiu',
+    preexistingCondition: ['hipertensiune arteriala', 'CIC', 'insuficienta renala']
+  },
+  {
+    deathIndex: 110,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 77,
+    county: 'galați',
+    preexistingCondition: ['hipertensiune arteriala']
+  },
+  {
+    deathIndex: 109,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 83,
+    county: 'vrancea',
+    preexistingCondition: ['diabet', 'hipertensiune arteriala']
+  },
+  {
+    deathIndex: 108,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 64,
+    county: 'arad',
+    preexistingCondition: ['hipertensiune arteriala', 'obezitate']
+  },
+  {
+    deathIndex: 107,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 81,
+    county: 'bistrița N.',
+    preexistingCondition: ['diabet', 'amputatie']
+  },
+  {
+    deathIndex: 106,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 61,
+    county: 'arad',
+    preexistingCondition: ['diabet', 'insuficienta renala', 'hipertensiune arteriala']
+  },
+  {
+    deathIndex: 105,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 59,
+    county: 'ilfov',
+    preexistingCondition: ['diabet', 'insuficienta renala', 'diabet', 'boli cardiovasculare']
+  },
+  {
+    deathIndex: 104,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 54,
+    county: 'arad',
+    preexistingCondition: ['hipertensiune arteriala']
+  },
+  {
+    deathIndex: 103,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 77,
+    county: 'arad',
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'insuficienta renala']
+  },
+  {
+    deathIndex: 102,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 83,
+    county: 'suceava',
+    preexistingCondition: ['infarct', 'hipertensiune arteriala', 'cardiopatie']
+  },
+  {
+    deathIndex: 101,
+    dateConfirmed: '04/02/2020',
+    gender: 1,
+    age: 68,
+    county: 'hunedoara',
+    preexistingCondition: ['infarct', 'arsuri']
+  },
+  {
+    deathIndex: 100,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 56,
+    county: 'dâmbovița',
+    preexistingCondition: ['insuficienta renala', 'miocardita']
+  },
+  {
+    deathIndex: 99,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 67,
+    county: 'bacău',
+    preexistingCondition: ['alcoolistm', 'dementa']
+  },
+  {
+    deathIndex: 98,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 87,
+    county: 'bistrița N.',
+    preexistingCondition: ['cardiopatie', 'hipertensiune arteriala', 'dementa', 'insuficienta renala']
+  },
+  {
+    deathIndex: 97,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 42,
+    county: 'teleorman',
+    preexistingCondition: ['diabet', 'obezitate']
+  },
+  {
+    deathIndex: 96,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 72,
+    county: 'bucurești',
+    preexistingCondition: ['insuficienta renala', 'hipertensiune arteriala']
+  },
+  {
+    deathIndex: 95,
+    dateConfirmed: '04/02/2020',
+    gender: 0,
+    age: 75,
+    county: 'bucurești',
+    preexistingCondition: ['transplant', 'insuficienta renala', 'diabet', 'hipertensiune arteriala']
+  },
+  {
     deathIndex: 94,
     dateConfirmed: '04/02/2020',
     gender: 1,
@@ -60,7 +236,7 @@ window.romaniaDeaths = [
     dateConfirmed: '04/01/2020',
     gender: 0,
     age: 77,
-    county: 'bistrita nasaud',
+    county: 'bistrița N.',
     preexistingCondition: [
       'bpoc',
       'cardiomiopatie',
@@ -704,7 +880,7 @@ window.romaniaDeaths = [
     deathIndex: 8,
     gender: 0,
     age: 70,
-    county: 'craiova',
+    county: 'dolj',
     dateConfirmed: '03/24/2020',
     preexistingCondition: ['diabet', 'obezitate']
   },
@@ -760,7 +936,7 @@ window.romaniaDeaths = [
     deathIndex: 1,
     gender: 0,
     age: 67,
-    county: 'craiova',
+    county: 'dolj',
     dateConfirmed: '03/22/2020',
     preexistingCondition: ['cancer']
   }

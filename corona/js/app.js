@@ -53,7 +53,7 @@ function drawRomaniaCountyCasesPie() {
 
   let labels = [...new Set(data.map(x => x.county))]
     .sort((a, b) => data.filter(y => y.county == b).length - data.filter(y => y.county == a).length)
-    .slice(0, 9);
+    .slice(0, 12);
 
   const othersValue = data.filter(x => !labels.includes(x.county)).length;
   const values = [...labels.map(x => data.filter(y => y.county == x).length), othersValue];
@@ -78,7 +78,10 @@ function drawRomaniaCountyCasesPie() {
             '#4caf50',
             '#009688',
             '#00BCD4',
-            '#03A9F4'
+            '#03A9F4',
+            '#2196f3',
+            '#3f51b5',
+            '#673ab7'
           ]
         }
       ]
@@ -140,14 +143,9 @@ function drawRomaniaAgeCasesPie() {
       label: '60+ ani'
     },
     {
-      min: 0,
-      max: 40,
-      label: '<40'
-    },
-    {
       min: 20,
       max: 40,
-      label: '20-40'
+      label: '20-40 ani'
     },
     {
       min: 40,
@@ -162,11 +160,11 @@ function drawRomaniaAgeCasesPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: labels.map((x, i) => x + '\n' + ((values[i] / data.length) * 100).toFixed(0) + '%'),
+      labels: labels.map((x, i) => `${x}\n${values[i]} (${((values[i] / data.length) * 100).toFixed(0)}%)`),
       datasets: [
         {
           label: 'Morti pe grupe de varsta',
-          data: values.map((x, i) => (i == 1 || i == 2 ? x * 2 : x)),
+          data: values,
           backgroundColor: ['#ff5722', '#009688bb', '#4caf50bb', '#ff9800']
         }
       ]
@@ -182,12 +180,6 @@ function drawRomaniaAgeCasesPie() {
       plugins: {
         labels: {
           render: ({ label }) => {
-            if (label.startsWith('<')) {
-              return '\n' + label + '  ';
-            }
-            if (label.startsWith('20')) {
-              return label + '\n';
-            }
             return label;
           },
           precision: 0,
@@ -229,8 +221,6 @@ function drawRomaniaConditionPie() {
     )
     .slice(0, 5)
     .sort((a, b) => a - b);
-
-  console.log('labels', labels);
 
   const othersValue = data.filter(x => {
     let hasOneOfTopDiseases = false;
