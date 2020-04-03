@@ -34,7 +34,7 @@ function draw() {
     drawCountryEvolutionLine('otherCountryTotals', 'Italy', '#ffeb3b'); //30
     drawLastWeekTotalsBars(); //122
     drawAllTimeTotalsBars(); //22
-    drawGlobalTotals(); //22
+    drawGlobalEvolutionLine(); //22
   }, 1000);
 }
 
@@ -858,7 +858,7 @@ function drawCountryEvolutionLine(chartId, countryName, color = '#ff9800') {
   });
 }
 
-function drawGlobalTotals() {
+function drawGlobalEvolutionLine() {
   const ctx = document.getElementById('globalTotals').getContext('2d');
   const data = window.data;
 
@@ -940,6 +940,8 @@ function drawGlobalTotals() {
       animation: {
         duration: 0
       },
+      minValueForLabel: 2000,
+      skipLabelFactor: 3,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
