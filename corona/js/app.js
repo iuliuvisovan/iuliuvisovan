@@ -621,15 +621,12 @@ function drawGlobalActiveCases() {
   });
 
   const filterFunction = (_, i, a) => {
-    if (i < (isMobile ? 30 : 30)) {
+    const itemsToSkip = isMobile ? 40 : 30;
+    if (i < itemsToSkip) {
       return false;
     }
 
-    if (i > a.length - 5) {
-      return true;
-    }
-
-    return i % (isMobile ? 8 : 2) == 0 || i == a.length - 1;
+    return i % (isMobile ? 4 : 2) == 0 || i == a.length - 1;
   };
 
   new Chart(ctx, {
@@ -671,8 +668,7 @@ function drawGlobalActiveCases() {
       animation: {
         duration: 0
       },
-      minValueForLabel: 250,
-      labelsToIgnore: ['8166', '2127', '6935', '14k', '1144', '1910', '416'],
+      minValueForLabel: 2000,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -1112,7 +1108,7 @@ function setupBarLabels() {
 
       const { minValueForLabel = 0, labelsToIgnore = [] } = chartInstance.options;
 
-      chartInstance.data.datasets.forEach(dataset => {
+      chartInstance.data.datasets.forEach((dataset, j) => {
         for (var i = 0; i < dataset.data.length; i++) {
           var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
           const currentValue = dataset.data[i];
@@ -1126,7 +1122,11 @@ function setupBarLabels() {
             formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
           }
 
-          if (currentValue > minValueForLabel && !labelsToIgnore.includes(formattedValue)) {
+          const shouldShowLabel = minValueForLabel
+            ? i % 5 == j || i == dataset.data.length - 1 || i == dataset.data.length - 2
+            : true;
+
+          if (currentValue > minValueForLabel && !labelsToIgnore.includes(formattedValue) && shouldShowLabel) {
             ctx.fillText(formattedValue, model.x, model.y - 2);
           }
         }
