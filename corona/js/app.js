@@ -24,14 +24,14 @@ function draw() {
   drawRomaniaAgeCasesPie();
   drawCountryDailyBars('romaniaChart', 'Romania');
   setTimeout(() => {
-    drawTotalsForCountry('romaniaTotals', 'Romania');
+    drawCountryEvolutionLine('romaniaTotals', 'Romania');
 
     drawGlobalActiveCases();
     show('globalActiveCasesWrapper', document.querySelector('button'));
 
     drawCountryDailyBars('otherCountryChart', 'Italy', '#ffeb3b'); //8
     drawCountryActiveCases('Romania'); // 29
-    drawTotalsForCountry('otherCountryTotals', 'Italy', '#ffeb3b'); //30
+    drawCountryEvolutionLine('otherCountryTotals', 'Italy', '#ffeb3b'); //30
     drawLastWeekTotalsBars(); //122
     drawAllTimeTotalsBars(); //22
     drawGlobalTotals(); //22
@@ -669,6 +669,7 @@ function drawGlobalActiveCases() {
         duration: 0
       },
       minValueForLabel: 2000,
+      skipLabelFactor: 5,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -721,7 +722,7 @@ function drawLastWeekTotalsBars() {
       labels: labels,
       datasets: [
         {
-          label: 'Confirmed cases in the last 7 days',
+          label: 'Cazuri confirmate in ultimele 7 zile',
           data: values,
           backgroundColor: '#9c27b022',
           borderColor: '#9c27b0',
@@ -748,7 +749,7 @@ function drawLastWeekTotalsBars() {
   });
 }
 
-function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
+function drawCountryEvolutionLine(chartId, countryName, color = '#ff9800') {
   const ctx = document.getElementById(chartId).getContext('2d');
   const data = window.data;
 
@@ -834,6 +835,8 @@ function drawTotalsForCountry(chartId, countryName, color = '#ff9800') {
       animation: {
         duration: 0
       },
+      minValueForLabel: countryName !== 'Romania' ? 200 : 0,
+      skipLabelFactor: countryName !== 'Romania' ? 2 : 0,
       maintainAspectRatio: false,
       scales: {
         yAxes: [
@@ -1065,7 +1068,7 @@ function drawComparedCountry(picker) {
 
 function drawComparedCountryTotalCases(picker) {
   otherCountryChartTotals.destroy();
-  drawTotalsForCountry('otherCountryTotals', picker.value, '#ffeb3b');
+  drawCountryEvolutionLine('otherCountryTotals', picker.value, '#ffeb3b');
 }
 
 function drawComparedActiveCases(picker) {
@@ -1106,7 +1109,7 @@ function setupBarLabels() {
       ctx.textBaseline = 'bottom';
       ctx.fillStyle = '#000';
 
-      const { minValueForLabel = 0, labelsToIgnore = [] } = chartInstance.options;
+      const { minValueForLabel = 0, skipLabelFactor = 0, labelsToIgnore = [] } = chartInstance.options;
 
       chartInstance.data.datasets.forEach((dataset, j) => {
         for (var i = 0; i < dataset.data.length; i++) {
@@ -1122,9 +1125,7 @@ function setupBarLabels() {
             formattedValue = formattedValue > 999 ? thousandsWithoutZero + 'k' : formattedValue;
           }
 
-          const shouldShowLabel = minValueForLabel
-            ? i % 5 == j || i == dataset.data.length - 1 || i == dataset.data.length - 2
-            : true;
+          const shouldShowLabel = skipLabelFactor ? i % skipLabelFactor == j || i == dataset.data.length - 1 : true;
 
           if (currentValue > minValueForLabel && !labelsToIgnore.includes(formattedValue) && shouldShowLabel) {
             ctx.fillText(formattedValue, model.x, model.y - 2);
