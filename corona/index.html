@@ -219,30 +219,29 @@
 
     ga('create', 'UA-63838941-1', 'auto');
     ga('send', 'pageview');
-    ga('send', 'test', 'test', 'test');
     setTimeout(() => {
-      ga('send', 'second-5');
+      ga('send', 'event', 'Time elapsed', 'stay', '5 seconds');
     }, 5000);
     setTimeout(() => {
-      ga('send', 'second-10');
+      ga('send', 'event', 'Time elapsed', 'stay', '10 seconds');
     }, 10000);
     setTimeout(() => {
-      ga('send', 'second-15');
+      ga('send', 'event', 'Time elapsed', 'stay', '15 seconds');
     }, 15000);
     setTimeout(() => {
-      ga('send', 'second-30');
+      ga('send', 'event', 'Time elapsed', 'stay', '35 seconds');
     }, 30000);
     setTimeout(() => {
-      ga('send', 'second-60');
+      ga('send', 'event', 'Time elapsed', 'stay', '60 seconds');
     }, 60000);
     setTimeout(() => {
-      ga('send', 'second-120');
+      ga('send', 'event', 'Time elapsed', 'stay', '120 seconds');
     }, 120000);
     setTimeout(() => {
-      ga('send', 'second-240');
+      ga('send', 'event', 'Time elapsed', 'stay', '240 seconds');
     }, 240000);
     setTimeout(() => {
-      ga('send', 'second-360');
+      ga('send', 'event', 'Time elapsed', 'stay', '360 seconds');
     }, 360000);
   </script>
 </body>
