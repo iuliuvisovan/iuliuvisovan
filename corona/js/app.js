@@ -1065,19 +1065,19 @@ function drawComparedCountry(picker) {
   otherCountryChart.destroy();
 
   drawCountryDailyBars('otherCountryChart', picker.value, '#ffeb3b');
-  ga('send', 'event', 'ChooseCountry', 'dailyBars', picker.value);
+  ga('send', 'event', 'ChooseCountryDailyBars', picker.value);
 }
 
 function drawComparedCountryTotalCases(picker) {
   otherCountryChartTotals.destroy();
   drawCountryEvolutionLine('otherCountryTotals', picker.value, '#ffeb3b');
-  ga('send', 'event', 'ChooseCountry', 'countryEvolution', picker.value);
+  ga('send', 'event', 'ChooseCountryCountryEvolution', picker.value);
 }
 
 function drawComparedActiveCases(picker) {
   countryActiveCases.destroy();
   drawCountryActiveCases(picker.value);
-  ga('send', 'event', 'ChooseCountry', 'countryActiveCases', picker.value);
+  ga('send', 'event', 'ChooseCountryCountryActiveCases', picker.value);
 }
 
 function setPickerCountries(data) {
@@ -1183,14 +1183,14 @@ window.onscroll = function (ev) {
     const currentScrollPos = window.innerHeight + window.scrollY;
     if (currentScrollPos >= pageBottom) {
       if (!hasReachedBottom) {
-        ga('send', 'event', 'Scroll', 'to', 'half');
+        ga('send', 'event', 'Scroll', 'toHalf');
         hasReachedBottom = true;
         console.log('bottom');
       }
     }
     if (currentScrollPos >= pageHalf) {
       if (!hasReachedHalf) {
-        ga('send', 'event', 'Scroll', 'to', 'bottom');
+        ga('send', 'event', 'Scroll', 'toBottom');
         hasReachedHalf = true;
         console.log('half');
       }
