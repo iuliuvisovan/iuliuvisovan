@@ -22,13 +22,25 @@
   <link id="favicon" rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "name": "COVID-19 | Cazuri zilnice, evoluție, situația pe județe. Coronavirus în România și global - grafice complete.",
+    "datePosted": "2020-03-17T08:00",
+    "datePublished": "2020-04-04T08:00:00+08:00",
+    "dateModified": "2020-04-04T09:20:00+08:00",
+  }
+  </script>
 </head>
 
 <body>
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=306856700168414&autoLogAppEvents=1"></script>
-  <h2 style="height: 25px; margin-top: 5px;" id="pageTitle"></h2>
-  <h3 class="graph-title top-title">Morți - România</h3>
+  <h2 style="height: 25px; margin-top: 5px;">Situația cazurilor de COVID-19 (coronavirus) în România</h2>
+  <span>lastUpdated</span>
+  <h5 style="height: 25px; margin-top: 5px;" id="lastUpdated"></h5>
+  <h3 class="graph-title top-title">Situația morților în România:</h3>
   <div class="top-pies-wrapper">
     <div>
       <h3 class="graph-title top-title">Ce procent sunt bărbați/femei?</h3>
@@ -61,14 +73,14 @@
       </div>
     </div>
     <div>
-      <h3 class="graph-title top-title">Ce boli au avut cei care au murit?</h3>
+      <h3 class="graph-title top-title">Ce alte boli au avut cei care au murit?</h3>
       <div id="conditionsPie" class="chart-container" style="width: 430px; height: 400px">
         <canvas id="romaniaConditionDeaths"></canvas>
       </div>
     </div>
   </div>
 
-  <h3 class="graph-title top-title">Cazuri zilnice - România</h3>
+  <h3 class="graph-title top-title">Cazuri zilnice - infecții/vindecări/morți coronavirus România</h3>
   <div class="chart-container">
     <canvas id="romaniaChart"></canvas>
   </div>

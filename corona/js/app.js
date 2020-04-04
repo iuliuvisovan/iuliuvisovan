@@ -39,8 +39,8 @@ function draw() {
 }
 
 function setCurrentDate() {
-  const currentDateSpan = document.getElementById('pageTitle');
-  currentDateSpan.innerText = 'Situația COVID-19 la data de ' + moment().format('DD MMMM YYYY');
+  const currentDateSpan = document.getElementById('lastUpdated');
+  currentDateSpan.innerText = 'Last updated: ' + moment().format('DD MMMM YYYY');
 }
 
 var otherCountryChart = undefined;
@@ -66,7 +66,7 @@ function drawRomaniaCountyCasesPie() {
       labels: [...labels, 'Restul județelor'].map(x => x[0].toUpperCase() + x.substr(1)),
       datasets: [
         {
-          label: 'Morti pe judet',
+          label: 'Morți pe judet',
           data: values,
           backgroundColor: [
             '#ff5722',
@@ -163,7 +163,7 @@ function drawRomaniaAgeCasesPie() {
       labels: labels.map((x, i) => `${x}\n${values[i]} (${((values[i] / data.length) * 100).toFixed(0)}%)`),
       datasets: [
         {
-          label: 'Morti pe grupe de varsta',
+          label: 'Morți pe grupe de varsta',
           data: values,
           backgroundColor: ['#ff5722', '#009688bb', '#4caf50bb', '#ff9800']
         }
@@ -249,7 +249,7 @@ function drawRomaniaConditionPie() {
       ),
       datasets: [
         {
-          label: 'Morti pe baza afectiunilor preexistente',
+          label: 'Morți pe baza afectiunilor preexistente',
           data: values,
           backgroundColor: [
             undefined,
@@ -337,7 +337,7 @@ function drawRomaniaSexCasesPie() {
       labels: labels,
       datasets: [
         {
-          label: 'Morti pe sex',
+          label: 'Morți pe sex',
           data: values,
           backgroundColor: ['#2196f3', '#F06292']
         }
@@ -397,21 +397,21 @@ function drawCountryDailyBars(chartId, countryName, color = '#ff9800') {
       labels: labels,
       datasets: [
         {
-          label: 'Infectari',
+          label: 'Infectări',
           data: values,
           backgroundColor: color + '22',
           borderColor: color,
           borderWidth: 1
         },
         {
-          label: 'Vindecari',
+          label: 'Vindecări',
           data: recoveries,
           backgroundColor: '#4CAF5022',
           borderColor: '#4CAF50',
           borderWidth: 1
         },
         {
-          label: 'Morti',
+          label: 'Morți',
           data: deaths,
           backgroundColor: '#E91E6322',
           borderColor: '#E91E63',
@@ -809,21 +809,21 @@ function drawCountryEvolutionLine(chartId, countryName, color = '#ff9800') {
       labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
-          label: 'Infectari - ' + countryName,
+          label: 'Infectări - ' + countryName,
           data: summedDailyValues.filter(filterFunction),
           backgroundColor: color + '22',
           borderColor: color,
           borderWidth: 1
         },
         {
-          label: 'Vindecari - ' + countryName,
+          label: 'Vindecări - ' + countryName,
           data: summedDailyrecoveries.filter(filterFunction),
           backgroundColor: '#4CAF5022',
           borderColor: '#4CAF50',
           borderWidth: 1
         },
         {
-          label: 'Morti - ' + countryName,
+          label: 'Morți - ' + countryName,
           data: summedDailydeaths.filter(filterFunction),
           backgroundColor: '#E91E6322',
           borderColor: '#E91E63',
@@ -914,21 +914,21 @@ function drawGlobalEvolutionLine() {
       labels: localizedLabels.filter(filterFunction),
       datasets: [
         {
-          label: 'Infectari - toata lumea',
+          label: 'Infectări - toata lumea',
           data: summedDailyValues.filter(filterFunction),
           backgroundColor: '#ff980022',
           borderColor: '#ff9800',
           borderWidth: 1
         },
         {
-          label: 'Vindecari - toata lumea',
+          label: 'Vindecări - toata lumea',
           data: summedDailyrecoveries.filter(filterFunction),
           backgroundColor: '#4CAF5022',
           borderColor: '#4CAF50',
           borderWidth: 1
         },
         {
-          label: 'Morti - toata lumea',
+          label: 'Morți - toata lumea',
           data: summedDailydeaths.filter(filterFunction),
           backgroundColor: '#E91E6322',
           borderColor: '#E91E63',
