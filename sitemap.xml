@@ -4,9 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
 <url>
   <loc>http://www.iuliu.net/</loc>
   <lastmod>2019-11-03T21:56:49+00:00</lastmod>
@@ -38,12 +35,27 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>http://www.iuliu.net/v</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>http://www.iuliu.net/vezic%C4%83-%C8%9Bifugem%C3%A2%C8%9Ba/</loc>
   <lastmod>2019-11-03T21:56:49+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.iuliu.net/c/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.34</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/cs/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.34</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/jquery.orderable/</loc>
   <lastmod>2019-11-03T21:56:49+00:00</lastmod>
   <priority>0.34</priority>
 </url>
