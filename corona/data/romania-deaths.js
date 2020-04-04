@@ -25,7 +25,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 79,
     county: 'cluj',
-    preexistingCondition: ['ramolisment cereblral', 'dementa', 'infarct', 'boli cardiovasculare'],
+    preexistingCondition: ['ramolisment cerebral', 'dementa', 'infarct', 'boli cardiovasculare'],
   },
   {
     deathIndex: 137,
