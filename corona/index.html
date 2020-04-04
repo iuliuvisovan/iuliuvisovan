@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-  <title>COVID-19 | Cazuri zilnice, evolutie, situatia pe judete. Coronavirus in Romania si global - grafice complete.</title>
+  <title>COVID-19 | Cazuri zilnice, evoluție, situația pe județe. Coronavirus în România și global - grafice complete.</title>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <meta name="author" content="Iuliu Visovan" />
   <meta name="description"
-    content="Situatia in timp real in Romania si la nivel global. Grafice complete cu evolutia cazurilor zilnice, cazuri pe judete, mortalitate in functie de boli pre-existente, evolutia la nivel global si altele." />
+    content="Situația în timp real în România și la nivel global. Grafice complete cu evoluția cazurilor zilnice, cazuri pe județe, mortalitate în funcție de boli pre-existente, evoluția la nivel global și altele." />
   <meta name="author" content="Iuliu Vișovan" />
   <meta name="theme-color" content="#ff9800" />
   <meta property="og:url" content="http://iuliu.net/corona" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="COVID-19 | Cazuri zilnice, evolutie, situatia pe judete. Coronavirus in Romania si global - grafice complete." />
+  <meta property="og:title" content="COVID-19 | Cazuri zilnice, evoluție, situatia pe judete. Coronavirus in România si global - grafice complete." />
   <meta property="og:description"
-    content="Situatia in timp real in Romania si la nivel global. Grafice complete cu evolutia cazurilor zilnice, cazuri pe judete, mortalitate in functie de boli pre-existente, evolutia la nivel global si altele." />
+    content="Situația în timp real în România și la nivel global. Grafice complete cu evoluția cazurilor zilnice, cazuri pe județe, mortalitate în funcție de boli pre-existente, evoluția la nivel global și altele." />
   <meta property="og:image"
     content="https://p3cdn4static.sharpschool.com/UserFiles/Servers/Server_1051846/Image/News/coronavirus.png" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -26,9 +26,9 @@
 
 <body>
   <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=306856700168414&autoLogAppEvents=1"></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=306856700168414&autoLogAppEvents=1"></script>
   <h2 style="height: 25px; margin-top: 5px;" id="pageTitle"></h2>
-  <h3 class="graph-title top-title">Morți - Romania</h3>
+  <h3 class="graph-title top-title">Morți - România</h3>
   <div class="top-pies-wrapper">
     <div>
       <h3 class="graph-title top-title">Ce procent sunt bărbați/femei?</h3>
@@ -68,12 +68,12 @@
     </div>
   </div>
 
-  <h3 class="graph-title top-title">Cazuri zilnice - Romania</h3>
+  <h3 class="graph-title top-title">Cazuri zilnice - România</h3>
   <div class="chart-container">
     <canvas id="romaniaChart"></canvas>
   </div>
 
-  <h3 class="graph-title top-title">Cazuri totale / evolutie - Romania</h3>
+  <h3 class="graph-title top-title">Cazuri totale / evoluție - România</h3>
   <div class="chart-container">
     <canvas id="romaniaTotals"></canvas>
   </div>
@@ -83,18 +83,18 @@
     <button onclick="show('globalActiveCasesWrapper', this)"><img src="./img/globalactive-min.png" />Cazuri active -
       <br />global</button>
     <button onclick="show('otherCountryChartWrapper', this)"><img src="./img/dailycountry-min.png" />Cazuri zilnice -
-      <br />pe o anumita tara</button>
+      <br />pe o anumită țară</button>
     <button onclick="show('otherCountryTotalsWrapper', this)"><img src="./img/totalscountry-min.png" />Cazuri totale /
-      evolutie - <br />pe o anumita tara</button>
+      evoluție - <br />pe o anumită țară</button>
     <button onclick="show('countryActiveCasesWrapper', this)"><img src="./img/countryactive-min.png" />Cazuri active -
-      <br />pe o anumita tara</button>
+      <br />pe o anumită țară</button>
     <button onclick="show('totalsChartWrapper', this)"><img src="./img/globaltotalscountry-min.png" />Cazuri
       confirmate
       top 10 - <br />global - top timpul</button>
     <button onclick="show('lastWeekTotalsWrapper', this)"><img src="./img/globaltotalscountryseven-min.png" />Cazuri
       confirmate top 10 - <br />global - ultimele 7 zile</button>
     <button onclick="show('globalTotalsWrapper', this)"><img src="./img/globalevolution-min.png" />Cazuri confirmate /
-      evolutie - <br />global</button>
+      evoluție - <br />global</button>
   </div>
 
   <div class="graph-wrapper" id="globalActiveCasesWrapper">
@@ -105,16 +105,16 @@
   </div>
 
   <div class="graph-wrapper" id="countryActiveCasesWrapper">
-    <h3 class="graph-title">Cazuri active pe o anumita tara</h3>
+    <h3 class="graph-title">Cazuri active pe o anumită țară</h3>
     <select id="activeCasesCountryPicker" style="margin-bottom: 30px; margin: 5px;"
-      onchange="drawComparedActiveCases(this)" class="country-picker" value='Romania'></select>
+      onchange="drawComparedActiveCases(this)" class="country-picker" value='România'></select>
     <div class="chart-container">
       <canvas id="countryActiveCases"></canvas>
     </div>
   </div>
 
   <div class="graph-wrapper" id="otherCountryChartWrapper">
-    <h3 class="graph-title">Cazuri zilnice pe o anumita tara</h3>
+    <h3 class="graph-title">Cazuri zilnice pe o anumită țară</h3>
     <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountry(this)"
       class="country-picker"></select>
     <div class="chart-container">
@@ -123,7 +123,7 @@
   </div>
 
   <div class="graph-wrapper" id="otherCountryTotalsWrapper">
-    <h3 class="graph-title">Cazuri totale / evolutie pe o anumita tara</h3>
+    <h3 class="graph-title">Cazuri totale / evoluție pe o anumită țară</h3>
     <select style="margin-bottom: 30px; margin: 5px;" onchange="drawComparedCountryTotalCases(this)"
       class="country-picker" class="country-picker"></select>
     <div class="chart-container">
@@ -139,14 +139,14 @@
   </div>
 
   <div class="graph-wrapper" id="lastWeekTotalsWrapper">
-    <h3 class="graph-title">Cele mai multe cazuri in ultimele 7 zile</h3>
+    <h3 class="graph-title">Cele mai multe cazuri în ultimele 7 zile</h3>
     <div class="chart-container">
       <canvas id="lastWeekTotals"></canvas>
     </div>
   </div>
 
   <div class="graph-wrapper" id="globalTotalsWrapper">
-    <h3 class="graph-title">Cazuri globale - evolutie</h3>
+    <h3 class="graph-title">Cazuri globale - evoluție</h3>
     <div class="chart-container">
       <canvas id="globalTotals"></canvas>
     </div>

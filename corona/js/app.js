@@ -40,7 +40,7 @@ function draw() {
 
 function setCurrentDate() {
   const currentDateSpan = document.getElementById('pageTitle');
-  currentDateSpan.innerText = 'Situatia COVID-19 la data de ' + moment().format('DD MMMM YYYY');
+  currentDateSpan.innerText = 'Situația COVID-19 la data de ' + moment().format('DD MMMM YYYY');
 }
 
 var otherCountryChart = undefined;
@@ -244,7 +244,7 @@ function drawRomaniaConditionPie() {
   otherCountryChart = new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Necunoscut', ...labels, 'Alte afectiuni', 'Fara afectiuni \npreexistente'].map(
+      labels: ['Necunoscut', ...labels, 'Alte afecțiuni', 'Fara boli \npreexistente'].map(
         (x, i) => x[0].toUpperCase() + x.substr(1) + ':\n ' + values[i]
       ),
       datasets: [
@@ -283,7 +283,7 @@ function drawRomaniaConditionPie() {
         labels: {
           render: ({ label, value, percentage }) => {
             if (label.startsWith('Fara')) {
-              return 'Fara boli \npreexistente: ' + value + '\n\n';
+              return 'Fără boli \npreexistente: ' + value + '\n\n';
             }
             if (label.startsWith('Hiper') || label.startsWith('Boli card')) {
               return '\n\n' + label;
