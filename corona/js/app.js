@@ -1153,7 +1153,7 @@ function show(graphId, button) {
   const wrapper = document.getElementById(graphId);
   wrapper.toggleAttribute('visible');
 
-  ga('send', 'event', 'Click', 'graph', graphId);
+  ga('send', 'event', 'ChooseGraph', graphId);
 }
 
 let dayStringsSinceStartOfYear = [];
