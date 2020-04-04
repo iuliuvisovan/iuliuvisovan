@@ -40,7 +40,7 @@ function draw() {
 
 function setCurrentDate() {
   const currentDateSpan = document.getElementById('lastUpdated');
-  currentDateSpan.innerText = 'Last updated: ' + moment().format('DD MMMM YYYY');
+  currentDateSpan.innerText = 'Ultima actualizare: ' + moment().format('DD MMMM YYYY');
 }
 
 var otherCountryChart = undefined;
