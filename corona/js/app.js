@@ -27,7 +27,7 @@ function draw() {
     drawCountryEvolutionLine('romaniaTotals', 'Romania');
 
     drawGlobalActiveCases();
-    show('globalActiveCasesWrapper', document.querySelector('button'));
+    show('globalActiveCasesWrapper', document.querySelector('button'), true);
 
     drawCountryDailyBars('otherCountryChart', 'Italy', '#ffeb3b'); //8
     drawCountryActiveCases('Romania'); // 29
@@ -1140,7 +1140,7 @@ function setupBarLabels() {
   });
 }
 
-function show(graphId, button) {
+function show(graphId, button, noTrack) {
   document.querySelectorAll('button').forEach((x) => {
     x.removeAttribute('selected');
   });
@@ -1153,7 +1153,9 @@ function show(graphId, button) {
   const wrapper = document.getElementById(graphId);
   wrapper.toggleAttribute('visible');
 
-  ga('send', 'event', 'ChooseGraph', graphId);
+  if (!noTrack) {
+    ga('send', 'event', 'ChooseGraph', graphId);
+  }
 }
 
 let dayStringsSinceStartOfYear = [];
