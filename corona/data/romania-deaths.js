@@ -1,11 +1,67 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 141,
+    gender: 0,
+    age: 59,
+    county: 'arad',
+    preexistingCondition: ['hipertensiune arteriala'],
+  },
+  {
+    deathIndex: 140,
+    gender: 1,
+    age: 59,
+    county: 'bucurești',
+    preexistingCondition: ['dializa'],
+  },
+  {
+    deathIndex: 139,
+    gender: 1,
+    age: 59,
+    county: 'timiș',
+    preexistingCondition: undefined,
+  },
+  {
+    deathIndex: 138,
+    gender: 0,
+    age: 79,
+    county: 'cluj',
+    preexistingCondition: ['ramolisment cereblral', 'dementa', 'infarct', 'boli cardiovasculare'],
+  },
+  {
+    deathIndex: 137,
+    gender: 1,
+    age: 82,
+    county: 'galați',
+    preexistingCondition: undefined,
+  },
+  {
+    deathIndex: 136,
+    gender: 0,
+    age: 59,
+    county: 'mehedinți',
+    preexistingCondition: ['obezitate', 'injurie renala'],
+  },
+  {
+    deathIndex: 135,
+    gender: 0,
+    age: 34,
+    county: 'mureș',
+    preexistingCondition: ['obezitate', 'boli cardiovasculare', 'boli pulmonare'],
+  },
+  {
+    deathIndex: 134,
+    gender: 1,
+    age: 66,
+    county: 'bucurești',
+    preexistingCondition: undefined,
+  },
+  {
     deathIndex: 133,
     dateConfirmed: '04/03/2020',
     gender: 1,
     age: 62,
     county: 'ialomița',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'boala hepatica']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'boala hepatica'],
   },
   {
     deathIndex: 132,
@@ -13,7 +69,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 58,
     county: 'suceava',
-    preexistingCondition: ['diabet', 'CIC', 'infarct']
+    preexistingCondition: ['diabet', 'CIC', 'infarct'],
   },
   {
     deathIndex: 131,
@@ -21,7 +77,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 67,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 130,
@@ -29,7 +85,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 63,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 129,
@@ -37,7 +93,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 62,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 128,
@@ -45,7 +101,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 77,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 127,
@@ -53,7 +109,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 46,
     county: 'ialomița',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 126,
@@ -61,7 +117,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 61,
     county: 'galați',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'boala hepatica']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'boala hepatica'],
   },
   {
     deathIndex: 125,
@@ -69,7 +125,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 27,
     county: 'sibiu',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 124,
@@ -77,7 +133,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 59,
     county: 'bistrița N.',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 123,
@@ -85,7 +141,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 66,
     county: 'bistrița N.',
-    preexistingCondition: ['leucemie', 'diabet', 'hipertensiune arteriala']
+    preexistingCondition: ['leucemie', 'diabet', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 122,
@@ -93,7 +149,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 60,
     county: 'neamț',
-    preexistingCondition: ['ciroza', 'insuficienta hepatica']
+    preexistingCondition: ['ciroza', 'insuficienta hepatica'],
   },
   {
     deathIndex: 121,
@@ -101,7 +157,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 78,
     county: 'timiș',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 120,
@@ -109,7 +165,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 69,
     county: 'ialomița',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'insuficienta renala']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'insuficienta renala'],
   },
   {
     deathIndex: 119,
@@ -117,7 +173,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 69,
     county: 'hunedoara',
-    preexistingCondition: ['diabet', 'avc', 'hipertensiune arteriala', 'parkinson']
+    preexistingCondition: ['diabet', 'avc', 'hipertensiune arteriala', 'parkinson'],
   },
   {
     deathIndex: 118,
@@ -125,7 +181,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 61,
     county: 'bucurești',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 117,
@@ -133,7 +189,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 54,
     county: 'constanța',
-    preexistingCondition: ['bronho-pneumonii']
+    preexistingCondition: ['bronho-pneumonii'],
   },
   {
     deathIndex: 116,
@@ -141,7 +197,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 70,
     county: 'mureș',
-    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala']
+    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 115,
@@ -149,7 +205,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 53,
     county: 'caraș severin',
-    preexistingCondition: []
+    preexistingCondition: [],
   },
   {
     deathIndex: 114,
@@ -157,7 +213,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 71,
     county: 'suceava',
-    preexistingCondition: ['insuficienta renala']
+    preexistingCondition: ['insuficienta renala'],
   },
   {
     deathIndex: 113,
@@ -165,7 +221,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 34,
     county: 'suceava',
-    preexistingCondition: ['insuficienta renala']
+    preexistingCondition: ['insuficienta renala'],
   },
   {
     deathIndex: 112,
@@ -173,7 +229,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 81,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 111,
@@ -181,7 +237,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 77,
     county: 'sibiu',
-    preexistingCondition: ['hipertensiune arteriala', 'CIC', 'insuficienta renala']
+    preexistingCondition: ['hipertensiune arteriala', 'CIC', 'insuficienta renala'],
   },
   {
     deathIndex: 110,
@@ -189,7 +245,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 77,
     county: 'galați',
-    preexistingCondition: ['hipertensiune arteriala']
+    preexistingCondition: ['hipertensiune arteriala'],
   },
   {
     deathIndex: 109,
@@ -197,7 +253,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 83,
     county: 'vrancea',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 108,
@@ -205,7 +261,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 64,
     county: 'arad',
-    preexistingCondition: ['hipertensiune arteriala', 'obezitate']
+    preexistingCondition: ['hipertensiune arteriala', 'obezitate'],
   },
   {
     deathIndex: 107,
@@ -213,7 +269,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 81,
     county: 'bistrița N.',
-    preexistingCondition: ['diabet', 'amputatie']
+    preexistingCondition: ['diabet', 'amputatie'],
   },
   {
     deathIndex: 106,
@@ -221,7 +277,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 61,
     county: 'arad',
-    preexistingCondition: ['diabet', 'insuficienta renala', 'hipertensiune arteriala']
+    preexistingCondition: ['diabet', 'insuficienta renala', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 105,
@@ -229,7 +285,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 59,
     county: 'ilfov',
-    preexistingCondition: ['diabet', 'insuficienta renala', 'diabet', 'boli cardiovasculare']
+    preexistingCondition: ['diabet', 'insuficienta renala', 'diabet', 'boli cardiovasculare'],
   },
   {
     deathIndex: 104,
@@ -237,7 +293,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 54,
     county: 'arad',
-    preexistingCondition: ['hipertensiune arteriala']
+    preexistingCondition: ['hipertensiune arteriala'],
   },
   {
     deathIndex: 103,
@@ -245,7 +301,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 77,
     county: 'arad',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'insuficienta renala']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala', 'insuficienta renala'],
   },
   {
     deathIndex: 102,
@@ -253,7 +309,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 83,
     county: 'suceava',
-    preexistingCondition: ['infarct', 'hipertensiune arteriala', 'cardiopatie']
+    preexistingCondition: ['infarct', 'hipertensiune arteriala', 'cardiopatie'],
   },
   {
     deathIndex: 101,
@@ -261,7 +317,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 68,
     county: 'hunedoara',
-    preexistingCondition: ['infarct', 'arsuri']
+    preexistingCondition: ['infarct', 'arsuri'],
   },
   {
     deathIndex: 100,
@@ -269,7 +325,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 56,
     county: 'dâmbovița',
-    preexistingCondition: ['insuficienta renala', 'miocardita']
+    preexistingCondition: ['insuficienta renala', 'miocardita'],
   },
   {
     deathIndex: 99,
@@ -277,7 +333,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 67,
     county: 'bacău',
-    preexistingCondition: ['alcoolistm', 'dementa']
+    preexistingCondition: ['alcoolistm', 'dementa'],
   },
   {
     deathIndex: 98,
@@ -285,7 +341,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 87,
     county: 'bistrița N.',
-    preexistingCondition: ['cardiopatie', 'hipertensiune arteriala', 'dementa', 'insuficienta renala']
+    preexistingCondition: ['cardiopatie', 'hipertensiune arteriala', 'dementa', 'insuficienta renala'],
   },
   {
     deathIndex: 97,
@@ -293,7 +349,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 42,
     county: 'teleorman',
-    preexistingCondition: ['diabet', 'obezitate']
+    preexistingCondition: ['diabet', 'obezitate'],
   },
   {
     deathIndex: 96,
@@ -301,7 +357,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 72,
     county: 'bucurești',
-    preexistingCondition: ['insuficienta renala', 'hipertensiune arteriala']
+    preexistingCondition: ['insuficienta renala', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 95,
@@ -309,7 +365,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 75,
     county: 'bucurești',
-    preexistingCondition: ['transplant', 'insuficienta renala', 'diabet', 'hipertensiune arteriala']
+    preexistingCondition: ['transplant', 'insuficienta renala', 'diabet', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 94,
@@ -317,7 +373,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 84,
     county: 'bacău',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 93,
@@ -325,7 +381,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 75,
     county: 'neamț',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 92,
@@ -333,7 +389,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 78,
     county: 'bucurești',
-    preexistingCondition: ['boli cardiovasculare', 'diabet', 'boala neuro musculara', 'boala pulmonara cronica']
+    preexistingCondition: ['boli cardiovasculare', 'diabet', 'boala neuro musculara', 'boala pulmonara cronica'],
   },
   {
     deathIndex: 91,
@@ -341,7 +397,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 70,
     county: 'bucurești',
-    preexistingCondition: ['dializa']
+    preexistingCondition: ['dializa'],
   },
   {
     deathIndex: 90,
@@ -349,7 +405,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 88,
     county: 'covasna',
-    preexistingCondition: ['mielita cervicala', 'tetraplegie']
+    preexistingCondition: ['mielita cervicala', 'tetraplegie'],
   },
   {
     deathIndex: 89,
@@ -357,7 +413,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 66,
     county: 'bucurești',
-    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala', 'schizofrenie']
+    preexistingCondition: ['boli cardiovasculare', 'hipertensiune arteriala', 'schizofrenie'],
   },
   {
     deathIndex: 88,
@@ -365,7 +421,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 72,
     county: 'suceava',
-    preexistingCondition: ['afectiuni cardiace', 'bpoc']
+    preexistingCondition: ['afectiuni cardiace', 'bpoc'],
   },
   {
     deathIndex: 87,
@@ -379,8 +435,8 @@ window.romaniaDeaths = [
       'cardiopatie',
       'fibrilatie atriala',
       'hipertrofie de prostata',
-      'insuficienta renala'
-    ]
+      'insuficienta renala',
+    ],
   },
   {
     deathIndex: 86,
@@ -388,7 +444,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 45,
     county: 'neamț',
-    preexistingCondition: ['hemiplegie']
+    preexistingCondition: ['hemiplegie'],
   },
   {
     deathIndex: 85,
@@ -396,7 +452,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 63,
     county: 'bucurești',
-    preexistingCondition: ['CIC', 'hipertensiune arteriala', 'boala renala cronica', 'hipotiroidism']
+    preexistingCondition: ['CIC', 'hipertensiune arteriala', 'boala renala cronica', 'hipotiroidism'],
   },
   {
     deathIndex: 84,
@@ -409,8 +465,8 @@ window.romaniaDeaths = [
       'hipertensiune arteriala',
       'fibrilatie atriala',
       'insuficienta renala cronica',
-      'alzheimer'
-    ]
+      'alzheimer',
+    ],
   },
   {
     deathIndex: 83,
@@ -418,7 +474,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 54,
     county: 'bucurești',
-    preexistingCondition: ['cancer']
+    preexistingCondition: ['cancer'],
   },
   {
     deathIndex: 82,
@@ -426,7 +482,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 70,
     county: 'mures',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 81,
@@ -434,7 +490,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 70,
     county: 'sibiu',
-    preexistingCondition: ['insuficienta renala cronica']
+    preexistingCondition: ['insuficienta renala cronica'],
   },
   {
     deathIndex: 80,
@@ -442,7 +498,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 61,
     county: 'bihor',
-    preexistingCondition: ['insuficienta renala cronica', 'afectiune oncologica']
+    preexistingCondition: ['insuficienta renala cronica', 'afectiune oncologica'],
   },
   {
     deathIndex: 79,
@@ -450,7 +506,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 84,
     county: 'bucurești',
-    preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficienta cardiaca']
+    preexistingCondition: ['fibrilatie atriala', 'pacemaker', 'insuficienta cardiaca'],
   },
   {
     deathIndex: 78,
@@ -458,7 +514,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 64,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 77,
@@ -466,7 +522,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 82,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 76,
@@ -474,7 +530,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 57,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 75,
@@ -482,7 +538,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 68,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 74,
@@ -490,7 +546,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 69,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: ['afectiuni psihiatrice'],
   },
   {
     deathIndex: 73,
@@ -498,7 +554,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 62,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 72,
@@ -506,7 +562,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 65,
     county: 'hunedoara',
-    preexistingCondition: ['hipertensiune arteriala']
+    preexistingCondition: ['hipertensiune arteriala'],
   },
   {
     deathIndex: 71,
@@ -514,7 +570,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 53,
     county: 'hunedoara',
-    preexistingCondition: ['cancer']
+    preexistingCondition: ['cancer'],
   },
   {
     deathIndex: 70,
@@ -522,7 +578,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 60,
     county: 'ialomița',
-    preexistingCondition: ['insuficienta renala cronica', 'diabet', 'hipertensiune arteriala', 'hepatita']
+    preexistingCondition: ['insuficienta renala cronica', 'diabet', 'hipertensiune arteriala', 'hepatita'],
   },
   {
     deathIndex: 69,
@@ -530,7 +586,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 56,
     county: 'suceava',
-    preexistingCondition: ['afectiuni psihiatrice']
+    preexistingCondition: ['afectiuni psihiatrice'],
   },
   {
     deathIndex: 68,
@@ -538,7 +594,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 81,
     county: 'mehedinti',
-    preexistingCondition: ['hipertensiune arteriala', 'obezitate']
+    preexistingCondition: ['hipertensiune arteriala', 'obezitate'],
   },
   {
     deathIndex: 67,
@@ -546,7 +602,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 69,
     county: 'iași',
-    preexistingCondition: ['hipertensiune arteriala']
+    preexistingCondition: ['hipertensiune arteriala'],
   },
   {
     deathIndex: 66,
@@ -554,7 +610,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 73,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 65,
@@ -562,7 +618,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 64,
@@ -570,7 +626,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 63,
@@ -578,7 +634,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 62,
@@ -586,7 +642,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 61,
@@ -594,7 +650,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 60,
@@ -602,7 +658,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 59,
@@ -610,7 +666,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 58,
@@ -618,7 +674,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 57,
@@ -626,7 +682,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 56,
@@ -634,7 +690,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 55,
@@ -642,7 +698,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 54,
@@ -650,7 +706,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 53,
@@ -658,7 +714,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'suceava',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 52,
@@ -666,7 +722,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 52,
     county: 'ialomița',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 51,
@@ -674,7 +730,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 65,
     county: 'sibiu',
-    preexistingCondition: ['boli cardiovasculare']
+    preexistingCondition: ['boli cardiovasculare'],
   },
   {
     deathIndex: 50,
@@ -682,7 +738,7 @@ window.romaniaDeaths = [
     gender: 1,
     age: 60,
     county: 'hunedoara',
-    preexistingCondition: ['cadriopatie', 'insuficienta cardiaca']
+    preexistingCondition: ['cadriopatie', 'insuficienta cardiaca'],
   },
   {
     deathIndex: 49,
@@ -690,7 +746,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 74,
     county: 'hunedoara',
-    preexistingCondition: ['adenocarcinom gastric', 'carcinomatoza peritoneala']
+    preexistingCondition: ['adenocarcinom gastric', 'carcinomatoza peritoneala'],
   },
   {
     deathIndex: 48,
@@ -698,7 +754,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 59,
     county: 'bacău',
-    preexistingCondition: ['hipertensiune arteriala', 'diabet']
+    preexistingCondition: ['hipertensiune arteriala', 'diabet'],
   },
   {
     deathIndex: 47,
@@ -706,7 +762,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 77,
     county: 'hunedoara',
-    preexistingCondition: ['cardiopatie']
+    preexistingCondition: ['cardiopatie'],
   },
   {
     deathIndex: 46,
@@ -714,7 +770,7 @@ window.romaniaDeaths = [
     gender: 0,
     age: 70,
     county: 'timiș',
-    preexistingCondition: ['cardiopatie', 'diabet']
+    preexistingCondition: ['cardiopatie', 'diabet'],
   },
   {
     deathIndex: 45,
@@ -722,7 +778,7 @@ window.romaniaDeaths = [
     age: 57,
     county: 'timiș',
     dateConfirmed: '03/30/2020',
-    preexistingCondition: ['cardiopatie', 'diabet']
+    preexistingCondition: ['cardiopatie', 'diabet'],
   },
   {
     deathIndex: 44,
@@ -730,7 +786,7 @@ window.romaniaDeaths = [
     age: 74,
     county: 'satu mare',
     dateConfirmed: '03/30/2020',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 43,
@@ -738,7 +794,7 @@ window.romaniaDeaths = [
     age: 72,
     county: 'arad',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['bronhopneumonie', 'insuficienta cardiaca']
+    preexistingCondition: ['bronhopneumonie', 'insuficienta cardiaca'],
   },
   {
     deathIndex: 42,
@@ -746,7 +802,7 @@ window.romaniaDeaths = [
     age: 82,
     county: 'hunedoara',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['bronhopneumopatie']
+    preexistingCondition: ['bronhopneumopatie'],
   },
   {
     deathIndex: 41,
@@ -754,7 +810,7 @@ window.romaniaDeaths = [
     age: 75,
     county: 'hunedoara',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['cancer', 'hemoragie digestiva']
+    preexistingCondition: ['cancer', 'hemoragie digestiva'],
   },
   {
     deathIndex: 40,
@@ -762,7 +818,7 @@ window.romaniaDeaths = [
     age: 27,
     county: 'botosani',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 39,
@@ -770,7 +826,7 @@ window.romaniaDeaths = [
     age: 71,
     county: 'suceava',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['tumora', 'hipertensiune arteriala', 'anevrism de aorta']
+    preexistingCondition: ['tumora', 'hipertensiune arteriala', 'anevrism de aorta'],
   },
   {
     deathIndex: 38,
@@ -778,7 +834,7 @@ window.romaniaDeaths = [
     age: 66,
     county: 'timiș',
     dateConfirmed: '03/29/2020',
-    preexistingCondition: ['diabet', 'hipertensiune arteriala']
+    preexistingCondition: ['diabet', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 37,
@@ -786,7 +842,7 @@ window.romaniaDeaths = [
     age: 77,
     county: 'ialomița',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 36,
@@ -794,7 +850,7 @@ window.romaniaDeaths = [
     age: 60,
     county: 'ialomița',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['obezitate']
+    preexistingCondition: ['obezitate'],
   },
   {
     deathIndex: 35,
@@ -802,7 +858,7 @@ window.romaniaDeaths = [
     age: 39,
     county: 'ialomița',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: []
+    preexistingCondition: [],
   },
   {
     deathIndex: 34,
@@ -810,7 +866,7 @@ window.romaniaDeaths = [
     age: 61,
     county: 'hunedoara',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['boli cardiovasculare']
+    preexistingCondition: ['boli cardiovasculare'],
   },
   {
     deathIndex: 33,
@@ -818,7 +874,7 @@ window.romaniaDeaths = [
     age: 43,
     county: 'suceava',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['arsuri']
+    preexistingCondition: ['arsuri'],
   },
   {
     deathIndex: 32,
@@ -826,7 +882,7 @@ window.romaniaDeaths = [
     age: 67,
     county: 'constanta',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['hipertensiune arteriala', 'diabet']
+    preexistingCondition: ['hipertensiune arteriala', 'diabet'],
   },
   {
     deathIndex: 31,
@@ -834,7 +890,7 @@ window.romaniaDeaths = [
     age: 65,
     county: 'arad',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['hipertensiune arteriala', 'obezitate']
+    preexistingCondition: ['hipertensiune arteriala', 'obezitate'],
   },
   {
     deathIndex: 30,
@@ -842,7 +898,7 @@ window.romaniaDeaths = [
     age: 74,
     county: 'hunedoara',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['cancer']
+    preexistingCondition: ['cancer'],
   },
   {
     deathIndex: 29,
@@ -850,7 +906,7 @@ window.romaniaDeaths = [
     age: 60,
     county: 'arad',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 28,
@@ -858,7 +914,7 @@ window.romaniaDeaths = [
     age: 74,
     county: 'arad',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 27,
@@ -866,7 +922,7 @@ window.romaniaDeaths = [
     age: 71,
     county: 'arad',
     dateConfirmed: '03/28/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 26,
@@ -874,7 +930,7 @@ window.romaniaDeaths = [
     age: 65,
     county: 'timiș',
     dateConfirmed: '03/27/2020',
-    preexistingCondition: ['boli cardiovasculare']
+    preexistingCondition: ['boli cardiovasculare'],
   },
   {
     deathIndex: 25,
@@ -882,7 +938,7 @@ window.romaniaDeaths = [
     age: 81,
     county: 'bucurești',
     dateConfirmed: '03/27/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 24,
@@ -890,7 +946,7 @@ window.romaniaDeaths = [
     age: 80,
     county: 'bacău',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['insuficienta cardiaca', 'fibrilatie atriala']
+    preexistingCondition: ['insuficienta cardiaca', 'fibrilatie atriala'],
   },
   {
     deathIndex: 23,
@@ -898,7 +954,7 @@ window.romaniaDeaths = [
     age: 75,
     county: 'iași',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 22,
@@ -906,7 +962,7 @@ window.romaniaDeaths = [
     age: 45,
     county: 'arad',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 21,
@@ -914,7 +970,7 @@ window.romaniaDeaths = [
     age: 70,
     county: 'neamț',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['hemodializa']
+    preexistingCondition: ['hemodializa'],
   },
   {
     deathIndex: 20,
@@ -922,7 +978,7 @@ window.romaniaDeaths = [
     age: 49,
     county: 'timiș',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['poliartrita reumatoida', 'hipertensiune arteriala']
+    preexistingCondition: ['poliartrita reumatoida', 'hipertensiune arteriala'],
   },
   {
     deathIndex: 19,
@@ -930,7 +986,7 @@ window.romaniaDeaths = [
     age: 56,
     county: 'dambovita',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 18,
@@ -938,7 +994,7 @@ window.romaniaDeaths = [
     age: 76,
     county: 'cluj',
     dateConfirmed: '03/26/2020',
-    preexistingCondition: ['hipertensiune arteriala', 'diabet']
+    preexistingCondition: ['hipertensiune arteriala', 'diabet'],
   },
   {
     deathIndex: 17,
@@ -946,7 +1002,7 @@ window.romaniaDeaths = [
     age: 70,
     county: 'suceava',
     dateConfirmed: '03/25/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 16,
@@ -954,7 +1010,7 @@ window.romaniaDeaths = [
     age: 70,
     county: 'suceava',
     dateConfirmed: '03/25/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 15,
@@ -962,7 +1018,7 @@ window.romaniaDeaths = [
     age: 63,
     county: 'neamț',
     dateConfirmed: '03/25/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 14,
@@ -970,7 +1026,7 @@ window.romaniaDeaths = [
     age: 64,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: ['hipertensiune arteriala', 'cardiopatie ischemica', 'fibrilatie atriala']
+    preexistingCondition: ['hipertensiune arteriala', 'cardiopatie ischemica', 'fibrilatie atriala'],
   },
   {
     deathIndex: 13,
@@ -978,7 +1034,7 @@ window.romaniaDeaths = [
     age: 71,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 12,
@@ -986,7 +1042,7 @@ window.romaniaDeaths = [
     age: 72,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: ['diabet', 'boli cardiovasculare']
+    preexistingCondition: ['diabet', 'boli cardiovasculare'],
   },
   {
     deathIndex: 11,
@@ -994,7 +1050,7 @@ window.romaniaDeaths = [
     age: 71,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 10,
@@ -1002,7 +1058,7 @@ window.romaniaDeaths = [
     age: 80,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 9,
@@ -1010,7 +1066,7 @@ window.romaniaDeaths = [
     age: 59,
     county: 'suceava',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 8,
@@ -1018,7 +1074,7 @@ window.romaniaDeaths = [
     age: 70,
     county: 'dolj',
     dateConfirmed: '03/24/2020',
-    preexistingCondition: ['diabet', 'obezitate']
+    preexistingCondition: ['diabet', 'obezitate'],
   },
   {
     deathIndex: 7,
@@ -1026,7 +1082,7 @@ window.romaniaDeaths = [
     age: 65,
     county: 'bucurești',
     dateConfirmed: '03/23/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 6,
@@ -1034,7 +1090,7 @@ window.romaniaDeaths = [
     age: 64,
     county: 'arad',
     dateConfirmed: '03/23/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 5,
@@ -1042,7 +1098,7 @@ window.romaniaDeaths = [
     age: 71,
     county: 'suceava',
     dateConfirmed: '03/23/2020',
-    preexistingCondition: undefined
+    preexistingCondition: undefined,
   },
   {
     deathIndex: 4,
@@ -1050,7 +1106,7 @@ window.romaniaDeaths = [
     age: 72,
     county: 'suceava',
     dateConfirmed: '03/23/2020',
-    preexistingCondition: ['diabet', 'boli cardiovasculare']
+    preexistingCondition: ['diabet', 'boli cardiovasculare'],
   },
   {
     deathIndex: 3,
@@ -1058,7 +1114,7 @@ window.romaniaDeaths = [
     age: 70,
     county: 'neamț',
     dateConfirmed: '03/22/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 2,
@@ -1066,7 +1122,7 @@ window.romaniaDeaths = [
     age: 74,
     county: 'bucurești',
     dateConfirmed: '03/22/2020',
-    preexistingCondition: ['diabet']
+    preexistingCondition: ['diabet'],
   },
   {
     deathIndex: 1,
@@ -1074,6 +1130,6 @@ window.romaniaDeaths = [
     age: 67,
     county: 'dolj',
     dateConfirmed: '03/22/2020',
-    preexistingCondition: ['cancer']
-  }
+    preexistingCondition: ['cancer'],
+  },
 ];
