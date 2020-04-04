@@ -1,5 +1,47 @@
 window.romaniaDeaths = [
   {
+    deathIndex: 146,
+    gender: 0,
+    age: 61,
+    county: 'suceava',
+    preexistingCondition: ['parkinson'],
+  },
+  {
+    deathIndex: 145,
+    gender: 0,
+    age: 84,
+    county: 'suceava',
+    preexistingCondition: undefined,
+  },
+  {
+    deathIndex: 144,
+    gender: 0,
+    age: 53,
+    county: 'bucurești',
+    preexistingCondition: undefined,
+  },
+  {
+    deathIndex: 143,
+    gender: 1,
+    age: 79,
+    county: 'hunedoara',
+    preexistingCondition: ['cancer'],
+  },
+  {
+    deathIndex: 142,
+    gender: 0,
+    age: 78,
+    county: 'hunedoara',
+    preexistingCondition: ['cancer'],
+  },
+  {
+    deathIndex: 141,
+    gender: 0,
+    age: 51,
+    county: 'hunedoara',
+    preexistingCondition: ['ciroza'],
+  },
+  {
     deathIndex: 141,
     gender: 0,
     age: 59,
