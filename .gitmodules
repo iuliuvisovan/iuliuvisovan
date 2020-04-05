@@ -1,6 +1,0 @@
-[submodule "preddly"]
-	path = preddly
-	url = https://github.com/iuliuvisovan/preddly.git
-[submodule "orderable/jquery-orderable"]
-	path = orderable/jquery-orderable
-	url = https://github.com/iuliuvisovan/jquery-orderable.git
