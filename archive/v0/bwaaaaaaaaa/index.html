@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>iuliu.net | Bwaaaaaaaaa</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<link href="../css/bootstrap.min.css" rel = "stylesheet">
+		<link href="styles_particular.css" rel = "stylesheet">
+	</head>
+	
+	<body>
+		
+		<audio id="audio">
+		    <source src="inception.mp3" type="audio/mpeg" />
+		</audio>
+		<div class="footer col-sm-12">
+			<div class="col-sm-4 col-sm-offset-4"><h2 onclick="_gaq.push([_'trackEvent','Bwaaaa','Click','Bwaaaaa Button',50,False]);" id="play">Bwaaaaaaaaa</h2></div>
+		</div>
+		
+		<script>
+			var button = document.getElementById('play');
+			var audio = document.getElementById('audio');
+
+			var onClick = function() {
+			    audio.play(); // audio will load and then play
+			};
+			if(button){
+				audio.play();
+				button.addEventListener('click', onClick, false);
+			}
+		</script> 
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-63838941-1', 'auto');
+		  ga('send', 'pageview');
+		  _gaq.push([_'trackEvent','Bwaaaaaa','Clicked','Bwaaaaaaa Button',50,False]);
+		</script>   
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</body>
+</html>
