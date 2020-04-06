@@ -1,0 +1,81 @@
+body, h1
+{
+	background-color: #73CBFE;
+	font-family: "Helvetica Neue", "Segoe UI", Segoe, Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p {
+	font-family: "Helvetica Neue", "Segoe UI", Segoe, Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #54728A;
+}
+
+h2 {
+	color: #E2E2E2;
+	margin-top: 8px;
+	text-align: center;
+}
+
+.panel-body {
+	background-color: #00A2FF;
+	padding: 0px;
+}
+
+.row {
+	margin: 0px;
+}
+
+.port-item {
+	padding: 20px;
+}
+
+.panel-image {
+	border-top: 1px solid #E2E2E2;
+	margin: 0px;
+}
+
+.navbar-text {
+	color: #414141;
+}
+
+.pictures {
+	margin-top: 20px;
+}
+
+.picture {
+	border: 1px solid white
+}
+
+.level {
+	margin-top: 20px;
+}
+
+.footer {
+	margin-top: 20px;
+	background-color: #0078FF;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.download {
+	transition: background-image 0.5s ease;
+	background-image: url('../img/download.png');
+	margin-left: -20px;
+	width: 250px;
+	height: 100px;
+}
+
+.download:hover {
+	background-image: url('../img/download_hover.png');
+}

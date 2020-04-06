@@ -1,0 +1,49 @@
+body, h1
+{
+	background-color: #93012A;
+	font-family: "Helvetica Neue", "Segoe UI", Segoe, Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+p {
+	font-family: "Helvetica Neue", "Segoe UI", Segoe, Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #54728A;
+}
+
+h2 {
+	transition: color 0.5s ease;
+	color: #FF7192;
+	font-size: 70px;
+	margin-top: 8px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+h2:hover {
+	cursor: pointer;
+	cursor: hand;
+	color: white;
+}
+
+.row {
+	margin: 0px;
+}
+
+.navbar-text {
+	color: #414141;
+}
+
+.footer {
+	transition: background-color 1s ease;
+	margin-top: 200px;
+	background-color: #DA003E;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.footer:hover {
+	background-color: #DA003E;
+}
