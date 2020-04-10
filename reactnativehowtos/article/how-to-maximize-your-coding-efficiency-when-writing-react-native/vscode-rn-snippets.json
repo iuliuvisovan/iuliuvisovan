@@ -1,0 +1,101 @@
+{
+	"Console log": {
+		"prefix": "col",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"Create a View element": {
+		"prefix": "view",
+		"body": [
+			"<View>",
+			"\t$1",
+			"</View>"
+		],
+		"description": "Create a View element."
+	},
+	"Create a Text element": {
+		"prefix": "text",
+		"body": [
+			"<Text>",
+			"\t$1",
+			"</Text>"
+		],
+		"description": "Create a Text element."
+	},
+	"Create a generic element": {
+		"prefix": "elem",
+		"body": [
+			"<$1>",
+			"\t$2",
+			"</$1>"
+		],
+		"description": "Create a generic element."
+	},
+	"Style prop": {
+		"prefix": "stl",
+		"body": [
+			"style={styles.$1}"
+		],
+		"description": "Create a style property."
+	},
+	"Create icon": {
+		"prefix": "icon",
+		"body": [
+			"<Icon name=\"$1\" size={25}/>"
+		],
+		"description": "Create an icon"
+	},
+	"Get all colors": {
+		"prefix": "clr",
+		"body": [
+			"'#f0b323' '#7c878e' '#131e29' '#0f171f'"
+		],
+		"description": "Add all colors"
+	},
+	"Show expert network image": {
+		"prefix": "img",
+		"body": [
+			"<Image source={{uri: $1}} style={styles.welcomeImage}/>"
+		]
+	},
+	"Exn logo": {
+		"prefix": "exnlogo",
+		"body": [
+			"'http://www.expertnetwork.ro/media/1042/logo.png'"
+		]
+	},
+	"Input": {
+		"prefix": "input",
+		"body": [
+			"<Input placeholder=\"$1\"/>"
+		]
+	},
+	"Bred": {
+		"prefix": "bred",
+		"body": [
+			"borderWidth: 1,",
+			"borderColor: \"red\",",
+		]
+	},
+	"vs": {
+		"prefix": "vs",
+		"body": [
+			"<View style={styles.$1}></View>"
+		]
+	},
+	"ts": {
+		"prefix": "ts",
+		"body": [
+			"<Text style={styles.$1}></Text>"
+		]
+	},
+	"fdr": {
+		"prefix": "fdr",
+		"body": [
+			"flexDirection: 'row'"
+		]
+	}
+}
