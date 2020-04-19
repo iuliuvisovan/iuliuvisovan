@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://www.iuliu.net/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/me.html</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/work.html</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/skills.html</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/whatisthis/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/emojiindex/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/v</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/vezic%C4%83-%C8%9Bifugem%C3%A2%C8%9Ba/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/corona/</loc>
+  <lastmod>2020-04-04T21:56:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.iuliu.net/corona/</loc>
+  <lastmod>2020-04-04T21:56:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/c/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.34</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/cs/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.34</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/jquery.orderable/</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.34</priority>
+</url>
+<url>
+  <loc>http://www.iuliu.net/video/cfr-cluj-european-adventure-19-20.mp4.html</loc>
+  <lastmod>2019-11-03T21:56:49+00:00</lastmod>
+  <priority>0.65</priority>
+</url>
+</urlset>
