@@ -10,7 +10,12 @@ body {
   background-size: 152%;
   background-position-y: -127px;
   height: 100%;
-  border: 1px solid red;
+}
+
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid green;
 }
 
 .profile-image {
