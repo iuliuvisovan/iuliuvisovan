@@ -1,5 +1,6 @@
 html {
   overflow: hidden;
+  height: 100%;
 }
 
 body {
@@ -8,6 +9,8 @@ body {
   background-image: url(img/background.png);
   background-size: 152%;
   background-position-y: -127px;
+  height: 100%;
+  border: 1px solid red;
 }
 
 .profile-image {
