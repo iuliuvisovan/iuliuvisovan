@@ -5,6 +5,9 @@ html {
 body {
   margin: 0;
   overflow: hidden;
+  background-image: url(img/background.png);
+  background-size: 121%;
+  background-position-y: -127px;
 }
 
 .profile-image {
