@@ -6,7 +6,7 @@ body {
   margin: 0;
   overflow: hidden;
   background-image: url(img/background.png);
-  background-size: 121%;
+  background-size: 152%;
   background-position-y: -127px;
 }
 
@@ -88,6 +88,7 @@ body {
   z-index: 4;
   transform-origin: 45px calc(85px + 23vh);
   display: inline-block;
+  cursor: pointer;
 }
 
 .logo.smaller {
@@ -95,6 +96,48 @@ body {
   transform-origin: 45px calc(100px + 33vh);
   height: 80px;
   width: 80px;
+}
+
+.logo.bottom {
+  top: calc(50vh + 26vh);
+  transform-origin: 45px -26vh;
+}
+
+.logo.bottom.small {
+  top: calc(50vh + 39vh);
+  transform-origin: 45px -39vh;
+}
+
+.av {
+  transform: rotate(20deg);
+}
+
+.av img {
+  transform: rotate(-20deg);
+}
+
+.runningcat {
+  transform: rotate(-27deg);
+}
+
+.runningcat img {
+  transform: rotate(27deg);
+}
+
+.whatisthis {
+  transform: rotate(27deg);
+}
+
+.whatisthis img {
+  transform: rotate(-27deg);
+}
+
+.fbadblock {
+  transform: rotate(-27deg);
+}
+
+.fbadblock img {
+  transform: rotate(27deg);
 }
 
 .yt {
