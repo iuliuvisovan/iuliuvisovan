@@ -15,13 +15,12 @@ body {
 .wrapper {
   height: 100%;
   overflow: hidden;
-  border: 1px solid blue;
   position: relative;
 }
 
 .profile-image {
   position: absolute;
-  top: calc(50vh - 50px);
+  top: calc(40vh - 50px);
   left: 0;
   right: 0;
   margin: auto;
@@ -39,7 +38,7 @@ body {
 .guidelines .horizontal {
   position: fixed;
   width: 100vw;
-  top: 50vh;
+  top: 40vh;
   margin-top: -0.5px;
   border-bottom: 1px solid rosybrown;
 }
@@ -54,7 +53,7 @@ body {
 
 .hi {
   position: absolute;
-  top: calc(50vh - 147px);
+  top: calc(40vh - 147px);
   left: 0;
   right: 0;
   margin: auto;
@@ -65,7 +64,7 @@ body {
 
 .imiuliu {
   position: absolute;
-  top: calc(50vh + 60px);
+  top: calc(40vh + 60px);
   left: 0;
   right: 0;
   margin: auto;
@@ -76,7 +75,7 @@ body {
 
 .welcometowebsite {
   position: absolute;
-  top: calc(50vh + 100px);
+  top: calc(40vh + 100px);
   left: 0;
   right: 0;
   margin: auto;
@@ -87,7 +86,7 @@ body {
 
 .logo {
   position: absolute;
-  top: calc(50vh - (85px + 23vh));
+  top: calc(40vh - (85px + 18vh));
   left: 0;
   right: 0;
   margin: auto;
@@ -95,42 +94,42 @@ body {
   width: 80px;
   padding-left: 6px;
   z-index: 4;
-  transform-origin: 45px calc(85px + 23vh);
+  transform-origin: 45px calc(85px + 18vh);
   display: inline-block;
   cursor: pointer;
 }
 
-.logo.smaller {
-  top: calc(50vh - (100px + 33vh));
-  transform-origin: 45px calc(100px + 33vh);
+.logo.small {
+  top: calc(40vh - (100px + 26vh));
+  transform-origin: 45px calc(100px + 26vh);
   height: 80px;
   width: 80px;
 }
 
 .logo.bottom {
-  top: calc(50vh + 26vh);
-  transform-origin: 45px -26vh;
+  top: calc(40vh + 19vh);
+  transform-origin: 45px -19vh;
 }
 
 .logo.bottom.small {
-  top: calc(50vh + 39vh);
-  transform-origin: 45px -39vh;
+  top: calc(40vh + 31vh);
+  transform-origin: 45px -31vh;
 }
 
 .av {
-  transform: rotate(20deg);
+  transform: rotate(15deg);
 }
 
 .av img {
-  transform: rotate(-20deg);
+  transform: rotate(-15deg);
 }
 
 .runningcat {
-  transform: rotate(-27deg);
+  transform: rotate(-15deg);
 }
 
 .runningcat img {
-  transform: rotate(27deg);
+  transform: rotate(15deg);
 }
 
 .whatisthis {
@@ -168,16 +167,16 @@ body {
 }
 
 .corona {
-  transform: rotate(-23deg);
+  transform: rotate(-19deg);
 }
 .corona img {
-  transform: rotate(23deg);
+  transform: rotate(19deg);
 }
 
 .rntricks {
-  transform: rotate(23deg);
+  transform: rotate(19deg);
 }
 
 .rntricks img {
-  transform: rotate(-23deg);
+  transform: rotate(-19deg);
 }
