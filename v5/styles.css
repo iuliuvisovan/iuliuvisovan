@@ -112,8 +112,8 @@ body {
 }
 
 .logo.bottom.small {
-  top: calc(40vh + 31vh);
-  transform-origin: 45px -31vh;
+  top: calc(40vh + 29vh);
+  transform-origin: 45px -29vh;
 }
 
 .av {
@@ -179,4 +179,39 @@ body {
 
 .rntricks img {
   transform: rotate(-19deg);
+}
+
+.circle-wrapper {
+  position: absolute;
+  top: calc(40vh - (530px / 2));
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid red;
+  width: 1px;
+  height: 1px;
+}
+
+.circle-wrapper .circle {
+  height: 530px;
+  width: 530px;
+  border-radius: 100%;
+  border: 1px solid green;
+  position: absolute;
+  left: calc(-530px / 2);
+  right: 0;
+  margin: auto;
+}
+
+.circle-wrapper.small {
+  top: calc(40vh - (375px / 2));
+}
+
+.circle-wrapper.small .circle {
+  height: 375px;
+  width: 375px;
+  left: calc(-375px / 2);
+  right: 0;
+  margin: auto;
+  border: 1px solid blue;
 }
