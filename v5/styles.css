@@ -18,6 +18,22 @@ body {
   }
 } */
 
+.guidelines .horizontal {
+  position: fixed;
+  width: 100vw;
+  top: 40vh;
+  margin-top: -0.5px;
+  border-bottom: 1px solid rosybrown;
+}
+
+.guidelines .vertical {
+  position: fixed;
+  height: 100vh;
+  left: 50vw;
+  margin-left: -0.5px;
+  border-right: 1px solid blueviolet;
+}
+
 .wrapper {
   height: 100%;
   overflow: hidden;
@@ -34,28 +50,16 @@ body {
   height: 100px;
   overflow: hidden;
   border-radius: 100%;
-  border: 1px solid red;
+  border: 1px solid blue;
+}
+
+.central {
+  transform: translateY(30px);
 }
 
 .profile-image img {
   height: 163px;
   margin-left: -22px;
-}
-
-.guidelines .horizontal {
-  position: fixed;
-  width: 100vw;
-  top: 40vh;
-  margin-top: -0.5px;
-  border-bottom: 1px solid rosybrown;
-}
-
-.guidelines .vertical {
-  position: fixed;
-  height: 100vh;
-  left: 50vw;
-  margin-left: -0.5px;
-  border-right: 1px solid blueviolet;
 }
 
 .hi {
