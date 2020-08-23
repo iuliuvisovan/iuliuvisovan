@@ -12,11 +12,11 @@ body {
   height: 100%;
 }
 
-/* @media (max-width: 700px) {
-  img {
-    max-height: 100px;
+@media (max-width: 700px) {
+  body {
+    zoom: 0.85;
   }
-} */
+}
 
 .guidelines .horizontal {
   position: fixed;
@@ -50,7 +50,7 @@ body {
   height: 100px;
   overflow: hidden;
   border-radius: 100%;
-  border: 1px solid blue;
+  border: 1px solid red;
 }
 
 .central {
