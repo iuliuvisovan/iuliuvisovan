@@ -12,6 +12,12 @@ body {
   height: 100%;
 }
 
+/* @media (max-width: 700px) {
+  img {
+    max-height: 100px;
+  }
+} */
+
 .wrapper {
   height: 100%;
   overflow: hidden;
@@ -28,6 +34,7 @@ body {
   height: 100px;
   overflow: hidden;
   border-radius: 100%;
+  border: 1px solid red;
 }
 
 .profile-image img {
