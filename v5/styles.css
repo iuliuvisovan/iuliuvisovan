@@ -61,12 +61,12 @@ body {
   overflow: hidden;
   border-radius: 100%;
 
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .profile-image,
 .imiuliu {
-  animation: imiuliu;
+  /* animation: imiuliu; */
   animation-delay: 2s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -96,12 +96,12 @@ body {
   height: 207px;
   padding-left: 6px;
   z-index: 2;
-  animation: hi;
+  /* animation: hi; */
   animation-duration: 2s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
-  opacity: 0;
+  /* opacity: 0; */
 
   /* clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); */
 }
@@ -126,7 +126,7 @@ body {
   padding-left: 6px;
   z-index: 2;
 
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .welcometowebsite {
@@ -139,9 +139,9 @@ body {
   padding-left: 6px;
   z-index: 2;
 
-  opacity: 0;
+  /* opacity: 0; */
 
-  animation: welcome;
+  /* animation: welcome; */
   animation-delay: 3.5s;
   animation-duration: 0.75s;
   animation-fill-mode: forwards;
@@ -166,9 +166,9 @@ body {
   transform-origin: 45px calc(85px + 18vh);
   display: inline-block;
   cursor: pointer;
-  opacity: 0;
+  /* opacity: 0; */
 
-  animation: start-logos;
+  /* animation: start-logos; */
   animation-duration: 2.4s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.755, 0.05, 1.255, 0.06);
@@ -322,4 +322,16 @@ body {
   right: 0;
   margin: auto;
   border: 1px solid blue;
+}
+/* 
+.logo {
+  transition: all 0.25s ease-in-out;
+}
+.logo:hover {
+  filter: brightness(1.5);
+} */
+
+.rntricks:hover img {
+  transition: transform 0.25s ease-in-out;
+  transform: rotate(calc(-17deg * var(--rotation-factor) * 0.75 + 357deg));
 }
