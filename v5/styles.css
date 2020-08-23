@@ -93,7 +93,7 @@ body {
 
 .logo {
   position: absolute;
-  top: calc(40vh - (85px + 18vh));
+  top: calc(40vh - (85px + 19vh));
   left: 0;
   right: 0;
   margin: auto;
@@ -107,19 +107,19 @@ body {
 }
 
 .logo.small {
-  top: calc(40vh - (100px + 26vh));
+  top: calc(40vh - (85px + 19vh + 70px));
   transform-origin: 45px calc(100px + 26vh);
   height: 80px;
   width: 80px;
 }
 
 .logo.bottom {
-  top: calc(40vh + 19vh);
+  top: calc(40vh + 25vh);
   transform-origin: 45px -19vh;
 }
 
 .logo.bottom.small {
-  top: calc(40vh + 29vh);
+  top: calc(40vh + 25vh + 90px);
   transform-origin: 45px -29vh;
 }
 
