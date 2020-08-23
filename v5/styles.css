@@ -1,3 +1,13 @@
+:root {
+  --rotation-factor: 1;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --rotation-factor: 2;
+  }
+}
+
 html {
   overflow: hidden;
   height: 100%;
@@ -50,11 +60,26 @@ body {
   height: 100px;
   overflow: hidden;
   border-radius: 100%;
-  border: 1px solid red;
+
+  opacity: 0;
+}
+
+.profile-image,
+.imiuliu {
+  animation: imiuliu;
+  animation-delay: 2s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes imiuliu {
+  to {
+    opacity: 1;
+  }
 }
 
 .central {
-  transform: translateY(30px);
+  transform: translateY(40px);
 }
 
 .profile-image img {
@@ -71,6 +96,24 @@ body {
   height: 207px;
   padding-left: 6px;
   z-index: 2;
+  animation: hi;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+
+  /* clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); */
+}
+
+@keyframes hi {
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: unset;
+  }
 }
 
 .imiuliu {
@@ -82,6 +125,8 @@ body {
   height: 37px;
   padding-left: 6px;
   z-index: 2;
+
+  opacity: 0;
 }
 
 .welcometowebsite {
@@ -93,6 +138,19 @@ body {
   height: 50px;
   padding-left: 6px;
   z-index: 2;
+
+  opacity: 0;
+
+  animation: welcome;
+  animation-delay: 3.5s;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes welcome {
+  to {
+    opacity: 1;
+  }
 }
 
 .logo {
@@ -108,7 +166,48 @@ body {
   transform-origin: 45px calc(85px + 18vh);
   display: inline-block;
   cursor: pointer;
+  opacity: 0;
+
+  animation: start-logos;
+  animation-duration: 2.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.755, 0.05, 1.255, 0.06);
 }
+
+@keyframes start-logos {
+  32% {
+    top: 40vh;
+    transform: rotate(0deg);
+    opacity: 0.05;
+  }
+  90% {
+    top: 40vh;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* .rntricks {
+  animation-delay: 0.05s;
+}
+.yt {
+  animation-delay: 0.02s;
+}
+.whatisthis {
+  animation-delay: 0.07s;
+}
+.fbadblock {
+  animation-delay: 0.06s;
+}
+.av {
+  animation-delay: 0.09s;
+}
+.corona {
+  animation-delay: 0.1s;
+} */
 
 .logo.small {
   top: calc(40vh - (85px + 19vh + 70px));
@@ -127,69 +226,68 @@ body {
   transform-origin: 45px -29vh;
 }
 
-.av {
-  transform: rotate(15deg);
-}
-
-.av img {
-  transform: rotate(-15deg);
-}
-
-.runningcat {
-  transform: rotate(-15deg);
-}
-
-.runningcat img {
-  transform: rotate(15deg);
-}
-
-.whatisthis {
-  transform: rotate(27deg);
-}
-
-.whatisthis img {
-  transform: rotate(-27deg);
-}
-
-.fbadblock {
-  transform: rotate(-27deg);
-}
-
-.fbadblock img {
-  transform: rotate(27deg);
-}
-
-.yt {
-  transform: rotate(-27deg);
-}
-.yt img {
-  transform: rotate(27deg);
-}
-
-.emojiindex {
-  transform: rotate(27deg);
-}
-.emojiindex img {
-  transform: rotate(-27deg);
-}
-
 .logo img {
   height: 100%;
 }
 
+/* top ones */
+
+.yt {
+  transform: rotate(calc(-27deg * var(--rotation-factor)));
+}
+.yt img {
+  transform: rotate(calc(27deg * var(--rotation-factor)));
+}
+
+.emojiindex {
+  transform: rotate(calc(27deg * var(--rotation-factor)));
+}
+.emojiindex img {
+  transform: rotate(calc(-27deg * var(--rotation-factor)));
+}
+
 .corona {
-  transform: rotate(-19deg);
+  transform: rotate(calc(-19deg * var(--rotation-factor) * 0.75));
 }
 .corona img {
-  transform: rotate(19deg);
+  transform: rotate(calc(19deg * var(--rotation-factor) * 0.75));
 }
 
 .rntricks {
-  transform: rotate(19deg);
+  transform: rotate(calc(19deg * var(--rotation-factor) * 0.75));
+}
+.rntricks img {
+  transform: rotate(calc(-19deg * var(--rotation-factor) * 0.75));
 }
 
-.rntricks img {
-  transform: rotate(-19deg);
+/* bottom ones */
+
+.av {
+  transform: rotate(calc(15deg * var(--rotation-factor)));
+}
+.av img {
+  transform: rotate(calc(-15deg * var(--rotation-factor)));
+}
+
+.runningcat {
+  transform: rotate(calc(-15deg * var(--rotation-factor)));
+}
+.runningcat img {
+  transform: rotate(calc(15deg * var(--rotation-factor)));
+}
+
+.whatisthis {
+  transform: rotate(calc(27deg * var(--rotation-factor) * 0.75));
+}
+.whatisthis img {
+  transform: rotate(calc(-27deg * var(--rotation-factor) * 0.75));
+}
+
+.fbadblock {
+  transform: rotate(calc(-27deg * var(--rotation-factor) * 0.75));
+}
+.fbadblock img {
+  transform: rotate(calc(27deg * var(--rotation-factor) * 0.75));
 }
 
 .circle-wrapper {
@@ -198,7 +296,6 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  border: 1px solid red;
   width: 1px;
   height: 1px;
 }
@@ -225,8 +322,4 @@ body {
   right: 0;
   margin: auto;
   border: 1px solid blue;
-}
-
-.broken {
-  gg: 2px;
 }
