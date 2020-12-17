@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+}
+
+video {
+  height: 100vh;
+  margin: 0 0 0 0;
+}
