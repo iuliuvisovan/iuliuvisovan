@@ -26,6 +26,10 @@
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />
+
     <!--Favicon-->
     <link id="favicon" rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
 
@@ -34,13 +38,44 @@
   </head>
 
   <body>
-    <div class="container">
+    <div id="loadingOverlay" class="loading-overlay active">
+      <div></div>
+      <div id="loadingText" style="text-align: center">
+        This website is big.
+        <br />
+        <br />
+        It is currently loading. Thanks for waiting.
+      </div>
+      <div id="loadedText" style="text-align: center">
+        All loaded! Let's go!
+        <br />
+        <br />
+        <a href="#" style="margin-bottom: 32px" onclick="enterWebsite()">Enter</a>
+      </div>
+
+      <div id="catgifs">
+        <div class="gif-wrapper">
+          <img id="catgif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="height: 40vh" />
+        </div>
+        <a href="#" style="margin-bottom: 32px" onclick="showNextGif()">Next one</a>
+      </div>
+
+      <a href="#" id="showCatGifsLink" style="margin-bottom: 32px" onclick="document.getElementById('catgifs').classList.add('visible')">Please show me cat gifs while I wait</a>
+    </div>
+    <div id="homepage">
       <!-- <video id="first" muted style="transform: scale(-1, 1)">
         <source src="./media/main.mp4" type="video/mp4" />
       </video> -->
-      <video muted>
-        <source src="./media/main.mp4" type="video/mp4" />
-      </video>
+      <div id="pageWrapper" class="page-wrapper">
+        <div id="paperTrigger" class="trigger paper"></div>
+        <div class="trigger work-experience"></div>
+        <img class="button-image" src="./media/work-experience.png" style="position: absolute; left: 0; top: 0; width: 100%" />
+        <div class="video-wrapper">
+          <video muted id="mainVid">
+            <source src="./media/main.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
       <!-- <video muted style="transform: scale(-1, 1)">
         <source src="./media/main.mp4" type="video/mp4" />
       </video> -->

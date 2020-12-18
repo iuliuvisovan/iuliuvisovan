@@ -1,9 +1,10 @@
 body {
   margin: 0;
   overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.container {
+#homepage {
   white-space: nowrap;
   display: flex;
   justify-content: center;
@@ -12,4 +13,131 @@ body {
 video {
   height: 100vh;
   margin: 0 0 0 0;
+  transform: rotate(0deg);
+}
+
+.loading-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  background: #0007;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+
+#loadedText {
+  display: none;
+}
+
+#loadedText.visible {
+  display: block;
+}
+
+#catgifs {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+#catgifs.visible {
+  display: flex;
+}
+
+#catgifs.visible ~ #showCatGifsLink {
+  display: none;
+}
+
+.gif-wrapper {
+  border: 0.5px solid #fff4;
+  /* padding: 2px; */
+  margin-bottom: 16px;
+  font-size: 0;
+}
+
+#homepage {
+  filter: blur(10px);
+}
+
+#homepage.entered {
+  animation: blur 1.5s ease 0s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+.page-wrapper {
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.trigger {
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: none;
+  /* border: 1px solid red; */
+}
+
+.trigger.available {
+  pointer-events: all;
+}
+
+.button-image {
+  opacity: 0;
+  z-index: 5;
+}
+
+.trigger:hover + .button-image {
+  opacity: 1;
+}
+
+.video-wrapper {
+  font-size: 0;
+}
+
+.trigger.work-experience:hover ~ .video-wrapper {
+  transition: filter 0.5s ease-in-out;
+  filter: blur(3px) brightness(0.7);
+  /* animation: blur-button 1.5s ease 0s;
+  animation-fill-mode: forwards; */
+}
+
+@keyframes blur-button {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(5px);
+  }
+}
+
+.trigger.work-experience {
+  position: absolute;
+  top: 63.2%;
+  left: 41.5%;
+  width: 15%;
+  height: 3%;
+}
+
+.trigger.paper {
+  position: absolute;
+  top: 31.2%;
+  left: 36.5%;
+  width: 26%;
+  height: 61%;
 }
