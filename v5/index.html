@@ -87,7 +87,9 @@
     <video class="video-size" muted id="mainVid" style="width: 300px">
       <source src="./media/mainrender.mp4" type="video/mp4" />
     </video>
-    <div style="width: 100px; height: 50px; border: 1px solid red" onclick="playVideo()">Play video</div>
+    <div style="width: 100px; height: 50px; border: 1px solid red" onclick="document.getElementById('mainVid').play()">
+      Play video
+    </div>
     <!-- <img class="still-image home" src="./media/ss.png" style="width: 100%" />
       </div>
     </div> -->
@@ -113,6 +115,6 @@
     </script>
 
     <!--App-->
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
   </body>
 </html>
