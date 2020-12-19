@@ -44,7 +44,7 @@ function enterWebsite() {
   document.querySelector('.page-wrapper').classList.add('entered');
 
   setTimeout(() => {
-    playVideos();
+    playVideo();
     setTimeout(() => {
       pauseVideos();
       enableButtonTriggers();
@@ -53,7 +53,7 @@ function enterWebsite() {
   }, 800);
 }
 
-const playVideos = () => {
+const playVideo = () => {
   const vids = [...document.getElementsByTagName('video')];
   vids.forEach((vid) => {
     vid.play();
