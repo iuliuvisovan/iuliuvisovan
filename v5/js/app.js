@@ -10,9 +10,9 @@ const catGifs = [
   'https://kittybloger.files.wordpress.com/2014/03/25-funny-cat-gifs-15.gif',
 ];
 
-setTimeout(() => {
-  enterWebsite();
-}, 500);
+// setTimeout(() => {
+//   enterWebsite();
+// }, 400);
 
 var currentGif = 0;
 
@@ -27,19 +27,14 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('loadeddata', () => {
+  enterWebsite();
+
   setTimeout(() => {
     document.getElementById('loadingText').remove();
     document.getElementById('loadedText').classList.add('visible');
     document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
   }, 600);
 });
-
-setTimeout(() => {
-  const vids = [...document.getElementsByTagName('video')];
-  vids.forEach((vid) => {
-    vid.play();
-  });
-}, 500);
 
 setTimeout(() => {
   const vid = document.getElementById('mainvid');
@@ -51,21 +46,58 @@ function enterWebsite() {
   document.getElementById('homepage').classList.add('entered');
 
   setTimeout(() => {
-    document.getElementById('mainVid').play();
+    playVideos();
     setTimeout(() => {
-      document.getElementById('mainVid').pause();
-      [...document.getElementsByClassName('trigger')].forEach((trigger) => {
-        trigger.classList.add('available');
-      });
-    }, 2132);
-  }, 1500);
+      pauseVideos();
+      enableButtonTriggers();
+      showStillImage('home');
+    }, 4500);
+  }, 1600);
 }
 
-setTimeout(() => {
-  document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
-    document.getElementById('pageWrapper').style.transform = 'scale(1.3) translateY(-100px)';
+const playVideos = () => {
+  const vids = [...document.getElementsByTagName('video')];
+  vids.forEach((vid) => {
+    vid.play();
   });
-  document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
-    document.getElementById('pageWrapper').style.transform = 'scale(1) translateY(0px)';
+};
+
+const pauseVideos = () => {
+  const vids = [...document.getElementsByTagName('video')];
+  vids.forEach((vid) => {
+    vid.pause();
   });
-}, 0);
+};
+
+const enableButtonTriggers = () => {
+  [...document.getElementsByClassName('trigger')].forEach((trigger) => {
+    trigger.classList.add('available');
+  });
+};
+
+const showStillImage = (page) => {
+  [...document.getElementsByClassName('still-image ' + page)][0].classList.add('active');
+};
+
+const showVideo = () => {
+  [...document.getElementsByClassName('trigger' + ' page')][0].classList.remove('active');
+};
+
+document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
+  document.getElementById('pageWrapper').classList.add('zoomed');
+});
+document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
+  console.log('MOUSE LEAVE PPAER');
+
+  document.getElementById('pageWrapper').classList.remove('zoomed');
+});
+
+[...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
+  trigger.addEventListener('mouseenter', function () {
+    document.getElementById('pageWrapper').classList.add('zoomed');
+    console.log('daded');
+  });
+  trigger.addEventListener('mouseleave', function () {
+    document.getElementById('pageWrapper').classList.add('zoomed');
+  });
+});
