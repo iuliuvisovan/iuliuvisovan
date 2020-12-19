@@ -32,6 +32,8 @@ videoElement.addEventListener('loadeddata', () => {
   document.getElementById('loadingText').remove();
   document.getElementById('loadedText').classList.add('visible');
   document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+
+  document.querySelector('.loading-overlay').classList.add('loaded');
 });
 
 function enterWebsite() {
