@@ -24,7 +24,7 @@
     <meta property="og:image" content="http://www.iuliu.net/img/preview.png" />
 
     <!--CSS-->
-    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <!-- <div class="loading-overlay active">
+    <div class="loading-overlay active">
       <div></div>
       <div id="loadingText" style="text-align: center">
         This website is big.
@@ -83,16 +83,13 @@
       <div id="paperTrigger" class="trigger paper"></div>
       <div class="trigger button work-experience"></div>
       <img class="button-image video-size" src="./media/work-experience-new.png" />
-      <div class="video-size video-wrapper"> -->
-    <video class="video-size" playsinline muted autoplay id="mainVid" style="width: 300px">
-      <source src="./media/mainrender.mp4" type="video/mp4" />
-    </video>
-    <div style="width: 100px; height: 50px; border: 1px solid red" onclick="document.getElementById('mainVid').play()">
-      Play video
-    </div>
-    <!-- <img class="still-image home" src="./media/ss.png" style="width: 100%" />
+      <div class="video-size video-wrapper">
+        <video class="video-size" muted playsinline id="mainVid" style="width: 100%">
+          <source src="./media/mainrender.mp4" type="video/mp4" />
+        </video>
+        <img class="still-image home" src="./media/ss.png" style="width: 100%" />
       </div>
-    </div> -->
+    </div>
 
     <!--Google Analytics-->
     <script>
@@ -115,6 +112,6 @@
     </script>
 
     <!--App-->
-    <!-- <script src="js/app.js"></script> -->
+    <script src="js/app.js"></script>
   </body>
 </html>
