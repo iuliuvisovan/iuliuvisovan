@@ -41,7 +41,7 @@ setTimeout(() => {
   try {
     videoElement.load();
   } catch (e) {}
-}, 2000);
+}, 2500);
 
 function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('inactive');

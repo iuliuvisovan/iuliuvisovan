@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: flex-end;
 
-  /* filter: blur(10px); */
+  filter: blur(10px);
   position: relative;
   transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
