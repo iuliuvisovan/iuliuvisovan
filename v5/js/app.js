@@ -36,10 +36,12 @@ videoElement.addEventListener('loadeddata', () => {
   document.querySelector('.loading-overlay').classList.add('loaded');
 });
 
-videoElement.src = './media/mainrender.mp4';
-try {
-  videoElement.load();
-} catch (e) {}
+setTimeout(() => {
+  videoElement.src = './media/mainrender.mp4';
+  try {
+    videoElement.load();
+  } catch (e) {}
+}, 2000);
 
 function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('inactive');
