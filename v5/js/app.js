@@ -27,23 +27,19 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('loadeddata', () => {
-  enterWebsite();
+  // enterWebsite();
 
-  setTimeout(() => {
-    document.getElementById('loadingText').remove();
-    document.getElementById('loadedText').classList.add('visible');
-    document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
-  }, 600);
+  document.getElementById('loadingText').remove();
+  document.getElementById('loadedText').classList.add('visible');
+  document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
 });
 
-setTimeout(() => {
-  const vid = document.getElementById('mainvid');
-  vid.pause();
-}, 4000);
-
 function enterWebsite() {
-  document.getElementById('loadingOverlay').remove();
-  document.getElementById('homepage').classList.add('entered');
+  document.querySelector('.loading-overlay').classList.add('inactive');
+  setTimeout(() => {
+    document.querySelector('.loading-overlay').remove();
+  }, 2000);
+  document.querySelector('.page-wrapper').classList.add('entered');
 
   setTimeout(() => {
     playVideos();
@@ -52,7 +48,7 @@ function enterWebsite() {
       enableButtonTriggers();
       showStillImage('home');
     }, 4500);
-  }, 1600);
+  }, 800);
 }
 
 const playVideos = () => {
@@ -76,28 +72,30 @@ const enableButtonTriggers = () => {
 };
 
 const showStillImage = (page) => {
-  [...document.getElementsByClassName('still-image ' + page)][0].classList.add('active');
+  document.querySelector('.still-image.' + page).classList.add('active');
 };
 
 const showVideo = () => {
-  [...document.getElementsByClassName('trigger' + ' page')][0].classList.remove('active');
+  document.querySelector('.still-image.active').classList.remove('active');
 };
 
-document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
-  document.getElementById('pageWrapper').classList.add('zoomed');
-});
-document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
-  console.log('MOUSE LEAVE PPAER');
-
-  document.getElementById('pageWrapper').classList.remove('zoomed');
-});
+handlePaperHover();
+function handlePaperHover() {
+  document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
+    document.querySelector('.page-wrapper').classList.add('zoomed');
+  });
+  document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
+    document.querySelector('.page-wrapper').classList.remove('zoomed');
+  });
+}
 
 [...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
   trigger.addEventListener('mouseenter', function () {
-    document.getElementById('pageWrapper').classList.add('zoomed');
-    console.log('daded');
+    document.querySelector('.page-wrapper').classList.add('zoomed');
+    document.querySelector('.video-wrapper').classList.add('with-highlighted-button');
   });
   trigger.addEventListener('mouseleave', function () {
-    document.getElementById('pageWrapper').classList.add('zoomed');
+    document.querySelector('.page-wrapper').classList.add('zoomed');
+    document.querySelector('.video-wrapper').classList.remove('with-highlighted-button');
   });
 });

@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <div id="loadingOverlay" class="loading-overlay active">
+    <div class="loading-overlay active">
       <div></div>
       <div id="loadingText" style="text-align: center">
         This website is big.
@@ -79,28 +79,16 @@
         >Please show me cat gifs while I wait</a
       >
     </div>
-    <div id="homepage">
-      <!-- <video id="first" muted style="transform: scale(-1, 1)">
-        <source src="./media/mainrender.mp4" type="video/mp4" />
-      </video> -->
-      <div id="pageWrapper" class="page-wrapper">
-        <div id="paperTrigger" class="trigger paper"></div>
-        <div class="trigger button work-experience"></div>
-        <img
-          class="button-image"
-          src="./media/work-experience-new.png"
-          style="position: absolute; left: 0; top: 0; width: 100%"
-        />
-        <div class="video-wrapper">
-          <video muted id="mainVid" style="width: 100%">
-            <source src="./media/mainrender.mp4" type="video/mp4" />
-          </video>
-          <img class="still-image home" src="./media/ss.png" style="width: 100%" />
-        </div>
+    <div class="page-wrapper">
+      <div id="paperTrigger" class="trigger paper"></div>
+      <div class="trigger button work-experience"></div>
+      <img class="button-image video-size" src="./media/work-experience-new.png" />
+      <div class="video-size video-wrapper">
+        <video class="video-size" muted id="mainVid" style="width: 100%">
+          <source src="./media/mainrender.mp4" type="video/mp4" />
+        </video>
+        <img class="still-image home" src="./media/ss.png" style="width: 100%" />
       </div>
-      <!-- <video muted style="transform: scale(-1, 1)">
-        <source src="./media/mainrender.mp4" type="video/mp4" />
-      </video> -->
     </div>
 
     <!--Google Analytics-->
