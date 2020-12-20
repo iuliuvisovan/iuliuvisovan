@@ -49,7 +49,7 @@ function enterWebsite() {
   setTimeout(() => {
     playVideo();
     setTimeout(() => {
-      pauseVideos();
+      pauseVideo();
       enableButtonTriggers();
       showStillImage('home');
     }, 4000);
@@ -73,7 +73,7 @@ const playVideo = () => {
   });
 };
 
-const pauseVideos = () => {
+const pauseVideo = () => {
   const vids = [...document.getElementsByTagName('video')];
   vids.forEach((vid) => {
     vid.pause();
