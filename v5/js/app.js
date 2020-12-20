@@ -117,6 +117,8 @@ const disableButtonTriggers = () => {
   [...document.getElementsByClassName('trigger')].forEach((trigger) => {
     trigger.classList.remove('available');
   });
+
+  document.querySelector('.button-image.hovered').classList.remove('hovered');
 };
 
 function showCatGifs() {
