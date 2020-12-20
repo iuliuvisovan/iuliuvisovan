@@ -26,17 +26,19 @@ function showNextGif() {
 
 const videoElement = document.getElementById('mainVid');
 
-videoElement.addEventListener('loadeddata', () => {
-  document.getElementById('readyState').innerText = videoElement.readyState;
-  if (videoElement.readyState == 4) {
-    // enterWebsite();
+videoElement.addEventListener('canplaythrough', () => {
+  // document.getElementById('readyState').innerText = videoElement.readyState;
+  // if (videoElement.readyState >= 2) {
+  // enterWebsite();
 
+  setTimeout(() => {
     document.getElementById('loadingText').remove();
     document.getElementById('loadedText').classList.add('visible');
     document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
 
     document.querySelector('.loading-overlay').classList.add('loaded');
-  }
+  }, 1500);
+  // }
 });
 
 videoElement.src = './media/mainrender.mp4';
