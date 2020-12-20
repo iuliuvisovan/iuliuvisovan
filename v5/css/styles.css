@@ -133,7 +133,19 @@ a {
 }
 
 .zoomed {
-  transform: scale(1.38) translateY(-5%);
+  transform: scale(1.42) translateY(-5.5%);
+}
+
+.zoomed.on-workexperience {
+  transform: scale(1.4) translateY(-1%) rotate(-2.5deg);
+}
+
+.zoomed.on-personalprojects {
+  transform: scale(1.4) translateY(-3%) rotate(-1deg);
+}
+
+.zoomed.on-wheretofindme {
+  transform: scale(1.4) translateY(-5%) translateX(1%) rotate(-2deg);
 }
 
 @media (max-width: 1200px) {

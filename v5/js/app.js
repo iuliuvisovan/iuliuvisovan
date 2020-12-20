@@ -76,19 +76,19 @@ const showStillImageWithTransition = (page) => {
       const stillImage = document.querySelector('.still-image.' + page);
       console.log('stillImage', stillImage);
       stillImage?.classList?.add('active');
-      setTimeout(() => {
-        if (stillImage) {
-          document.querySelector('video').style.display = 'none';
-        }
-        resolve();
-      }, 800);
+      // setTimeout(() => {
+      //   if (stillImage) {
+      //     document.querySelector('video').style.display = 'none';
+      //   }
+      // }, 800);
+      resolve();
     }, 900);
   });
 };
 
 const showVideoWithTransition = async () => {
   return new Promise((resolve, reject) => {
-    document.querySelector('video').style.display = 'block';
+    // document.querySelector('video').style.display = 'block';
     document.querySelector('.still-image.active')?.classList?.remove('active');
     document.querySelector('.page-wrapper').classList.remove('zoomed');
     setTimeout(() => {
@@ -198,6 +198,9 @@ async function goToPage(targetPage) {
   mainVideo.play();
   await wait(pageIntros[targetPage].duration);
   mainVideo.pause();
+
+  document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
+  document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
 
   await showStillImageWithTransition(targetPage);
 
