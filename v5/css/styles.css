@@ -19,7 +19,7 @@ body {
 @media (max-width: 1200px) {
   .page-wrapper,
   .loading-overlay {
-    height: calc(100vh - 69px) !important;
+    height: calc(100vh - 90px) !important;
     /* margin-left: 16px; */
   }
 }

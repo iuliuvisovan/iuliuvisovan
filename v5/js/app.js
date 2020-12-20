@@ -27,6 +27,7 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('loadeddata', () => {
+  document.getElementById('readyState').innerText = videoElement.readyState;
   if (videoElement.readyState == 4) {
     // enterWebsite();
 
