@@ -148,8 +148,12 @@ const pageOutros = {
     start: 8.2,
     duration: 2.0,
   },
+  wheretofindme: {
+    start: 14.8,
+    duration: 1.6,
+  },
   personalprojects: {
-    start: 4.0,
+    start: 11.7,
     duration: 2.0,
   },
 };

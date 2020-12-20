@@ -259,3 +259,19 @@ video {
   width: 5%;
   height: 5.5%;
 }
+
+.trigger[data-for='personal-projects-back-button'] {
+  position: absolute;
+  top: 28.8%;
+  left: 37.5%;
+  width: 5%;
+  height: 5.5%;
+}
+
+.trigger[data-for='where-to-find-me-back-button'] {
+  position: absolute;
+  top: 30%;
+  left: 37.5%;
+  width: 5%;
+  height: 5.5%;
+}
