@@ -46,7 +46,7 @@
 
   <body>
     <div class="loading-overlay active">
-      <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+      <div style="flex: 1; display: flex; justify-content: center; align-items: center">
         <div id="loadingText" style="text-align: center">
           This website is big.
           <br />
@@ -62,11 +62,7 @@
         </div>
       </div>
       <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
-        <a
-          href="#"
-          id="showCatGifsLink"
-          style="margin-bottom: 40px"
-          onclick="showCatGifs()"
+        <a href="#" id="showCatGifsLink" style="margin-bottom: 40px" onclick="showCatGifs()"
           >Please show me cat gifs while I wait</a
         >
         <div id="catgifs">
@@ -88,8 +84,22 @@
     <div class="page-wrapper">
       <div class="video-size video-wrapper">
         <div id="paperTrigger" class="trigger paper"></div>
+
         <div data-for="work-experience" class="trigger button"></div>
-        <img class="button-image video-size work-experience" src="./media/work-experience-new.png" />
+        <img class="button-image video-size work-experience" src="./media/work-experience.png" />
+
+        <div data-for="personal-projects" class="trigger button"></div>
+        <img class="button-image video-size personal-projects" src="./media/personal-projects.png" />
+
+        <div data-for="where-to-find-me" class="trigger button"></div>
+        <img class="button-image video-size where-to-find-me" src="./media/where-to-find-me.png" />
+
+        <div data-for="okapi" class="trigger button"></div>
+        <img class="button-image video-size okapi" src="./media/okapi.png" />
+
+        <div data-for="resume" class="trigger button"></div>
+        <img class="button-image video-size resume" src="./media/download-resume.png" />
+
         <img class="placeholder-image video-size" src="./media/start-ss.jpg" />
         <video class="video-size" muted playsinline preload="metadata" id="mainVid">
           <source type="video/mp4" />

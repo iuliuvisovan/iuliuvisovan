@@ -10,10 +10,6 @@ const catGifs = [
   'https://kittybloger.files.wordpress.com/2014/03/25-funny-cat-gifs-15.gif',
 ];
 
-// setTimeout(() => {
-//   enterWebsite();
-// }, 1000);
-
 var currentGif = 0;
 
 function showNextGif() {
@@ -27,7 +23,7 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('canplaythrough', () => {
-  // enterWebsite();
+  enterWebsite();
 
   setTimeout(() => {
     document.getElementById('loadingText').remove();
@@ -56,9 +52,19 @@ function enterWebsite() {
       pauseVideos();
       enableButtonTriggers();
       showStillImage('home');
-    }, 4500);
+    }, 4000);
   }, 800);
 }
+
+const showStillImage = (page) => {
+  document.querySelector('.page-wrapper').classList.add('zoomed');
+  setTimeout(() => {
+    document.querySelector('.still-image.' + page).classList.add('active');
+    setTimeout(() => {
+      document.querySelector('video').style.display = 'none';
+    }, 800);
+  }, 1500);
+};
 
 const playVideo = () => {
   const vids = [...document.getElementsByTagName('video')];
@@ -80,16 +86,10 @@ const enableButtonTriggers = () => {
   });
 };
 
-const showStillImage = (page) => {
-  document.querySelector('.still-image.' + page).classList.add('active');
-  setTimeout(() => {
-    document.querySelector('video').style.display = 'none';
-  }, 800);
-};
-
 const showVideo = () => {
   document.querySelector('video').style.display = 'block';
   setTimeout(() => {
+    document.querySelector('.page-wrapper').classList.remove('zoomed');
     document.querySelector('.still-image.active').classList.remove('active');
   }, 800);
 };
@@ -99,24 +99,24 @@ function showCatGifs() {
   document.getElementById('showCatGifsLink').remove();
 }
 
-handlePaperHover();
-function handlePaperHover() {
-  document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
-    document.querySelector('.page-wrapper').classList.add('zoomed');
-  });
-  document.getElementById('paperTrigger').addEventListener('touchstart', function () {
-    if (!window.isZoomed) {
-      document.querySelector('.page-wrapper').classList.add('zoomed');
-      window.isZoomed = true;
-    } else {
-      document.querySelector('.page-wrapper').classList.remove('zoomed');
-      window.isZoomed = false;
-    }
-  });
-  document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
-    document.querySelector('.page-wrapper').classList.remove('zoomed');
-  });
-}
+// handlePaperHover();
+// function handlePaperHover() {
+//   document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
+//     document.querySelector('.page-wrapper').classList.add('zoomed');
+//   });
+//   document.getElementById('paperTrigger').addEventListener('touchstart', function () {
+//     if (!window.isZoomed) {
+//       document.querySelector('.page-wrapper').classList.add('zoomed');
+//       window.isZoomed = true;
+//     } else {
+//       document.querySelector('.page-wrapper').classList.remove('zoomed');
+//       window.isZoomed = false;
+//     }
+//   });
+//   document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
+//     document.querySelector('.page-wrapper').classList.remove('zoomed');
+//   });
+// }
 
 [...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
   trigger.addEventListener('mouseenter', function () {
