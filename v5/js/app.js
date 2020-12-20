@@ -135,34 +135,47 @@ function showCatGifs() {
   });
 });
 
-const pageIntros = {
-  workexperience: {
+const pageOutros = {
+  home: {
     start: 4.0,
     duration: 1.8,
   },
-};
-
-const pageOutros = {
   workexperience: {
-    start: 4.0 + 2.2,
+    start: 8.6,
+    duration: 2.0,
+  },
+  personalprojects: {
+    start: 4.0,
     duration: 2.0,
   },
 };
 
-async function goToPage(pageName) {
-  window.currentPage = pageName;
+const pageIntros = {
+  workexperience: {
+    start: 4.0 + 2.2,
+    duration: 2.0,
+  },
+  personalprojects: {
+    start: 10.2,
+    duration: 1.6,
+  },
+  wheretofindme: {
+    start: 13.2,
+    duration: 1.6,
+  },
+  home: {
+    start: 13.0,
+    duration: 1.8,
+  },
+};
+
+window.currentPage = 'home';
+
+async function goToPage(targetPage) {
   disableButtonTriggers();
 
   await showVideoWithTransition();
-  mainVideo.currentTime = pageIntros[pageName].start;
-
-  await waitForVideoLoad();
-
-  mainVideo.play();
-  await wait(pageIntros[window.currentPage].duration);
-  mainVideo.pause();
-
-  mainVideo.currentTime = pageOutros[pageName].start;
+  mainVideo.currentTime = pageOutros[window.currentPage].start;
 
   await waitForVideoLoad();
 
@@ -170,7 +183,17 @@ async function goToPage(pageName) {
   await wait(pageOutros[window.currentPage].duration);
   mainVideo.pause();
 
+  mainVideo.currentTime = pageIntros[targetPage].start;
+
+  await waitForVideoLoad();
+
+  mainVideo.play();
+  await wait(pageIntros[targetPage].duration);
+  mainVideo.pause();
+
   await showStillImageWithTransition();
+
+  window.currentPage = targetPage;
 
   enableButtonTriggers();
 }
