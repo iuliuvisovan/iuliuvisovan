@@ -27,21 +27,21 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('loadeddata', () => {
-  // enterWebsite();
+  if (videoElement.readyState == 4) {
+    // enterWebsite();
 
-  document.getElementById('loadingText').remove();
-  document.getElementById('loadedText').classList.add('visible');
-  document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+    document.getElementById('loadingText').remove();
+    document.getElementById('loadedText').classList.add('visible');
+    document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
 
-  document.querySelector('.loading-overlay').classList.add('loaded');
+    document.querySelector('.loading-overlay').classList.add('loaded');
+  }
 });
 
-setTimeout(() => {
-  videoElement.src = './media/mainrender.mp4';
-  try {
-    videoElement.load();
-  } catch (e) {}
-}, 2500);
+videoElement.src = './media/mainrender.mp4';
+try {
+  videoElement.load();
+} catch (e) {}
 
 function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('inactive');
