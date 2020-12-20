@@ -20,23 +20,36 @@ function showNextGif() {
   document.getElementById('catgif').src = catGifs[currentGif];
 }
 
-const videoElement = document.getElementById('mainVid');
+window.hasLoaded = false;
 
-videoElement.addEventListener('canplaythrough', () => {
-  enterWebsite();
+const mainVideo = document.getElementById('mainVid');
 
-  setTimeout(() => {
-    document.getElementById('loadingText').remove();
-    document.getElementById('loadedText').classList.add('visible');
-    document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+function waitForVideoLoad() {
+  return new Promise((resolve, reject) => {
+    window.resolveWaitForVideoLoad = resolve;
+  });
+}
 
-    document.querySelector('.loading-overlay').classList.add('loaded');
-  }, 1000);
+mainVideo.addEventListener('canplaythrough', () => {
+  if (!hasLoaded) {
+    enterWebsite();
+    window.hasLoaded = true;
+
+    setTimeout(() => {
+      document.getElementById('loadingText').remove();
+      document.getElementById('loadedText').classList.add('visible');
+      document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+
+      document.querySelector('.loading-overlay').classList.add('loaded');
+    }, 1000);
+  } else {
+    window.resolveWaitForVideoLoad && window.resolveWaitForVideoLoad();
+  }
 });
 
-videoElement.src = './media/mainrender.mp4';
+mainVideo.src = './media/mainrender.mp4';
 try {
-  videoElement.load();
+  mainVideo.load();
 } catch (e) {}
 
 function enterWebsite() {
@@ -51,19 +64,33 @@ function enterWebsite() {
     setTimeout(() => {
       pauseVideo();
       enableButtonTriggers();
-      showStillImage('home');
+      showStillImageWithTransition('home');
     }, 4000);
   }, 800);
 }
 
-const showStillImage = (page) => {
-  document.querySelector('.page-wrapper').classList.add('zoomed');
-  setTimeout(() => {
-    document.querySelector('.still-image.' + page).classList.add('active');
+const showStillImageWithTransition = (page) => {
+  return new Promise((resolve, reject) => {
+    document.querySelector('.page-wrapper').classList.add('zoomed');
     setTimeout(() => {
-      document.querySelector('video').style.display = 'none';
-    }, 800);
-  }, 1500);
+      document.querySelector('.still-image.' + page).classList.add('active');
+      setTimeout(() => {
+        document.querySelector('video').style.display = 'none';
+        resolve();
+      }, 800);
+    }, 900);
+  });
+};
+
+const showVideoWithTransition = async () => {
+  return new Promise((resolve, reject) => {
+    document.querySelector('video').style.display = 'block';
+    document.querySelector('.still-image.active')?.classList?.remove('active');
+    document.querySelector('.page-wrapper').classList.remove('zoomed');
+    setTimeout(() => {
+      resolve();
+    }, 600);
+  });
 };
 
 const playVideo = () => {
@@ -86,12 +113,10 @@ const enableButtonTriggers = () => {
   });
 };
 
-const showVideo = () => {
-  document.querySelector('video').style.display = 'block';
-  setTimeout(() => {
-    document.querySelector('.page-wrapper').classList.remove('zoomed');
-    document.querySelector('.still-image.active').classList.remove('active');
-  }, 800);
+const disableButtonTriggers = () => {
+  [...document.getElementsByClassName('trigger')].forEach((trigger) => {
+    trigger.classList.remove('available');
+  });
 };
 
 function showCatGifs() {
@@ -99,32 +124,59 @@ function showCatGifs() {
   document.getElementById('showCatGifsLink').remove();
 }
 
-// handlePaperHover();
-// function handlePaperHover() {
-//   document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
-//     document.querySelector('.page-wrapper').classList.add('zoomed');
-//   });
-//   document.getElementById('paperTrigger').addEventListener('touchstart', function () {
-//     if (!window.isZoomed) {
-//       document.querySelector('.page-wrapper').classList.add('zoomed');
-//       window.isZoomed = true;
-//     } else {
-//       document.querySelector('.page-wrapper').classList.remove('zoomed');
-//       window.isZoomed = false;
-//     }
-//   });
-//   document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
-//     document.querySelector('.page-wrapper').classList.remove('zoomed');
-//   });
-// }
-
 [...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
   trigger.addEventListener('mouseenter', function () {
-    document.querySelector('.page-wrapper').classList.add('zoomed');
     document.querySelector('.button-image.' + trigger.dataset.for).classList.add('hovered');
   });
   trigger.addEventListener('mouseleave', function () {
-    document.querySelector('.page-wrapper').classList.add('zoomed');
     document.querySelector('.button-image.' + trigger.dataset.for).classList.remove('hovered');
   });
 });
+
+const pageIntros = {
+  workexperience: {
+    start: 4.0,
+    duration: 1.8,
+  },
+};
+
+const pageOutros = {
+  workexperience: {
+    start: 4.0 + 2.2,
+    duration: 2.0,
+  },
+};
+
+async function goToPage(pageName) {
+  window.currentPage = pageName;
+  disableButtonTriggers();
+
+  await showVideoWithTransition();
+  mainVideo.currentTime = pageIntros[pageName].start;
+
+  await waitForVideoLoad();
+
+  mainVideo.play();
+  await wait(pageIntros[window.currentPage].duration);
+  mainVideo.pause();
+
+  mainVideo.currentTime = pageOutros[pageName].start;
+
+  await waitForVideoLoad();
+
+  mainVideo.play();
+  await wait(pageOutros[window.currentPage].duration);
+  mainVideo.pause();
+
+  await showStillImageWithTransition();
+
+  enableButtonTriggers();
+}
+
+async function wait(duration) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, duration * 1000);
+  });
+}

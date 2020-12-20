@@ -13,7 +13,7 @@ body {
 
   filter: blur(10px);
   position: relative;
-  transition: transform 1.5s ease;
+  transition: transform 1s ease;
   will-change: transform;
   transform: translateX(0px);
 }
@@ -138,7 +138,7 @@ a {
 
 @media (max-width: 1200px) {
   .zoomed {
-    transform: scale(1.45) translateY(-6.0%) translateX(-0.3%) rotate(0.4deg);
+    transform: scale(1.45) translateY(-6%) translateX(-0.3%) rotate(0.4deg);
   }
   #openOnDesktop {
     opacity: 1 !important;
