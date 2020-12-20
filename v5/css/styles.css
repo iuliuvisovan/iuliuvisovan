@@ -36,11 +36,14 @@ body {
     height: 100vh;
     width: auto;
     margin: 0 0 0 0;
+    margin-bottom: 60px;
+    margin-left: 16px;
   }
 
   .placeholder-image {
     height: 100%;
     width: auto;
+    margin-bottom: 60px;
   }
 }
 
