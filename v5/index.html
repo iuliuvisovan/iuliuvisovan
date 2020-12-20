@@ -83,36 +83,45 @@
     </div>
     <div class="page-wrapper">
       <div class="video-size video-wrapper">
-        <div id="paperTrigger" class="trigger paper"></div>
-
-        <div data-for="work-experience" class="trigger button" onclick="goToPage('workexperience')"></div>
-        <img class="button-image video-size work-experience" src="./media/work-experience.png" />
-
-        <div data-for="personal-projects" class="trigger button" onclick="goToPage('personalprojects')"></div>
-        <img class="button-image video-size personal-projects" src="./media/personal-projects.png" />
-
-        <div data-for="where-to-find-me" class="trigger button" onclick="goToPage('wheretofindme')"></div>
-        <img class="button-image video-size where-to-find-me" src="./media/where-to-find-me.png" />
-
-        <div
-          data-for="okapi"
-          class="trigger button"
-          onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')"
-        ></div>
-        <img class="button-image video-size okapi" src="./media/okapi.png" />
-
-        <div
-          data-for="resume"
-          class="trigger button"
-          onclick="window.open('https://www.iuliu.net/cv', '_blank')"
-        ></div>
-        <img class="button-image video-size resume" src="./media/download-resume.png" />
+        <!-- placholder images & video -->
 
         <img class="placeholder-image video-size" src="./media/start-ss.jpg" />
         <video class="video-size" muted playsinline preload="metadata" id="mainVid">
           <source type="video/mp4" />
         </video>
         <img class="still-image home video-size" src="./media/ss.png" />
+
+        <!-- buttons & triggers -->
+
+        <div data-for="work-experience" class="trigger button home" onclick="goToPage('workexperience')"></div>
+        <img class="button-image video-size work-experience" src="./media/work-experience.png" />
+
+        <div data-for="personal-projects" class="trigger button home" onclick="goToPage('personalprojects')"></div>
+        <img class="button-image video-size personal-projects" src="./media/personal-projects.png" />
+
+        <div data-for="where-to-find-me" class="trigger button home" onclick="goToPage('wheretofindme')"></div>
+        <img class="button-image video-size where-to-find-me" src="./media/where-to-find-me.png" />
+
+        <div
+          data-for="okapi"
+          class="trigger button home"
+          onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')"
+        ></div>
+        <img class="button-image video-size okapi" src="./media/okapi.png" />
+
+        <div
+          data-for="resume"
+          class="trigger button home"
+          onclick="window.open('https://www.iuliu.net/cv', '_blank')"
+        ></div>
+        <img class="button-image video-size resume" src="./media/download-resume.png" />
+
+        <div
+          data-for="work-experience-back-button"
+          class="trigger button workexperience"
+          onclick="goToPage('home')"
+        ></div>
+        <img class="button-image video-size work-experience-back-button" src="./media/work-experience.png" />
       </div>
     </div>
 

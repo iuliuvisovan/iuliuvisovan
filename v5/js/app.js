@@ -63,7 +63,7 @@ function enterWebsite() {
     playVideo();
     setTimeout(() => {
       pauseVideo();
-      enableButtonTriggers();
+      enableCurrentPageTriggers('home');
       showStillImageWithTransition('home');
     }, 4000);
   }, 800);
@@ -73,9 +73,13 @@ const showStillImageWithTransition = (page) => {
   return new Promise((resolve, reject) => {
     document.querySelector('.page-wrapper').classList.add('zoomed');
     setTimeout(() => {
-      document.querySelector('.still-image.' + page).classList.add('active');
+      const stillImage = document.querySelector('.still-image.' + page);
+      console.log('stillImage', stillImage);
+      stillImage?.classList?.add('active');
       setTimeout(() => {
-        document.querySelector('video').style.display = 'none';
+        if (stillImage) {
+          document.querySelector('video').style.display = 'none';
+        }
         resolve();
       }, 800);
     }, 900);
@@ -107,14 +111,14 @@ const pauseVideo = () => {
   });
 };
 
-const enableButtonTriggers = () => {
-  [...document.getElementsByClassName('trigger')].forEach((trigger) => {
+const enableCurrentPageTriggers = (page) => {
+  [...document.querySelectorAll('.trigger.' + page)].forEach((trigger) => {
     trigger.classList.add('available');
   });
 };
 
-const disableButtonTriggers = () => {
-  [...document.getElementsByClassName('trigger')].forEach((trigger) => {
+const disableAllTriggers = () => {
+  [...document.querySelectorAll('.trigger')].forEach((trigger) => {
     trigger.classList.remove('available');
   });
 
@@ -141,7 +145,7 @@ const pageOutros = {
     duration: 1.8,
   },
   workexperience: {
-    start: 8.6,
+    start: 8.2,
     duration: 2.0,
   },
   personalprojects: {
@@ -164,7 +168,7 @@ const pageIntros = {
     duration: 1.6,
   },
   home: {
-    start: 13.0,
+    start: 17.0,
     duration: 1.8,
   },
 };
@@ -172,7 +176,7 @@ const pageIntros = {
 window.currentPage = 'home';
 
 async function goToPage(targetPage) {
-  disableButtonTriggers();
+  disableAllTriggers();
 
   await showVideoWithTransition();
   mainVideo.currentTime = pageOutros[window.currentPage].start;
@@ -191,11 +195,11 @@ async function goToPage(targetPage) {
   await wait(pageIntros[targetPage].duration);
   mainVideo.pause();
 
-  await showStillImageWithTransition();
+  await showStillImageWithTransition(targetPage);
+
+  enableCurrentPageTriggers(targetPage);
 
   window.currentPage = targetPage;
-
-  enableButtonTriggers();
 }
 
 async function wait(duration) {
