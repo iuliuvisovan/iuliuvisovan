@@ -36,14 +36,16 @@ body {
     height: 100vh;
     width: auto;
     margin: 0 0 0 0;
-    margin-bottom: 60px;
-    margin-left: 16px;
   }
 
   .placeholder-image {
     height: 100%;
     width: auto;
-    margin-bottom: 60px;
+  }
+
+  .page-wrapper {
+    margin-top: -40px;
+    margin-left: 16px;
   }
 }
 
@@ -150,7 +152,7 @@ a {
 }
 
 video {
-  position: absolute!important;
+  position: absolute !important;
   left: 0;
   bottom: 0;
   z-index: 0;
