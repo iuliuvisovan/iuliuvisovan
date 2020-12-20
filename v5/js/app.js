@@ -27,7 +27,7 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('canplaythrough', () => {
-  enterWebsite();
+  // enterWebsite();
 
   setTimeout(() => {
     document.getElementById('loadingText').remove();
@@ -35,7 +35,7 @@ videoElement.addEventListener('canplaythrough', () => {
     document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
 
     document.querySelector('.loading-overlay').classList.add('loaded');
-  }, 1500);
+  }, 1000);
   // }
 });
 
@@ -99,6 +99,15 @@ handlePaperHover();
 function handlePaperHover() {
   document.getElementById('paperTrigger').addEventListener('mouseenter', function () {
     document.querySelector('.page-wrapper').classList.add('zoomed');
+  });
+  document.getElementById('paperTrigger').addEventListener('touchstart', function () {
+    if (!window.isZoomed) {
+      document.querySelector('.page-wrapper').classList.add('zoomed');
+      window.isZoomed = true;
+    } else {
+      document.querySelector('.page-wrapper').classList.remove('zoomed');
+      window.isZoomed = false;
+    }
   });
   document.getElementById('paperTrigger').addEventListener('mouseleave', function () {
     document.querySelector('.page-wrapper').classList.remove('zoomed');

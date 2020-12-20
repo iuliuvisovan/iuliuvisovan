@@ -134,6 +134,15 @@ a {
   transform: scale(1.38) translateY(-5%);
 }
 
+@media (max-width: 1200px) {
+  .zoomed {
+    transform: scale(1.45) translateY(-7.5%) translateX(-0.3%) rotate(0.4deg);
+  }
+  #openOnDesktop {
+    opacity: 1!important;
+  }
+}
+
 .video-size {
   font-size: 0;
   position: relative;
@@ -182,7 +191,6 @@ video {
   z-index: 10;
   cursor: pointer;
   pointer-events: none;
-  /* border: 1px solid red; */
 }
 
 .trigger.available {
