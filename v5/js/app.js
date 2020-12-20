@@ -12,7 +12,7 @@ const catGifs = [
 
 // setTimeout(() => {
 //   enterWebsite();
-// }, 400);
+// }, 1000);
 
 var currentGif = 0;
 
@@ -27,9 +27,7 @@ function showNextGif() {
 const videoElement = document.getElementById('mainVid');
 
 videoElement.addEventListener('canplaythrough', () => {
-  // document.getElementById('readyState').innerText = videoElement.readyState;
-  // if (videoElement.readyState >= 2) {
-  // enterWebsite();
+  enterWebsite();
 
   setTimeout(() => {
     document.getElementById('loadingText').remove();
@@ -85,10 +83,16 @@ const enableButtonTriggers = () => {
 
 const showStillImage = (page) => {
   document.querySelector('.still-image.' + page).classList.add('active');
+  setTimeout(() => {
+    document.querySelector('video').style.display = 'none';
+  }, 800);
 };
 
 const showVideo = () => {
-  document.querySelector('.still-image.active').classList.remove('active');
+  document.querySelector('video').style.display = 'block';
+  setTimeout(() => {
+    document.querySelector('.still-image.active').classList.remove('active');
+  }, 800);
 };
 
 handlePaperHover();
@@ -104,10 +108,10 @@ function handlePaperHover() {
 [...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
   trigger.addEventListener('mouseenter', function () {
     document.querySelector('.page-wrapper').classList.add('zoomed');
-    document.querySelector('.video-wrapper').classList.add('with-highlighted-button');
+    document.querySelector('.button-image.' + trigger.dataset.for).classList.add('hovered');
   });
   trigger.addEventListener('mouseleave', function () {
     document.querySelector('.page-wrapper').classList.add('zoomed');
-    document.querySelector('.video-wrapper').classList.remove('with-highlighted-button');
+    document.querySelector('.button-image.' + trigger.dataset.for).classList.remove('hovered');
   });
 });

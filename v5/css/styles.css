@@ -139,7 +139,7 @@ a {
   position: relative;
 }
 
-.video-wrapper.with-highlighted-button {
+.blurred {
   transition: filter 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   filter: blur(2px) brightness(0.8);
 }
@@ -170,6 +170,12 @@ video {
   left: 0;
   opacity: 0;
   z-index: 5;
+  filter: brightness(1.2);
+  transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.button-image.hovered {
+  opacity: 1;
 }
 
 .trigger {
@@ -187,13 +193,9 @@ video {
   opacity: 1;
 }
 
-.trigger.button:hover + .button-image {
-  opacity: 1;
-}
-
-.trigger.work-experience {
+.trigger[data-for='work-experience'] {
   position: absolute;
-  top: 54.7%;
+  top: 59.6%;
   left: 41%;
   width: 15%;
   height: 4%;
@@ -201,8 +203,8 @@ video {
 
 .trigger.paper {
   position: absolute;
-  top: 19.2%;
+  top: 28.2%;
   left: 36%;
-  width: 27%;
-  height: 71%;
+  width: 26%;
+  height: 63%;
 }
