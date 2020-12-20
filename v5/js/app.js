@@ -32,7 +32,7 @@ function waitForVideoLoad() {
 
 mainVideo.addEventListener('canplaythrough', () => {
   if (!hasLoaded) {
-    enterWebsite();
+    // enterWebsite();
     window.hasLoaded = true;
 
     setTimeout(() => {
@@ -64,31 +64,25 @@ function enterWebsite() {
     setTimeout(() => {
       pauseVideo();
       enableCurrentPageTriggers('home');
-      showStillImageWithTransition('home');
-    }, 4000);
+      zoomIn('home');
+    }, 4500);
   }, 800);
 }
 
-const showStillImageWithTransition = (page) => {
+const zoomIn = (page) => {
   return new Promise((resolve, reject) => {
     document.querySelector('.page-wrapper').classList.add('zoomed');
     setTimeout(() => {
       const stillImage = document.querySelector('.still-image.' + page);
       console.log('stillImage', stillImage);
       stillImage?.classList?.add('active');
-      // setTimeout(() => {
-      //   if (stillImage) {
-      //     document.querySelector('video').style.display = 'none';
-      //   }
-      // }, 800);
       resolve();
     }, 900);
   });
 };
 
-const showVideoWithTransition = async () => {
+const zoomOut = async () => {
   return new Promise((resolve, reject) => {
-    // document.querySelector('video').style.display = 'block';
     document.querySelector('.still-image.active')?.classList?.remove('active');
     document.querySelector('.page-wrapper').classList.remove('zoomed');
     setTimeout(() => {
@@ -182,19 +176,21 @@ window.currentPage = 'home';
 async function goToPage(targetPage) {
   disableAllTriggers();
 
-  await showVideoWithTransition();
+  await zoomOut();
+
   mainVideo.currentTime = pageOutros[window.currentPage].start;
 
   await waitForVideoLoad();
-
   mainVideo.play();
   await wait(pageOutros[window.currentPage].duration);
   mainVideo.pause();
 
+  await wait(1);
+
+  mainVideo.play();
   mainVideo.currentTime = pageIntros[targetPage].start;
 
   await waitForVideoLoad();
-
   mainVideo.play();
   await wait(pageIntros[targetPage].duration);
   mainVideo.pause();
@@ -202,7 +198,7 @@ async function goToPage(targetPage) {
   document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
   document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
 
-  await showStillImageWithTransition(targetPage);
+  await zoomIn(targetPage);
 
   enableCurrentPageTriggers(targetPage);
 
