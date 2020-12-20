@@ -19,7 +19,7 @@ body {
 @media (max-width: 1200px) {
   .page-wrapper,
   .loading-overlay {
-    height: calc(100vh - 100px) !important;
+    height: calc(100vh - 110px) !important;
   }
 
   .page-wrapper {
@@ -61,12 +61,13 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   z-index: 15;
   background: #000000a3;
   opacity: 1;
-  /* transition: opacity 0.5s ease-in-out; */
+  /* border: 1px solid red; */
+  transition: opacity 0.5s ease-in-out;
 }
 
 .loading-overlay.loaded {
@@ -139,7 +140,7 @@ a {
     transform: scale(1.45) translateY(-7.5%) translateX(-0.3%) rotate(0.4deg);
   }
   #openOnDesktop {
-    opacity: 1!important;
+    opacity: 1 !important;
   }
 }
 

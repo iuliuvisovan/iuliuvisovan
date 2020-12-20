@@ -46,42 +46,44 @@
 
   <body>
     <div class="loading-overlay active">
-      <div id="openOnDesktop" style="padding: 30px; text-align: center; opacity: 0; font-size: 12px">
-        View this website on a desktop for the complete experience.
-      </div>
-      <div id="loadingText" style="text-align: center">
-        This website is big.
-        <br />
-        <br />
-        It is currently loading. Thanks for waiting.
-        <br />
-      </div>
-      <div id="loadedText" style="text-align: center">
-        All loaded! Let's go!
-        <br />
-        <br />
-        <a href="#" style="margin-bottom: 32px" onclick="enterWebsite()">Enter</a>
-      </div>
-      <!-- <span> readyState: <span id="readyState">0</span> </span> -->
-
-      <div id="catgifs">
-        <div class="gif-wrapper">
-          <img
-            id="catgif"
-            src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif"
-            style="height: 40vh"
-          />
+      <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+        <div id="loadingText" style="text-align: center">
+          This website is big.
+          <br />
+          <br />
+          It is currently loading. Thanks for waiting.
+          <br />
         </div>
-        <a href="#" style="margin-bottom: 20px" onclick="showNextGif()">Next one</a>
+        <div id="loadedText" style="text-align: center">
+          All loaded! Let's go!
+          <br />
+          <br />
+          <a href="#" style="margin-bottom: 32px" onclick="enterWebsite()">Enter</a>
+        </div>
       </div>
+      <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
+        <a
+          href="#"
+          id="showCatGifsLink"
+          style="margin-bottom: 40px"
+          onclick="showCatGifs()"
+          >Please show me cat gifs while I wait</a
+        >
+        <div id="catgifs">
+          <div class="gif-wrapper">
+            <img
+              id="catgif"
+              src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif"
+              style="height: 35vh"
+            />
+          </div>
+          <a href="#" style="margin-bottom: 30px" onclick="showNextGif()">Next one</a>
+        </div>
 
-      <a
-        href="#"
-        id="showCatGifsLink"
-        style="margin-bottom: 40px"
-        onclick="document.getElementById('catgifs').classList.add('visible')"
-        >Please show me cat gifs while I wait</a
-      >
+        <div id="openOnDesktop" style="padding: 24px 60px; text-align: center; opacity: 0; font-size: 12px">
+          View this website on a desktop for the complete experience.
+        </div>
+      </div>
     </div>
     <div class="page-wrapper">
       <div class="video-size video-wrapper">

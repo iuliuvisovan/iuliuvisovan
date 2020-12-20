@@ -36,7 +36,6 @@ videoElement.addEventListener('canplaythrough', () => {
 
     document.querySelector('.loading-overlay').classList.add('loaded');
   }, 1000);
-  // }
 });
 
 videoElement.src = './media/mainrender.mp4';
@@ -94,6 +93,11 @@ const showVideo = () => {
     document.querySelector('.still-image.active').classList.remove('active');
   }, 800);
 };
+
+function showCatGifs() {
+  document.getElementById('catgifs').classList.add('visible');
+  document.getElementById('showCatGifsLink').remove();
+}
 
 handlePaperHover();
 function handlePaperHover() {
