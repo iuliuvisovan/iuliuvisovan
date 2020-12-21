@@ -30,6 +30,35 @@ function waitForVideoLoad() {
   });
 }
 
+function waitForVideoPlay() {
+  return new Promise((resolve, reject) => {
+    window.resolveWaitForVideoPlay = resolve;
+  });
+}
+
+mainVideo.addEventListener('play', () => {
+  window.resolveWaitForVideoPlay && window.resolveWaitForVideoPlay();
+});
+
+function playTransition(transition) {
+  mainVideo.play();
+  mainVideo.currentTime = transition.start;
+
+  window.currentRequiredSeek = transition.end;
+  return new Promise((resolve, reject) => {
+    window.resolvePlayUntil = resolve;
+  });
+}
+
+function listenToVideoSeek() {
+  if (mainVideo.currentTime >= window.currentRequiredSeek) {
+    mainVideo.pause();
+    window.resolvePlayUntil && window.resolvePlayUntil();
+  }
+
+  window.checkSeekTimeout = setTimeout(() => requestAnimationFrame(listenToVideoSeek), 200);
+}
+
 mainVideo.addEventListener('canplaythrough', () => {
   if (!hasLoaded) {
     // enterWebsite();
@@ -73,6 +102,8 @@ const zoomIn = (page) => {
   return new Promise((resolve, reject) => {
     document.querySelector('.page-wrapper').classList.add('zoomed');
     setTimeout(() => {
+      console.log('page', page);
+
       const stillImage = document.querySelector('.still-image.' + page);
       console.log('stillImage', stillImage);
       stillImage?.classList?.add('active');
@@ -133,47 +164,79 @@ function showCatGifs() {
   });
 });
 
-const pageOutros = {
-  home: {
-    start: 4.0,
-    duration: 1.8,
-  },
-  workexperience: {
-    start: 8.2,
-    duration: 2.0,
-  },
-  wheretofindme: {
-    start: 14.8,
-    duration: 1.6,
-  },
-  personalprojects: {
-    start: 11.7,
-    duration: 2.0,
-  },
-};
-
 const pageIntros = {
   workexperience: {
-    start: 4.0 + 2.2,
-    duration: 2.0,
+    start: 6.5,
+    end: 8.1,
   },
   personalprojects: {
     start: 10.2,
-    duration: 1.6,
+    end: 11.6,
   },
   wheretofindme: {
     start: 13.2,
-    duration: 1.6,
+    end: 14.6,
   },
   home: {
     start: 17.0,
-    duration: 1.8,
+    end: 18.5,
+  },
+};
+
+const pageOutros = {
+  home: {
+    start: 4.0,
+    end: 6.0,
+  },
+  workexperience: {
+    start: 8.2,
+    end: 9.7,
+  },
+  wheretofindme: {
+    start: 14.8,
+    end: 16.4,
+  },
+  personalprojects: {
+    start: 11.7,
+    end: 12.8,
   },
 };
 
 window.currentPage = 'home';
 
 async function goToPage(targetPage) {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+  if (isSafari) {
+    return goToPageSafari(targetPage);
+  } else {
+    return goToPageDefaultBrowser(targetPage);
+  }
+}
+
+async function goToPageSafari(targetPage) {
+  disableAllTriggers();
+  listenToVideoSeek();
+
+  await zoomOut();
+
+  await playTransition(pageOutros[window.currentPage]);
+
+  await playTransition(pageIntros[targetPage]);
+
+  document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
+  document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
+
+  await zoomIn(targetPage);
+
+  enableCurrentPageTriggers(targetPage);
+
+  window.currentPage = targetPage;
+
+  clearTimeout(checkSeekTimeout);
+}
+
+async function goToPageDefaultBrowser(targetPage) {
   disableAllTriggers();
 
   await zoomOut();
@@ -185,9 +248,6 @@ async function goToPage(targetPage) {
   await wait(pageOutros[window.currentPage].duration);
   mainVideo.pause();
 
-  await wait(1);
-
-  mainVideo.play();
   mainVideo.currentTime = pageIntros[targetPage].start;
 
   await waitForVideoLoad();

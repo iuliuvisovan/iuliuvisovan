@@ -15,7 +15,7 @@ body {
   position: relative;
   transition: transform 1s ease;
   will-change: transform;
-  transform: translateX(0px);
+  transform: translateZ(-1px);
 }
 
 @media (max-width: 1200px) {
