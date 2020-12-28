@@ -28,8 +28,11 @@ img {
 
   filter: blur(10px);
   position: relative;
-  will-change: transform;
-  transform: translateZ(-1px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transform: scale(1.00001);
   transition: transform 1s ease;
 }
 
@@ -150,20 +153,19 @@ a {
 }
 
 .zoomed {
-  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset)) rotate(var(--rotate-offset));
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset)) translateX(var(--translate-x-offset)) rotate(var(--rotate-offset));
 }
 
 .zoomed.on-workexperience {
-  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-workexperience)) rotate(var(--rotate-offset-workexperience));
-
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-workexperience)) translateX(var(--translate-x-offset-workexperience)) rotate(var(--rotate-offset-workexperience));
 }
 
 .zoomed.on-personalprojects {
-  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-personalprojects)) rotate(var(--rotate-offset-personalprojects));
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-personalprojects)) translateX(var(--translate-x-offset-personalprojects)) rotate(var(--rotate-offset-personalprojects));
 }
 
 .zoomed.on-wheretofindme {
-  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-wheretofindme)) rotate(var(--rotate-offset-wheretofindme));
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-wheretofindme)) translateX(var(--translate-x-offset-wheretofindme)) rotate(var(--rotate-offset-wheretofindme));
 }
 
 .still-image {

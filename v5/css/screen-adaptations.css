@@ -1,16 +1,20 @@
 :root {
   --zoom-scale: 1.36;
   --rotate-offset: 0deg;
-  --translate-x-offset: 0deg;
+  --translate-x-offset: 0;
   --translate-y-offset: -11vh;
+  
 
   --translate-y-offset-workexperience: -5.5vh;
+  --translate-x-offset-workexperience: 0px;
   --rotate-offset-workexperience: -2.5deg;
 
   --translate-y-offset-personalprojects: -8vh;
+  --translate-x-offset-personalprojects: 0px;
   --rotate-offset-personalprojects: -1deg;
 
   --translate-y-offset-wheretofindme: -9.7vh;
+  --translate-x-offset-wheretofindme: 0px;
   --rotate-offset-wheretofindme: -2deg;
 }
 
@@ -48,10 +52,15 @@
 /* For iPhone 12 Pro Max */
 @media (max-width: 1200px) {
   :root {
-    --zoom-scale: 1.45;
+    --zoom-scale: 1.24;
     --translate-y-offset: -12%;
-    --translate-x-offset: -0.3px;
     --rotate-offset: 0.3deg;
+
+    --translate-x-offset-workexperience: -16px;
+
+    --translate-x-offset-personalprojects: 8px;
+
+    --translate-x-offset-wheretofindme: 16px;
   }
 
   #openOnDesktop {
