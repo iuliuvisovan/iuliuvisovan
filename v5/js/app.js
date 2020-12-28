@@ -51,12 +51,18 @@ function playTransition(transition) {
 }
 
 function listenToVideoSeek() {
+  window.checkSeekInterval = setInterval(listenToVideoSeek, 100);
+}
+
+function checkVideoSeek() {
   if (mainVideo.currentTime >= window.currentRequiredSeek) {
     mainVideo.pause();
     window.resolvePlayUntil && window.resolvePlayUntil();
   }
+}
 
-  window.checkSeekTimeout = setTimeout(() => requestAnimationFrame(listenToVideoSeek), 200);
+function stopVideoSeekListen() {
+  clearInterval(checkSeekInterval);
 }
 
 mainVideo.addEventListener('canplaythrough', () => {
@@ -104,11 +110,16 @@ const zoomIn = (page) => {
     setTimeout(() => {
       console.log('page', page);
 
-      const stillImage = document.querySelector('.still-image.' + page);
-      console.log('stillImage', stillImage);
-      stillImage?.classList?.add('active');
+      // const videoRectAfterTransform = document.querySelector('video').getBoundingClientRect();
+
+      // const stillImage = document.querySelector('.still-image.' + page);
+      // stillImage.style.width = videoRectAfterTransform.width + 'px';
+      // stillImage.style.height = videoRectAfterTransform.height + 'px';
+      // stillImage.style.top = videoRectAfterTransform.top + 'px';
+      // stillImage.style.left = videoRectAfterTransform.left + 'px';
+      // stillImage?.classList?.add('active');
       resolve();
-    }, 900);
+    }, 1000);
   });
 };
 
@@ -216,9 +227,10 @@ async function goToPage(targetPage) {
 
 async function goToPageSafari(targetPage) {
   disableAllTriggers();
-  listenToVideoSeek();
 
   await zoomOut();
+
+  listenToVideoSeek();
 
   await playTransition(pageOutros[window.currentPage]);
 
@@ -233,7 +245,7 @@ async function goToPageSafari(targetPage) {
 
   window.currentPage = targetPage;
 
-  clearTimeout(checkSeekTimeout);
+  stopVideoSeekListen();
 }
 
 async function goToPageDefaultBrowser(targetPage) {

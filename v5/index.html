@@ -28,20 +28,13 @@
 
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet" />
 
     <!--Favicon-->
-    <link id="favicon" rel="icon" href="img/favicon.png" type="image/png" sizes="16x16" />
+    <link id="favicon" rel="icon" href="logo.png" type="image/png" sizes="16x16" />
 
     <!--AdSense ID-->
-    <script
-      data-ad-client="ca-pub-4310566476706904"
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    ></script>
+    <script data-ad-client="ca-pub-4310566476706904" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
 
   <body>
@@ -58,41 +51,31 @@
           All loaded! Let's go!
           <br />
           <br />
-          <a href="#" style="margin-bottom: 32px" onclick="enterWebsite()">Enter</a>
+          <span class="link" style="margin-bottom: 32px" onclick="enterWebsite()" title="Enter the website">Enter</span>
         </div>
       </div>
       <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
-        <a href="#" id="showCatGifsLink" style="margin-bottom: 40px" onclick="showCatGifs()"
-          >Please show me cat gifs while I wait</a
-        >
+        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!">Please show me cat gifs while I wait</span>
         <div id="catgifs">
           <div class="gif-wrapper">
-            <img
-              id="catgif"
-              src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif"
-              style="height: 35vh"
-            />
+            <img id="catgif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="height: 35vh" />
           </div>
-          <a href="#" style="margin-bottom: 30px" onclick="showNextGif()">Next one</a>
+          <span class="link" style="margin-bottom: 30px" onclick="showNextGif()">Next one</span>
         </div>
 
-        <div id="openOnDesktop" style="padding: 24px 60px; text-align: center; opacity: 0; font-size: 12px">
-          View this website on a desktop for the complete experience.
-        </div>
+        <div id="openOnDesktop" style="padding: 24px 60px; text-align: center; opacity: 0; font-size: 12px">View this website on a desktop for the complete experience.</div>
       </div>
     </div>
     <div class="page-wrapper">
       <div class="video-size video-wrapper">
-        <!-- placholder images & video -->
-
+        <!-- placeholder / still images & main video -->
         <img class="placeholder-image video-size" src="./media/start-ss.jpg" />
+
         <video class="video-size" playsinline preload="metadata" id="mainVid">
           <source type="video/mp4" />
         </video>
-        <img class="still-image home video-size" src="./media/ss.png" />
 
         <!-- buttons & triggers -->
-
         <div data-for="work-experience" class="trigger button home" onclick="goToPage('workexperience')"></div>
         <img class="button-image video-size work-experience" src="./media/work-experience.png" />
 
@@ -102,42 +85,26 @@
         <div data-for="where-to-find-me" class="trigger button home" onclick="goToPage('wheretofindme')"></div>
         <img class="button-image video-size where-to-find-me" src="./media/where-to-find-me.png" />
 
-        <div
-          data-for="okapi"
-          class="trigger button home"
-          onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')"
-        ></div>
+        <div data-for="okapi" class="trigger button home" onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')"></div>
         <img class="button-image video-size okapi" src="./media/okapi.png" />
 
-        <div
-          data-for="resume"
-          class="trigger button home"
-          onclick="window.open('https://www.iuliu.net/cv', '_blank')"
-        ></div>
+        <div data-for="resume" class="trigger button home" onclick="window.open('https://www.iuliu.net/cv', '_blank')"></div>
         <img class="button-image video-size resume" src="./media/download-resume.png" />
 
-        <div
-          data-for="work-experience-back-button"
-          class="trigger button workexperience"
-          onclick="goToPage('home')"
-        ></div>
+        <div data-for="work-experience-back-button" class="trigger button workexperience" onclick="goToPage('home')"></div>
         <img class="button-image video-size work-experience-back-button" src="./media/work-experience.png" />
 
-        <div
-          data-for="personal-projects-back-button"
-          class="trigger button personalprojects"
-          onclick="goToPage('home')"
-        ></div>
+        <div data-for="personal-projects-back-button" class="trigger button personalprojects" onclick="goToPage('home')"></div>
         <img class="button-image video-size personal-projects-back-button" src="./media/work-experience.png" />
 
-        <div
-          data-for="where-to-find-me-back-button"
-          class="trigger button wheretofindme"
-          onclick="goToPage('home')"
-        ></div>
+        <div data-for="where-to-find-me-back-button" class="trigger button wheretofindme" onclick="goToPage('home')"></div>
         <img class="button-image video-size where-to-find-me-back-button" src="./media/work-experience.png" />
       </div>
     </div>
+    <!-- <img class="still-image home" src="./media/stills/home.png" />
+    <img class="still-image work-experience" src="./media/stills/work-experience.png" />
+    <img class="still-image personal-projects" src="./media/stills/personal-projects.png" />
+    <img class="still-image where-to-find-me" src="./media/stills/where-to-find-me.png" /> -->
 
     <!--Google Analytics-->
     <script>
