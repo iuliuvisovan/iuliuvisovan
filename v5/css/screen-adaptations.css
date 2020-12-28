@@ -1,0 +1,59 @@
+:root {
+  --zoom-scale: 1.37;
+  --rotate-offset: 0deg;
+  --translate-x-offset: 0deg;
+  --translate-y-offset: 0deg;
+}
+
+/* For Macbook */
+@media (min-width: 1200px) and (max-width: 1700px) {
+  /* For Chrome */
+  @media (max-height: 875px) {
+    :root {
+      --zoom-scale: 1.38;
+      --translate-y-offset: -6vh;
+    }
+  }
+
+  /* For Safari */
+  @media (min-height: 875px) {
+    :root {
+      --zoom-scale: 1.43;
+      --translate-y-offset: -10.2vh;
+    }
+  }
+}
+
+/* For 1920x1080 screens */
+@media (min-width: 1700px) {
+  :root {
+    --zoom-scale: 1.37;
+    --translate-y-offset: -52px;
+  }
+}
+
+/* For my monitor  */
+@media (min-width: 1700px) {
+  .video-size {
+    max-width: 1920px;
+  }
+
+  :root {
+    --zoom-scale: 1.5;
+    --translate-y-offset: -95px;
+  }
+}
+
+/* For iPhone 12 Pro Max */
+@media (max-width: 1200px) {
+  :root {
+    --zoom-scale: 1.45;
+    --translate-y-offset: -12%;
+    --translate-x-offset: -0.3px;
+    --rotate-offset: 0.3deg;
+  }
+
+  #openOnDesktop {
+    opacity: 1 !important;
+  }
+}

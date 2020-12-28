@@ -149,47 +149,8 @@ a {
   }
 }
 
-/* For macbook */
-@media (min-width: 1200px) and (max-width: 1700px) {
-  /* For Chrome */
-  @media (max-height: 875px) {
-    :root {
-      --zoom-scale: 1.38;
-      --translate-offset: -6vh;
-    }
-  }
-
-  /* For Safari */
-  @media (min-height: 875px) {
-    :root {
-      --zoom-scale: 1.43;
-      --translate-offset: -10.2vh;
-    }
-  }
-}
-
-/* For FHD screens */
-@media (min-width: 1700px) {
-  :root {
-    --zoom-scale: 1.37;
-    --translate-offset: -52px;
-  }
-}
-
-/* For my monitor  */
-@media (min-width: 1700px) {
-  .video-size {
-    max-width: 1920px;
-  }
-
-  :root {
-    --zoom-scale: 1.5;
-    --translate-offset: -91px;
-  }
-}
-
 .zoomed {
-  transform: scale(var(--zoom-scale)) translateY(var(--translate-offset));
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset)) rotate(var(--rotate-offset));
 }
 
 .zoomed.on-workexperience {
@@ -202,17 +163,6 @@ a {
 
 .zoomed.on-wheretofindme {
   transform: scale(1.4) translateY(-5%) translateX(1%) rotate(-2deg);
-}
-
-/* For mobile devices */
-@media (max-width: 1200px) {
-  .zoomed {
-    transform: scale(1.45) translateY(-6%) translateX(-0.3%) rotate(0.4deg);
-  }
-
-  #openOnDesktop {
-    opacity: 1 !important;
-  }
 }
 
 .still-image {
@@ -251,7 +201,7 @@ video {
   z-index: 10;
   cursor: pointer;
   pointer-events: none;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .trigger.available {
