@@ -1,12 +1,30 @@
 :root {
-  --zoom-scale: 1.37;
+  --zoom-scale: 1.36;
   --rotate-offset: 0deg;
   --translate-x-offset: 0deg;
-  --translate-y-offset: 0deg;
+  --translate-y-offset: -11vh;
 
-  --translate-y-offset-personalprojects: -6%;
+  --translate-y-offset-workexperience: -5.5vh;
+  --rotate-offset-workexperience: -2.5deg;
+
+  --translate-y-offset-personalprojects: -8vh;
   --rotate-offset-personalprojects: -1deg;
+
+  --translate-y-offset-wheretofindme: -9.7vh;
+  --rotate-offset-wheretofindme: -2deg;
 }
+
+/* For my monitor  */
+/* @media (min-width: 2000px) {
+  .video-size {
+    max-width: 1920px;
+  }
+
+  :root {
+    --zoom-scale: 1.5;
+    --translate-y-offset: -9vh;
+  }
+} */
 
 /* For Macbook */
 @media (min-width: 1200px) and (max-width: 1700px) {
@@ -24,26 +42,6 @@
       --zoom-scale: 1.43;
       --translate-y-offset: -10.2vh;
     }
-  }
-}
-
-/* For 1920x1080 screens */
-@media (min-width: 1700px) {
-  :root {
-    --zoom-scale: 1.37;
-    --translate-y-offset: -52px;
-  }
-}
-
-/* For my monitor  */
-@media (min-width: 1700px) {
-  .video-size {
-    max-width: 1920px;
-  }
-
-  :root {
-    --zoom-scale: 1.5;
-    --translate-y-offset: -95px;
   }
 }
 

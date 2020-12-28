@@ -154,7 +154,8 @@ a {
 }
 
 .zoomed.on-workexperience {
-  transform: scale(1.4) translateY(-1%) rotate(-2.5deg);
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-workexperience)) rotate(var(--rotate-offset-workexperience));
+
 }
 
 .zoomed.on-personalprojects {
@@ -162,7 +163,7 @@ a {
 }
 
 .zoomed.on-wheretofindme {
-  transform: scale(1.4) translateY(-5%) translateX(1%) rotate(-2deg);
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-wheretofindme)) rotate(var(--rotate-offset-wheretofindme));
 }
 
 .still-image {
