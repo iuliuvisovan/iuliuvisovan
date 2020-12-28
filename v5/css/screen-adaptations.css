@@ -3,6 +3,9 @@
   --rotate-offset: 0deg;
   --translate-x-offset: 0deg;
   --translate-y-offset: 0deg;
+
+  --translate-y-offset-personalprojects: -6%;
+  --rotate-offset-personalprojects: -1deg;
 }
 
 /* For Macbook */

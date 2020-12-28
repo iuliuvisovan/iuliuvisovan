@@ -158,7 +158,7 @@ a {
 }
 
 .zoomed.on-personalprojects {
-  transform: scale(1.4) translateY(-3%) rotate(-1deg);
+  transform: scale(var(--zoom-scale)) translateY(var(--translate-y-offset-personalprojects)) rotate(var(--rotate-offset-personalprojects));
 }
 
 .zoomed.on-wheretofindme {

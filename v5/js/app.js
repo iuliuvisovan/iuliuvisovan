@@ -51,7 +51,7 @@ function playTransition(transition) {
 }
 
 function listenToVideoSeek() {
-  window.checkSeekInterval = setInterval(listenToVideoSeek, 100);
+  window.checkSeekInterval = setInterval(checkVideoSeek, 100);
 }
 
 function checkVideoSeek() {
@@ -181,35 +181,35 @@ const pageIntros = {
     end: 8.1,
   },
   personalprojects: {
-    start: 10.2,
-    end: 11.6,
+    start: 11.2,
+    end: 12.6,
   },
   wheretofindme: {
-    start: 13.2,
-    end: 14.6,
+    start: 15.4,
+    end: 17.2,
   },
   home: {
-    start: 17.0,
-    end: 18.5,
+    start: 20.2,
+    end: 22.0,
   },
 };
 
 const pageOutros = {
   home: {
-    start: 4.0,
+    start: 4.4,
     end: 6.0,
   },
   workexperience: {
-    start: 8.2,
-    end: 9.7,
-  },
-  wheretofindme: {
-    start: 14.8,
-    end: 16.4,
+    start: 8.7,
+    end: 10.2,
   },
   personalprojects: {
-    start: 11.7,
-    end: 12.8,
+    start: 13.0,
+    end: 14.4,
+  },
+  wheretofindme: {
+    start: 18.8,
+    end: 20.4,
   },
 };
 
