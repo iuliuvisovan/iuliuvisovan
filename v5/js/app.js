@@ -41,10 +41,29 @@ mainVideo.addEventListener('play', () => {
 });
 
 function playTransition(transition) {
+  document.querySelector('.logs').innerText = ``;
+
   mainVideo.play();
+
+  document.querySelector('.logs').innerText += `play called \n`;
+
   mainVideo.currentTime = transition.start;
 
-  window.currentRequiredSeek = transition.end;
+  document.querySelector('.logs').innerText += `currentTime set \n`;
+
+  setTimeout(() => {
+    window.currentRequiredSeek = transition.end;
+    document.querySelector('.logs').innerText += `currentRequiredSeek set \n`;
+
+    listenToVideoSeek();
+
+    document.querySelector('.logs').innerText += `listening to video seek set \n`;
+
+    mainVideo.play();
+
+    document.querySelector('.logs').innerText += `play called \n`;
+  }, 1400);
+
   return new Promise((resolve, reject) => {
     window.resolvePlayUntil = resolve;
   });
@@ -55,14 +74,19 @@ function listenToVideoSeek() {
 }
 
 function checkVideoSeek() {
-  if (mainVideo.currentTime >= window.currentRequiredSeek) {
+  // document.querySelector('.logs').innerText = `currentRequiredSeek: ${window.currentRequiredSeek}, mainVideo.currentTime: ${mainVideo.currentTime.toFixed(2)}`;
+  // document.querySelector('.video-state').innerText = `seekable: ${JSON.stringify(mainVideo.seekable)}, seeking: ${mainVideo.seeking}, buffered: ${JSON.stringify(mainVideo.seekable)}, error: ${
+  //   mainVideo.error
+  // }`;
+  if (window.currentRequiredSeek && mainVideo.currentTime >= window.currentRequiredSeek) {
     mainVideo.pause();
+    // document.querySelector('.logs').innerText = `Video paused: Needed: ${window.currentRequiredSeek}, Current: ${mainVideo.currentTime.toFixed(2)}`;
+
+    window.currentRequiredSeek = undefined;
+    clearInterval(window.checkSeekInterval);
+
     window.resolvePlayUntil && window.resolvePlayUntil();
   }
-}
-
-function stopVideoSeekListen() {
-  clearInterval(checkSeekInterval);
 }
 
 mainVideo.addEventListener('canplaythrough', () => {
@@ -185,26 +209,26 @@ const pageIntros = {
     end: 12.6,
   },
   wheretofindme: {
-    start: 15.4,
+    start: 14.4,
     end: 17.2,
   },
   home: {
     start: 20.2,
-    end: 22.0,
+    end: 21.9,
   },
 };
 
 const pageOutros = {
   home: {
     start: 4.4,
-    end: 6.0,
+    end: 5.9,
   },
   workexperience: {
     start: 8.7,
     end: 10.2,
   },
   personalprojects: {
-    start: 13.0,
+    start: 13.1,
     end: 14.8,
   },
   wheretofindme: {
@@ -255,13 +279,11 @@ async function playTransitionChrome(targetPage) {
 }
 
 async function playTransitionSafari(targetPage) {
-  listenToVideoSeek();
+  // listenToVideoSeek();
 
   await playTransition(pageOutros[window.currentPage]);
 
   await playTransition(pageIntros[targetPage]);
-
-  stopVideoSeekListen();
 }
 
 async function wait(duration) {
