@@ -66,7 +66,7 @@ function stopVideoSeekListen() {
 }
 
 mainVideo.addEventListener('canplaythrough', () => {
-  if (!hasLoaded) {
+  if (!window.hasLoaded) {
     // enterWebsite();
     window.hasLoaded = true;
 
@@ -125,7 +125,7 @@ const zoomIn = (page) => {
 
 const zoomOut = async () => {
   return new Promise((resolve, reject) => {
-    document.querySelector('.still-image.active')?.classList?.remove('active');
+    // document.querySelector('.still-image.active')?.classList?.remove('active');
     document.querySelector('.page-wrapper').classList.remove('zoomed');
     setTimeout(() => {
       resolve();
@@ -218,23 +218,15 @@ window.currentPage = 'home';
 async function goToPage(targetPage) {
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-  if (isSafari) {
-    return goToPageSafari(targetPage);
-  } else {
-    return goToPageDefaultBrowser(targetPage);
-  }
-}
-
-async function goToPageSafari(targetPage) {
   disableAllTriggers();
 
   await zoomOut();
 
-  listenToVideoSeek();
-
-  await playTransition(pageOutros[window.currentPage]);
-
-  await playTransition(pageIntros[targetPage]);
+  if (isSafari) {
+    await playTransitionSafari(targetPage);
+  } else {
+    await playTransitionChrome(targetPage);
+  }
 
   document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
   document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
@@ -244,37 +236,32 @@ async function goToPageSafari(targetPage) {
   enableCurrentPageTriggers(targetPage);
 
   window.currentPage = targetPage;
-
-  stopVideoSeekListen();
 }
 
-async function goToPageDefaultBrowser(targetPage) {
-  disableAllTriggers();
-
-  await zoomOut();
-
+async function playTransitionChrome(targetPage) {
   mainVideo.currentTime = pageOutros[window.currentPage].start;
 
   await waitForVideoLoad();
   mainVideo.play();
-  await wait(pageOutros[window.currentPage].duration);
+  await wait(pageOutros[window.currentPage].end - pageOutros[window.currentPage].start);
   mainVideo.pause();
 
   mainVideo.currentTime = pageIntros[targetPage].start;
 
   await waitForVideoLoad();
   mainVideo.play();
-  await wait(pageIntros[targetPage].duration);
+  await wait(pageIntros[targetPage].end - pageIntros[targetPage].start);
   mainVideo.pause();
+}
 
-  document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
-  document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
+async function playTransitionSafari(targetPage) {
+  listenToVideoSeek();
 
-  await zoomIn(targetPage);
+  await playTransition(pageOutros[window.currentPage]);
 
-  enableCurrentPageTriggers(targetPage);
+  await playTransition(pageIntros[targetPage]);
 
-  window.currentPage = targetPage;
+  stopVideoSeekListen();
 }
 
 async function wait(duration) {
