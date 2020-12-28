@@ -205,7 +205,7 @@ const pageOutros = {
   },
   personalprojects: {
     start: 13.0,
-    end: 14.4,
+    end: 14.8,
   },
   wheretofindme: {
     start: 18.8,
