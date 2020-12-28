@@ -169,10 +169,22 @@ a {
 }
 
 /* For FHD screens */
-@media (min-width: 1700px) and (max-width: 2500px) {
+@media (min-width: 1700px) {
   :root {
-    --zoom-scale: 1.4;
-    --translate-offset: -65px;
+    --zoom-scale: 1.37;
+    --translate-offset: -52px;
+  }
+}
+
+/* For my monitor  */
+@media (min-width: 1700px) {
+  .video-size {
+    max-width: 1920px;
+  }
+
+  :root {
+    --zoom-scale: 1.5;
+    --translate-offset: -91px;
   }
 }
 
@@ -201,17 +213,6 @@ a {
   #openOnDesktop {
     opacity: 1 !important;
   }
-}
-
-/* For ultrawide monitors  */
-@media (min-width: 2500px) and (max-height: 1200px) {
-  .video-size {
-    max-width: 2000px;
-  }
-
-  /* .zoomed {
-    transform: translateY(-15%) scale(1.45);
-  } */
 }
 
 .still-image {
