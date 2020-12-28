@@ -32,7 +32,7 @@
   @media (max-height: 875px) {
     :root {
       --zoom-scale: 1.38;
-      --translate-y-offset: -6vh;
+      --translate-y-offset: -10.2vh;
     }
   }
 
