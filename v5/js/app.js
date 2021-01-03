@@ -57,6 +57,16 @@ function playTransition(transition) {
     window.canPause = true;
   }, 1500);
 
+  forcePlayIfNotPlayingAfterSeconds(1, transition);
+  forcePlayIfNotPlayingAfterSeconds(2, transition);
+  forcePlayIfNotPlayingAfterSeconds(3, transition);
+
+  return new Promise((resolve, reject) => {
+    window.resolvePlayUntil = resolve;
+  });
+}
+
+function forcePlayIfNotPlayingAfterSeconds(seconds, transition) {
   setTimeout(() => {
     //If video has not started playing yet
     if (mainVideo.currentTime == transition.start) {
@@ -67,35 +77,7 @@ function playTransition(transition) {
 
       document.querySelector('.logs').innerText += `Attempted to force play after 1 second \n`;
     }
-  }, 1000);
-
-  setTimeout(() => {
-    //If video has not started playing yet
-    if (mainVideo.currentTime == transition.start) {
-      mainVideo.play();
-
-      mainVideo.currentTime = transition.start;
-      window.currentStartTime = transition.start;
-
-      document.querySelector('.logs').innerText += `Attempted to force play after 2 seconds \n`;
-    }
-  }, 2000);
-
-  setTimeout(() => {
-    //If video has not started playing yet
-    if (mainVideo.currentTime == transition.start) {
-      mainVideo.play();
-
-      mainVideo.currentTime = transition.start;
-      window.currentStartTime = transition.start;
-
-      document.querySelector('.logs').innerText += `Attempted to force play after 3 seconds \n`;
-    }
-  }, 3000);
-
-  return new Promise((resolve, reject) => {
-    window.resolvePlayUntil = resolve;
-  });
+  }, seconds * 1000);
 }
 
 function listenToVideoSeek() {
