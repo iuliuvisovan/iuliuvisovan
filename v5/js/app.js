@@ -41,28 +41,57 @@ mainVideo.addEventListener('play', () => {
 });
 
 function playTransition(transition) {
-  document.querySelector('.logs').innerText = ``;
+  // document.querySelector('.logs').innerText = ``;
 
   mainVideo.play();
 
-  document.querySelector('.logs').innerText += `play called \n`;
-
   mainVideo.currentTime = transition.start;
+  window.currentStartTime = transition.start;
 
-  document.querySelector('.logs').innerText += `currentTime set \n`;
+  document.querySelector('.logs').innerText += `set currentTime to ${transition.start}, playing to ${transition.end} \n`;
+
+  window.currentRequiredSeek = transition.end;
+  listenToVideoSeek();
 
   setTimeout(() => {
-    window.currentRequiredSeek = transition.end;
-    document.querySelector('.logs').innerText += `currentRequiredSeek set \n`;
+    window.canPause = true;
+  }, 1500);
 
-    listenToVideoSeek();
+  setTimeout(() => {
+    //If video has not started playing yet
+    if (mainVideo.currentTime == transition.start) {
+      mainVideo.play();
 
-    document.querySelector('.logs').innerText += `listening to video seek set \n`;
+      mainVideo.currentTime = transition.start;
+      window.currentStartTime = transition.start;
 
-    mainVideo.play();
+      document.querySelector('.logs').innerText += `Attempted to force play after 1 second \n`;
+    }
+  }, 1000);
 
-    document.querySelector('.logs').innerText += `play called \n`;
-  }, 1400);
+  setTimeout(() => {
+    //If video has not started playing yet
+    if (mainVideo.currentTime == transition.start) {
+      mainVideo.play();
+
+      mainVideo.currentTime = transition.start;
+      window.currentStartTime = transition.start;
+
+      document.querySelector('.logs').innerText += `Attempted to force play after 2 seconds \n`;
+    }
+  }, 2000);
+
+  setTimeout(() => {
+    //If video has not started playing yet
+    if (mainVideo.currentTime == transition.start) {
+      mainVideo.play();
+
+      mainVideo.currentTime = transition.start;
+      window.currentStartTime = transition.start;
+
+      document.querySelector('.logs').innerText += `Attempted to force play after 3 seconds \n`;
+    }
+  }, 3000);
 
   return new Promise((resolve, reject) => {
     window.resolvePlayUntil = resolve;
@@ -74,13 +103,20 @@ function listenToVideoSeek() {
 }
 
 function checkVideoSeek() {
-  // document.querySelector('.logs').innerText = `currentRequiredSeek: ${window.currentRequiredSeek}, mainVideo.currentTime: ${mainVideo.currentTime.toFixed(2)}`;
-  // document.querySelector('.video-state').innerText = `seekable: ${JSON.stringify(mainVideo.seekable)}, seeking: ${mainVideo.seeking}, buffered: ${JSON.stringify(mainVideo.seekable)}, error: ${
-  //   mainVideo.error
-  // }`;
+  //hide still image if played atleast 100ms
+  if (mainVideo.currentTime > window.currentStartTime) {
+    document.querySelector('.still-image.active')?.classList.remove('active');
+  }
+
+  document.querySelector('.seek-data').innerText = `[${new Date().getMinutes() + ':' + new Date().getSeconds()}] vid seek: ${mainVideo.currentTime.toFixed(2)} (needed ${window.currentRequiredSeek})`;
+
+  if (!window.canPause) {
+    return;
+  }
+
   if (window.currentRequiredSeek && mainVideo.currentTime >= window.currentRequiredSeek) {
     mainVideo.pause();
-    // document.querySelector('.logs').innerText = `Video paused: Needed: ${window.currentRequiredSeek}, Current: ${mainVideo.currentTime.toFixed(2)}`;
+    window.canPause = false;
 
     window.currentRequiredSeek = undefined;
     clearInterval(window.checkSeekInterval);
@@ -124,32 +160,35 @@ function enterWebsite() {
       pauseVideo();
       enableCurrentPageTriggers('home');
       zoomIn('home');
+      hidePlaceholderImage();
     }, 4500);
   }, 800);
 }
+
+const hidePlaceholderImage = () => {
+  document.querySelector('.placeholder-image').style.opacity = 0;
+};
 
 const zoomIn = (page) => {
   return new Promise((resolve, reject) => {
     document.querySelector('.page-wrapper').classList.add('zoomed');
     setTimeout(() => {
-      console.log('page', page);
+      showStillImage(page);
 
-      // const videoRectAfterTransform = document.querySelector('video').getBoundingClientRect();
-
-      // const stillImage = document.querySelector('.still-image.' + page);
-      // stillImage.style.width = videoRectAfterTransform.width + 'px';
-      // stillImage.style.height = videoRectAfterTransform.height + 'px';
-      // stillImage.style.top = videoRectAfterTransform.top + 'px';
-      // stillImage.style.left = videoRectAfterTransform.left + 'px';
-      // stillImage?.classList?.add('active');
-      resolve();
+      resolve(true);
     }, 1000);
   });
 };
 
+const showStillImage = (page) => {
+  const stillImage = document.querySelector('.still-image.' + page);
+  if (stillImage) {
+    stillImage.classList.add('active');
+  }
+};
+
 const zoomOut = async () => {
   return new Promise((resolve, reject) => {
-    // document.querySelector('.still-image.active')?.classList?.remove('active');
     document.querySelector('.page-wrapper').classList.remove('zoomed');
     setTimeout(() => {
       resolve();
@@ -209,7 +248,7 @@ const pageIntros = {
     end: 12.6,
   },
   wheretofindme: {
-    start: 14.4,
+    start: 15.0,
     end: 17.2,
   },
   home: {
@@ -232,7 +271,7 @@ const pageOutros = {
     end: 14.8,
   },
   wheretofindme: {
-    start: 18.8,
+    start: 18.4,
     end: 20.4,
   },
 };
@@ -279,10 +318,10 @@ async function playTransitionChrome(targetPage) {
 }
 
 async function playTransitionSafari(targetPage) {
-  // listenToVideoSeek();
-
+  document.querySelector('.logs').innerText = `Currently playing: pageOutros[${window.currentPage}] \n`;
   await playTransition(pageOutros[window.currentPage]);
 
+  document.querySelector('.logs').innerText = `Currently playing: pageIntros[${targetPage}] \n`;
   await playTransition(pageIntros[targetPage]);
 }
 

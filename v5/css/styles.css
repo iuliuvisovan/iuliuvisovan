@@ -169,10 +169,13 @@ a {
 }
 
 .still-image {
-  position: fixed;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   z-index: 2;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  /* filter: grayscale(); */
 }
 
 .still-image.active {

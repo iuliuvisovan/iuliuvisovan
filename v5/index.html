@@ -38,8 +38,8 @@
   </head>
 
   <body>
-    <!-- <div class="logs">Logs will appear here</div> -->
     <div class="logs video-state" style="color: orange">Logs will appear here</div>
+    <div class="logs seek-data" style="color: skyblue; top: 80px">Logs will appear here</div>
     <div class="loading-overlay active">
       <div style="flex: 1; display: flex; justify-content: center; align-items: center">
         <div id="loadingText" style="text-align: center">
@@ -72,6 +72,7 @@
       <div class="video-size video-wrapper">
         <!-- placeholder / still images & main video -->
         <img class="placeholder-image video-size" src="./media/start-ss.jpg" />
+        <img class="still-image home video-size" src="./media/stills/home.png" />
 
         <video class="video-size" playsinline preload="metadata" id="mainVid">
           <source type="video/mp4" />
