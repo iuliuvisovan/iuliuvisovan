@@ -225,13 +225,13 @@ const pauseVideo = () => {
 
 const enableCurrentPageTriggers = (page) => {
   [...document.querySelectorAll('.trigger.' + page)].forEach((trigger) => {
-    trigger.classList.add('available');
+    trigger.classList.add('active');
   });
 };
 
 const disableAllTriggers = () => {
   [...document.querySelectorAll('.trigger')].forEach((trigger) => {
-    trigger.classList.remove('available');
+    trigger.classList.remove('active');
   });
 
   document.querySelector('.button-image.hovered').classList.remove('hovered');
