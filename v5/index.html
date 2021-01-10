@@ -64,7 +64,7 @@
         <span class="link" id="showCatGifsLink" style="margin-bottom: 40px" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!">Please show me cat gifs while I wait</span>
         <div id="catgifs">
           <div class="gif-wrapper">
-            <img class="cat-gif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="display: block;" />
+            <img class="cat-gif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="display: block" />
             <img class="cat-gif" src="https://media1.giphy.com/media/8zdi3lQp3fzKU/giphy.gif" />
             <img class="cat-gif" src="https://i.makeagif.com/media/4-18-2018/0nyw45.gif" />
             <img class="cat-gif" src="https://media.tenor.com/images/33845bc4ed116b73a6815d9cf8873972/tenor.gif" />
@@ -91,29 +91,41 @@
         </video>
 
         <!-- buttons & triggers -->
-        <div data-for="work-experience" class="trigger button home" onclick="goToPage('workexperience')"></div>
-        <img class="button-image video-size work-experience" src="./media/work-experience.png" />
 
-        <div data-for="personal-projects" class="trigger button home" onclick="goToPage('personalprojects')"></div>
-        <img class="button-image video-size personal-projects" src="./media/personal-projects.png" />
+        <!-- home -->
+        <div data-for="work-experience" class="trigger button home" onclick="goToPage('workexperience')" title="Find out more about what and where I've worked"></div>
+        <img class="button-image video-size work-experience" src="./media/buttons/work-experience.png" />
 
-        <div data-for="where-to-find-me" class="trigger button home" onclick="goToPage('wheretofindme')"></div>
-        <img class="button-image video-size where-to-find-me" src="./media/where-to-find-me.png" />
+        <div data-for="personal-projects" class="trigger button home" onclick="goToPage('personalprojects')" title="Check out some of my hobby projects"></div>
+        <img class="button-image video-size personal-projects" src="./media/buttons/personal-projects.png" />
 
-        <div data-for="okapi" class="trigger button home" onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')"></div>
-        <img class="button-image video-size okapi" src="./media/okapi.png" />
+        <div data-for="where-to-find-me" class="trigger button home" onclick="goToPage('wheretofindme')" title="Contact mediums, social platforms, and more"></div>
+        <img class="button-image video-size where-to-find-me" src="./media/buttons/where-to-find-me.png" />
 
-        <div data-for="resume" class="trigger button home" onclick="window.open('https://www.iuliu.net/cv', '_blank')"></div>
-        <img class="button-image video-size resume" src="./media/download-resume.png" />
+        <div data-for="okapi" class="trigger button home" onclick="window.open('https://en.wikipedia.org/wiki/Okapi', '_blank')" title="Yep, the random animal button is back"></div>
+        <img class="button-image video-size okapi" src="./media/buttons/okapi.png" />
 
+        <div data-for="resume" class="trigger button home" onclick="window.open('https://www.iuliu.net/cv', '_blank')" title="Download my up-to-date CV in PDF format"></div>
+        <img class="button-image video-size resume" src="./media/buttons/download-resume.png" />
+
+        <div data-for="plant" class="trigger button plant home" title="You can't interact with this plant unfortunately. It's just a plant."></div>
+        <img class="button-image video-size plant" src="./media/buttons/plant.png" />
+        <!-- end home -->
+
+        <!-- work experience -->
         <div data-for="work-experience-back-button" class="trigger button workexperience" onclick="goToPage('home')"></div>
-        <img class="button-image video-size work-experience-back-button" src="./media/work-experience-back-button.png" />
+        <img class="button-image video-size work-experience-back-button" src="./media/buttons/work-experience-back-button.png" />
+        <!-- end work experience -->
 
+        <!-- personal projects -->
         <div data-for="personal-projects-back-button" class="trigger button personalprojects" onclick="goToPage('home')"></div>
-        <img class="button-image video-size personal-projects-back-button" src="./media/personal-projects-back-button.png" />
+        <img class="button-image video-size personal-projects-back-button" src="./media/buttons/personal-projects-back-button.png" />
+        <!-- end personal projects -->
 
+        <!-- where to find me -->
         <div data-for="where-to-find-me-back-button" class="trigger button wheretofindme" onclick="goToPage('home')"></div>
-        <img class="button-image video-size where-to-find-me-back-button" src="./media/where-to-find-me-back-button.png" />
+        <img class="button-image video-size where-to-find-me-back-button" src="./media/buttons/where-to-find-me-back-button.png" />
+        <!-- end where to find me -->
       </div>
     </div>
 

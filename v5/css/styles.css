@@ -295,6 +295,14 @@ video {
   height: 5.5%;
 }
 
+.trigger[data-for='plant'] {
+  position: absolute;
+  top: 26%;
+  right: 14.5%;
+  width: 12%;
+  height: 22.5%;
+}
+
 .logs {
   position: fixed;
   z-index: 20;
