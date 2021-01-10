@@ -143,6 +143,11 @@ a {
   font-size: 0;
 }
 
+.gif-wrapper img {
+  height: 35vh;
+  display: none;
+}
+
 @keyframes blur {
   0% {
     filter: blur(10px);
@@ -300,4 +305,20 @@ video {
   padding: 8px 12px;
   border-radius: 6px;
   white-space: nowrap;
+}
+
+.progress-bar-track {
+  width: calc(100vw / 2);
+  height: 3px;
+  background-color: #fff4;
+  border-radius: 6px;
+  margin-top: calc(100vh / 15);
+}
+
+.progress-bar-line {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 6px;
+  transition: width 1s ease-in-out;
+  width: 0%;
 }

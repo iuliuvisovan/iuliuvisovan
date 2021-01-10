@@ -19,10 +19,11 @@ function preloadVideo() {
     //video.play()  if you want it to play on load
   };
 
-  xhr.onprogress = function (oEvent) {
-    if (oEvent.lengthComputable) {
-      var percentComplete = oEvent.loaded / oEvent.total;
-      blueLog('> loading: ' + (percentComplete * 100).toFixed(2) + '%');
+  xhr.onprogress = function (e) {
+    if (e.lengthComputable) {
+      const loadedPercentage = ((e.loaded / e.total) * 100).toFixed(2);
+      blueLog('> loading: ' + loadedPercentage + '%');
+      document.querySelector('.progress-bar-line').style.width = loadedPercentage + '%';
     }
   };
 
@@ -38,7 +39,11 @@ function showNextGif() {
   if (currentGif > 7) {
     currentGif = 0;
   }
-  document.getElementById('catgif').src = catGifs[currentGif];
+
+  [...document.querySelectorAll('.cat-gif')].forEach((x) => {
+    x.style.display = 'none';
+  });
+  [...document.querySelectorAll('.cat-gif')][currentGif].style.display = 'block';
 }
 
 window.hasLoaded = false;
@@ -339,15 +344,3 @@ async function wait(duration) {
     }, duration * 1000);
   });
 }
-
-const catGifs = [
-  'https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif',
-  'https://media1.giphy.com/media/8zdi3lQp3fzKU/giphy.gif',
-  'https://i.makeagif.com/media/4-18-2018/0nyw45.gif',
-  'https://media.tenor.com/images/33845bc4ed116b73a6815d9cf8873972/tenor.gif',
-  'https://www.sadanduseless.com/wp-content/uploads/2019/07/cat-vs-cucumber3.gif',
-  'https://i.pinimg.com/originals/25/58/cc/2558cc0f605acfa7a31d563030723c96.gif',
-  'https://media1.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',
-  'https://i.imgur.com/2JZKwrO.gif',
-  'https://kittybloger.files.wordpress.com/2014/03/25-funny-cat-gifs-15.gif',
-];
