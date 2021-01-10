@@ -315,10 +315,15 @@ video {
   margin-top: calc(100vh / 15);
 }
 
+@media (max-width: 1200px) {
+  .progress-bar-track {
+    width: 100%;
+  }
+}
+
 .progress-bar-line {
   height: 100%;
   background-color: #fff;
   border-radius: 6px;
-  transition: width 1s ease-in-out;
   width: 0%;
 }
