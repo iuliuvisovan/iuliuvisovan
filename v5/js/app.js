@@ -61,6 +61,8 @@ function waitForVideoPlay() {
 }
 
 mainVideo.addEventListener('play', () => {
+  console.log('Playing');
+
   window.resolveWaitForVideoPlay && window.resolveWaitForVideoPlay();
 });
 
@@ -73,16 +75,16 @@ function orangeLog(text) {
 }
 
 function playTransition(transition) {
-  blueLog('');
-
   mainVideo.play();
 
   mainVideo.currentTime = transition.start;
   window.currentStartTime = transition.start;
 
-  orangeLog(`set currentTime to ${transition.start}, playing to ${transition.end} \n`);
+  blueLog(`> set currentTime to ${transition.start}, playing to ${transition.end} \n`);
 
   window.currentRequiredSeek = transition.end;
+  console.log('Listenintg to video seek');
+  
   listenToVideoSeek();
 
   setTimeout(() => {
@@ -113,11 +115,16 @@ function forcePlayIfNotPlayingAfterSeconds(seconds, transition) {
 }
 
 function listenToVideoSeek() {
+  console.log('Listening...');
+  
   window.checkSeekInterval = setInterval(checkVideoSeek, 100);
 }
 
 function checkVideoSeek() {
   //hide still image if played atleast 100ms
+  console.log('mainVideo.currentTime', mainVideo.currentTime);
+  console.log(' window.currentStartTime', window.currentStartTime);
+
   if (mainVideo.currentTime > window.currentStartTime) {
     document.querySelector('.still-image.active')?.classList.remove('active');
   }
@@ -295,11 +302,14 @@ async function goToPage(targetPage) {
 
   await zoomOut();
 
-  if (isSafari) {
-    await playTransitionSafari(targetPage);
-  } else {
-    await playTransitionChrome(targetPage);
-  }
+
+  await playTransitionSafari(targetPage);
+
+  // if (isSafari) {
+  //   await playTransitionSafari(targetPage);
+  // } else {
+  //   await playTransitionChrome(targetPage);
+  // }
 
   document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
   document.querySelector('.page-wrapper').classList.add('on-' + targetPage);

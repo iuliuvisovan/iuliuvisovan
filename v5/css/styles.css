@@ -88,7 +88,7 @@ img {
   z-index: 15;
   background: #000000cc;
   opacity: 1;
-  transition: opacity 3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .loading-overlay.loaded {
