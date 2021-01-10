@@ -294,9 +294,10 @@ video {
   position: fixed;
   z-index: 20;
   right: 12px;
-  top: 12px;
+  top: 16px;
   color: red;
   background-color: #000b;
   padding: 8px 12px;
   border-radius: 6px;
+  white-space: nowrap;
 }

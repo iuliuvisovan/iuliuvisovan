@@ -1,14 +1,35 @@
-const catGifs = [
-  'https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif',
-  'https://media1.giphy.com/media/8zdi3lQp3fzKU/giphy.gif',
-  'https://i.makeagif.com/media/4-18-2018/0nyw45.gif',
-  'https://media.tenor.com/images/33845bc4ed116b73a6815d9cf8873972/tenor.gif',
-  'https://www.sadanduseless.com/wp-content/uploads/2019/07/cat-vs-cucumber3.gif',
-  'https://i.pinimg.com/originals/25/58/cc/2558cc0f605acfa7a31d563030723c96.gif',
-  'https://media1.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',
-  'https://i.imgur.com/2JZKwrO.gif',
-  'https://kittybloger.files.wordpress.com/2014/03/25-funny-cat-gifs-15.gif',
-];
+const mainVideo = document.getElementById('mainVid');
+
+function preloadVideo() {
+  var url = './media/mainrender.mp4';
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'arraybuffer';
+
+  xhr.onload = function (oEvent) {
+    var blob = new Blob([oEvent.target.response], { type: 'video/mp4' });
+
+    mainVideo.src = URL.createObjectURL(blob);
+
+    try {
+      mainVideo.load();
+    } catch (e) {}
+
+    //video.play()  if you want it to play on load
+  };
+
+  xhr.onprogress = function (oEvent) {
+    if (oEvent.lengthComputable) {
+      var percentComplete = oEvent.loaded / oEvent.total;
+      blueLog('> loading: ' + (percentComplete * 100).toFixed(2) + '%');
+    }
+  };
+
+  xhr.send();
+}
+
+preloadVideo();
 
 var currentGif = 0;
 
@@ -21,8 +42,6 @@ function showNextGif() {
 }
 
 window.hasLoaded = false;
-
-const mainVideo = document.getElementById('mainVid');
 
 function waitForVideoLoad() {
   return new Promise((resolve, reject) => {
@@ -40,15 +59,23 @@ mainVideo.addEventListener('play', () => {
   window.resolveWaitForVideoPlay && window.resolveWaitForVideoPlay();
 });
 
+function blueLog(text) {
+  document.querySelector('#blueLogs').innerText = text;
+}
+
+function orangeLog(text) {
+  document.querySelector('#blueLogs').innerText = text;
+}
+
 function playTransition(transition) {
-  document.querySelector('.logs').innerText = ``;
+  blueLog('');
 
   mainVideo.play();
 
   mainVideo.currentTime = transition.start;
   window.currentStartTime = transition.start;
 
-  document.querySelector('.logs').innerText += `set currentTime to ${transition.start}, playing to ${transition.end} \n`;
+  orangeLog(`set currentTime to ${transition.start}, playing to ${transition.end} \n`);
 
   window.currentRequiredSeek = transition.end;
   listenToVideoSeek();
@@ -75,7 +102,7 @@ function forcePlayIfNotPlayingAfterSeconds(seconds, transition) {
       mainVideo.currentTime = transition.start;
       window.currentStartTime = transition.start;
 
-      document.querySelector('.logs').innerText += `Attempted to force play after 1 second \n`;
+      orangeLog(`Attempted to force play after ${seconds} second \n`);
     }
   }, seconds * 1000);
 }
@@ -123,11 +150,6 @@ mainVideo.addEventListener('canplaythrough', () => {
     window.resolveWaitForVideoLoad && window.resolveWaitForVideoLoad();
   }
 });
-
-mainVideo.src = './media/mainrender.mp4';
-try {
-  mainVideo.load();
-} catch (e) {}
 
 function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('inactive');
@@ -303,10 +325,10 @@ async function playTransitionChrome(targetPage) {
 }
 
 async function playTransitionSafari(targetPage) {
-  document.querySelector('.logs').innerText = `Currently playing: pageOutros[${window.currentPage}] \n`;
+  blueLog(`> playing: pageOutros[${window.currentPage}] \n`);
   await playTransition(pageOutros[window.currentPage]);
 
-  document.querySelector('.logs').innerText = `Currently playing: pageIntros[${targetPage}] \n`;
+  blueLog(`> playing: pageIntros[${targetPage}] \n`);
   await playTransition(pageIntros[targetPage]);
 }
 
@@ -317,3 +339,15 @@ async function wait(duration) {
     }, duration * 1000);
   });
 }
+
+const catGifs = [
+  'https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif',
+  'https://media1.giphy.com/media/8zdi3lQp3fzKU/giphy.gif',
+  'https://i.makeagif.com/media/4-18-2018/0nyw45.gif',
+  'https://media.tenor.com/images/33845bc4ed116b73a6815d9cf8873972/tenor.gif',
+  'https://www.sadanduseless.com/wp-content/uploads/2019/07/cat-vs-cucumber3.gif',
+  'https://i.pinimg.com/originals/25/58/cc/2558cc0f605acfa7a31d563030723c96.gif',
+  'https://media1.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',
+  'https://i.imgur.com/2JZKwrO.gif',
+  'https://kittybloger.files.wordpress.com/2014/03/25-funny-cat-gifs-15.gif',
+];
