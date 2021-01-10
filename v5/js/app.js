@@ -205,7 +205,7 @@ const zoomOut = async () => {
     document.querySelector('.page-wrapper').classList.remove('zoomed');
     setTimeout(() => {
       resolve();
-    }, 600);
+    }, 1000);
   });
 };
 
