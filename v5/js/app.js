@@ -144,13 +144,11 @@ mainVideo.addEventListener('canplaythrough', () => {
     // enterWebsite();
     window.hasLoaded = true;
 
-    setTimeout(() => {
-      document.getElementById('loadingText').remove();
-      document.getElementById('loadedText').classList.add('visible');
-      document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+    document.getElementById('loadingText').remove();
+    document.getElementById('loadedText').classList.add('visible');
+    document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
 
-      document.querySelector('.loading-overlay').classList.add('loaded');
-    }, 1000);
+    document.querySelector('.loading-overlay').classList.add('loaded');
   } else {
     window.resolveWaitForVideoLoad && window.resolveWaitForVideoLoad();
   }

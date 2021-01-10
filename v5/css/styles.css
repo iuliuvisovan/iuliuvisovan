@@ -86,9 +86,9 @@ img {
   justify-content: space-around;
   align-items: center;
   z-index: 15;
-  background: #000000a3;
+  background: #000000cc;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 3s ease-in-out;
 }
 
 .loading-overlay.loaded {
@@ -102,7 +102,7 @@ img {
 
 @keyframes to-gray {
   from {
-    background: #000000a1;
+    background: #000000cc;
   }
   to {
     background: #0002;
