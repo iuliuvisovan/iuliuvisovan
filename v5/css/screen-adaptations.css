@@ -19,7 +19,7 @@
 }
 
 /* For my monitor  */
-/* @media (min-width: 2000px) {
+@media (min-width: 2000px) {
   .video-size {
     max-width: 1920px;
   }
@@ -28,7 +28,7 @@
     --zoom-scale: 1.5;
     --translate-y-offset: -9vh;
   }
-} */
+}
 
 /* For Macbook */
 @media (min-width: 1200px) and (max-width: 1700px) {
