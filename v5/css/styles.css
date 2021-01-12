@@ -45,6 +45,7 @@ img {
   transform-style: preserve-3d;
   transform: scale(1.00001);
   transition: transform 1s ease;
+  will-change: filter, transform;
 }
 
 @media (max-width: 1200px) {
@@ -59,7 +60,7 @@ img {
 }
 
 .page-wrapper.entered {
-  animation: blur 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+  animation: remove-blur 2s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
   animation-fill-mode: forwards;
 }
 
@@ -107,6 +108,10 @@ img {
   animation-fill-mode: forwards;
 }
 
+.dismissed {
+  opacity: 0;
+}
+
 .logs {
   position: fixed;
   z-index: 20;
@@ -137,10 +142,6 @@ img {
   background-color: #fff;
   border-radius: 6px;
   width: 0%;
-}
-
-.inactive {
-  opacity: 0;
 }
 
 @keyframes to-gray {
@@ -191,7 +192,7 @@ a {
   display: none;
 }
 
-@keyframes blur {
+@keyframes remove-blur {
   0% {
     filter: blur(10px);
   }
@@ -239,6 +240,7 @@ video {
 
 .button-image {
   position: absolute;
+  top: -1px;
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -421,8 +423,67 @@ video {
 
 .trigger[data-for='expertnetwork'] {
   position: absolute;
-  top: 50.5%;
+  top: 50%;
   left: 39%;
   width: 23%;
   height: 11%;
+}
+
+.trigger[data-for='node'] {
+  position: absolute;
+  top: 63%;
+  left: 42%;
+  width: 4.2%;
+  transform: rotate(-51deg);
+  height: 12%;
+}
+
+.trigger[data-for='rn'] {
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  width: 6%;
+  height: 11%;
+}
+
+.trigger[data-for='expo'] {
+  position: absolute;
+  top: 67.1%;
+  left: 56.3%;
+  width: 2.7%;
+  height: 5.5%;
+}
+
+.trigger[data-for='github'] {
+  position: absolute;
+  top: 73.2%;
+  left: 46.4%;
+  width: 3.4%;
+  height: 6.5%;
+}
+
+.trigger[data-for='vscode'] {
+  position: absolute;
+  top: 73.5%;
+  left: 39%;
+  width: 6.5%;
+  height: 9%;
+}
+
+.trigger[data-for='mongo'] {
+  position: absolute;
+  top: 76.4%;
+  left: 50.7%;
+  width: 4%;
+  height: 4%;
+  transform: rotate(-22deg);
+  z-index: 100;
+}
+
+.trigger[data-for='typescript'] {
+  position: absolute;
+  top: 74.2%;
+  left: 56.9%;
+  width: 2%;
+  height: 4%;
 }
