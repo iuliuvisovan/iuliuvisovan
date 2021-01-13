@@ -235,7 +235,6 @@ function showCatGifs() {
   document.getElementById('showCatGifsLink').remove();
 }
 
-
 const pageIntros = {
   lobby: {
     start: 0,
@@ -280,8 +279,20 @@ const pageOutros = {
 
 window.currentPage = 'home';
 
+function animateProgress() {
+  document.querySelector('.transition-progress-bar-track').style.display = 'block';
+  setTimeout(() => {
+    document.querySelector('.transition-progress-bar-line').style.width = '100%';
+  }, 0);
+  setTimeout(() => {
+    document.querySelector('.transition-progress-bar-track').style.display = 'none';
+    document.querySelector('.transition-progress-bar-line').style.width = '0%';
+  }, 5500);
+}
+
 async function goToPage(targetPage) {
   disableAllTriggers();
+  animateProgress();
 
   await zoomOut();
 
@@ -296,19 +307,11 @@ async function goToPage(targetPage) {
 
   window.currentPage = targetPage;
 }
- 
+
 async function playTransition(targetPage) {
   blueLog(`> playing: pageOutros[${window.currentPage}] \n`);
   await playInterval(pageOutros[window.currentPage]);
 
   blueLog(`> playing: pageIntros[${targetPage}] \n`);
   await playInterval(pageIntros[targetPage]);
-}
-
-async function wait(duration) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve();
-    }, duration * 1000);
-  });
 }
