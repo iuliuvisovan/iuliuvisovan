@@ -61,12 +61,11 @@ function waitForVideoPlay() {
 }
 
 mainVideo.addEventListener('play', () => {
-  console.log('Playing');
-
   window.resolveWaitForVideoPlay && window.resolveWaitForVideoPlay();
 });
 
 function blueLog(text) {
+  return;
   document.querySelector('#blueLogs').innerText = text;
 }
 
@@ -83,7 +82,6 @@ function playTransition(transition) {
   blueLog(`> set currentTime to ${transition.start}, playing to ${transition.end} \n`);
 
   window.currentRequiredSeek = transition.end;
-  console.log('Listenintg to video seek');
 
   listenToVideoSeek();
 
@@ -115,21 +113,16 @@ function forcePlayIfNotPlayingAfterSeconds(seconds, transition) {
 }
 
 function listenToVideoSeek() {
-  console.log('Listening...');
-
   window.checkSeekInterval = setInterval(checkVideoSeek, 100);
 }
 
 function checkVideoSeek() {
   //hide still image if played atleast 100ms
-  console.log('mainVideo.currentTime', mainVideo.currentTime);
-  console.log(' window.currentStartTime', window.currentStartTime);
-
   if (mainVideo.currentTime > window.currentStartTime) {
     document.querySelector('.still-image.active')?.classList.remove('active');
   }
 
-  document.querySelector('.seek-data').innerText = `[${new Date().getMinutes() + ':' + new Date().getSeconds()}] vid seek: ${mainVideo.currentTime.toFixed(2)} (needed ${window.currentRequiredSeek})`;
+  blueLog(`${new Date().getMinutes() + ':' + new Date().getSeconds()}] vid seek: ${mainVideo.currentTime.toFixed(2)} (needed ${window.currentRequiredSeek})`);
 
   if (!window.canPause) {
     return;

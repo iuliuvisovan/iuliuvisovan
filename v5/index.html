@@ -38,8 +38,7 @@
   </head>
 
   <body>
-    <div class="logs seek-data" id="blueLogs" style="color: skyblue">Logs will appear here</div>
-    <div class="logs video-state" id="orangeLogs" style="color: orange; top: 68px">Logs will appear here</div>
+    <div class="logs seek-data" id="blueLogs" style="color: skyblue"></div>
     <div class="loading-overlay active">
       <div style="flex: 1; display: flex; justify-content: center; align-items: center">
         <div id="loadingText" style="text-align: center">
@@ -61,7 +60,9 @@
         </div>
       </div>
       <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
-        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px; font-size: 14px;" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!">Please show me cat gifs while I wait</span>
+        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px; font-size: 14px" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!"
+          >Please show me cat gifs while I wait</span
+        >
         <div id="catgifs">
           <div class="gif-wrapper">
             <img class="cat-gif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="display: block" />

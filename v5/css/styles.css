@@ -53,7 +53,7 @@ img {
   .loading-overlay {
     height: calc(100vh - 110px) !important;
     /* mobile viewport bug fix */
-    /* height: -webkit-fill-available !important; */
+    height: -webkit-fill-available !important;
   }
 
   .page-wrapper {
@@ -80,7 +80,9 @@ img {
 
 @media (max-width: 1200px) {
   .video-size {
-    height: 100vh;
+    height: calc(100vh - 50px);
+    /* min-height: -webkit-fill-available !important;
+    height: -webkit-fill-available !important; */
     width: auto;
     margin: 0 0 0 0;
   }

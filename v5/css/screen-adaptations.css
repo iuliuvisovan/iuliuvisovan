@@ -50,9 +50,28 @@
 }
 
 /* For iPhone 12 Pro Max */
-@media (max-width: 1200px) {
+@media (max-width: 600px) {
   :root {
-    --zoom-scale: 1.24;
+    --zoom-scale: 1.25;
+    --translate-y-offset: -12%;
+    --rotate-offset: 0.3deg;
+
+    --translate-x-offset-workexperience: -16px;
+
+    --translate-x-offset-personalprojects: 8px;
+
+    --translate-x-offset-wheretofindme: 16px;
+  }
+
+  #openOnDesktop {
+    opacity: 1 !important;
+  }
+}
+
+/* For smaller phones */
+@media (max-width: 400px) {
+  :root {
+    --zoom-scale: 1.62;
     --translate-y-offset: -12%;
     --rotate-offset: 0.3deg;
 
