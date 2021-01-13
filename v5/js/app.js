@@ -165,19 +165,19 @@ function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('dismissed');
   setTimeout(() => {
     document.querySelector('.page-wrapper').classList.add('entered');
-
-    setTimeout(async () => {
-      await playTransition(pageIntros['lobby']);
-
-      zoomIn('home');
-      enableCurrentPageTriggers('home');
-      hidePlaceholderImage();
-    }, 800);
-
-    setTimeout(() => {
-      document.querySelector('.loading-overlay').remove();
-    }, 2000);
   }, 600);
+
+  setTimeout(async () => {
+    await playTransition(pageIntros['lobby']);
+
+    zoomIn('home');
+    enableCurrentPageTriggers('home');
+    hidePlaceholderImage();
+  }, 600);
+
+  setTimeout(() => {
+    document.querySelector('.loading-overlay').remove();
+  }, 2000);
 }
 
 const hidePlaceholderImage = () => {
