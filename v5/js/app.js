@@ -73,7 +73,7 @@ function orangeLog(text) {
   document.querySelector('#blueLogs').innerText = text;
 }
 
-function playTransition(transition) {
+function playInterval(transition) {
   mainVideo.play();
 
   mainVideo.currentTime = transition.start;
@@ -161,7 +161,7 @@ function enterWebsite() {
   }, 600);
 
   setTimeout(async () => {
-    await playTransition(pageIntros['lobby']);
+    await playInterval(pageIntros['lobby']);
 
     zoomIn('home');
     enableCurrentPageTriggers('home');
@@ -281,19 +281,11 @@ const pageOutros = {
 window.currentPage = 'home';
 
 async function goToPage(targetPage) {
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
   disableAllTriggers();
 
   await zoomOut();
 
-  await playTransitionSafari(targetPage);
-
-  // if (isSafari) {
-  //   await playTransitionSafari(targetPage);
-  // } else {
-  //   await playTransitionChrome(targetPage);
-  // }
+  await playTransition(targetPage);
 
   document.querySelector('.page-wrapper').classList.remove('on-' + window.currentPage);
   document.querySelector('.page-wrapper').classList.add('on-' + targetPage);
@@ -304,29 +296,13 @@ async function goToPage(targetPage) {
 
   window.currentPage = targetPage;
 }
-
-async function playTransitionChrome(targetPage) {
-  mainVideo.currentTime = pageOutros[window.currentPage].start;
-
-  await waitForVideoLoad();
-  mainVideo.play();
-  await wait(pageOutros[window.currentPage].end - pageOutros[window.currentPage].start);
-  mainVideo.pause();
-
-  mainVideo.currentTime = pageIntros[targetPage].start;
-
-  await waitForVideoLoad();
-  mainVideo.play();
-  await wait(pageIntros[targetPage].end - pageIntros[targetPage].start);
-  mainVideo.pause();
-}
-
-async function playTransitionSafari(targetPage) {
+ 
+async function playTransition(targetPage) {
   blueLog(`> playing: pageOutros[${window.currentPage}] \n`);
-  await playTransition(pageOutros[window.currentPage]);
+  await playInterval(pageOutros[window.currentPage]);
 
   blueLog(`> playing: pageIntros[${targetPage}] \n`);
-  await playTransition(pageIntros[targetPage]);
+  await playInterval(pageIntros[targetPage]);
 }
 
 async function wait(duration) {
