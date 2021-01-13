@@ -237,6 +237,7 @@ video {
   bottom: 0;
   z-index: 0;
 }
+
 .button-image {
   position: absolute;
   top: -1px;
@@ -246,6 +247,12 @@ video {
   z-index: 5;
   filter: brightness(1.5);
   transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@media(max-width: 1200px) {
+  .button-image {
+    display: none;
+  }
 }
 
 .button-image.hovered {
