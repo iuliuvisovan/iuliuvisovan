@@ -228,8 +228,6 @@ const disableAllTriggers = () => {
   [...document.querySelectorAll('.trigger')].forEach((trigger) => {
     trigger.classList.remove('active');
   });
-
-  document.querySelector('.button-image.hovered').classList.remove('hovered');
 };
 
 function showCatGifs() {
@@ -237,14 +235,6 @@ function showCatGifs() {
   document.getElementById('showCatGifsLink').remove();
 }
 
-[...document.querySelectorAll('.trigger.button')].forEach((trigger) => {
-  trigger.addEventListener('mouseenter', function () {
-    document.querySelector('.button-image.' + trigger.dataset.for).classList.add('hovered');
-  });
-  trigger.addEventListener('mouseleave', function () {
-    document.querySelector('.button-image.' + trigger.dataset.for).classList.remove('hovered');
-  });
-});
 
 const pageIntros = {
   lobby: {
