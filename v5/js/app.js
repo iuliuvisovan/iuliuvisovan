@@ -279,20 +279,8 @@ const pageOutros = {
 
 window.currentPage = 'home';
 
-function animateProgress() {
-  document.querySelector('.transition-progress-bar-track').style.display = 'block';
-  setTimeout(() => {
-    document.querySelector('.transition-progress-bar-line').style.width = '100%';
-  }, 0);
-  setTimeout(() => {
-    document.querySelector('.transition-progress-bar-track').style.display = 'none';
-    document.querySelector('.transition-progress-bar-line').style.width = '0%';
-  }, 5500);
-}
-
 async function goToPage(targetPage) {
   disableAllTriggers();
-  animateProgress();
 
   await zoomOut();
 
