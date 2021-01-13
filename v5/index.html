@@ -61,7 +61,7 @@
         </div>
       </div>
       <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
-        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!">Please show me cat gifs while I wait</span>
+        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px; font-size: 14px;" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!">Please show me cat gifs while I wait</span>
         <div id="catgifs">
           <div class="gif-wrapper">
             <img class="cat-gif" src="https://i.pinimg.com/originals/ac/f9/a5/acf9a5214d40c8d911bd236b037f8b66.gif" style="display: block" />
@@ -113,7 +113,7 @@
         <!-- end home -->
 
         <!-- work experience -->
-        <div data-for="work-experience-back-button" class="trigger button workexperience" onclick="goToPage('home')"></div>
+        <div data-for="work-experience-back-button" class="trigger button workexperience" title="Back" onclick="goToPage('home')"></div>
         <img class="button-image video-size work-experience-back-button" src="./media/buttons/work-experience-back-button.png" />
 
         <div data-for="amgolf" class="trigger button workexperience" title="https://app.am.golf/" onclick="window.open('https://app.am.golf', '_blank')"></div>
@@ -135,7 +135,7 @@
 
         <div data-for="rn" class="trigger button workexperience" title="https://reactnative.dev/" onclick="window.open('https://reactnative.dev/', '_blank')"></div>
         <img class="button-image video-size rn" src="./media/buttons/rn.png" />
-        
+
         <div data-for="expo" class="trigger button workexperience" title="https://expo.io/" onclick="window.open('https://expo.io/', '_blank')"></div>
         <img class="button-image video-size expo" src="./media/buttons/expo.png" />
 
@@ -147,14 +147,14 @@
 
         <div data-for="mongo" class="trigger button workexperience" title="https://www.mongodb.com/" onclick="window.open('https://www.mongodb.com/', '_blank')"></div>
         <img class="button-image video-size mongo" src="./media/buttons/mongo.png" />
-        
+
         <div data-for="typescript" class="trigger button workexperience" title="https://www.typescriptlang.org/" onclick="window.open('https://www.typescriptlang.org/', '_blank')"></div>
         <img class="button-image video-size typescript" src="./media/buttons/typescript.png" />
 
         <!-- end work experience -->
 
         <!-- personal projects -->
-        <div data-for="personal-projects-back-button" class="trigger button personalprojects" onclick="goToPage('home')"></div>
+        <div data-for="personal-projects-back-button" class="trigger button personalprojects" title="Back" onclick="goToPage('home')"></div>
         <img class="button-image video-size personal-projects-back-button" src="./media/buttons/personal-projects-back-button.png" />
 
         <div data-for="corona" class="trigger button personalprojects" title="http://www.iuliu.net/corona" onclick="window.open('http://www.iuliu.net/corona', '_blank')"></div>
@@ -186,8 +186,45 @@
         <!-- end personal projects -->
 
         <!-- where to find me -->
-        <div data-for="where-to-find-me-back-button" class="trigger button wheretofindme" onclick="goToPage('home')"></div>
+        <div data-for="where-to-find-me-back-button" class="trigger button wheretofindme" title="Back" onclick="goToPage('home')"></div>
         <img class="button-image video-size where-to-find-me-back-button" src="./media/buttons/where-to-find-me-back-button.png" />
+
+        <a data-for="gmail" class="trigger button wheretofindme" title="mailto:iuliuvisovan@gmail.com" href="mailto:iuliuvisovan@gmail.com"></a>
+        <img class="button-image video-size gmail" src="./media/buttons/gmail.png" />
+
+        <div data-for="github-link" class="trigger button wheretofindme" title="https://github.com/iuliuvisovan" onclick="window.open('https://github.com/iuliuvisovan', '_blank')"></div>
+        <img class="button-image video-size github-link" src="./media/buttons/github-link.png" />
+
+        <div
+          data-for="stackoverflow"
+          class="trigger button wheretofindme"
+          title="https://stackoverflow.com/users/3818463/iuliu-net"
+          onclick="window.open('https://stackoverflow.com/users/3818463/iuliu-net', '_blank')"
+        ></div>
+        <img class="button-image video-size stackoverflow" src="./media/buttons/stackoverflow.png" />
+
+        <div data-for="medium" class="trigger button wheretofindme" title="https://medium.com/@iuliu" onclick="window.open('https://medium.com/@iuliu', '_blank')"></div>
+        <img class="button-image video-size medium" src="./media/buttons/medium.png" />
+
+        <div
+          data-for="linkedin"
+          class="trigger button wheretofindme"
+          title="https://www.linkedin.com/in/iuliuvisovan/"
+          onclick="window.open('https://www.linkedin.com/in/iuliuvisovan/', '_blank')"
+        ></div>
+        <img class="button-image video-size linkedin" src="./media/buttons/linkedin.png" />
+
+        <div
+          data-for="youtube"
+          class="trigger button wheretofindme"
+          title="https://www.youtube.com/channel/UCpmv08Ot_JV2vd89ar8IYIQ"
+          onclick="window.open('https://www.youtube.com/channel/UCpmv08Ot_JV2vd89ar8IYIQ', '_blank')"
+        ></div>
+        <img class="button-image video-size youtube" src="./media/buttons/youtube.png" />
+
+        <div data-for="instagram" class="trigger button wheretofindme" title="https://www.instagram.com/iuliu_/" onclick="window.open('https://www.instagram.com/iuliu_/', '_blank')"></div>
+        <img class="button-image video-size instagram" src="./media/buttons/instagram.png" />
+
         <!-- end where to find me -->
       </div>
     </div>
