@@ -169,7 +169,7 @@ a {
   display: block;
 }
 
-#catgifs {
+#catGifs {
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -177,23 +177,19 @@ a {
   margin-bottom: 40px;
 }
 
-#catgifs.visible {
+#catGifs.visible {
   display: flex;
 }
 
-#catgifs.visible ~ #showCatGifsLink {
+#catGifs.visible ~ #showCatGifsLink {
   display: none;
 }
 
-.gif-wrapper {
-  border: 0.5px solid #fff4;
-  margin-bottom: 8px;
-  font-size: 0;
-}
-
-.gif-wrapper img {
+#catGif {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 35vh;
-  display: none;
+  margin-bottom: 16px;
+  border-radius: 16px;
 }
 
 @keyframes remove-blur {
@@ -233,7 +229,8 @@ a {
 .still-image.active {
   opacity: 1;
 }
-video {
+
+#mainVid {
   position: absolute !important;
   left: 0;
   bottom: 0;

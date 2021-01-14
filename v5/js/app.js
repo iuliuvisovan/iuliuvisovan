@@ -30,20 +30,19 @@ function preloadVideo() {
   xhr.send();
 }
 
-preloadVideo();
+setTimeout(() => {
+  preloadVideo();
+}, 500);
 
-var currentGif = 0;
+var currentGif = 1;
 
 function showNextGif() {
-  currentGif++;
   if (currentGif > 7) {
     currentGif = 0;
   }
 
-  [...document.querySelectorAll('.cat-gif')].forEach((x) => {
-    x.style.display = 'none';
-  });
-  [...document.querySelectorAll('.cat-gif')][currentGif].style.display = 'block';
+  document.querySelector('#catGif').src = `./media/gifs/${currentGif}.mp4`;
+  currentGif++;
 }
 
 window.hasLoaded = false;
@@ -155,6 +154,8 @@ mainVideo.addEventListener('canplaythrough', () => {
 });
 
 function enterWebsite() {
+  // document.querySelector('#bgMusic').play();
+
   document.querySelector('.loading-overlay').classList.add('dismissed');
   setTimeout(() => {
     document.querySelector('.page-wrapper').classList.add('entered');
@@ -218,6 +219,13 @@ const pauseVideo = () => {
   });
 };
 
+[...document.querySelectorAll('.trigger')].forEach((trigger) => {
+  trigger.addEventListener('mouseover', () => {
+    document.querySelector('#hoverSoundEffect').currentTime = 0;
+    document.querySelector('#hoverSoundEffect').play();
+  });
+});
+
 const enableCurrentPageTriggers = (page) => {
   [...document.querySelectorAll('.trigger.' + page)].forEach((trigger) => {
     trigger.classList.add('active');
@@ -230,8 +238,9 @@ const disableAllTriggers = () => {
   });
 };
 
-function showCatGifs() {
-  document.getElementById('catgifs').classList.add('visible');
+function showcatGifs() {
+  showNextGif();
+  document.getElementById('catGifs').classList.add('visible');
   document.getElementById('showCatGifsLink').remove();
 }
 
