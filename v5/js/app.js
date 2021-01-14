@@ -168,6 +168,10 @@ function enterWebsite() {
     zoomIn('home');
     enableCurrentPageTriggers('home');
     hidePlaceholderImage();
+
+    if (window.location.hash && window.location.hash !== '#home') {
+      goToPage(window.location.hash.slice(1));
+    }
   }, 600);
 
   setTimeout(() => {
@@ -275,7 +279,19 @@ const pageOutros = {
 
 window.currentPage = 'home';
 
+window.addEventListener('popstate', () => {
+  if (window.location.hash == '' || window.location.hash == '#home') {
+    goToPage('home');
+  }
+});
+
 async function goToPage(targetPage) {
+  if (!pageIntros[targetPage]) {
+    return;
+  }
+
+  history.pushState(targetPage, '', '#' + targetPage);
+
   disableAllTriggers();
 
   await zoomOut();
