@@ -38,14 +38,16 @@
 
     <!--Preload start image-->
     <link rel="preload" href="./media/stills/lobby.jpg" as="image" />
+
+    <!-- DON'T LOOK AT MY SOURCE CODE -->
   </head>
 
   <body>
     <!-- <div class="logs seek-data" id="blueLogs" style="color: skyblue"></div> -->
     <div class="loading-overlay active">
       <div style="flex: 1; display: flex; justify-content: center; align-items: center; margin-top: -20px">
-        <div id="loadingText" style="text-align: center">
-          This website is big.
+        <div id="loadingText" style="text-align: center; padding: 0 15px">
+          This website is big<span id="slowInternetText" style="display: none">, and your internet isn't helping a whole lot.</span>.
           <br />
           <br />
           It is currently loading. Thanks for waiting.

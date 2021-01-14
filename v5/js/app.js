@@ -19,9 +19,9 @@ function preloadVideo() {
 
   xhr.onprogress = function (e) {
     if (e.lengthComputable) {
-      const loadedPercentage = ((e.loaded / e.total) * 100).toFixed(2);
-      blueLog('> loading: ' + loadedPercentage + '%');
-      document.querySelector('.progress-bar-line').style.width = loadedPercentage + '%';
+      window.loadedPercentage = (e.loaded / e.total) * 100;
+      blueLog('> loading: ' + window.loadedPercentage + '%');
+      document.querySelector('.progress-bar-line').style.width = window.loadedPercentage.toFixed(2) + '%';
 
       if (e.loaded == e.total) {
         showLoaded();
@@ -31,6 +31,12 @@ function preloadVideo() {
 
   xhr.send();
 }
+
+setTimeout(() => {
+  if (window.loadedPercentage < 25) {
+    document.querySelector('#slowInternetText').style.display = 'inline';
+  }
+}, 5000);
 
 preloadVideo();
 
