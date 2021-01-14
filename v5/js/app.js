@@ -64,10 +64,7 @@ mainVideo.addEventListener('play', () => {
 });
 
 function blueLog(text) {
-  document.querySelector('#blueLogs').innerText = text;
-}
-
-function orangeLog(text) {
+  return;
   document.querySelector('#blueLogs').innerText = text;
 }
 
@@ -105,7 +102,7 @@ function forcePlayIfNotPlayingAfterSeconds(seconds, transition) {
       mainVideo.currentTime = transition.start;
       window.currentStartTime = transition.start;
 
-      orangeLog(`Attempted to force play after ${seconds} second \n`);
+      blueLog(`Attempted to force play after ${seconds} second \n`);
     }
   }, seconds * 1000);
 }
@@ -166,15 +163,11 @@ function enterWebsite() {
   }, 600);
 
   setTimeout(async () => {
-    try {
-      await playInterval(pageIntros['lobby']);
+    await playInterval(pageIntros['lobby']);
 
-      zoomIn('home');
-      enableCurrentPageTriggers('home');
-      hidePlaceholderImage();
-    } catch (e) {
-      orangeLog(e);
-    }
+    zoomIn('home');
+    enableCurrentPageTriggers('home');
+    hidePlaceholderImage();
   }, 600);
 
   setTimeout(() => {
