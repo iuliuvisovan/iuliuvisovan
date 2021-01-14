@@ -15,8 +15,6 @@ function preloadVideo() {
     try {
       mainVideo.load();
     } catch (e) {}
-
-    //video.play()  if you want it to play on load
   };
 
   xhr.onprogress = function (e) {
@@ -34,9 +32,7 @@ function preloadVideo() {
   xhr.send();
 }
 
-setTimeout(() => {
-  preloadVideo();
-}, 500);
+preloadVideo();
 
 var currentGif = 1;
 
@@ -164,19 +160,21 @@ function showLoaded() {
 }
 
 function enterWebsite() {
-  // document.querySelector('#bgMusic').play();
-
   document.querySelector('.loading-overlay').classList.add('dismissed');
   setTimeout(() => {
     document.querySelector('.page-wrapper').classList.add('entered');
   }, 600);
 
   setTimeout(async () => {
-    await playInterval(pageIntros['lobby']);
+    try {
+      await playInterval(pageIntros['lobby']);
 
-    zoomIn('home');
-    enableCurrentPageTriggers('home');
-    hidePlaceholderImage();
+      zoomIn('home');
+      enableCurrentPageTriggers('home');
+      hidePlaceholderImage();
+    } catch (e) {
+      orangeLog(e);
+    }
   }, 600);
 
   setTimeout(() => {
@@ -212,20 +210,6 @@ const zoomOut = async () => {
     setTimeout(() => {
       resolve();
     }, 1000);
-  });
-};
-
-const playVideo = () => {
-  const vids = [...document.getElementsByTagName('video')];
-  vids.forEach((vid) => {
-    vid.play();
-  });
-};
-
-const pauseVideo = () => {
-  const vids = [...document.getElementsByTagName('video')];
-  vids.forEach((vid) => {
-    vid.pause();
   });
 };
 
