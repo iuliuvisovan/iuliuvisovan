@@ -24,6 +24,10 @@ function preloadVideo() {
       const loadedPercentage = ((e.loaded / e.total) * 100).toFixed(2);
       blueLog('> loading: ' + loadedPercentage + '%');
       document.querySelector('.progress-bar-line').style.width = loadedPercentage + '%';
+
+      if (e.loaded == e.total) {
+        showLoaded();
+      }
     }
   };
 
@@ -64,7 +68,6 @@ mainVideo.addEventListener('play', () => {
 });
 
 function blueLog(text) {
-  return;
   document.querySelector('#blueLogs').innerText = text;
 }
 
@@ -140,18 +143,25 @@ function checkVideoSeek() {
 
 mainVideo.addEventListener('canplaythrough', () => {
   if (!window.hasLoaded) {
-    // enterWebsite();
-    window.hasLoaded = true;
-
-    document.getElementById('loadingText').remove();
-    document.getElementById('loadedText').classList.add('visible');
-    document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
-
-    document.querySelector('.loading-overlay').classList.add('loaded');
+    showLoaded();
   } else {
     window.resolveWaitForVideoLoad && window.resolveWaitForVideoLoad();
   }
 });
+
+function showLoaded() {
+  if (window.hasLoaded) {
+    return;
+  }
+
+  window.hasLoaded = true;
+
+  document.getElementById('loadingText').remove();
+  document.getElementById('loadedText').classList.add('visible');
+  document.getElementById('showCatGifsLink').innerText = 'Actually I think some cat gifs would be nice';
+
+  document.querySelector('.loading-overlay').classList.add('loaded');
+}
 
 function enterWebsite() {
   // document.querySelector('#bgMusic').play();
