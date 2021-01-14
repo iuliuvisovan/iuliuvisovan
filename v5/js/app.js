@@ -33,7 +33,7 @@ function preloadVideo() {
 }
 
 setTimeout(() => {
-  if (window.loadedPercentage < 25) {
+  if (window.loadedPercentage < 15) {
     document.querySelector('#slowInternetText').style.display = 'inline';
   }
 }, 5000);
