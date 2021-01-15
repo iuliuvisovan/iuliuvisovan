@@ -43,12 +43,12 @@ preloadVideo();
 var currentGif = 1;
 
 function showNextGif() {
+  currentGif++;
   if (currentGif > 7) {
     currentGif = 0;
   }
 
   document.querySelector('#catGif').src = `./media/gifs/${currentGif}.mp4`;
-  currentGif++;
 }
 
 window.hasLoaded = false;
@@ -164,9 +164,7 @@ function showLoaded() {
 
 function enterWebsite() {
   document.querySelector('.loading-overlay').classList.add('dismissed');
-  setTimeout(() => {
-    document.querySelector('.page-wrapper').classList.add('entered');
-  }, 600);
+  document.querySelector('.page-wrapper').classList.add('entered');
 
   setTimeout(async () => {
     await playInterval(pageIntros['lobby']);
@@ -235,8 +233,7 @@ const disableAllTriggers = () => {
   });
 };
 
-function showcatGifs() {
-  showNextGif();
+function showCatGifs() {
   document.getElementById('catGifs').classList.add('visible');
   document.getElementById('showCatGifsLink').remove();
 }

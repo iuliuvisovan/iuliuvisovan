@@ -38,6 +38,7 @@
 
     <!--Preload start image-->
     <link rel="preload" href="./media/stills/lobby.jpg" as="image" />
+    <link rel="preload" href="./media/gifs/1.mp4" as="video" type="video/mp4" />
 
     <!-- DON'T LOOK AT MY SOURCE CODE -->
   </head>
@@ -65,12 +66,12 @@
         </div>
       </div>
       <div style="display: flex; flex: 1; flex-direction: column; justify-content: flex-end; align-items: center">
-        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px; font-size: 14px" onclick="showcatGifs()" title="Check out some cool cat GIFs right here and now!"
+        <span class="link" id="showCatGifsLink" style="margin-bottom: 40px; font-size: 14px" onclick="showCatGifs()" title="Check out some cool cat GIFs right here and now!"
           >Please show me cat gifs while I wait</span
         >
         <div id="catGifs">
-          <video id="catGif" playsinline autoplay loop preload="metadata">
-            <source type="video/mp4" />
+          <video id="catGif" playsinline autoplay muted loop preload="metadata">
+            <source type="video/mp4" src="./media/gifs/1.mp4" />
           </video>
           <span class="link" style="margin-bottom: 30px" onclick="showNextGif()">Next one</span>
         </div>

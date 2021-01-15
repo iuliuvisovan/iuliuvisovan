@@ -62,7 +62,7 @@ img {
 }
 
 .page-wrapper.entered {
-  animation: remove-blur 2s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+  animation: remove-blur 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
   animation-fill-mode: forwards;
 }
 
