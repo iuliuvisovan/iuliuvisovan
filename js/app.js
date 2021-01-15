@@ -44,7 +44,7 @@ var currentGif = 1;
 
 function showNextGif() {
   currentGif++;
-  if (currentGif > 7) {
+  if (currentGif > 6) {
     currentGif = 0;
   }
 
