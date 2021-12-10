@@ -24,7 +24,9 @@ function preloadVideo() {
       document.querySelector('.progress-bar-line').style.width = window.loadedPercentage.toFixed(2) + '%';
 
       if (e.loaded == e.total) {
-        showLoaded();
+        setTimeout(() => {
+          showLoaded();
+        }, 2000);
       }
     }
   };
@@ -123,7 +125,11 @@ function checkVideoSeek() {
     document.querySelector('.still-image.active')?.classList.remove('active');
   }
 
-  blueLog(`${new Date().getMinutes() + ':' + new Date().getSeconds()}] vid seek: ${mainVideo.currentTime.toFixed(2)} (needed ${window.currentRequiredSeek})`);
+  blueLog(
+    `${new Date().getMinutes() + ':' + new Date().getSeconds()}] vid seek: ${mainVideo.currentTime.toFixed(2)} (needed ${
+      window.currentRequiredSeek
+    })`,
+  );
 
   if (!window.canPause) {
     return;
