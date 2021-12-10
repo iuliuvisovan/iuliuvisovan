@@ -25,7 +25,14 @@ function preloadVideo() {
 
       if (e.loaded == e.total) {
         setTimeout(() => {
-          showLoaded();
+          caches = window.caches;
+
+          caches.open('main-video').then((cache) => {
+            cache.add('./media/mainrender.mp4').then(() => {
+              // Now the file is cached. Start rendering the app!
+              showLoaded();
+            });
+          });
         }, 2000);
       }
     }
